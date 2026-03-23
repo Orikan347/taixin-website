@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>言之有物｜Orikan 李泰欣 — 保時捷銷冠實戰溝通系統</title>
+<meta name="description" content="你的專業，不該輸在「不會表達」。保時捷全球百大銷冠 Orikan 實戰溝通課程，教你系統化的表達邏輯。">
+<meta property="og:title" content="言之有物｜Speak with Substance">
+<meta property="og:description" content="勤奮是業務的基本功，但「表達」才是你的倍增器。保時捷銷冠的實戰溝通系統。">
+<meta property="og:image" content="https://orikan347.github.io/taixin-website/img/method-photo.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy-deep: #060d18;
+  --navy: #0b1726;
+  --navy-mid: #10203a;
+  --navy-light: #182f50;
+  --gold: #c9a84c;
+  --gold-light: #e8d48b;
+  --gold-dark: #a08030;
+  --white: #f5f0e8;
+  --white-dim: #c8c0b0;
+  --text: #ddd8d0;
+  --text-dim: #8a8577;
+  --glass: rgba(255,255,255,0.03);
+  --glass-border: rgba(201,168,76,0.1);
+  --red: #e74c3c;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans TC', 'Poppins', sans-serif;
+  background: var(--navy-deep);
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+.container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+.gold { color: var(--gold); }
+.text-center { text-align: center; }
+h1, h2, h3, h4 { font-weight: 700; line-height: 1.35; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 20px; }
+h3 { font-size: clamp(1.2rem, 3vw, 1.6rem); margin-bottom: 12px; }
+p { margin-bottom: 16px; font-weight: 300; font-size: 1.05rem; }
+.section { padding: 80px 0; }
+.divider { width: 60px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); margin: 24px auto; }
+
+/* Back link */
+.back-link {
+  position: fixed; top: 20px; left: 20px; z-index: 100;
+  color: var(--gold); text-decoration: none; font-size: 0.9rem;
+  padding: 10px 20px; border-radius: 30px;
+  background: rgba(6,13,24,0.9); backdrop-filter: blur(10px);
+  border: 1px solid rgba(201,168,76,0.2);
+  transition: all 0.3s;
+}
+.back-link:hover { background: rgba(201,168,76,0.1); }
+
+/* Hero */
+.course-hero {
+  min-height: 70vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; position: relative;
+  background: linear-gradient(180deg, rgba(6,13,24,0.3) 0%, var(--navy-deep) 100%),
+    url('img/method-photo.jpg') center/cover no-repeat;
+}
+.course-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(6,13,24,0.65);
+}
+.course-hero-content {
+  position: relative; z-index: 2; max-width: 700px; padding: 40px 24px;
+}
+.course-hero h1 { color: var(--white); margin-bottom: 20px; }
+.course-hero h1 span { color: var(--gold); }
+.course-hero .subtitle {
+  font-size: 1.2rem; color: var(--white-dim); margin-bottom: 30px; line-height: 1.9;
+}
+.tag-line {
+  display: inline-block; padding: 8px 24px; border-radius: 30px;
+  background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25);
+  color: var(--gold); font-size: 0.9rem; font-weight: 600; margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block; padding: 16px 40px; border-radius: 50px;
+  font-size: 1.1rem; font-weight: 600; text-decoration: none;
+  transition: all 0.3s; cursor: pointer;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  color: var(--navy-deep);
+  box-shadow: 0 4px 24px rgba(201,168,76,0.25);
+}
+.btn-gold:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(201,168,76,0.4); }
+.btn-outline {
+  border: 1.5px solid var(--gold); color: var(--gold); background: transparent;
+}
+.btn-outline:hover { background: rgba(201,168,76,0.1); }
+.btn-large { padding: 20px 50px; font-size: 1.2rem; }
+
+/* Pain section */
+.pain-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.pain-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+.pain-text { font-size: 1.05rem; color: var(--text); line-height: 1.8; }
+
+/* SOP Cards */
+.sop-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 30px 0; }
+.sop-card {
+  background: linear-gradient(145deg, var(--navy-mid), var(--navy));
+  border: 1px solid rgba(201,168,76,0.08); border-radius: 16px;
+  padding: 28px; position: relative; overflow: hidden;
+  transition: all 0.3s;
+}
+.sop-card:hover { border-color: rgba(201,168,76,0.2); transform: translateY(-3px); }
+.sop-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+.sop-num {
+  font-family: 'Poppins'; font-size: 2.5rem; font-weight: 900;
+  color: rgba(201,168,76,0.1); position: absolute; top: 8px; right: 16px; line-height: 1;
+}
+.sop-card h4 { color: var(--gold-light); font-size: 1.1rem; margin-bottom: 10px; }
+.sop-card p { font-size: 0.95rem; color: var(--text-dim); margin: 0; line-height: 1.8; }
+
+/* Result cards */
+.result-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 30px 0; }
+.result-item {
+  text-align: center; padding: 28px 16px;
+  background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px;
+}
+.result-num {
+  font-family: 'Poppins'; font-size: 2rem; font-weight: 800;
+  color: var(--gold); line-height: 1.2;
+}
+.result-label { font-size: 0.88rem; color: var(--text-dim); margin-top: 6px; }
+
+/* Testimonial */
+.testimonial-block {
+  background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 16px; padding: 28px 32px; margin-bottom: 20px;
+  border-left: 3px solid var(--gold); position: relative;
+}
+.testimonial-block .highlight {
+  font-family: 'Poppins'; font-size: 1.6rem; font-weight: 800;
+  color: var(--gold); margin-bottom: 6px;
+}
+.testimonial-block p { font-size: 1rem; color: var(--text-dim); margin: 0; line-height: 1.8; }
+.testimonial-block .source { font-size: 0.85rem; color: var(--text-dim); margin-top: 8px; font-style: italic; }
+
+/* Vision section */
+.vision-box {
+  background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.02) 100%);
+  border: 1px solid rgba(201,168,76,0.15); border-radius: 20px;
+  padding: 40px; text-align: center; position: relative; overflow: hidden;
+}
+.vision-box::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-dark), transparent);
+}
+
+/* Info grid */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+.info-card {
+  background: linear-gradient(145deg, var(--navy-mid), var(--navy));
+  border: 1px solid rgba(201,168,76,0.08); border-radius: 14px; padding: 24px;
+}
+.info-card .label {
+  font-size: 0.8rem; color: var(--gold); font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;
+}
+.info-card .value { font-size: 1.05rem; color: var(--white); font-weight: 500; }
+.info-card .detail { font-size: 0.9rem; color: var(--text-dim); margin-top: 4px; }
+
+/* Price section */
+.price-box {
+  text-align: center; padding: 40px; border-radius: 20px;
+  background: linear-gradient(145deg, var(--navy-mid), var(--navy));
+  border: 1px solid rgba(201,168,76,0.15); position: relative; overflow: hidden;
+}
+.price-box::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+}
+.price-original {
+  font-size: 1.1rem; color: var(--text-dim);
+  text-decoration: line-through; margin-bottom: 4px;
+}
+.price-current {
+  font-family: 'Poppins'; font-size: 3rem; font-weight: 900;
+  color: var(--gold); line-height: 1.2;
+}
+.price-note { font-size: 0.95rem; color: var(--text-dim); margin-top: 8px; }
+
+/* Guarantee */
+.guarantee-box {
+  display: flex; align-items: flex-start; gap: 20px;
+  background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 16px; padding: 28px; margin: 30px 0;
+}
+.guarantee-icon { font-size: 2.5rem; flex-shrink: 0; }
+.guarantee-box h4 { color: var(--gold-light); margin-bottom: 6px; }
+.guarantee-box p { font-size: 0.95rem; color: var(--text-dim); margin: 0; line-height: 1.8; }
+
+/* Quote */
+.big-quote {
+  font-size: 1.3rem; font-style: italic; color: var(--gold-light);
+  text-align: center; max-width: 600px; margin: 30px auto;
+  line-height: 2;
+}
+.big-quote .author { font-size: 0.95rem; color: var(--text-dim); font-style: normal; margin-top: 10px; }
+
+/* CTA final */
+.cta-final {
+  text-align: center; padding: 100px 0;
+  background: linear-gradient(135deg, var(--navy-mid), var(--navy-deep));
+  position: relative; overflow: hidden;
+}
+.cta-final::before {
+  content: ''; position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;
+}
+
+/* Footer */
+footer {
+  padding: 30px 0; text-align: center; color: var(--text-dim);
+  font-size: 0.78rem; border-top: 1px solid rgba(201,168,76,0.06);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .sop-grid { grid-template-columns: 1fr; }
+  .result-grid { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr; }
+  .guarantee-box { flex-direction: column; text-align: center; }
+  .price-current { font-size: 2.4rem; }
+  .course-hero { min-height: 60vh; }
+  .btn-large { padding: 16px 36px; font-size: 1.05rem; }
+}
+
+/* Fade in */
+.fade-in {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">&larr; 回主頁</a>
+
+<!-- HERO -->
+<section class="course-hero">
+  <div class="course-hero-content">
+    <div class="tag-line">保時捷全球百大銷冠實戰系統</div>
+    <div style="font-family:'Poppins','Noto Sans TC',sans-serif;font-size:clamp(1rem,2.5vw,1.3rem);letter-spacing:4px;color:var(--gold);margin-bottom:16px;font-weight:600;">【 言之有物 SPEAK WITH SUBSTANCE 】</div>
+    <h1>你的專業，不該輸在<span>「不會表達」</span>。</h1>
+    <p class="subtitle">勤奮是業務的基本功，但「表達」才是你的倍增器。</p>
+    <a href="https://line.me/ti/p/jzdho94spl" target="_blank" class="btn btn-gold btn-large">LINE 報名課程</a>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="section" style="background:var(--navy);">
+  <div class="container fade-in">
+    <h2 class="text-center">「別再用體力換錢，<br>你的專業死在<span class="gold">不會表達</span>」</h2>
+    <div class="divider"></div>
+    <p class="text-center" style="color:var(--text-dim);max-width:600px;margin:0 auto 30px;">你可能已經是 Top Sales，但你心裡清楚：如果不學會系統化的表達，你永遠只能靠體力換業績。</p>
+
+    <div style="max-width:650px;margin:0 auto;">
+      <div class="pain-item">
+        <div class="pain-icon">❌</div>
+        <div class="pain-text"><strong>無法複製成功</strong> — 你很會賣，但你不知道自己「為什麼」會賣。你帶不動團隊，因為你只有感覺，沒有 SOP。</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">❌</div>
+        <div class="pain-text"><strong>溝通缺乏效率</strong> — 面對高資產客戶，你講了很多，對方卻只回一句「我再看看」。</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">❌</div>
+        <div class="pain-text"><strong>沒有時間自由</strong> — 你必須不斷拜訪、不斷說話才能成交。你一停下來，收入就停了。</div>
+      </div>
+    </div>
+
+    <div class="big-quote">
+      「這不是你的能力問題，<br>而是你的表達缺乏『<strong class="gold">系統</strong>』。」
+      <div class="author">—— Orikan 李泰欣</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 CORE MODULES -->
+<section class="section" style="background:var(--navy-deep);">
+  <div class="container fade-in">
+    <div class="text-center">
+      <h2>三大實戰溝通模組<br><span class="gold">把話說到心坎裡的系統</span></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="sop-grid">
+      <div class="sop-card">
+        <div class="sop-num">01</div>
+        <h4>建立權威｜30秒的專業定位</h4>
+        <p>面對大老闆或高階客戶，如何不卑不亢？教你「挖、補、報、約」四步公式。在開口的頭 30 秒，精準點出對方的痛點，並證明「我是來幫你解決問題的專家」，而不是來推銷的業務。</p>
+      </div>
+      <div class="sop-card">
+        <div class="sop-num">02</div>
+        <h4>邏輯槓桿｜讓你的話有結構</h4>
+        <p>為什麼有些人講話很有說服力？因為他們有「架構」。掌握「能量 x 邏輯 x 格局」三大維度。不只讓客戶聽得懂，更能讓你的團隊夥伴輕鬆複製你的成功。</p>
+      </div>
+      <div class="sop-card">
+        <div class="sop-num">03</div>
+        <h4>影響力｜看懂人心的 DISC</h4>
+        <p>溝通不是「說我想說的」，而是「說對方想聽的」。實戰演練面對強勢的客戶、謹慎的老闆，你知道該切換什麼頻道，讓對方覺得「你懂我」。</p>
+      </div>
+    </div>
+
+    <div class="big-quote">
+      「你不需要很厲害的話術，<br>你需要的是一套『讓人聽得懂、聽得進去』的邏輯。」
+      <div class="author">—— Orikan 李泰欣</div>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGIN STORY -->
+<section class="section" style="background:var(--navy);">
+  <div class="container fade-in">
+    <div class="vision-box">
+      <h2 style="margin-bottom:16px;"><span class="gold">從絕境中證實的真理</span></h2>
+      <p style="font-size:1.1rem;color:var(--text);line-height:2;max-width:600px;margin:0 auto;">
+        真正讓我看懂「銷售本質」的，不是頒獎台，<br>而是那場讓我右腿骨折的意外。<br><br>
+        那三個月，我躺在病床上，失去了行動力。<br>當一個業務員不能「跑」客戶時，他的價值還剩什麼？<br><br>
+        我被迫只能依賴「精準的表達」跟「團隊的力量」。<br>我用電話、用訊息，在動彈不得的情況下，<br>依然讓團隊運轉，客戶買單，依然維持頂尖績效。
+      </p>
+      <p style="color:var(--gold);font-weight:600;margin-top:20px;font-size:1rem;">
+        「你不需要很厲害的話術，你需要的是一套『讓人聽得懂、聽得進去』的邏輯。」
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT RESULTS -->
+<section class="section" style="background:var(--navy-deep);">
+  <div class="container fade-in">
+    <div class="text-center">
+      <h2>這不是廣告，這是學員上完課後<br>最真實的<span class="gold">「感受」</span>。</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- 見證 1 -->
+    <div class="testimonial-block">
+      <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;">
+        <div style="flex:0 0 180px;">
+          <img src="img/yanzhiyouwu-slide9-6.png" alt="學員見證截圖" style="width:100%;border-radius:10px;border:1px solid rgba(201,168,76,0.15);" loading="lazy">
+        </div>
+        <div style="flex:1;min-width:240px;">
+          <div class="highlight">招招落地，馬上學了就能用</div>
+          <p>上過很多銷售表達課程，但要像泰欣老師這樣「招招落地」、馬上學了就能馬上用的真的非常厲害！沒有花拳繡腿，每一個重點都直擊銷售表達核心！</p>
+          <div class="source">— 學員 l.fun_666</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 見證 2 -->
+    <div class="testimonial-block">
+      <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;">
+        <div style="flex:0 0 180px;">
+          <img src="img/yanzhiyouwu-slide9-13.png" alt="學員見證截圖" style="width:100%;border-radius:10px;border:1px solid rgba(201,168,76,0.15);" loading="lazy">
+        </div>
+        <div style="flex:1;min-width:240px;">
+          <div class="highlight">用策略取代蠻力</div>
+          <p>利用公式，直接輸出就能落地。擁有「策略」在經營，讓沒有邏輯的腦袋整個清晰起來！理工腦的另一半也非常認同。</p>
+          <div class="source">— 行銷行業 Tracy</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 見證 3 -->
+    <div class="testimonial-block">
+      <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;">
+        <div style="flex:0 0 180px;">
+          <img src="img/yanzhiyouwu-slide9-21.png" alt="學員見證截圖" style="width:100%;border-radius:10px;border:1px solid rgba(201,168,76,0.15);" loading="lazy">
+        </div>
+        <div style="flex:1;min-width:240px;">
+          <div class="highlight">掌握表達紅利</div>
+          <p>表達者紅利絕對是當代主流...善用公式可以有架構...明白了為何渣男不費吹灰之力，但是直男不懂表達永遠只能自我感動。</p>
+          <div class="source">— 土地開發 Amanda</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center" style="font-size:0.85rem;color:var(--text-dim);font-style:italic;margin-top:20px;">*為保護學員隱私，姓名已做部分處理</p>
+  </div>
+</section>
+
+<!-- ENROLL CTA -->
+<section class="section" style="background:var(--navy);">
+  <div class="container fade-in">
+    <div class="text-center">
+      <h2>投資大腦，是報酬率<span class="gold">最高</span>的一筆交易</h2>
+      <div class="divider"></div>
+      <p style="color:var(--white-dim);font-size:1.1rem;margin-bottom:6px;">實體課程 ｜ 09:00 - 18:00 全天實戰演練</p>
+      <p style="color:var(--text-dim);max-width:550px;margin:0 auto 30px;line-height:2;">想了解最新開課時間與報名方式？<br>透過 LINE 直接聯繫。</p>
+      <a href="https://line.me/ti/p/jzdho94spl" target="_blank" class="btn btn-gold btn-large">LINE 諮詢 / 報名課程</a>
+    </div>
+
+    <!-- Guarantee -->
+    <div class="guarantee-box">
+      <div class="guarantee-icon">🛡️</div>
+      <div>
+        <h4>三無退費承諾｜無效、無解、無理由</h4>
+        <p>第一堂課上完若覺得沒收穫，無條件全額退費。我不教你我沒做過的事，我只教你那些讓我在絕境中，依然能創造價值的實戰經驗。</p>
+      </div>
+    </div>
+
+    <!-- 贈品提示 -->
+    <div class="text-center" style="margin-top:10px;">
+      <p style="font-size:1.05rem;color:var(--gold-light);">🎁 報名即贈「銷售電子工具書」</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT INSTRUCTOR -->
+<section class="section" style="background:var(--navy-deep);">
+  <div class="container fade-in">
+    <div style="display:flex;gap:30px;align-items:center;flex-wrap:wrap;">
+      <div style="flex:0 0 200px;">
+        <img src="img/portrait.jpg" alt="Orikan 李泰欣" style="width:100%;border-radius:16px;box-shadow:0 16px 50px rgba(0,0,0,0.4);" loading="lazy">
+      </div>
+      <div style="flex:1;min-width:280px;">
+        <h3 style="color:var(--white);">關於講師 <span class="gold">Orikan 李泰欣</span></h3>
+        <p style="font-size:1rem;color:var(--text-dim);line-height:2;">
+          2019 保時捷全球百大銷售顧問<br>
+          2019 保時捷全台灣第一名<br>
+          14+ 年高端品牌銷售與實戰教學經驗<br>
+          培訓超過 50+ 企業｜累積學員 5,000+ 人<br>
+          4U 人際教育學院企業導師
+        </p>
+        <a href="index.html" class="btn btn-outline" style="padding:10px 24px;font-size:0.9rem;">了解更多 &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-final">
+  <div class="container fade-in" style="position:relative;z-index:2;">
+    <h2 style="color:var(--white);font-size:clamp(1.6rem,4vw,2.4rem);">「你不需要很厲害的話術，<br><span class="gold">而是開始了才會變厲害。」</span></h2>
+    <p style="color:var(--text-dim);max-width:500px;margin:20px auto;line-height:2;">
+      還在猶豫？你唯一的風險，<br>就是繼續用體力換業績。
+    </p>
+    <div style="margin:30px 0;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://line.me/ti/p/jzdho94spl" target="_blank" class="btn btn-gold btn-large">LINE 立即報名</a>
+    </div>
+    <p style="color:var(--text-dim);font-size:0.9rem;margin-top:20px;">
+      📞 課程諮詢專線：0916-050-800
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p style="margin:0;">&copy; 2026 Orikan 李泰欣 ｜ 4U 人際教育學院企業導師</p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
