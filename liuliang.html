@@ -254,6 +254,15 @@ footer {
   transition: opacity 0.9s ease, transform 0.9s ease;
 }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* FAQ */
+.faq-item {
+  margin-bottom: 24px; padding: 24px;
+  background: linear-gradient(145deg, var(--navy-mid), var(--navy));
+  border: 1px solid rgba(201,168,76,0.08); border-radius: 14px;
+}
+.faq-item h4 { color: var(--gold-light); margin-bottom: 10px; font-size: 1.05rem; }
+.faq-item p { color: var(--text-dim); margin: 0; font-size: 0.95rem; line-height: 1.8; }
 </style>
 </head>
 <body>
@@ -410,6 +419,31 @@ footer {
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="section" style="background:var(--navy-deep);">
+  <div class="container fade-in">
+    <div class="text-center">
+      <h2>常見問題</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="faq-item">
+      <h4>Q：我不是做業務的，這堂課適合我嗎？</h4>
+      <p>只要你的工作需要「找到客戶」，這套系統就適合你。我們的學員涵蓋保險、房地產、健身、醫美、直銷等 17+ 產業，核心邏輯是通用的。</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Q：上完課如果沒有效果怎麼辦？</h4>
+      <p>我們提供「三無退費」承諾：無效、無解、無理由。第一堂課上完若覺得沒收穫，無條件全額退費。你不需要承擔任何風險。</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Q：我已經有穩定的客戶來源，還需要上這堂課嗎？</h4>
+      <p>如果你目前的名單都是靠「人脈」或「緣分」，那你只是還沒遇到瓶頸。這套系統教你建立「不依賴運氣」的獲客管道，讓你的名單從碰運氣變成可預測。</p>
+    </div>
+  </div>
+</section>
+
 <!-- ENROLL CTA -->
 <section class="section" style="background:var(--navy);">
   <div class="container fade-in">
@@ -450,6 +484,31 @@ footer {
         </p>
         <a href="index.html" class="btn btn-outline" style="padding:10px 24px;font-size:0.9rem;">了解更多 →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CROSS RECOMMENDATION -->
+<section class="section" style="background:var(--navy-deep);">
+  <div class="container fade-in">
+    <div class="text-center">
+      <h3>學完流量磁鐵，<span class="gold">下一步</span></h3>
+      <div class="divider"></div>
+      <p style="color:var(--text-dim);max-width:600px;margin:0 auto 30px;">名單有了，接下來要學會怎麼成交。</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">
+      <a href="chengjiaoditu.html" style="text-decoration:none;display:block;background:linear-gradient(145deg,var(--navy-mid),var(--navy));border:1px solid rgba(201,168,76,0.08);border-radius:16px;padding:28px;transition:all 0.3s;">
+        <div style="font-size:0.8rem;color:var(--gold);font-weight:600;letter-spacing:2px;margin-bottom:8px;">NEXT STEP</div>
+        <h4 style="color:var(--white);margin-bottom:8px;">成交地圖</h4>
+        <p style="color:var(--text-dim);font-size:0.92rem;margin:0;">有了名單，學會四層成交導航，照著走就能成交。</p>
+        <div style="margin-top:12px;font-size:0.85rem;color:var(--gold);">查看課程 →</div>
+      </a>
+      <a href="zhizhirenxin.html" style="text-decoration:none;display:block;background:linear-gradient(145deg,var(--navy-mid),var(--navy));border:1px solid rgba(201,168,76,0.08);border-radius:16px;padding:28px;transition:all 0.3s;">
+        <div style="font-size:0.8rem;color:var(--gold);font-weight:600;letter-spacing:2px;margin-bottom:8px;">LEVEL UP</div>
+        <h4 style="color:var(--white);margin-bottom:8px;">直指人心</h4>
+        <p style="color:var(--text-dim);font-size:0.92rem;margin:0;">10 分鐘看透客戶，精準溝通不浪費唇舌。</p>
+        <div style="margin-top:12px;font-size:0.85rem;color:var(--gold);">查看課程 →</div>
+      </a>
     </div>
   </div>
 </section>

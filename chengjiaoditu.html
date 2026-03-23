@@ -254,6 +254,15 @@ footer {
   transition: opacity 0.9s ease, transform 0.9s ease;
 }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* FAQ */
+.faq-item {
+  margin-bottom: 24px; padding: 24px;
+  background: linear-gradient(145deg, var(--navy-mid), var(--navy));
+  border: 1px solid rgba(201,168,76,0.08); border-radius: 14px;
+}
+.faq-item h4 { color: var(--gold-light); margin-bottom: 10px; font-size: 1.05rem; }
+.faq-item p { color: var(--text-dim); margin: 0; font-size: 0.95rem; line-height: 1.8; }
 </style>
 </head>
 <body>
@@ -372,6 +381,31 @@ footer {
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="section" style="background:var(--navy-deep);">
+  <div class="container fade-in">
+    <div class="text-center">
+      <h2>常見問題</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="faq-item">
+      <h4>Q：我是完全的業務小白，會不會聽不懂？</h4>
+      <p>這堂課就是為你設計的。《成交地圖》把銷售拆解成「照著走就不會迷路」的四層導航，即使你從來沒賣過東西，跟著步驟做就能上手。</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Q：我的產品很特殊，這套方法適用嗎？</h4>
+      <p>成交地圖的底層邏輯是「人性」，不是某個特定產品。無論你賣的是保險、房子、健身課程還是軟體，客戶的購買心理是一樣的。我們已經在 17+ 個產業驗證過這套系統。</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Q：上完課回去就忘了怎麼辦？</h4>
+      <p>課程包含實戰演練，不是單向聽講。你會在課堂上親手操作每一個步驟，加上贈送的《銷售電子工具書》，回去隨時可以翻閱複習。</p>
+    </div>
+  </div>
+</section>
+
 <!-- ENROLL CTA -->
 <section class="section" style="background:var(--navy);">
   <div class="container fade-in">
@@ -412,6 +446,31 @@ footer {
         </p>
         <a href="index.html" class="btn btn-outline" style="padding:10px 24px;font-size:0.9rem;">了解更多 →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CROSS RECOMMENDATION -->
+<section class="section" style="background:var(--navy-deep);">
+  <div class="container fade-in">
+    <div class="text-center">
+      <h3>學完成交地圖，<span class="gold">下一步</span></h3>
+      <div class="divider"></div>
+      <p style="color:var(--text-dim);max-width:600px;margin:0 auto 30px;">學會成交後，下一步是看懂人心，讓溝通更精準。</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">
+      <a href="zhizhirenxin.html" style="text-decoration:none;display:block;background:linear-gradient(145deg,var(--navy-mid),var(--navy));border:1px solid rgba(201,168,76,0.08);border-radius:16px;padding:28px;transition:all 0.3s;">
+        <div style="font-size:0.8rem;color:var(--gold);font-weight:600;letter-spacing:2px;margin-bottom:8px;">NEXT STEP</div>
+        <h4 style="color:var(--white);margin-bottom:8px;">直指人心</h4>
+        <p style="color:var(--text-dim);font-size:0.92rem;margin:0;">學會成交後，下一步是看懂人心，讓溝通更精準。</p>
+        <div style="margin-top:12px;font-size:0.85rem;color:var(--gold);">查看課程 →</div>
+      </a>
+      <a href="jizhixiaolv.html" style="text-decoration:none;display:block;background:linear-gradient(145deg,var(--navy-mid),var(--navy));border:1px solid rgba(201,168,76,0.08);border-radius:16px;padding:28px;transition:all 0.3s;">
+        <div style="font-size:0.8rem;color:var(--gold);font-weight:600;letter-spacing:2px;margin-bottom:8px;">LEVEL UP</div>
+        <h4 style="color:var(--white);margin-bottom:8px;">極致效率</h4>
+        <p style="color:var(--text-dim);font-size:0.92rem;margin:0;">用系統取代加班，把省下的時間留給家人。</p>
+        <div style="margin-top:12px;font-size:0.85rem;color:var(--gold);">查看課程 →</div>
+      </a>
     </div>
   </div>
 </section>
