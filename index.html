@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orikan 李泰欣｜亞洲銷冠系統架構導師</title>
 <meta name="description" content="前保時捷全台銷售第一名。14 年實戰銷售經歷，把心理學、哲學與商業思維融合成可複製的人性成交系統。">
+<meta property="og:title" content="Orikan 李泰欣｜亞洲銷冠系統架構導師">
+<meta property="og:description" content="前保時捷全台銷售第一名。培訓超過 50 家企業、5,000+ 學員。銷售主題演講與企業內訓邀約。">
+<meta property="og:image" content="img/portrait.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orikan347.github.io/taixin-website/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -753,6 +759,99 @@ footer {
   border-color: rgba(201,168,76,0.3);
 }
 
+/* === SPEAKING === */
+.speaking-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+  margin: 40px 0;
+}
+.speaking-stat {
+  text-align: center;
+  padding: 28px 16px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+.speaking-stat:hover {
+  border-color: rgba(201,168,76,0.25);
+  transform: translateY(-3px);
+}
+.speaking-stat .num {
+  font-family: 'Poppins';
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1.2;
+}
+.speaking-stat .lbl {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-top: 6px;
+}
+.speaking-topics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 40px 0;
+}
+.topic-card {
+  background: linear-gradient(145deg, var(--navy-mid), var(--navy));
+  border: 1px solid rgba(201,168,76,0.08);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s;
+}
+.topic-card:hover {
+  border-color: rgba(201,168,76,0.2);
+  transform: translateY(-3px);
+}
+.topic-card h4 {
+  color: var(--white);
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+.topic-card p {
+  color: var(--text-dim);
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.8;
+}
+.client-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 30px 0;
+}
+.client-tag {
+  padding: 8px 18px;
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  background: rgba(201,168,76,0.03);
+  transition: all 0.3s;
+}
+.client-tag:hover {
+  background: rgba(201,168,76,0.08);
+  color: var(--gold-light);
+  border-color: rgba(201,168,76,0.25);
+}
+.region-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin: 20px 0 10px;
+  text-align: center;
+}
+@media (max-width: 640px) {
+  .speaking-topics { grid-template-columns: 1fr; }
+  .speaking-stat .num { font-size: 1.8rem; }
+}
+
 /* === NUMBER COUNTER === */
 .counter-row {
   display: flex;
@@ -831,6 +930,7 @@ footer {
       <li><a href="#courses">課程</a></li>
       <li><a href="#results">學員成果</a></li>
       <li><a href="#philosophy">人生哲學</a></li>
+      <li><a href="#speaking">演講邀約</a></li>
       <li><a href="#contact">追蹤我</a></li>
     </ul>
     <button class="menu-toggle" id="menuToggle" aria-label="開啟選單">
@@ -846,6 +946,7 @@ footer {
   <a href="#courses" onclick="closeMobileMenu()">課程</a>
   <a href="#results" onclick="closeMobileMenu()">學員成果</a>
   <a href="#philosophy" onclick="closeMobileMenu()">人生哲學</a>
+  <a href="#speaking" onclick="closeMobileMenu()">演講邀約</a>
   <a href="#contact" onclick="closeMobileMenu()">追蹤我</a>
 </div>
 
@@ -861,7 +962,7 @@ footer {
     <div class="hero-badges">
       <div class="hero-badge">保時捷全球百大銷售</div>
       <div class="hero-badge">年度成交 3.5 億</div>
-      <div class="hero-badge">236+ 場教學演講</div>
+      <div class="hero-badge">245+ 場教學演講</div>
       <div class="hero-badge">橫跨台灣與馬來西亞</div>
     </div>
   </div>
@@ -889,8 +990,9 @@ footer {
         <div class="stat-row">
           <div class="stat"><div class="stat-num">14</div><div class="stat-label">年銷售經歷</div></div>
           <div class="stat"><div class="stat-num">3.5億</div><div class="stat-label">年度成交金額</div></div>
-          <div class="stat"><div class="stat-num">236+</div><div class="stat-label">場教學演講</div></div>
-          <div class="stat"><div class="stat-num">16+</div><div class="stat-label">個產業適用</div></div>
+          <div class="stat"><div class="stat-num">245+</div><div class="stat-label">場教學演講</div></div>
+          <div class="stat"><div class="stat-num">50+</div><div class="stat-label">家企業培訓</div></div>
+          <div class="stat"><div class="stat-num">17+</div><div class="stat-label">個產業適用</div></div>
           <div class="stat"><div class="stat-num">9.8</div><div class="stat-label">平均評分/10</div></div>
         </div>
       </div>
@@ -910,7 +1012,7 @@ footer {
       <p>因為一位學生。</p>
 
       <div class="highlight-box">
-        <p style="margin:0;">他的孩子生病整整一年。每週抽出一兩天進醫院、無法工作，還要照顧家人。但他依然用我教的「銷售公式」，拿下了<strong class="gold">全台灣第一名</strong>。</p>
+        <p style="margin:0;">他的孩子生病整整一年。每週抽出一兩天進醫院、無法工作，還要照顧家人。但他依然用我教的「無限成交飛輪」，拿下了<strong class="gold">全台灣第一名</strong>。</p>
         <br>
         <p style="margin:0;">他對我說：「老師，你的公式真的可以幫助很多人。」</p>
       </div>
@@ -1015,7 +1117,7 @@ footer {
   <div class="container fade-in">
     <div class="text-center">
       <div class="label">Courses</div>
-      <h2><span class="gold">銷售公式</span>五部曲</h2>
+      <h2><span class="gold">無限成交</span>五大飛輪</h2>
       <div class="divider divider-center"></div>
       <p class="lead">從開發到成交，從溝通到效率——一套完整的系統，不是單點突破。</p>
     </div>
@@ -1076,7 +1178,7 @@ footer {
       <div class="label">Results</div>
       <h2>他們<span class="gold">做到了</span></h2>
       <div class="divider divider-center"></div>
-      <p class="lead">2024 年，銷售公式培養的 Top Sales</p>
+      <p class="lead">2024 年，無限成交飛輪培養的 Top Sales</p>
     </div>
 
     <div class="results-grid stagger">
@@ -1163,15 +1265,21 @@ footer {
     </div>
 
     <div class="text-center">
-      <h3 style="margin-bottom:20px;">適用超過 <span class="gold">16 個產業</span>，橫跨台灣與馬來西亞</h3>
+      <h3 style="margin-bottom:20px;">適用超過 <span class="gold">17 個產業</span>，橫跨台灣與馬來西亞</h3>
       <div class="industry-tags">
-        <span class="industry-tag">房屋仲介</span>
-        <span class="industry-tag">汽車銷售</span>
-        <span class="industry-tag">美容美業</span>
-        <span class="industry-tag">理財顧問</span>
-        <span class="industry-tag">保險業務</span>
-        <span class="industry-tag">直銷組織</span>
-        <span class="industry-tag">團隊領導</span>
+        <span class="industry-tag">新車銷售</span>
+        <span class="industry-tag">中古車</span>
+        <span class="industry-tag">房地產</span>
+        <span class="industry-tag">保險業</span>
+        <span class="industry-tag">金融業</span>
+        <span class="industry-tag">醫美產業</span>
+        <span class="industry-tag">美容業</span>
+        <span class="industry-tag">健身房</span>
+        <span class="industry-tag">營養師</span>
+        <span class="industry-tag">直銷微商</span>
+        <span class="industry-tag">電商業</span>
+        <span class="industry-tag">髮品業</span>
+        <span class="industry-tag">藥局</span>
       </div>
     </div>
   </div>
@@ -1256,6 +1364,108 @@ footer {
         堅持的背後是人生使命。<br><br>
         <strong class="gold">「銷售即人生，人生即效率，效率即幸福。」</strong>
       </p>
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKING -->
+<section class="section section-mid" id="speaking">
+  <div class="container fade-in">
+    <div class="text-center">
+      <div class="label">Speaking & Training</div>
+      <h2>演講邀約 ×<span class="gold"> 企業內訓</span></h2>
+      <div class="divider divider-center"></div>
+      <p class="lead">從一場 1 小時的銷售演講，到完整的企業包班培訓，<br>根據你的團隊需求量身打造。</p>
+    </div>
+
+    <div class="speaking-stats stagger">
+      <div class="speaking-stat fade-in">
+        <div class="num">245+</div>
+        <div class="lbl">場演講 & 課程</div>
+      </div>
+      <div class="speaking-stat fade-in">
+        <div class="num">50+</div>
+        <div class="lbl">家企業合作</div>
+      </div>
+      <div class="speaking-stat fade-in">
+        <div class="num">5,000+</div>
+        <div class="lbl">累積學員</div>
+      </div>
+      <div class="speaking-stat fade-in">
+        <div class="num">17+</div>
+        <div class="lbl">個產業適用</div>
+      </div>
+    </div>
+
+    <div class="speaking-topics stagger">
+      <div class="topic-card fade-in">
+        <div style="font-size:1.6rem;margin-bottom:12px;">🎤</div>
+        <h4>銷售主題</h4>
+        <p>客戶開發、成交技巧、DISC 溝通、表達力訓練、效率工具、自媒體經營策略、能量學與成交。適合業務團隊、門市人員、主管培訓。</p>
+      </div>
+      <div class="topic-card fade-in">
+        <div style="font-size:1.6rem;margin-bottom:12px;">🌟</div>
+        <h4>人生分享</h4>
+        <p>鐵人三項精神、從銷售冠軍到導師之路、夢想與堅持、生涯選擇與自我突破。適合企業年會、社團演講、校園分享。</p>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <h3 style="margin-bottom:8px;">合作企業與組織</h3>
+      <p class="text-dim" style="font-size:0.95rem;">橫跨台灣與馬來西亞，涵蓋新車、中古車、房地產、保險、金融、醫美、健身、直銷等 17+ 產業</p>
+    </div>
+
+    <div class="region-label">TAIWAN</div>
+    <div class="client-logos">
+      <span class="client-tag">保時捷</span>
+      <span class="client-tag">Volvo</span>
+      <span class="client-tag">Mazda</span>
+      <span class="client-tag">KIA</span>
+      <span class="client-tag">富邦人壽</span>
+      <span class="client-tag">安聯人壽</span>
+      <span class="client-tag">三商美邦</span>
+      <span class="client-tag">南山人壽</span>
+      <span class="client-tag">公勝保經</span>
+      <span class="client-tag">智匯保經</span>
+      <span class="client-tag">永慶房屋</span>
+      <span class="client-tag">有巢氏房屋</span>
+      <span class="client-tag">台灣房屋</span>
+      <span class="client-tag">信實地產</span>
+      <span class="client-tag">飛鷹地產</span>
+      <span class="client-tag">環匯不動產</span>
+      <span class="client-tag">長榮桂冠酒店</span>
+      <span class="client-tag">安穆美學診所</span>
+      <span class="client-tag">美仁欣診所</span>
+      <span class="client-tag">小宙醫學診所</span>
+      <span class="client-tag">詩威特</span>
+      <span class="client-tag">恆妍企業</span>
+      <span class="client-tag">漢諾威馬術俱樂部</span>
+      <span class="client-tag">裕豐國際金融</span>
+      <span class="client-tag">晶漾金飾</span>
+      <span class="client-tag">南華大學</span>
+      <span class="client-tag">好牧人協會</span>
+      <span class="client-tag">台灣秀杰</span>
+      <span class="client-tag">蕾娜塔髮品</span>
+      <span class="client-tag">美利德磁磚</span>
+    </div>
+
+    <div class="region-label">MALAYSIA</div>
+    <div class="client-logos">
+      <span class="client-tag">Allianz Insurance</span>
+      <span class="client-tag">Knight World Realty</span>
+      <span class="client-tag">Kingsman Realty</span>
+      <span class="client-tag">Power Home Realty</span>
+      <span class="client-tag">GT Nelson</span>
+      <span class="client-tag">A-Look Eyewear</span>
+      <span class="client-tag">Beaute Mori</span>
+      <span class="client-tag">富貴集團</span>
+      <span class="client-tag">EVA Beauty Concept</span>
+      <span class="client-tag">CF Consultancy</span>
+    </div>
+
+    <div class="text-center" style="margin-top:50px;">
+      <p style="color:var(--text-dim);margin-bottom:20px;">不論是 1 小時的主題演講，或多天的企業包班培訓，<br>歡迎透過 LINE 聯繫討論。</p>
+      <a href="https://line.me/ti/p/jzdho94spl" target="_blank" class="btn btn-gold">💬 LINE 聯繫演講邀約</a>
     </div>
   </div>
 </section>
