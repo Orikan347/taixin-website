@@ -3,7 +3,7 @@
   "mode": "cloudflare_worker_proxy",
   "worker_url": "https://smart-close-api.toleratestar.workers.dev",
   "model": "gemini-2.5-flash",
-  "fallback_model": "gemini-2.0-flash-lite",
+  "fallback_model": "gemini-2.5-flash-lite",
   "timeout_ms": 30000,
   "api_key_location": "Cloudflare Worker environment variables; never store API key in this repository or browser code.",
   "source": "Smart Close 智能成交助手同款 Worker 代理架構"
