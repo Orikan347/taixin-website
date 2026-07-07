@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>銷售天賦探索中心｜Orikan 李泰欣</title>
+<meta name="description" content="透過生日、生涯運數、DISC 行為模式與銷售情境問答，整理你的銷售天賦、成交節奏與學習路徑。">
+<meta property="og:title" content="銷售天賦探索中心｜Orikan 李泰欣">
+<meta property="og:description" content="整理你的銷售天賦、成交節奏與最該放大的說服力量。">
+<meta property="og:image" content="https://orikan347.github.io/taixin-website/img/og-cover.jpg">
+<meta property="og:url" content="https://orikan347.github.io/taixin-website/ai-student-qa.html">
+<style>
+:root {
+  --ink: #18212f;
+  --muted: #667085;
+  --line: #d7dde8;
+  --panel: #ffffff;
+  --paper: #f6f7fb;
+  --brand: #1f5f8b;
+  --brand-dark: #17466a;
+  --gold: #b8893f;
+  --danger: #9b2c2c;
+  --ok: #20745f;
+  --shadow: 0 18px 46px rgba(24, 33, 47, 0.12);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.65;
+}
+a { color: inherit; }
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+}
+.nav {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+.brand img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.nav-links {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.nav-links a {
+  text-decoration: none;
+}
+.shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 22px 42px;
+}
+.workspace {
+  display: grid;
+  grid-template-columns: 390px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+.panel,
+.chat-panel,
+.result-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+.panel {
+  padding: 20px;
+}
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.eyebrow {
+  color: var(--brand);
+  font-weight: 800;
+  font-size: 0.84rem;
+  letter-spacing: 0;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+h1 {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  margin-top: 8px;
+}
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1rem; }
+.lead {
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+.portrait {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+.field {
+  display: grid;
+  gap: 7px;
+  margin-top: 14px;
+}
+label {
+  font-weight: 750;
+  font-size: 0.94rem;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #c9d2df;
+  border-radius: 6px;
+  padding: 11px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+}
+textarea {
+  resize: vertical;
+  min-height: 78px;
+}
+.choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.choice-grid.single {
+  grid-template-columns: 1fr;
+}
+.choice {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  font-size: 0.92rem;
+}
+.choice input {
+  width: auto;
+  margin-top: 5px;
+}
+.btn {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 11px 15px;
+  font-weight: 800;
+  font-size: 0.96rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+}
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--brand-dark); }
+.btn-outline {
+  color: var(--brand);
+  background: #fff;
+  border-color: #b8cbe2;
+}
+.btn-soft {
+  background: #f1f6fb;
+  color: var(--brand-dark);
+  border-color: #cfe0ef;
+}
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.note {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: 10px;
+}
+.offerings {
+  margin-top: 18px;
+  display: grid;
+  gap: 8px;
+}
+.offering-row {
+  display: grid;
+  grid-template-columns: minmax(96px, 1fr) minmax(132px, 1.2fr) minmax(96px, auto);
+  gap: 8px;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #edf1f6;
+  font-size: 0.9rem;
+}
+.offering-row span {
+  color: var(--muted);
+}
+.offering-row:last-child { border-bottom: 0; }
+.pending {
+  color: var(--danger);
+  font-weight: 750;
+}
+.chat-panel {
+  min-height: 720px;
+  display: grid;
+  grid-template-rows: auto minmax(280px, 1fr) auto;
+  overflow: hidden;
+}
+.chat-head {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.phase-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eef6f4;
+  color: var(--ok);
+  font-size: 0.84rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.messages {
+  padding: 18px 20px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.message {
+  max-width: 82%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  white-space: pre-wrap;
+}
+.message.bot {
+  align-self: flex-start;
+  background: #f3f6fa;
+  border: 1px solid #e1e8f1;
+}
+.message.user {
+  align-self: flex-end;
+  background: var(--brand);
+  color: #fff;
+}
+.chat-input {
+  border-top: 1px solid var(--line);
+  padding: 14px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+.chat-input textarea {
+  min-height: 48px;
+  max-height: 140px;
+}
+.result-panel {
+  margin-top: 18px;
+  padding: 18px;
+  display: none;
+}
+.result-panel.is-visible { display: block; }
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+.spec-item {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px;
+  background: #fff;
+}
+.spec-item strong {
+  display: block;
+  color: var(--brand-dark);
+  margin-bottom: 4px;
+}
+.course-path {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+.course-item {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 13px;
+  display: grid;
+  gap: 6px;
+}
+.course-item a {
+  color: var(--brand);
+  font-weight: 800;
+}
+.hidden { display: none !important; }
+.footer {
+  color: var(--muted);
+  font-size: 0.88rem;
+  text-align: center;
+  padding: 26px 20px 34px;
+}
+@media (max-width: 900px) {
+  .workspace { grid-template-columns: 1fr; }
+  .chat-panel { min-height: 620px; }
+  .nav-links { display: none; }
+}
+@media (max-width: 620px) {
+  .shell { padding: 18px 12px 30px; }
+  .nav { padding: 12px; }
+  .intro { grid-template-columns: 1fr; }
+  .portrait { width: 96px; height: 96px; }
+  .choice-grid,
+  .spec-grid { grid-template-columns: 1fr; }
+  .chat-input { grid-template-columns: 1fr; }
+  .message { max-width: 96%; }
+  .offering-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav" aria-label="主選單">
+    <a class="brand" href="index.html">
+      <img src="img/portrait.jpg" alt="Orikan 李泰欣">
+      <span>Orikan 李泰欣</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">首頁</a>
+      <a href="index.html#courses">五大課程</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header" target="_blank" rel="noopener">報名表單</a>
+      <a href="https://line.me/ti/p/jzdho94spl" target="_blank" rel="noopener">LINE 諮詢</a>
+    </div>
+  </nav>
+</header>
+
+<main class="shell">
+  <section class="intro" aria-labelledby="page-title">
+    <div>
+      <div class="eyebrow">Sales Talent Center</div>
+      <h1 id="page-title">先找出你的銷售天賦</h1>
+      <p class="lead">回答幾個跟你銷售現場有關的問題，整理出你的銷售天賦、成交節奏與最該放大的說服力量。</p>
+    </div>
+    <img class="portrait" src="img/portrait.jpg" alt="泰欣老師照片">
+  </section>
+
+  <section class="workspace" id="diagnosis">
+    <aside class="panel" aria-label="基本資料與課程資訊">
+      <h2>基本資料</h2>
+      <p class="note">生日只用於本次生涯運數與銷售天賦分析；本頁不預設儲存完整生日。</p>
+      <form id="intakeForm">
+        <div class="field">
+          <label for="name">稱呼</label>
+          <input id="name" name="name" autocomplete="name" placeholder="例如：Amy">
+        </div>
+        <div class="field">
+          <label for="birthdate">西元出生年月日</label>
+          <input id="birthdate" name="birthdate" type="date" required>
+        </div>
+        <div class="field">
+          <label for="region">地區</label>
+          <select id="region" name="region">
+            <option value="tw">台灣</option>
+            <option value="my">馬來西亞</option>
+            <option value="online">線上或其他地區</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="role">目前角色</label>
+          <select id="role" name="role">
+            <option value="sales_consultant">銷售顧問 / 業務</option>
+            <option value="leader">主管 / 店長 / 團隊帶領者</option>
+            <option value="owner">老闆 / 經營者</option>
+            <option value="training_buyer">企業課程安排者</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="industry">產業</label>
+          <input id="industry" name="industry" placeholder="例如：保險、房仲、醫美、汽車">
+        </div>
+        <div class="field">
+          <label>銷售上你最討厭做哪一件事？</label>
+          <div class="choice-grid single">
+            <label class="choice"><input type="radio" name="disc_hate_sales" value="D" required> 一直拖、一直開會，最後沒有明確下一步</label>
+            <label class="choice"><input type="radio" name="disc_hate_sales" value="I"> 對話很冷，客戶沒反應，也沒有互動感</label>
+            <label class="choice"><input type="radio" name="disc_hate_sales" value="S"> 被逼著硬推、逼單，讓客戶或自己都有壓力</label>
+            <label class="choice"><input type="radio" name="disc_hate_sales" value="C"> 沒資料、沒邏輯，只能憑感覺亂講</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>職場上你最受不了哪一種人？</label>
+          <div class="choice-grid single">
+            <label class="choice"><input type="radio" name="disc_hate_workplace" value="D" required> 講很多但不行動，事情卡住也不負責</label>
+            <label class="choice"><input type="radio" name="disc_hate_workplace" value="I"> 總是潑冷水、很冷淡，讓團隊沒有氣氛</label>
+            <label class="choice"><input type="radio" name="disc_hate_workplace" value="S"> 太強勢、愛衝突，完全不顧別人的感受</label>
+            <label class="choice"><input type="radio" name="disc_hate_workplace" value="C"> 說法前後不一，細節亂、承諾沒有根據</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>客戶互動中，最讓你卡住的是？</label>
+          <div class="choice-grid single">
+            <label class="choice"><input type="radio" name="disc_hate_customer" value="D" required> 客戶一直拖延、不決定，我不知道怎麼推進</label>
+            <label class="choice"><input type="radio" name="disc_hate_customer" value="I"> 客戶沒有熱度，我不知道怎麼讓他有感覺</label>
+            <label class="choice"><input type="radio" name="disc_hate_customer" value="S"> 我怕太強勢，破壞關係或讓對方有壓力</label>
+            <label class="choice"><input type="radio" name="disc_hate_customer" value="C"> 客戶問細節或比較方案時，我怕講不精準</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>你目前想解決的問題，可複選</label>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="problems" value="客戶不夠多"> 客戶不夠多</label>
+            <label class="choice"><input type="checkbox" name="problems" value="成交不了，客戶常說再想想"> 成交不了</label>
+            <label class="choice"><input type="checkbox" name="problems" value="看不懂客戶，信任建立不足"> 看不懂客戶</label>
+            <label class="choice"><input type="checkbox" name="problems" value="每天很忙但結果不成比例"> 很忙沒結果</label>
+            <label class="choice"><input type="checkbox" name="problems" value="產品介紹講不清楚"> 講不清楚價值</label>
+            <label class="choice"><input type="checkbox" name="problems" value="帶團隊和複製經驗卡住"> 帶團隊卡住</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>你最想達成的目標，可複選</label>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="goals" value="提升成交"> 提升成交</label>
+            <label class="choice"><input type="checkbox" name="goals" value="建立信任"> 建立信任</label>
+            <label class="choice"><input type="checkbox" name="goals" value="增加名單"> 增加名單</label>
+            <label class="choice"><input type="checkbox" name="goals" value="複製團隊"> 複製團隊</label>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">開始探索</button>
+      </form>
+
+      <div class="offerings" aria-label="開課時間與金額">
+        <h2>開課時間與金額</h2>
+        <p class="note" id="offeringNote">日期、金額與複訓費用讀取自單一權威資料源；名額未提供就不顯示。</p>
+        <div id="offeringRows"></div>
+      </div>
+    </aside>
+
+    <section>
+      <div class="chat-panel" aria-label="銷售天賦聊天視窗">
+        <div class="chat-head">
+          <div>
+            <h2>銷售天賦問答</h2>
+            <div class="note">把你的成交方式整理成一份可以帶走的報告。</div>
+          </div>
+          <span class="phase-pill" id="phaseLabel">尚未開始</span>
+        </div>
+        <div class="messages" id="messages" aria-live="polite"></div>
+        <form class="chat-input" id="chatForm">
+          <textarea id="chatMessage" placeholder="先完成左側基本資料，再在這裡回答泰欣老師的追問。" disabled></textarea>
+          <button class="btn btn-primary" type="submit" id="sendButton" disabled>送出</button>
+        </form>
+      </div>
+
+      <div class="result-panel" id="profilePanel">
+        <h2>你的銷售天賦報告</h2>
+        <div class="spec-grid" id="specGrid"></div>
+        <div class="btn-row" id="accuracyActions">
+          <button class="btn btn-primary" type="button" data-reply="很像我，想看學習順序">像我，看看學習順序</button>
+          <button class="btn btn-outline" type="button" data-reply="我想補充一點">我想補充一點</button>
+        </div>
+      </div>
+
+      <div class="result-panel" id="coursePanel">
+        <h2>建議學習順序</h2>
+        <div class="course-path" id="coursePath"></div>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header" target="_blank" rel="noopener">填寫報名表單</a>
+          <a class="btn btn-outline" href="https://line.me/ti/p/jzdho94spl" target="_blank" rel="noopener">LINE 詢問最新場次</a>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<footer class="footer">
+  © 2026 Orikan 李泰欣 ｜ 日期、金額、名額以頁面揭露與顧問回覆為準。
+</footer>
+
+<script src="lib/state-machine.js"></script>
+<script src="lib/gemini-student-qa.js"></script>
+<script>
+const form = document.getElementById('intakeForm');
+const messages = document.getElementById('messages');
+const chatForm = document.getElementById('chatForm');
+const chatMessage = document.getElementById('chatMessage');
+const sendButton = document.getElementById('sendButton');
+const phaseLabel = document.getElementById('phaseLabel');
+const profilePanel = document.getElementById('profilePanel');
+const specGrid = document.getElementById('specGrid');
+const coursePanel = document.getElementById('coursePanel');
+const coursePath = document.getElementById('coursePath');
+const accuracyActions = document.getElementById('accuracyActions');
+const offeringRows = document.getElementById('offeringRows');
+const offeringNote = document.getElementById('offeringNote');
+let currentState = null;
+let appContext = {
+  config: null,
+  salesBrain: null,
+  quoteSeeds: null,
+  offerings: null
+};
+
+const FALLBACK_OFFERINGS = {
+  updated_at: '2026-07-07',
+  verified_by: '使用者提供截圖與文字確認 2026-07-07',
+  status_note: '台灣課程日期與金額依使用者提供截圖；吉隆坡超級銷冠系統日期依使用者文字，金額待確認。名額未提供，不顯示。',
+  retake_policy: {
+    price: 3200,
+    currency: 'TWD',
+    note: '複訓一律 NT$ 3,200。'
+  },
+  offerings: [
+    { course_name: '成交地圖', date_time: '2026-10-16T09:00:00+08:00', end_date_time: '2026-10-16T18:00:00+08:00', price: 11000, currency: 'TWD', venue: '線下課，地點待確認', status: 'confirmed', display_note: '已確認' },
+    { course_name: '極致效率', date_time: '2026-10-17T09:00:00+08:00', end_date_time: '2026-10-17T18:00:00+08:00', price: 11000, currency: 'TWD', venue: '線下課，地點待確認', status: 'confirmed', display_note: '已確認' },
+    { course_name: '言之有物', date_time: '2026-10-18T09:00:00+08:00', end_date_time: '2026-10-18T18:00:00+08:00', price: 12500, currency: 'TWD', venue: '線下課，地點待確認', status: 'confirmed', display_note: '已確認' },
+    { course_name: '流量磁鐵', date_time: null, end_date_time: null, price: 9200, currency: 'TWD', venue: '線上課錄播，可直接開通', status: 'available_now', display_note: '可直接開通' },
+    { course_name: '直指人心', date_time: null, end_date_time: null, price: 9200, currency: 'TWD', venue: '線上課錄播，可直接開通', status: 'available_now', display_note: '可直接開通' },
+    { course_name: '五堂課全包', date_time: null, end_date_time: null, price: 40000, currency: 'TWD', venue: '依所選課程形式', status: 'available_now', display_note: '可直接開通' },
+    { course_name: '超級銷冠系統', date_time: '2026-10-21T09:00:00+08:00', end_date_time: '2026-10-23T18:00:00+08:00', price: null, currency: 'MYR', venue: '吉隆坡三天線下課，地點待確認', status: 'date_confirmed_price_pending', display_note: '日期已確認，金額待確認' }
+  ]
+};
+
+loadAppContext();
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const profile = getProfile();
+  if (!profile.birthdate) return;
+  messages.innerHTML = '';
+  profilePanel.classList.remove('is-visible');
+  coursePanel.classList.remove('is-visible');
+  chatMessage.disabled = false;
+  sendButton.disabled = false;
+  setBusy(true, '整理中...');
+  try {
+    const response = await TaixinGeminiStudentQA.start(profile, appContext);
+    currentState = response.state;
+    addMessage(response.reply, 'bot');
+    applyResponse(response);
+    chatMessage.placeholder = '用你的話回答就好，越像真實情境越準。';
+    chatMessage.focus();
+  } finally {
+    setBusy(false);
+  }
+});
+
+chatForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  await sendUserMessage(chatMessage.value);
+});
+
+accuracyActions.addEventListener('click', (event) => {
+  const button = event.target.closest('button[data-reply]');
+  if (!button) return;
+  sendUserMessage(button.dataset.reply);
+});
+
+function getProfile() {
+  const data = new FormData(form);
+  return {
+    name: data.get('name') || '',
+    birthdate: data.get('birthdate') || '',
+    region: data.get('region') || 'tw',
+    role: data.get('role') || 'sales_consultant',
+    industry: data.get('industry') || '',
+    disc_hate_sales: data.get('disc_hate_sales') || '',
+    disc_hate_workplace: data.get('disc_hate_workplace') || '',
+    disc_hate_customer: data.get('disc_hate_customer') || '',
+    problems: data.getAll('problems'),
+    goals: data.getAll('goals')
+  };
+}
+
+async function loadAppContext() {
+  const [config, brain, quotes, offerings] = await Promise.all([
+    loadJson('data/gemini-config.json', null),
+    loadJson('data/taixin-sales-brain.json', null),
+    loadJson('data/golden-quote-seeds.json', null),
+    loadJson('data/course-offerings.json', FALLBACK_OFFERINGS)
+  ]);
+  appContext = {
+    config,
+    salesBrain: brain,
+    quoteSeeds: quotes,
+    offerings: offerings || FALLBACK_OFFERINGS
+  };
+  renderOfferings(appContext.offerings);
+}
+
+async function loadJson(url, fallback) {
+  try {
+    const response = await fetch(url, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`${url} unavailable`);
+    return await response.json();
+  } catch (error) {
+    return fallback;
+  }
+}
+
+function renderOfferings(data) {
+  if (!offeringRows) return;
+  offeringNote.textContent = data.status_note || '日期、金額與複訓費用讀取自單一權威資料源；名額未提供就不顯示。';
+  const rows = (data.offerings || []).map((offering) => `
+    <div class="offering-row">
+      <strong>${escapeHtml(offering.course_name)}</strong>
+      <span>${escapeHtml(formatSchedule(offering))}</span>
+      <span class="${offering.price === null ? 'pending' : ''}">${escapeHtml(formatPrice(offering))}</span>
+    </div>
+  `).join('');
+  const retake = data.retake_policy ? `
+    <div class="offering-row">
+      <strong>複訓</strong>
+      <span>一律適用</span>
+      <span>${escapeHtml(formatMoney(data.retake_policy.price, data.retake_policy.currency))}</span>
+    </div>
+  ` : '';
+  offeringRows.innerHTML = rows + retake;
+}
+
+function formatSchedule(offering) {
+  if (!offering.date_time) return offering.venue || offering.display_note || '可直接開通';
+  const start = new Date(offering.date_time);
+  const end = offering.end_date_time ? new Date(offering.end_date_time) : null;
+  const startText = `${start.getMonth() + 1}/${start.getDate()}（${weekday(start)}）`;
+  if (!end) return startText;
+  const sameDay = start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth() && start.getDate() === end.getDate();
+  const timeText = `${pad(start.getHours())}:${pad(start.getMinutes())}-${pad(end.getHours())}:${pad(end.getMinutes())}`;
+  if (sameDay) return `${startText} ${timeText}`;
+  return `${startText}-${end.getMonth() + 1}/${end.getDate()}（${weekday(end)}） ${timeText}`;
+}
+
+function formatPrice(offering) {
+  if (offering.price === null || offering.price === undefined) return offering.display_note || '金額待確認';
+  return formatMoney(offering.price, offering.currency);
+}
+
+function formatMoney(price, currency) {
+  const amount = Number(price).toLocaleString('zh-TW');
+  if (currency === 'TWD') return `NT$ ${amount}`;
+  return `${currency || ''} ${amount}`.trim();
+}
+
+function weekday(date) {
+  return ['日', '一', '二', '三', '四', '五', '六'][date.getDay()];
+}
+
+function pad(value) {
+  return String(value).padStart(2, '0');
+}
+
+async function sendUserMessage(value) {
+  const text = String(value || '').trim();
+  if (!text || !currentState) return;
+  addMessage(text, 'user');
+  chatMessage.value = '';
+  setBusy(true, '整理中...');
+  try {
+    const response = await TaixinGeminiStudentQA.transition(currentState, text);
+    currentState = response.state;
+    addMessage(response.reply, 'bot');
+    applyResponse(response);
+  } finally {
+    setBusy(false);
+  }
+}
+
+function setBusy(isBusy, label) {
+  sendButton.disabled = isBusy;
+  chatMessage.disabled = isBusy || !currentState;
+  if (label) sendButton.textContent = label;
+  else sendButton.textContent = '送出';
+}
+
+function addMessage(text, type) {
+  const node = document.createElement('div');
+  node.className = `message ${type}`;
+  node.textContent = text;
+  messages.appendChild(node);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function applyResponse(response) {
+  phaseLabel.textContent = getPhaseText(response.phase);
+  if (response.profile_spec) renderProfile(response.profile_spec, response.response_strategy);
+  if (response.course_path) renderCoursePath(response.course_path);
+}
+
+function getPhaseText(phase) {
+  const map = {
+    intake: '基本資料',
+    discovery: '探索中',
+    profile_ready: '報告完成',
+    accuracy_check: '報告完成',
+    revision: '補充中',
+    revise_profile: '補充中',
+    recommendation: '課程路徑'
+  };
+  return map[phase] || '探索中';
+}
+
+function renderProfile(spec, strategy) {
+  profilePanel.classList.add('is-visible');
+  const talents = Array.isArray(spec.sales_talents) ? spec.sales_talents.slice(0, 3) : [];
+  const items = talents.map((talent, index) => [
+    talent.title || `銷售天賦 ${index + 1}`,
+    [talent.insight, talent.strategy].filter(Boolean).join('\n')
+  ]);
+  items.push(['行為模式觀察', `${spec.disc_type || (strategy && strategy.disc_label) || '探索中'}${spec.life_number ? `｜生涯運數 ${spec.life_number}` : ''}`]);
+  if (spec.sales_rhythm) items.push(['適合的成交節奏', spec.sales_rhythm]);
+  if (spec.persuasion_power) items.push(['最該放大的說服力量', spec.persuasion_power]);
+  if (spec.practical_advice) items.push(['給你的實戰建議', spec.practical_advice]);
+  if (spec.final_quote) items.push(['最後送你一句話', `「${spec.final_quote}」`]);
+  specGrid.innerHTML = items.map(([title, body]) => `
+    <div class="spec-item">
+      <strong>${escapeHtml(title)}</strong>
+      <span>${escapeHtml(body)}</span>
+    </div>
+  `).join('');
+}
+
+function renderCoursePath(path) {
+  coursePanel.classList.add('is-visible');
+  coursePath.innerHTML = path.map((course) => `
+    <div class="course-item">
+      <h3>${escapeHtml(course.order ? `${course.order}. ` : '')}${escapeHtml(course.name)}</h3>
+      <p>${escapeHtml(course.reason)}</p>
+      ${coursePage(course) ? `<a href="${escapeHtml(coursePage(course))}">查看課程頁</a>` : ''}
+    </div>
+  `).join('');
+}
+
+function coursePage(course) {
+  if (course.page) return course.page;
+  const links = TaixinStudentQA && TaixinStudentQA.COURSE_LINKS && TaixinStudentQA.COURSE_LINKS.courses;
+  return links && course.id ? links[course.id] : '';
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+</script>
+</body>
+</html>

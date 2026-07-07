@@ -1,0 +1,42 @@
+{
+  "lead_generation": {
+    "label": "開發名單型",
+    "description": "擅長創造接觸機會、經營曝光與讓人主動靠近。",
+    "primary_course": "liuliang"
+  },
+  "trust_building": {
+    "label": "信任建立型",
+    "description": "擅長讓客戶放下防備，願意說出真正想法。",
+    "primary_course": "zhizhi"
+  },
+  "needs_diagnosis": {
+    "label": "需求診斷型",
+    "description": "擅長透過提問找出客戶真正動機與卡點。",
+    "primary_course": "chengjiao"
+  },
+  "value_presentation": {
+    "label": "價值表達型",
+    "description": "擅長把產品規格轉成客戶聽得懂的利益與故事。",
+    "primary_course": "yanzhi"
+  },
+  "objection_handling": {
+    "label": "異議處理型",
+    "description": "需要把拒絕轉成釐清，而不是聽到反對就退場。",
+    "primary_course": "chengjiao"
+  },
+  "closing": {
+    "label": "成交推進型",
+    "description": "需要學會在關鍵時刻自然推進，不讓對話停在聊天。",
+    "primary_course": "chengjiao"
+  },
+  "follow_up_system": {
+    "label": "系統追蹤型",
+    "description": "擅長或需要建立客戶資料、追蹤節奏與時間系統。",
+    "primary_course": "xiaolu"
+  },
+  "stage_expression": {
+    "label": "舞台表達型",
+    "description": "適合把一對一經驗轉成一對多影響、帶人與複製。",
+    "primary_course": "yanzhi"
+  }
+}

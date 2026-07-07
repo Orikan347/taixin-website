@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Taixin Course Offerings",
+  "type": "object",
+  "required": ["updated_at", "verified_by", "status_note", "retake_policy", "offerings"],
+  "additionalProperties": false,
+  "properties": {
+    "updated_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "verified_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status_note": {
+      "type": "string"
+    },
+    "retake_policy": {
+      "type": "object",
+      "required": ["price", "currency", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "price": {
+          "type": "number",
+          "minimum": 0
+        },
+        "currency": {
+          "type": "string",
+          "enum": ["TWD"]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "offerings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "course_id",
+          "course_name",
+          "region",
+          "date_time",
+          "end_date_time",
+          "price",
+          "early_bird_price",
+          "currency",
+          "venue",
+          "status",
+          "signup_url"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "course_id": {
+            "type": "string",
+            "enum": ["liuliang", "chengjiao", "zhizhi", "xiaolu", "yanzhi", "all_courses_package", "super_sales_kl"]
+          },
+          "course_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "region": {
+            "type": "string",
+            "enum": ["tw", "my", "online", "other"]
+          },
+          "date_time": {
+            "type": ["string", "null"],
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2})?([+-]\\d{2}:\\d{2}|Z)?$"
+          },
+          "end_date_time": {
+            "type": ["string", "null"],
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2})?([+-]\\d{2}:\\d{2}|Z)?$"
+          },
+          "price": {
+            "type": ["number", "null"],
+            "minimum": 0
+          },
+          "early_bird_price": {
+            "type": ["number", "null"],
+            "minimum": 0
+          },
+          "currency": {
+            "type": "string",
+            "enum": ["TWD", "MYR", "USD"]
+          },
+          "venue": {
+            "type": ["string", "null"]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending_confirmation", "confirmed", "available_now", "date_confirmed_price_pending", "sold_out", "closed", "waitlist"]
+          },
+          "signup_url": {
+            "type": "string",
+            "pattern": "^https://"
+          }
+        }
+      }
+    }
+  }
+}

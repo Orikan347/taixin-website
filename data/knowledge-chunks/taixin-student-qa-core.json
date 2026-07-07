@@ -1,0 +1,49 @@
+[
+  {
+    "id": "4u-disc-response-core",
+    "source": "4u-internal",
+    "source_path": "/Users/macminim4/Desktop/Claude cowork/4u-internal顧問商談地圖/mindmap.md",
+    "module": "disc_variants",
+    "phase_allowed": ["discovery", "profile_spec", "accuracy_check", "recommendation", "objection_handling"],
+    "safety_level": "internal_guidance",
+    "content": "D 型重結果與效率；I 型重感覺與共鳴；S 型重安全感與穩定；C 型重資料、邏輯與結構。公開 AI 可用此作語氣調整，不得照抄未確認成效數字。"
+  },
+  {
+    "id": "4u-objection-core",
+    "source": "4u-internal",
+    "source_path": "/Users/macminim4/Desktop/Claude cowork/4u-internal顧問商談地圖/mindmap.md",
+    "module": "objection_handling",
+    "phase_allowed": ["discovery", "revise_profile", "recommendation", "objection_handling"],
+    "safety_level": "internal_guidance",
+    "content": "異議處理採理解、證實、結束。先確認對方在意點，再補足資訊或下一步；若日期、價格、成效數字未確認，不能由 AI 自行補。"
+  },
+  {
+    "id": "chengjiao-map-core",
+    "source": "taixin-course-catalog",
+    "source_path": "/Users/macminim4/Desktop/Claude cowork/TaixinMemoryHub/references/taixin-course-catalog.md",
+    "module": "chengjiao_map",
+    "course": "成交地圖",
+    "phase_allowed": ["profile_spec", "recommendation"],
+    "safety_level": "public_safe",
+    "content": "成交地圖包含第一印象、核心問題、產品介紹與成交 365。適合成交流程不清楚、害怕拒絕、客戶說再想想就停住的人。"
+  },
+  {
+    "id": "zhizhi-disc-core",
+    "source": "taixin-course-catalog",
+    "source_path": "/Users/macminim4/Desktop/Claude cowork/TaixinMemoryHub/references/taixin-course-catalog.md",
+    "module": "disc_reading",
+    "course": "直指人心",
+    "phase_allowed": ["profile_spec", "recommendation"],
+    "safety_level": "public_safe",
+    "content": "直指人心以 DISC 與觀人術快速讀懂客戶行為模式，適合信任建立不足、看不懂客戶、想縮短溝通距離的人。"
+  },
+  {
+    "id": "life-number-boundary",
+    "source": "life-number-calculator",
+    "source_path": "/Users/macminim4/Desktop/Claude cowork/life-number-calculator/index.html",
+    "module": "life_number",
+    "phase_allowed": ["intake", "profile_spec"],
+    "safety_level": "internal_guidance",
+    "content": "生涯運數用於銷售天賦探索與自我覺察提醒。公開 AI 需說明這是學習與溝通參考，不是命定結論，也不預設儲存完整生日。"
+  }
+]

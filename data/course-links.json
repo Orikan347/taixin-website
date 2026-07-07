@@ -1,0 +1,11 @@
+{
+  "signupUrl": "https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header",
+  "lineUrl": "https://line.me/ti/p/jzdho94spl",
+  "courses": {
+    "liuliang": "liuliang.html",
+    "chengjiao": "chengjiaoditu.html",
+    "zhizhi": "zhizhirenxin.html",
+    "xiaolu": "jizhixiaolv.html",
+    "yanzhi": "yanzhiyouwu.html"
+  }
+}

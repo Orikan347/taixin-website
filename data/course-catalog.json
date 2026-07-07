@@ -1,0 +1,50 @@
+{
+  "source_level": "使用者素材 / 內部課程 / TaixinMemoryHub course catalog",
+  "courses": [
+    {
+      "id": "liuliang",
+      "name": "流量磁鐵",
+      "page": "liuliang.html",
+      "positioning": "建立 24 小時自動吸客的名單系統。",
+      "solves": ["缺客", "名單不足", "陌生開發被拒絕", "流量成本上升"],
+      "primary_talents": ["lead_generation", "relationship_nurture"],
+      "recommended_when": ["客戶不夠多", "不知道去哪裡找客戶", "業績靠運氣"]
+    },
+    {
+      "id": "chengjiao",
+      "name": "成交地圖",
+      "page": "chengjiaoditu.html",
+      "positioning": "把銷售變成導航系統，從第一印象到順利收單。",
+      "solves": ["成交不了", "客戶猶豫", "害怕拒絕", "不知道下一句怎麼接"],
+      "primary_talents": ["needs_diagnosis", "objection_handling", "closing"],
+      "recommended_when": ["客戶說再想想", "不敢逼單", "流程不清楚"]
+    },
+    {
+      "id": "zhizhi",
+      "name": "直指人心",
+      "page": "zhizhirenxin.html",
+      "positioning": "用 DISC 與觀人術快速讀懂客戶行為模式。",
+      "solves": ["看不懂客戶", "信任建立不足", "溝通流於表面"],
+      "primary_talents": ["trust_building", "disc_reading", "relationship_nurture"],
+      "recommended_when": ["客戶有戒心", "不知道對方在意什麼", "想縮短信任建立時間"]
+    },
+    {
+      "id": "xiaolu",
+      "name": "極致效率",
+      "page": "jizhixiaolv.html",
+      "positioning": "整理客戶資料、時間與追蹤系統，省下無效工時。",
+      "solves": ["每天很忙但沒結果", "客戶資料散亂", "忘記追蹤", "行政耗時"],
+      "primary_talents": ["follow_up_system", "workflow_design"],
+      "recommended_when": ["忙到沒時間成交", "客戶資料找不到", "追蹤沒有系統"]
+    },
+    {
+      "id": "yanzhi",
+      "name": "言之有物",
+      "page": "yanzhiyouwu.html",
+      "positioning": "把想法變成清楚、有感、有格局的表達。",
+      "solves": ["表達無力", "講不清楚", "不敢上台", "無法複製經驗"],
+      "primary_talents": ["value_presentation", "stage_expression", "team_influence"],
+      "recommended_when": ["想帶團隊", "需要一對多影響", "專業做得出來但說不出來"]
+    }
+  ]
+}

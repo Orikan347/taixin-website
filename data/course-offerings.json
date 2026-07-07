@@ -1,0 +1,103 @@
+{
+  "updated_at": "2026-07-07",
+  "verified_by": "使用者提供截圖與文字確認 2026-07-07",
+  "status_note": "台灣課程日期與金額依使用者提供截圖；吉隆坡超級銷冠系統日期依使用者文字，金額待確認。名額未提供，不顯示。",
+  "retake_policy": {
+    "price": 3200,
+    "currency": "TWD",
+    "note": "複訓一律 NT$ 3,200。"
+  },
+  "offerings": [
+    {
+      "course_id": "chengjiao",
+      "course_name": "成交地圖",
+      "region": "tw",
+      "date_time": "2026-10-16T09:00:00+08:00",
+      "end_date_time": "2026-10-16T18:00:00+08:00",
+      "price": 11000,
+      "early_bird_price": null,
+      "currency": "TWD",
+      "venue": "線下課，地點待確認",
+      "status": "confirmed",
+      "signup_url": "https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header"
+    },
+    {
+      "course_id": "xiaolu",
+      "course_name": "極致效率",
+      "region": "tw",
+      "date_time": "2026-10-17T09:00:00+08:00",
+      "end_date_time": "2026-10-17T18:00:00+08:00",
+      "price": 11000,
+      "early_bird_price": null,
+      "currency": "TWD",
+      "venue": "線下課，地點待確認",
+      "status": "confirmed",
+      "signup_url": "https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header"
+    },
+    {
+      "course_id": "yanzhi",
+      "course_name": "言之有物",
+      "region": "tw",
+      "date_time": "2026-10-18T09:00:00+08:00",
+      "end_date_time": "2026-10-18T18:00:00+08:00",
+      "price": 12500,
+      "early_bird_price": null,
+      "currency": "TWD",
+      "venue": "線下課，地點待確認",
+      "status": "confirmed",
+      "signup_url": "https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header"
+    },
+    {
+      "course_id": "liuliang",
+      "course_name": "流量磁鐵",
+      "region": "online",
+      "date_time": null,
+      "end_date_time": null,
+      "price": 9200,
+      "early_bird_price": null,
+      "currency": "TWD",
+      "venue": "線上課錄播，可直接開通",
+      "status": "available_now",
+      "signup_url": "https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header"
+    },
+    {
+      "course_id": "zhizhi",
+      "course_name": "直指人心",
+      "region": "online",
+      "date_time": null,
+      "end_date_time": null,
+      "price": 9200,
+      "early_bird_price": null,
+      "currency": "TWD",
+      "venue": "線上課錄播，可直接開通",
+      "status": "available_now",
+      "signup_url": "https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header"
+    },
+    {
+      "course_id": "all_courses_package",
+      "course_name": "五堂課全包",
+      "region": "tw",
+      "date_time": null,
+      "end_date_time": null,
+      "price": 40000,
+      "early_bird_price": null,
+      "currency": "TWD",
+      "venue": "依所選課程形式",
+      "status": "available_now",
+      "signup_url": "https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header"
+    },
+    {
+      "course_id": "super_sales_kl",
+      "course_name": "超級銷冠系統",
+      "region": "my",
+      "date_time": "2026-10-21T09:00:00+08:00",
+      "end_date_time": "2026-10-23T18:00:00+08:00",
+      "price": null,
+      "early_bird_price": null,
+      "currency": "MYR",
+      "venue": "吉隆坡三天線下課，地點待確認",
+      "status": "date_confirmed_price_pending",
+      "signup_url": "https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header"
+    }
+  ]
+}
