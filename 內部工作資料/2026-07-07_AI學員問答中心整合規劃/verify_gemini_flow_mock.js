@@ -22,12 +22,17 @@ global.fetch = async (_url, options) => {
   assert(prompt.includes('拒絕處理 6 句循環'));
   assert(prompt.includes('能量 × 邏輯 × 格局'));
   assert(prompt.includes('金句'));
+  assert(prompt.includes('極致效率'));
+  assert(prompt.includes('課程會學到什麼'));
+  assert(prompt.includes('銷售力不從心，因為從沒遇過李泰欣。'));
   assert(prompt.includes('smart-close') || body._model);
 
-  const payload = prompt.includes('很像我')
+  const latestMatch = prompt.match(/使用者最新訊息：\n([\s\S]*?)\n\n輸出 JSON/);
+  const latestMessage = latestMatch ? latestMatch[1] : '';
+  const payload = /(有準|像我)/.test(latestMessage)
     ? {
         phase: 'recommendation',
-        reply: '我會建議你先把看懂客戶放在第一步，再補成交流程，最後放大表達。',
+        reply: '太好了，這代表你的優勢其實很清楚。接下來照這個學習順序補，你會更快把看懂客戶、追蹤和成交接起來。',
         next_question: '',
         profile_spec: null,
         course_path: [
@@ -38,7 +43,7 @@ global.fetch = async (_url, options) => {
     : callCount >= 3
       ? {
           phase: 'profile_ready',
-          reply: '我把你的銷售現場整理成報告。你適合先用信任打開對話，再用提問找到真正原因。\n\n你覺得這份描述像你嗎？',
+          reply: '我把你的銷售現場整理成報告。你適合先用信任打開對話，再用提問找到真正原因。\n\n你看完之後，覺得像你嗎？有準嗎？',
           next_question: '',
           profile_spec: {
             disc_type: 'S',
@@ -49,11 +54,11 @@ global.fetch = async (_url, options) => {
               { title: '故事力', insight: '你適合用真實案例說服。', strategy: '用 MBAF 接故事。' }
             ],
             life_talents: [
-              { title: '3 號：表達力', insight: '你能把事情講得有畫面。', strategy: '用故事讓客戶聽懂價值。' },
-              { title: '4 號：落地力', insight: '你讓人覺得可靠。', strategy: '把流程和服務說清楚。' },
-              { title: '7 號：洞察力', insight: '你能追到真正原因。', strategy: '用提問找出真顧慮。' }
+              { title: '7 號：洞察力', insight: '你能追到真正原因。', strategy: '用提問找出真顧慮。' },
+              { title: '提問力', insight: '你適合把表面答案往下追。', strategy: '先讓客戶說出心裡話。' },
+              { title: '整合優勢', insight: '你能把感受、需求和方案整理在一起。', strategy: '把對話記錄下來，追蹤會更有方向。' }
             ],
-            sales_rhythm: '先信任，再提問，最後推進。',
+            student_strength: '你很適合用信任與提問打開成交。',
             persuasion_power: '把擔心翻成行動理由。',
             practical_advice: '遇到太貴，先問他是在比較價格還是還沒看見差異。',
             final_quote: '信任到了，成交就近了。'
@@ -65,7 +70,7 @@ global.fetch = async (_url, options) => {
           phase: 'discovery',
           reply: callCount === 1
             ? '你先跟我說一下，你現在主要賣什麼？客戶通常是哪一種人？'
-            : '你剛剛提到客戶會猶豫。最近一次卡住的情境是什麼？',
+            : '你剛剛提到客戶會猶豫。最近一次沒有成交的情境是什麼？',
           next_question: '',
           profile_spec: null,
           course_path: [],
@@ -91,6 +96,9 @@ global.fetch = async (_url, options) => {
 (async () => {
   let response = await gemini.start({
     birthdate: '1990-03-21',
+    name: 'andy',
+    email: 'andy@example.com',
+    phone: 'LINE-andysales',
     region: 'tw',
     role: 'sales_consultant',
     industry: '保險',
@@ -113,11 +121,13 @@ global.fetch = async (_url, options) => {
   assert(response.profile_spec.final_quote.length <= 30);
   assert(!response.reply.includes('我先不急著推薦課程'));
   assert(!response.reply.includes('最大卡點'));
+  assert(!response.reply.includes('卡住'));
+  assert(response.reply.includes('你看完之後，覺得像你嗎？有準嗎？'));
 
-  const recommended = await gemini.transition(response.state, '很像我');
+  const recommended = await gemini.transition(response.state, '很有準，有像我');
   assert(recommended.course_path);
   assert(recommended.cta);
-  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nDYNAMIC-QUESTIONS: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
+  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
 })().catch((error) => {
   console.error(error);
   process.exit(1);

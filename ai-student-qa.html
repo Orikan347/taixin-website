@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>銷售天賦探索中心｜Orikan 李泰欣</title>
-<meta name="description" content="透過生日、生涯運數、DISC 行為模式與銷售情境問答，整理你的銷售天賦、成交節奏與學習路徑。">
-<meta property="og:title" content="銷售天賦探索中心｜Orikan 李泰欣">
-<meta property="og:description" content="整理你的銷售天賦、成交節奏與最該放大的說服力量。">
+<title>銷售天賦問答｜Orikan 李泰欣</title>
+<meta name="description" content="銷售力不從心，因為從沒遇過李泰欣。透過一問一答整理你的銷售天賦、行為模式與學習順序。">
+<meta property="og:title" content="銷售天賦問答｜Orikan 李泰欣">
+<meta property="og:description" content="銷售力不從心，因為從沒遇過李泰欣。整理你的銷售優點、銷售天賦與下一步。">
 <meta property="og:image" content="https://orikan347.github.io/taixin-website/img/og-cover.jpg">
 <meta property="og:url" content="https://orikan347.github.io/taixin-website/ai-student-qa.html">
 <style>
@@ -21,6 +21,9 @@
   --gold: #b8893f;
   --danger: #9b2c2c;
   --ok: #20745f;
+  --theme-main: #f0b429;
+  --theme-dark: #7c4d00;
+  --theme-soft: #fff7df;
   --shadow: 0 18px 46px rgba(24, 33, 47, 0.12);
 }
 * { box-sizing: border-box; }
@@ -33,8 +36,6 @@ body {
 }
 a { color: inherit; }
 .topbar {
-  position: sticky;
-  top: 0;
   z-index: 20;
   background: rgba(255, 255, 255, 0.94);
   border-bottom: 1px solid var(--line);
@@ -96,8 +97,8 @@ a { color: inherit; }
 }
 .intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 120px;
-  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  gap: 22px;
   align-items: center;
   margin-bottom: 18px;
 }
@@ -125,11 +126,21 @@ h3 { font-size: 1rem; }
   margin: 12px 0 0;
 }
 .portrait {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   border-radius: 8px;
   object-fit: cover;
   border: 1px solid var(--line);
+}
+.signature-line {
+  display: inline-flex;
+  margin-top: 18px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #fff7df;
+  color: #7c4d00;
+  font-weight: 900;
+  border: 1px solid #f0d28a;
 }
 .field {
   display: grid;
@@ -271,8 +282,33 @@ textarea {
   flex-direction: column;
   gap: 12px;
 }
-.message {
+.message-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.message-row.user {
+  justify-content: flex-end;
+}
+.message-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #d7dde8;
+  flex: 0 0 auto;
+  background: #fff;
+}
+.message-wrap {
   max-width: 82%;
+}
+.speaker {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 800;
+  margin: 0 0 4px 2px;
+}
+.message {
   padding: 12px 14px;
   border-radius: 8px;
   white-space: pre-wrap;
@@ -283,7 +319,6 @@ textarea {
   border: 1px solid #e1e8f1;
 }
 .message.user {
-  align-self: flex-end;
   background: var(--brand);
   color: #fff;
 }
@@ -304,22 +339,83 @@ textarea {
   display: none;
 }
 .result-panel.is-visible { display: block; }
-.spec-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+.talent-card {
   margin-top: 14px;
-}
-.spec-item {
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--theme-main) 42%, #d7dde8);
   background: #fff;
+  box-shadow: 0 16px 38px rgba(24, 33, 47, 0.11);
 }
-.spec-item strong {
+.talent-card-head {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--theme-dark), var(--theme-main));
+}
+.talent-card-head img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.8);
+}
+.talent-card-head h3 {
+  font-size: 1.3rem;
+}
+.talent-card-body {
+  padding: 16px;
+  display: grid;
+  gap: 14px;
+}
+.report-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.report-meta span {
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: var(--theme-soft);
+  color: var(--theme-dark);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+.report-section {
+  border-top: 1px solid #edf1f6;
+  padding-top: 12px;
+}
+.report-section:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.report-section strong {
   display: block;
+  color: var(--theme-dark);
+  margin-bottom: 7px;
+}
+.report-section ol {
+  margin: 0;
+  padding-left: 22px;
+}
+.report-section li + li { margin-top: 6px; }
+.report-quote {
+  padding: 12px;
+  border-radius: 6px;
+  background: var(--theme-soft);
+  color: var(--theme-dark);
+  font-weight: 900;
+}
+.accuracy-prompt {
+  margin: 14px 0 0;
   color: var(--brand-dark);
-  margin-bottom: 4px;
+  font-weight: 900;
+}
+.share-actions {
+  margin-top: 14px;
 }
 .course-path {
   display: grid;
@@ -353,11 +449,12 @@ textarea {
   .shell { padding: 18px 12px 30px; }
   .nav { padding: 12px; }
   .intro { grid-template-columns: 1fr; }
-  .portrait { width: 96px; height: 96px; }
+  .portrait { width: 126px; height: 126px; }
   .choice-grid,
-  .spec-grid { grid-template-columns: 1fr; }
+  .talent-card-head { grid-template-columns: 58px minmax(0, 1fr); }
+  .talent-card-head img { width: 58px; height: 58px; }
   .chat-input { grid-template-columns: 1fr; }
-  .message { max-width: 96%; }
+  .message-wrap { max-width: 88%; }
   .offering-row { grid-template-columns: 1fr; }
 }
 </style>
@@ -381,9 +478,10 @@ textarea {
 <main class="shell">
   <section class="intro" aria-labelledby="page-title">
     <div>
-      <div class="eyebrow">Sales Talent Center</div>
-      <h1 id="page-title">先找出你的銷售天賦</h1>
-      <p class="lead">回答幾個跟你銷售現場有關的問題，整理出你的銷售天賦、成交節奏與最該放大的說服力量。</p>
+      <div class="eyebrow">Orikan Sales Talent</div>
+      <h1 id="page-title">銷售力不從心，因為從沒遇過李泰欣。</h1>
+      <p class="lead">不是你不努力，而是你需要一套能把客戶、時間、追蹤和成交整理起來的方法。回答幾個真實問題，我會幫你把銷售優點、銷售天賦和下一步整理成一份可以帶走的報告。</p>
+      <span class="signature-line">把忙碌變成有效率，把努力變成看得見的結果。</span>
     </div>
     <img class="portrait" src="img/portrait.jpg" alt="泰欣老師照片">
   </section>
@@ -391,11 +489,19 @@ textarea {
   <section class="workspace" id="diagnosis">
     <aside class="panel" aria-label="基本資料與課程資訊">
       <h2>基本資料</h2>
-      <p class="note">生日只用於本次生涯運數與銷售天賦分析；本頁不預設儲存完整生日。</p>
+      <p class="note">留下資料後，系統會產生你的銷售天賦報告，也方便顧問後續把課程資訊整理給你。</p>
       <form id="intakeForm">
         <div class="field">
           <label for="name">稱呼</label>
-          <input id="name" name="name" autocomplete="name" placeholder="例如：Amy">
+          <input id="name" name="name" autocomplete="name" placeholder="例如：Amy" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="例如：amy@example.com" required>
+        </div>
+        <div class="field">
+          <label for="phone">手機 / LINE 名稱（選填）</label>
+          <input id="phone" name="phone" autocomplete="tel" placeholder="方便顧問聯絡即可">
         </div>
         <div class="field">
           <label for="birthdate">西元出生年月日</label>
@@ -434,16 +540,16 @@ textarea {
         <div class="field">
           <label>職場上你最受不了哪一種人？</label>
           <div class="choice-grid single">
-            <label class="choice"><input type="radio" name="disc_hate_workplace" value="D" required> 講很多但不行動，事情卡住也不負責</label>
+            <label class="choice"><input type="radio" name="disc_hate_workplace" value="D" required> 講很多但不行動，事情停在原地也不負責</label>
             <label class="choice"><input type="radio" name="disc_hate_workplace" value="I"> 總是潑冷水、很冷淡，讓團隊沒有氣氛</label>
             <label class="choice"><input type="radio" name="disc_hate_workplace" value="S"> 太強勢、愛衝突，完全不顧別人的感受</label>
             <label class="choice"><input type="radio" name="disc_hate_workplace" value="C"> 說法前後不一，細節亂、承諾沒有根據</label>
           </div>
         </div>
         <div class="field">
-          <label>客戶互動中，最讓你卡住的是？</label>
+          <label>客戶互動中，最讓你困擾的是？</label>
           <div class="choice-grid single">
-            <label class="choice"><input type="radio" name="disc_hate_customer" value="D" required> 客戶一直拖延、不決定，我不知道怎麼推進</label>
+            <label class="choice"><input type="radio" name="disc_hate_customer" value="D" required> 客戶一直拖延、不決定，我不知道怎麼帶下一步</label>
             <label class="choice"><input type="radio" name="disc_hate_customer" value="I"> 客戶沒有熱度，我不知道怎麼讓他有感覺</label>
             <label class="choice"><input type="radio" name="disc_hate_customer" value="S"> 我怕太強勢，破壞關係或讓對方有壓力</label>
             <label class="choice"><input type="radio" name="disc_hate_customer" value="C"> 客戶問細節或比較方案時，我怕講不精準</label>
@@ -457,7 +563,9 @@ textarea {
             <label class="choice"><input type="checkbox" name="problems" value="看不懂客戶，信任建立不足"> 看不懂客戶</label>
             <label class="choice"><input type="checkbox" name="problems" value="每天很忙但結果不成比例"> 很忙沒結果</label>
             <label class="choice"><input type="checkbox" name="problems" value="產品介紹講不清楚"> 講不清楚價值</label>
-            <label class="choice"><input type="checkbox" name="problems" value="帶團隊和複製經驗卡住"> 帶團隊卡住</label>
+            <label class="choice"><input type="checkbox" name="problems" value="帶團隊和複製經驗需要方法"> 帶團隊需要方法</label>
+            <label class="choice"><input type="checkbox" name="problems" value="客戶追蹤常常漏掉"> 客戶追蹤常常漏掉</label>
+            <label class="choice"><input type="checkbox" name="problems" value="每天很忙但不知道忙什麼"> 每天很忙但不知道忙什麼</label>
           </div>
         </div>
         <div class="field">
@@ -467,7 +575,13 @@ textarea {
             <label class="choice"><input type="checkbox" name="goals" value="建立信任"> 建立信任</label>
             <label class="choice"><input type="checkbox" name="goals" value="增加名單"> 增加名單</label>
             <label class="choice"><input type="checkbox" name="goals" value="複製團隊"> 複製團隊</label>
+            <label class="choice"><input type="checkbox" name="goals" value="把客戶追蹤整理起來"> 把客戶追蹤整理起來</label>
+            <label class="choice"><input type="checkbox" name="goals" value="讓每天工作更有效率"> 讓每天工作更有效率</label>
+            <label class="choice"><input type="checkbox" name="goals" value="不再漏掉成交機會"> 不再漏掉成交機會</label>
           </div>
+        </div>
+        <div class="field">
+          <label class="choice"><input type="checkbox" id="consent" name="consent" value="yes" required> 我同意 Orikan 李泰欣保存本次填寫資料、對話摘要、銷售天賦報告與後續課程諮詢紀錄。</label>
         </div>
         <button class="btn btn-primary" type="submit">開始探索</button>
       </form>
@@ -484,7 +598,7 @@ textarea {
         <div class="chat-head">
           <div>
             <h2>銷售天賦問答</h2>
-            <div class="note">把你的成交方式整理成一份可以帶走的報告。</div>
+            <div class="note">你可以問課程會學到什麼、哪一堂適合你、目前開課資訊，也可以直接回答老師的追問。</div>
           </div>
           <span class="phase-pill" id="phaseLabel">尚未開始</span>
         </div>
@@ -497,10 +611,11 @@ textarea {
 
       <div class="result-panel" id="profilePanel">
         <h2>你的銷售天賦報告</h2>
-        <div class="spec-grid" id="specGrid"></div>
-        <div class="btn-row" id="accuracyActions">
-          <button class="btn btn-primary" type="button" data-reply="很像我，想看學習順序">像我，看看學習順序</button>
-          <button class="btn btn-outline" type="button" data-reply="我想補充一點">我想補充一點</button>
+        <div id="reportCard"></div>
+        <p class="accuracy-prompt">你看完之後，覺得像你嗎？有準嗎？</p>
+        <div class="btn-row share-actions">
+          <button class="btn btn-primary" type="button" id="downloadReportButton">下載 9:16 圖片</button>
+          <button class="btn btn-outline" type="button" id="shareReportButton">分享圖片</button>
         </div>
       </div>
 
@@ -530,15 +645,19 @@ const chatMessage = document.getElementById('chatMessage');
 const sendButton = document.getElementById('sendButton');
 const phaseLabel = document.getElementById('phaseLabel');
 const profilePanel = document.getElementById('profilePanel');
-const specGrid = document.getElementById('specGrid');
+const reportCard = document.getElementById('reportCard');
 const coursePanel = document.getElementById('coursePanel');
 const coursePath = document.getElementById('coursePath');
-const accuracyActions = document.getElementById('accuracyActions');
+const downloadReportButton = document.getElementById('downloadReportButton');
+const shareReportButton = document.getElementById('shareReportButton');
 const offeringRows = document.getElementById('offeringRows');
 const offeringNote = document.getElementById('offeringNote');
 let currentState = null;
+let lastReport = null;
+let lastCoursePath = null;
 let appContext = {
   config: null,
+  leadHub: null,
   salesBrain: null,
   quoteSeeds: null,
   offerings: null
@@ -581,6 +700,7 @@ form.addEventListener('submit', async (event) => {
     currentState = response.state;
     addMessage(response.reply, 'bot');
     applyResponse(response);
+    sendLeadEvent('intake_started');
     chatMessage.placeholder = '用你的話回答就好，越像真實情境越準。';
     chatMessage.focus();
   } finally {
@@ -593,16 +713,56 @@ chatForm.addEventListener('submit', async (event) => {
   await sendUserMessage(chatMessage.value);
 });
 
-accuracyActions.addEventListener('click', (event) => {
-  const button = event.target.closest('button[data-reply]');
-  if (!button) return;
-  sendUserMessage(button.dataset.reply);
+chatMessage.addEventListener('keydown', (event) => {
+  if (event.key !== 'Enter' || event.shiftKey || chatMessage.disabled) return;
+  event.preventDefault();
+  chatForm.requestSubmit();
+});
+
+downloadReportButton.addEventListener('click', async () => {
+  const blob = await buildShareImageBlob();
+  if (!blob) return;
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `orikan-sales-talent-${Date.now()}.png`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+  sendLeadEvent('report_downloaded');
+});
+
+shareReportButton.addEventListener('click', async () => {
+  const blob = await buildShareImageBlob();
+  if (!blob) return;
+  const file = new File([blob], 'orikan-sales-talent.png', { type: 'image/png' });
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    await navigator.share({
+      title: '我的銷售天賦報告',
+      text: '銷售力不從心，因為從沒遇過李泰欣。',
+      files: [file]
+    });
+    sendLeadEvent('report_shared');
+    return;
+  }
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `orikan-sales-talent-${Date.now()}.png`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+  sendLeadEvent('report_downloaded_share_fallback');
 });
 
 function getProfile() {
   const data = new FormData(form);
   return {
     name: data.get('name') || '',
+    email: data.get('email') || '',
+    phone: data.get('phone') || '',
     birthdate: data.get('birthdate') || '',
     region: data.get('region') || 'tw',
     role: data.get('role') || 'sales_consultant',
@@ -611,19 +771,22 @@ function getProfile() {
     disc_hate_workplace: data.get('disc_hate_workplace') || '',
     disc_hate_customer: data.get('disc_hate_customer') || '',
     problems: data.getAll('problems'),
-    goals: data.getAll('goals')
+    goals: data.getAll('goals'),
+    consent: data.get('consent') === 'yes'
   };
 }
 
 async function loadAppContext() {
-  const [config, brain, quotes, offerings] = await Promise.all([
+  const [config, leadHub, brain, quotes, offerings] = await Promise.all([
     loadJson('data/gemini-config.json', null),
+    loadJson('data/lead-hub-config.json', null),
     loadJson('data/taixin-sales-brain.json', null),
     loadJson('data/golden-quote-seeds.json', null),
     loadJson('data/course-offerings.json', FALLBACK_OFFERINGS)
   ]);
   appContext = {
     config,
+    leadHub,
     salesBrain: brain,
     quoteSeeds: quotes,
     offerings: offerings || FALLBACK_OFFERINGS
@@ -703,6 +866,7 @@ async function sendUserMessage(value) {
     currentState = response.state;
     addMessage(response.reply, 'bot');
     applyResponse(response);
+    sendLeadEvent(response.course_path ? 'course_path_ready' : 'chat_turn');
   } finally {
     setBusy(false);
   }
@@ -716,10 +880,35 @@ function setBusy(isBusy, label) {
 }
 
 function addMessage(text, type) {
-  const node = document.createElement('div');
-  node.className = `message ${type}`;
-  node.textContent = text;
-  messages.appendChild(node);
+  const row = document.createElement('div');
+  row.className = `message-row ${type}`;
+  if (type === 'bot') {
+    const avatar = document.createElement('img');
+    avatar.className = 'message-avatar';
+    avatar.src = 'img/portrait.jpg';
+    avatar.alt = 'Orikan 李泰欣';
+    const wrap = document.createElement('div');
+    wrap.className = 'message-wrap';
+    const speaker = document.createElement('div');
+    speaker.className = 'speaker';
+    speaker.textContent = 'Orikan 李泰欣';
+    const bubble = document.createElement('div');
+    bubble.className = 'message bot';
+    bubble.textContent = text;
+    wrap.appendChild(speaker);
+    wrap.appendChild(bubble);
+    row.appendChild(avatar);
+    row.appendChild(wrap);
+  } else {
+    const wrap = document.createElement('div');
+    wrap.className = 'message-wrap';
+    const bubble = document.createElement('div');
+    bubble.className = 'message user';
+    bubble.textContent = text;
+    wrap.appendChild(bubble);
+    row.appendChild(wrap);
+  }
+  messages.appendChild(row);
   messages.scrollTop = messages.scrollHeight;
 }
 
@@ -748,34 +937,62 @@ function renderProfile(spec, strategy) {
     ? spec.sales_advantages.slice(0, 3)
     : (Array.isArray(spec.sales_talents) ? spec.sales_talents.slice(0, 3) : []);
   const lifeTalents = Array.isArray(spec.life_talents) ? spec.life_talents.slice(0, 3) : [];
-  const items = [];
-  salesAdvantages.forEach((talent, index) => {
-    items.push([
-      talent.title || `行為模式銷售優點 ${index + 1}`,
-      [talent.insight, talent.strategy].filter(Boolean).join('\n')
-    ]);
-  });
-  lifeTalents.forEach((talent, index) => {
-    items.push([
-      talent.title || `生涯運數天賦 ${index + 1}`,
-      [talent.insight, talent.strategy].filter(Boolean).join('\n')
-    ]);
-  });
-  items.push(['行為模式觀察', `${spec.disc_type || (strategy && strategy.disc_label) || '探索中'}${spec.life_number ? `｜生涯運數 ${spec.life_number}` : ''}`]);
-  if (spec.sales_rhythm) items.push(['適合的成交節奏', spec.sales_rhythm]);
-  if (spec.persuasion_power) items.push(['最該放大的說服力量', spec.persuasion_power]);
-  if (spec.practical_advice) items.push(['給你的實戰建議', spec.practical_advice]);
-  if (spec.final_quote) items.push(['最後送你一句話', `「${spec.final_quote}」`]);
-  specGrid.innerHTML = items.map(([title, body]) => `
-    <div class="spec-item">
-      <strong>${escapeHtml(title)}</strong>
-      <span>${escapeHtml(body)}</span>
-    </div>
-  `).join('');
+  const profile = getProfile();
+  const disc = spec.disc_type || (strategy && strategy.disc_label) || '探索中';
+  const primaryDisc = normalizeDisc(disc);
+  const theme = getTheme(primaryDisc);
+  const mainLife = extractMainLifeNumber(spec.life_number || (currentState && currentState.deterministic_state && currentState.deterministic_state.computed && currentState.deterministic_state.computed.life_number) || '');
+  const quote = formatQuote(spec.final_quote || '銷售力不從心，因為從沒遇過李泰欣。');
+  lastReport = {
+    profile,
+    spec: Object.assign({}, spec, { life_number: mainLife, final_quote: quote }),
+    strategy,
+    primaryDisc,
+    theme,
+    salesAdvantages,
+    lifeTalents
+  };
+  document.documentElement.style.setProperty('--theme-main', theme.main);
+  document.documentElement.style.setProperty('--theme-dark', theme.dark);
+  document.documentElement.style.setProperty('--theme-soft', theme.soft);
+  reportCard.innerHTML = `
+    <article class="talent-card">
+      <div class="talent-card-head">
+        <img src="img/portrait.jpg" alt="Orikan 李泰欣">
+        <div>
+          <div class="eyebrow" style="color:rgba(255,255,255,0.86)">Orikan 李泰欣</div>
+          <h3>你的銷售天賦報告</h3>
+        </div>
+      </div>
+      <div class="talent-card-body">
+        <div class="report-meta">
+          <span>${escapeHtml(profile.name || '你的名字')}</span>
+          <span>${escapeHtml(profile.industry || '你的產業')}</span>
+          <span>${escapeHtml(disc)}</span>
+          ${mainLife ? `<span>生涯運數 ${escapeHtml(mainLife)}</span>` : ''}
+        </div>
+        <div class="report-section">
+          <strong>你的銷售優點是：</strong>
+          ${renderList(salesAdvantages)}
+        </div>
+        <div class="report-section">
+          <strong>你的銷售天賦是：</strong>
+          ${renderList(lifeTalents)}
+        </div>
+        <div class="report-section">
+          <strong>給你的實戰建議</strong>
+          <p>${escapeHtml(spec.practical_advice || spec.persuasion_power || '下一步先把你最常遇到的客戶問題整理成三種情境，再用同一套問題去確認需求，成交會更穩。')}</p>
+        </div>
+        <div class="report-quote">${escapeHtml(quote)}</div>
+      </div>
+    </article>
+  `;
+  sendLeadEvent('report_ready');
 }
 
 function renderCoursePath(path) {
   coursePanel.classList.add('is-visible');
+  lastCoursePath = path;
   coursePath.innerHTML = path.map((course) => `
     <div class="course-item">
       <h3>${escapeHtml(course.order ? `${course.order}. ` : '')}${escapeHtml(course.name)}</h3>
@@ -783,12 +1000,221 @@ function renderCoursePath(path) {
       ${coursePage(course) ? `<a href="${escapeHtml(coursePage(course))}">查看課程頁</a>` : ''}
     </div>
   `).join('');
+  sendLeadEvent('course_path_rendered');
 }
 
 function coursePage(course) {
   if (course.page) return course.page;
   const links = TaixinStudentQA && TaixinStudentQA.COURSE_LINKS && TaixinStudentQA.COURSE_LINKS.courses;
   return links && course.id ? links[course.id] : '';
+}
+
+function renderList(items) {
+  const normalized = (items || []).slice(0, 3);
+  while (normalized.length < 3) normalized.push({ title: '你的下一個優勢', insight: '你已經有基礎，接下來要把方法整理得更清楚。', strategy: '把每一次客戶互動記錄下來，慢慢找出自己最穩的成交方式。' });
+  return `<ol>${normalized.map((item) => {
+    const body = [item.insight, item.strategy].filter(Boolean).join(' ');
+    return `<li><strong>${escapeHtml(item.title || '')}</strong>${escapeHtml(body)}</li>`;
+  }).join('')}</ol>`;
+}
+
+function normalizeDisc(value) {
+  const match = String(value || '').toUpperCase().match(/[DISC]/);
+  return match ? match[0] : 'I';
+}
+
+function getTheme(disc) {
+  const themes = {
+    D: { main: '#d94841', dark: '#8f1f1b', soft: '#fff0ee' },
+    I: { main: '#f2b632', dark: '#8a5a00', soft: '#fff7df' },
+    S: { main: '#32a36a', dark: '#1d6543', soft: '#edf9f2' },
+    C: { main: '#2d6fb3', dark: '#164875', soft: '#eef6ff' }
+  };
+  return themes[disc] || themes.I;
+}
+
+function extractMainLifeNumber(value) {
+  const digits = String(value || '').match(/[1-9]/g) || [];
+  if (!digits.length) return '';
+  return digits[digits.length - 1];
+}
+
+function formatQuote(value) {
+  const text = String(value || '').replace(/[「」"']/g, '').replace(/^Orikan 李泰欣送你一句話：?/, '').trim();
+  return `Orikan 李泰欣送你一句話：${text}`;
+}
+
+function buildLeadPayload(eventType) {
+  const profile = getProfile();
+  const spec = lastReport && lastReport.spec ? lastReport.spec : {};
+  return {
+    event_type: eventType,
+    source: 'taixin-website-ai-student-qa',
+    source_page: location.href,
+    consent_version: appContext.leadHub && appContext.leadHub.consent_version,
+    profile: {
+      name: profile.name,
+      email: profile.email,
+      phone: profile.phone,
+      region: profile.region,
+      role: profile.role,
+      industry: profile.industry,
+      birthdate: profile.birthdate,
+      consent: profile.consent
+    },
+    intake: {
+      disc_hate_sales: profile.disc_hate_sales,
+      disc_hate_workplace: profile.disc_hate_workplace,
+      disc_hate_customer: profile.disc_hate_customer,
+      problems: profile.problems,
+      goals: profile.goals
+    },
+    report: lastReport ? {
+      disc_type: spec.disc_type,
+      life_number: spec.life_number,
+      sales_advantages: lastReport.salesAdvantages,
+      life_talents: lastReport.lifeTalents,
+      practical_advice: spec.practical_advice,
+      final_quote: spec.final_quote,
+      primary_disc: lastReport.primaryDisc
+    } : null,
+    course_path: lastCoursePath || [],
+    state_summary: currentState ? {
+      session_id: currentState.session_id,
+      phase: currentState.phase,
+      recommendation_allowed: currentState.recommendation_allowed
+    } : null,
+    created_at: new Date().toISOString()
+  };
+}
+
+function sendLeadEvent(eventType) {
+  const config = appContext.leadHub || {};
+  if (!config.enabled || !config.capture_url) return Promise.resolve();
+  const payload = buildLeadPayload(eventType);
+  if (!payload.profile.consent || !payload.profile.email) return Promise.resolve();
+  return fetch(config.capture_url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    keepalive: true
+  }).catch(() => {});
+}
+
+async function buildShareImageBlob() {
+  if (!lastReport) return null;
+  const canvas = document.createElement('canvas');
+  canvas.width = 1080;
+  canvas.height = 1920;
+  const ctx = canvas.getContext('2d');
+  const theme = lastReport.theme;
+  const profile = lastReport.profile;
+  const spec = lastReport.spec;
+  const path = lastCoursePath || [];
+  ctx.fillStyle = theme.soft;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  const gradient = ctx.createLinearGradient(0, 0, 1080, 520);
+  gradient.addColorStop(0, theme.dark);
+  gradient.addColorStop(1, theme.main);
+  ctx.fillStyle = gradient;
+  roundedRect(ctx, 72, 70, 936, 370, 34);
+  ctx.fill();
+  await drawPortrait(ctx, 780, 116, 170, 170);
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '900 58px "Noto Sans TC", sans-serif';
+  wrapText(ctx, '銷售力不從心，因為從沒遇過李泰欣。', 112, 152, 620, 70);
+  ctx.font = '700 30px "Noto Sans TC", sans-serif';
+  wrapText(ctx, '你的銷售天賦報告', 112, 338, 620, 42);
+  roundedRect(ctx, 72, 490, 936, 1230, 34);
+  ctx.fillStyle = '#ffffff';
+  ctx.fill();
+  ctx.fillStyle = theme.dark;
+  ctx.font = '900 40px "Noto Sans TC", sans-serif';
+  ctx.fillText(`${profile.name || '你'}｜${spec.disc_type || 'DISC'}｜生涯運數 ${spec.life_number || ''}`, 112, 565);
+  let y = 650;
+  y = drawReportBlock(ctx, theme, '你的銷售優點是：', lastReport.salesAdvantages, 112, y, 856);
+  y = drawReportBlock(ctx, theme, '你的銷售天賦是：', lastReport.lifeTalents, 112, y + 22, 856);
+  ctx.fillStyle = theme.dark;
+  ctx.font = '900 34px "Noto Sans TC", sans-serif';
+  ctx.fillText('給你的實戰建議', 112, y + 30);
+  ctx.fillStyle = '#263245';
+  ctx.font = '700 28px "Noto Sans TC", sans-serif';
+  y = wrapText(ctx, spec.practical_advice || '先把客戶資料、追蹤和下一步整理起來，讓每一次努力都能累積成結果。', 112, y + 82, 856, 42);
+  ctx.fillStyle = theme.soft;
+  roundedRect(ctx, 112, y + 28, 856, 132, 24);
+  ctx.fill();
+  ctx.fillStyle = theme.dark;
+  ctx.font = '900 30px "Noto Sans TC", sans-serif';
+  wrapText(ctx, spec.final_quote || 'Orikan 李泰欣送你一句話：銷售力不從心，因為從沒遇過李泰欣。', 144, y + 78, 792, 42);
+  const courseText = path.length ? path.map((course, index) => `${index + 1}. ${course.name}`).join('  ') : '看完覺得準，就照建議學習順序開始';
+  ctx.fillStyle = theme.dark;
+  roundedRect(ctx, 72, 1760, 936, 86, 43);
+  ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '900 30px "Noto Sans TC", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(`建議學習順序｜${courseText}`, 540, 1815);
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#172033';
+  ctx.font = '800 25px "Noto Sans TC", sans-serif';
+  ctx.fillText('Orikan 李泰欣', 72, 1888);
+  return new Promise((resolve) => canvas.toBlob(resolve, 'image/png', 0.95));
+}
+
+async function drawPortrait(ctx, x, y, width, height) {
+  const image = new Image();
+  image.src = 'img/portrait.jpg';
+  await new Promise((resolve) => {
+    image.onload = resolve;
+    image.onerror = resolve;
+  });
+  ctx.save();
+  roundedRect(ctx, x, y, width, height, 28);
+  ctx.clip();
+  if (image.complete && image.naturalWidth) ctx.drawImage(image, x, y, width, height);
+  ctx.restore();
+}
+
+function drawReportBlock(ctx, theme, title, items, x, y, width) {
+  ctx.fillStyle = theme.dark;
+  ctx.font = '900 34px "Noto Sans TC", sans-serif';
+  ctx.fillText(title, x, y);
+  let cursor = y + 52;
+  ctx.fillStyle = '#263245';
+  ctx.font = '700 27px "Noto Sans TC", sans-serif';
+  (items || []).slice(0, 3).forEach((item, index) => {
+    const text = `${index + 1}. ${item.title || ''}：${[item.insight, item.strategy].filter(Boolean).join(' ')}`;
+    cursor = wrapText(ctx, text, x, cursor, width, 39) + 10;
+  });
+  return cursor;
+}
+
+function roundedRect(ctx, x, y, width, height, radius) {
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.arcTo(x + width, y, x + width, y + height, radius);
+  ctx.arcTo(x + width, y + height, x, y + height, radius);
+  ctx.arcTo(x, y + height, x, y, radius);
+  ctx.arcTo(x, y, x + width, y, radius);
+  ctx.closePath();
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  const chars = String(text || '').split('');
+  let line = '';
+  let cursor = y;
+  chars.forEach((char) => {
+    const test = line + char;
+    if (ctx.measureText(test).width > maxWidth && line) {
+      ctx.fillText(line, x, cursor);
+      line = char;
+      cursor += lineHeight;
+    } else {
+      line = test;
+    }
+  });
+  if (line) ctx.fillText(line, x, cursor);
+  return cursor + lineHeight;
 }
 
 function escapeHtml(value) {
