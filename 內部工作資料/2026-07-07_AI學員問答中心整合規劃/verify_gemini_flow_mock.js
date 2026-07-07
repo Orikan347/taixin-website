@@ -33,8 +33,7 @@ global.fetch = async (_url, options) => {
         course_path: [
           { id: 'zhizhi', name: '直指人心', reason: '先看懂客戶與信任建立。' },
           { id: 'chengjiao', name: '成交地圖', reason: '再補五連問、MBAF 與拒絕處理。' }
-        ],
-        cta_ready: true
+        ]
       }
     : callCount >= 3
       ? {
