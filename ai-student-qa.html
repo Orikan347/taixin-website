@@ -692,6 +692,9 @@ form.addEventListener('submit', async (event) => {
   messages.innerHTML = '';
   profilePanel.classList.remove('is-visible');
   coursePanel.classList.remove('is-visible');
+  lastReport = null;
+  lastCoursePath = null;
+  updateShareButtons();
   chatMessage.disabled = false;
   sendButton.disabled = false;
   setBusy(true, '整理中...');
@@ -720,6 +723,11 @@ chatMessage.addEventListener('keydown', (event) => {
 });
 
 downloadReportButton.addEventListener('click', async () => {
+  const validation = getReportValidation();
+  if (!validation.ok) {
+    addMessage(validation.message, 'bot');
+    return;
+  }
   const blob = await buildShareImageBlob();
   if (!blob) return;
   const url = URL.createObjectURL(blob);
@@ -734,6 +742,11 @@ downloadReportButton.addEventListener('click', async () => {
 });
 
 shareReportButton.addEventListener('click', async () => {
+  const validation = getReportValidation();
+  if (!validation.ok) {
+    addMessage(validation.message, 'bot');
+    return;
+  }
   const blob = await buildShareImageBlob();
   if (!blob) return;
   const file = new File([blob], 'orikan-sales-talent.png', { type: 'image/png' });
@@ -916,6 +929,7 @@ function applyResponse(response) {
   phaseLabel.textContent = getPhaseText(response.phase);
   if (response.profile_spec) renderProfile(response.profile_spec, response.response_strategy);
   if (response.course_path) renderCoursePath(response.course_path);
+  updateShareButtons();
 }
 
 function getPhaseText(phase) {
@@ -932,6 +946,12 @@ function getPhaseText(phase) {
 }
 
 function renderProfile(spec, strategy) {
+  if (!isCompleteReportSpec(spec)) {
+    profilePanel.classList.remove('is-visible');
+    lastReport = null;
+    addMessage('我還不能直接幫你出報告，因為資料還不夠完整。我再多問你一題，才不會把銷售天賦判斷錯。', 'bot');
+    return;
+  }
   profilePanel.classList.add('is-visible');
   const salesAdvantages = Array.isArray(spec.sales_advantages)
     ? spec.sales_advantages.slice(0, 3)
@@ -943,6 +963,7 @@ function renderProfile(spec, strategy) {
   const theme = getTheme(primaryDisc);
   const mainLife = extractMainLifeNumber(spec.life_number || (currentState && currentState.deterministic_state && currentState.deterministic_state.computed && currentState.deterministic_state.computed.life_number) || '');
   const quote = formatQuote(spec.final_quote || '銷售力不從心，因為從沒遇過李泰欣。');
+  lastCoursePath = null;
   lastReport = {
     profile,
     spec: Object.assign({}, spec, { life_number: mainLife, final_quote: quote }),
@@ -988,6 +1009,7 @@ function renderProfile(spec, strategy) {
     </article>
   `;
   sendLeadEvent('report_ready');
+  updateShareButtons();
 }
 
 function renderCoursePath(path) {
@@ -1001,6 +1023,7 @@ function renderCoursePath(path) {
     </div>
   `).join('');
   sendLeadEvent('course_path_rendered');
+  updateShareButtons();
 }
 
 function coursePage(course) {
@@ -1011,11 +1034,54 @@ function coursePage(course) {
 
 function renderList(items) {
   const normalized = (items || []).slice(0, 3);
-  while (normalized.length < 3) normalized.push({ title: '你的下一個優勢', insight: '你已經有基礎，接下來要把方法整理得更清楚。', strategy: '把每一次客戶互動記錄下來，慢慢找出自己最穩的成交方式。' });
   return `<ol>${normalized.map((item) => {
     const body = [item.insight, item.strategy].filter(Boolean).join(' ');
     return `<li><strong>${escapeHtml(item.title || '')}</strong>${escapeHtml(body)}</li>`;
   }).join('')}</ol>`;
+}
+
+function isCompleteReportSpec(spec) {
+  if (!spec || typeof spec !== 'object') return false;
+  if (!String(spec.disc_type || '').match(/[DISC]/i)) return false;
+  if (!extractMainLifeNumber(spec.life_number)) return false;
+  if (!hasThreeCompleteReportItems(spec.sales_advantages)) return false;
+  if (!hasThreeCompleteReportItems(spec.life_talents)) return false;
+  if (String(spec.practical_advice || spec.persuasion_power || '').trim().length < 12) return false;
+  if (String(spec.final_quote || '').trim().length < 4) return false;
+  return true;
+}
+
+function hasThreeCompleteReportItems(items) {
+  return Array.isArray(items) && items.length >= 3 && items.slice(0, 3).every((item) => (
+    String(item && item.title || '').trim().length >= 2 &&
+    [item && item.insight, item && item.strategy].filter(Boolean).join('').trim().length >= 8
+  ));
+}
+
+function getReportValidation() {
+  if (!lastReport || !isCompleteReportSpec(lastReport.spec)) {
+    return { ok: false, message: '這份報告資料還不完整，我不會讓你下載一張空的圖。先把剛剛的問題補完，我再幫你做完整報告。' };
+  }
+  if (!Array.isArray(lastCoursePath) || lastCoursePath.length < 1) {
+    return { ok: false, message: '你先回我這份報告像不像你。確認準了之後，我會把建議學習順序放進報告，再讓你下載分享圖。' };
+  }
+  return { ok: true, message: '' };
+}
+
+function updateShareButtons() {
+  if (!downloadReportButton || !shareReportButton) return;
+  const validation = getReportValidation();
+  [downloadReportButton, shareReportButton].forEach((button) => {
+    button.disabled = !validation.ok;
+    button.title = validation.ok ? '' : validation.message;
+  });
+  if (validation.ok) {
+    downloadReportButton.textContent = '下載 9:16 圖片';
+    shareReportButton.textContent = '分享圖片';
+  } else if (lastReport) {
+    downloadReportButton.textContent = '確認準了再下載';
+    shareReportButton.textContent = '確認準了再分享';
+  }
 }
 
 function normalizeDisc(value) {
@@ -1102,7 +1168,7 @@ function sendLeadEvent(eventType) {
 }
 
 async function buildShareImageBlob() {
-  if (!lastReport) return null;
+  if (!getReportValidation().ok) return null;
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
   canvas.height = 1920;
@@ -1111,54 +1177,105 @@ async function buildShareImageBlob() {
   const profile = lastReport.profile;
   const spec = lastReport.spec;
   const path = lastCoursePath || [];
-  ctx.fillStyle = theme.soft;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  const gradient = ctx.createLinearGradient(0, 0, 1080, 520);
-  gradient.addColorStop(0, theme.dark);
-  gradient.addColorStop(1, theme.main);
-  ctx.fillStyle = gradient;
-  roundedRect(ctx, 72, 70, 936, 370, 34);
+  const canvasWidth = 1080;
+  const canvasHeight = 1920;
+  const sharePayload = {
+    name: profile.name || '你',
+    disc: spec.disc_type || '',
+    life_number: spec.life_number || '',
+    sales_advantages: lastReport.salesAdvantages.map((item) => item.title),
+    life_talents: lastReport.lifeTalents.map((item) => item.title),
+    practical_advice: spec.practical_advice || '',
+    final_quote: spec.final_quote || '',
+    course_path: path.map((course) => course.name)
+  };
+  window.__TAIXIN_LAST_SHARE_PAYLOAD = sharePayload;
+  window.__TAIXIN_LAST_SHARE_META = {
+    width: canvasWidth,
+    height: canvasHeight,
+    portrait_mode: 'cover',
+    template: 'v3-premium-story-card',
+    design_asset: 'img/sales-talent-share-template.png',
+    blocks: ['headline', 'identity', 'sales_advantages', 'life_talents', 'practical_advice', 'quote', 'course_path']
+  };
+
+  await drawShareTemplate(ctx, theme, canvasWidth, canvasHeight);
+  await drawPortrait(ctx, 804, 108, 150, 190);
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '900 54px "Noto Sans TC", sans-serif';
+  wrapTextMax(ctx, '銷售力不從心，因為從沒遇過李泰欣。', 112, 140, 640, 64, 3);
+  ctx.font = '800 28px "Noto Sans TC", sans-serif';
+  ctx.fillText('Orikan 李泰欣｜銷售天賦報告', 128, 336);
+
+  roundedRect(ctx, 72, 430, 936, 1238, 40);
+  ctx.fillStyle = '#ffffff';
   ctx.fill();
-  await drawPortrait(ctx, 780, 116, 170, 170);
-  ctx.fillStyle = '#ffffff';
-  ctx.font = '900 58px "Noto Sans TC", sans-serif';
-  wrapText(ctx, '銷售力不從心，因為從沒遇過李泰欣。', 112, 152, 620, 70);
-  ctx.font = '700 30px "Noto Sans TC", sans-serif';
-  wrapText(ctx, '你的銷售天賦報告', 112, 338, 620, 42);
-  roundedRect(ctx, 72, 490, 936, 1230, 34);
-  ctx.fillStyle = '#ffffff';
+  ctx.strokeStyle = 'rgba(24,33,47,0.08)';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  ctx.fillStyle = theme.main;
+  roundedRect(ctx, 112, 488, 14, 92, 7);
   ctx.fill();
   ctx.fillStyle = theme.dark;
-  ctx.font = '900 40px "Noto Sans TC", sans-serif';
-  ctx.fillText(`${profile.name || '你'}｜${spec.disc_type || 'DISC'}｜生涯運數 ${spec.life_number || ''}`, 112, 565);
+  ctx.font = '900 44px "Noto Sans TC", sans-serif';
+  ctx.fillText(`${profile.name || '你'}`, 146, 522);
+  ctx.font = '800 31px "Noto Sans TC", sans-serif';
+  ctx.fillText(`${spec.disc_type || ''}｜生涯運數 ${spec.life_number || ''}`, 146, 572);
+
   let y = 650;
-  y = drawReportBlock(ctx, theme, '你的銷售優點是：', lastReport.salesAdvantages, 112, y, 856);
-  y = drawReportBlock(ctx, theme, '你的銷售天賦是：', lastReport.lifeTalents, 112, y + 22, 856);
-  ctx.fillStyle = theme.dark;
-  ctx.font = '900 34px "Noto Sans TC", sans-serif';
-  ctx.fillText('給你的實戰建議', 112, y + 30);
-  ctx.fillStyle = '#263245';
-  ctx.font = '700 28px "Noto Sans TC", sans-serif';
-  y = wrapText(ctx, spec.practical_advice || '先把客戶資料、追蹤和下一步整理起來，讓每一次努力都能累積成結果。', 112, y + 82, 856, 42);
+  y = drawPremiumReportBlock(ctx, theme, '你的銷售優點是', lastReport.salesAdvantages, 112, y, 856);
+  y = drawPremiumReportBlock(ctx, theme, '你的銷售天賦是', lastReport.lifeTalents, 112, y + 18, 856);
+  y = drawSingleTextBlock(ctx, theme, '給你的實戰建議', spec.practical_advice || '先把客戶資料、追蹤和下一步整理起來，讓每一次努力都能累積成結果。', 112, y + 18, 856);
+
   ctx.fillStyle = theme.soft;
-  roundedRect(ctx, 112, y + 28, 856, 132, 24);
+  roundedRect(ctx, 112, y + 18, 856, 126, 24);
   ctx.fill();
   ctx.fillStyle = theme.dark;
-  ctx.font = '900 30px "Noto Sans TC", sans-serif';
-  wrapText(ctx, spec.final_quote || 'Orikan 李泰欣送你一句話：銷售力不從心，因為從沒遇過李泰欣。', 144, y + 78, 792, 42);
-  const courseText = path.length ? path.map((course, index) => `${index + 1}. ${course.name}`).join('  ') : '看完覺得準，就照建議學習順序開始';
+  ctx.font = '900 29px "Noto Sans TC", sans-serif';
+  wrapTextMax(ctx, spec.final_quote || 'Orikan 李泰欣送你一句話：銷售力不從心，因為從沒遇過李泰欣。', 144, y + 66, 792, 40, 2);
+
+  const courseText = path.map((course, index) => `${index + 1}. ${course.name}`).join('  ');
   ctx.fillStyle = theme.dark;
-  roundedRect(ctx, 72, 1760, 936, 86, 43);
+  roundedRect(ctx, 72, 1732, 936, 92, 46);
   ctx.fill();
   ctx.fillStyle = '#ffffff';
-  ctx.font = '900 30px "Noto Sans TC", sans-serif';
+  ctx.font = '900 28px "Noto Sans TC", sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText(`建議學習順序｜${courseText}`, 540, 1815);
+  fitText(ctx, `建議學習順序｜${courseText}`, 540, 1789, 820, 28, 22);
   ctx.textAlign = 'left';
-  ctx.fillStyle = '#172033';
-  ctx.font = '800 25px "Noto Sans TC", sans-serif';
-  ctx.fillText('Orikan 李泰欣', 72, 1888);
+  ctx.fillStyle = '#ffffff';
+  ctx.shadowColor = 'rgba(0,0,0,0.28)';
+  ctx.shadowBlur = 8;
+  ctx.font = '900 28px "Noto Sans TC", sans-serif';
+  ctx.fillText('Orikan 李泰欣', 72, 1878);
+  ctx.shadowBlur = 0;
   return new Promise((resolve) => canvas.toBlob(resolve, 'image/png', 0.95));
+}
+
+async function drawShareTemplate(ctx, theme, width, height) {
+  const image = new Image();
+  image.src = 'img/sales-talent-share-template.png';
+  await new Promise((resolve) => {
+    image.onload = resolve;
+    image.onerror = resolve;
+  });
+  if (image.complete && image.naturalWidth) {
+    drawImageCover(ctx, image, 0, 0, width, height);
+  } else {
+    ctx.fillStyle = '#fbf7f1';
+    ctx.fillRect(0, 0, width, height);
+  }
+  const topGradient = ctx.createLinearGradient(0, 0, width, 390);
+  topGradient.addColorStop(0, withAlpha(theme.dark, 0.78));
+  topGradient.addColorStop(1, withAlpha(theme.main, 0.66));
+  ctx.fillStyle = topGradient;
+  ctx.fillRect(0, 0, width, 404);
+  ctx.fillStyle = withAlpha(theme.main, 0.36);
+  ctx.fillRect(0, 1576, width, 180);
+  ctx.fillStyle = 'rgba(255,255,255,0.88)';
+  roundedRect(ctx, 72, 430, 936, 1238, 40);
+  ctx.fill();
 }
 
 async function drawPortrait(ctx, x, y, width, height) {
@@ -1171,22 +1288,54 @@ async function drawPortrait(ctx, x, y, width, height) {
   ctx.save();
   roundedRect(ctx, x, y, width, height, 28);
   ctx.clip();
-  if (image.complete && image.naturalWidth) ctx.drawImage(image, x, y, width, height);
+  if (image.complete && image.naturalWidth) {
+    drawImageCover(ctx, image, x, y, width, height);
+  }
   ctx.restore();
 }
 
-function drawReportBlock(ctx, theme, title, items, x, y, width) {
+function drawImageCover(ctx, image, x, y, width, height) {
+  const imageRatio = image.naturalWidth / image.naturalHeight;
+  const boxRatio = width / height;
+  let sourceWidth = image.naturalWidth;
+  let sourceHeight = image.naturalHeight;
+  let sourceX = 0;
+  let sourceY = 0;
+  if (imageRatio > boxRatio) {
+    sourceWidth = image.naturalHeight * boxRatio;
+    sourceX = (image.naturalWidth - sourceWidth) / 2;
+  } else {
+    sourceHeight = image.naturalWidth / boxRatio;
+    sourceY = Math.max(0, (image.naturalHeight - sourceHeight) * 0.18);
+  }
+  ctx.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height);
+}
+
+function drawPremiumReportBlock(ctx, theme, title, items, x, y, width) {
   ctx.fillStyle = theme.dark;
-  ctx.font = '900 34px "Noto Sans TC", sans-serif';
+  ctx.font = '900 32px "Noto Sans TC", sans-serif';
   ctx.fillText(title, x, y);
-  let cursor = y + 52;
+  let cursor = y + 46;
   ctx.fillStyle = '#263245';
-  ctx.font = '700 27px "Noto Sans TC", sans-serif';
   (items || []).slice(0, 3).forEach((item, index) => {
-    const text = `${index + 1}. ${item.title || ''}：${[item.insight, item.strategy].filter(Boolean).join(' ')}`;
-    cursor = wrapText(ctx, text, x, cursor, width, 39) + 10;
+    ctx.fillStyle = theme.main;
+    ctx.font = '900 25px "Noto Sans TC", sans-serif';
+    ctx.fillText(`${index + 1}. ${item.title || ''}`, x, cursor);
+    ctx.fillStyle = '#263245';
+    ctx.font = '700 23px "Noto Sans TC", sans-serif';
+    const body = [item.insight, item.strategy].filter(Boolean).join(' ');
+    cursor = wrapTextMax(ctx, body, x + 34, cursor + 34, width - 34, 31, 2) + 8;
   });
   return cursor;
+}
+
+function drawSingleTextBlock(ctx, theme, title, text, x, y, width) {
+  ctx.fillStyle = theme.dark;
+  ctx.font = '900 32px "Noto Sans TC", sans-serif';
+  ctx.fillText(title, x, y);
+  ctx.fillStyle = '#263245';
+  ctx.font = '800 25px "Noto Sans TC", sans-serif';
+  return wrapTextMax(ctx, text, x, y + 46, width, 35, 3) + 8;
 }
 
 function roundedRect(ctx, x, y, width, height, radius) {
@@ -1215,6 +1364,58 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
   });
   if (line) ctx.fillText(line, x, cursor);
   return cursor + lineHeight;
+}
+
+function wrapTextMax(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+  const chars = String(text || '').split('');
+  let line = '';
+  let cursor = y;
+  let lines = 0;
+  for (let index = 0; index < chars.length; index += 1) {
+    const char = chars[index];
+    const test = line + char;
+    if (ctx.measureText(test).width > maxWidth && line) {
+      lines += 1;
+      if (lines >= maxLines) {
+        ctx.fillText(trimToWidth(ctx, line + '...', maxWidth), x, cursor);
+        return cursor + lineHeight;
+      }
+      ctx.fillText(line, x, cursor);
+      line = char;
+      cursor += lineHeight;
+    } else {
+      line = test;
+    }
+  }
+  if (line) ctx.fillText(line, x, cursor);
+  return cursor + lineHeight;
+}
+
+function trimToWidth(ctx, text, maxWidth) {
+  let value = String(text || '');
+  while (value.length > 1 && ctx.measureText(value).width > maxWidth) {
+    value = value.slice(0, -2) + '...';
+  }
+  return value;
+}
+
+function fitText(ctx, text, x, y, maxWidth, startSize, minSize) {
+  let size = startSize;
+  do {
+    ctx.font = `900 ${size}px "Noto Sans TC", sans-serif`;
+    if (ctx.measureText(text).width <= maxWidth || size <= minSize) break;
+    size -= 1;
+  } while (size >= minSize);
+  ctx.fillText(text, x, y);
+}
+
+function withAlpha(hex, alpha) {
+  const value = String(hex || '#ffffff').replace('#', '');
+  if (value.length !== 6) return `rgba(255,255,255,${alpha})`;
+  const r = parseInt(value.slice(0, 2), 16);
+  const g = parseInt(value.slice(2, 4), 16);
+  const b = parseInt(value.slice(4, 6), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
 }
 
 function escapeHtml(value) {

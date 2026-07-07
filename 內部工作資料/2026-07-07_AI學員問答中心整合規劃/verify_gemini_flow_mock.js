@@ -29,6 +29,8 @@ global.fetch = async (_url, options) => {
 
   const latestMatch = prompt.match(/使用者最新訊息：\n([\s\S]*?)\n\n輸出 JSON/);
   const latestMessage = latestMatch ? latestMatch[1] : '';
+  const discoveryMatch = prompt.match(/對話蒐集狀態：\n([\s\S]*?)\n\n規則型輔助判斷/);
+  const discovery = discoveryMatch ? JSON.parse(discoveryMatch[1]) : { can_build_report: false };
   const payload = /(有準|像我)/.test(latestMessage)
     ? {
         phase: 'recommendation',
@@ -40,7 +42,7 @@ global.fetch = async (_url, options) => {
           { id: 'chengjiao', name: '成交地圖', reason: '再補五連問、MBAF 與拒絕處理。' }
         ]
       }
-    : callCount >= 3
+    : discovery.can_build_report
       ? {
           phase: 'profile_ready',
           reply: '我把你的銷售現場整理成報告。你適合先用信任打開對話，再用提問找到真正原因。\n\n你看完之後，覺得像你嗎？有準嗎？',
@@ -113,6 +115,10 @@ global.fetch = async (_url, options) => {
   response = await gemini.transition(response.state, '我賣保險，客戶多半是家庭客戶。');
   assert(response.reply.includes('最近一次'));
   response = await gemini.transition(response.state, '客戶說太貴，想再考慮看看。');
+  assert(!response.profile_spec);
+  assert.strictEqual(response.phase, 'discovery');
+  assert(response.reply.length > 8);
+  response = await gemini.transition(response.state, '我通常會先解釋保障內容，但後續追蹤常常沒有整理好。');
   assert(response.profile_spec);
   assert.strictEqual(response.course_path, null);
   assert(response.profile_spec.sales_advantages.length === 3);

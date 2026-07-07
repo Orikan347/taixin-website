@@ -1,4 +1,5 @@
 const { chromium } = require('/Users/macminim4/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const fs = require('fs');
 
 const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:8765';
 
@@ -35,6 +36,8 @@ async function mockGemini(page) {
     }
     const latestMatch = prompt.match(/使用者最新訊息：\n([\s\S]*?)\n\n輸出 JSON/);
     const latestMessage = latestMatch ? latestMatch[1] : '';
+    const discoveryMatch = prompt.match(/對話蒐集狀態：\n([\s\S]*?)\n\n規則型輔助判斷/);
+    const discovery = discoveryMatch ? JSON.parse(discoveryMatch[1]) : { can_build_report: false };
     const asksOffering = /開課|多少錢|複訓|價格|課程學什麼|會學到什麼/.test(latestMessage);
     const agreed = /(有準|很準|像我|有像)/.test(latestMessage);
     const payload = asksOffering
@@ -59,7 +62,7 @@ async function mockGemini(page) {
             ],
             cta_ready: true
           }
-        : count >= 3
+        : discovery.can_build_report
           ? {
               phase: 'profile_ready',
               reply: 'andy，我聽到你說客戶覺得高價服務很貴，這確實是很多專業人士會遇到的挑戰。這通常不是服務本身沒有價值，而是客戶還沒看見那份值得。我現在已經掌握到你的產業、客戶和遇到的狀況，我幫你整理成一份可以帶走的銷售天賦報告。\n\n你看完之後，覺得像你嗎？有準嗎？',
@@ -90,10 +93,10 @@ async function mockGemini(page) {
               reply: count === 1
                 ? '你先跟我說一下，你現在主要賣什麼？客戶通常是哪一種人？'
                 : '你剛剛提到客戶會猶豫。最近一次沒有成交的情境是什麼？對方當時怎麼回你？',
-              next_question: '',
-              profile_spec: null,
-              course_path: [],
-              cta_ready: false
+            next_question: '',
+            profile_spec: null,
+            course_path: [],
+            cta_ready: false
             };
     await route.fulfill({
       status: 200,
@@ -109,11 +112,26 @@ async function send(page, text) {
 }
 
 async function reachProfileSpec(page) {
-  for (let i = 0; i < 4; i += 1) {
+  const answers = [
+    '我賣高價顧問服務，客戶多半是企業主和專業人士。',
+    '最近客戶最常說太貴，想再比較，也會說先回去考慮。',
+    '我通常會先解釋服務內容和案例，但後續追蹤常常沒有整理好。'
+  ];
+  for (const answer of answers) {
+    await send(page, answer);
     if (await page.locator('#profilePanel.is-visible').count()) return;
-    await send(page, '我賣高價顧問服務，客戶多半是企業主。最近客戶說很貴，想再考慮。');
   }
   await page.locator('#profilePanel.is-visible').waitFor({ timeout: 5000 });
+}
+
+function readPngSize(path) {
+  const buffer = fs.readFileSync(path);
+  if (buffer.toString('ascii', 1, 4) !== 'PNG') throw new Error('downloaded file is not PNG');
+  return {
+    width: buffer.readUInt32BE(16),
+    height: buffer.readUInt32BE(20),
+    bytes: buffer.length
+  };
 }
 
 async function verifyHomeEntry(page) {
@@ -140,11 +158,19 @@ async function verifyAgreementGateAndShare(page) {
   await page.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
   await mockGemini(page);
   await fillIntake(page);
-  await reachProfileSpec(page);
+  await send(page, '我賣高價顧問服務，客戶多半是企業主和專業人士。');
+  if (await page.locator('#profilePanel.is-visible').count()) throw new Error('profile appeared before three effective answers');
+  await send(page, '最近客戶最常說太貴，想再比較，也會說先回去考慮。');
+  if (await page.locator('#profilePanel.is-visible').count()) throw new Error('profile appeared before third effective answer');
+  await send(page, '我通常會先解釋服務內容和案例，但後續追蹤常常沒有整理好。');
+  await page.locator('#profilePanel.is-visible').waitFor({ timeout: 5000 });
   await page.getByText('你的銷售優點是：').waitFor();
   await page.getByText('生涯運數 7').waitFor();
+  await page.getByText('你容易建立安全感').waitFor();
+  await page.getByText('7 號：洞察力').waitFor();
   if (await page.getByText('生涯運數 3').count()) throw new Error('unexpected reduction chain number displayed');
   if (await page.locator('#coursePanel.is-visible').count()) throw new Error('course panel appeared before agreement');
+  if (!(await page.getByRole('button', { name: '確認準了再下載' }).isDisabled())) throw new Error('download should be disabled before agreement');
   if (await page.getByRole('button', { name: '像我，看看學習順序' }).count()) throw new Error('old accuracy button still visible');
   await send(page, '很準，有像我');
   await page.locator('#coursePanel.is-visible').waitFor();
@@ -153,6 +179,17 @@ async function verifyAgreementGateAndShare(page) {
   await page.getByRole('button', { name: '下載 9:16 圖片' }).click();
   const download = await downloadPromise;
   if (!download.suggestedFilename().endsWith('.png')) throw new Error('report download is not png');
+  const pngPath = '/private/tmp/orikan-v3-share.png';
+  await download.saveAs(pngPath);
+  const pngSize = readPngSize(pngPath);
+  if (pngSize.width !== 1080 || pngSize.height !== 1920) throw new Error(`unexpected share image size: ${pngSize.width}x${pngSize.height}`);
+  if (pngSize.bytes < 80000) throw new Error(`share image too small: ${pngSize.bytes}`);
+  const payload = await page.evaluate(() => window.__TAIXIN_LAST_SHARE_PAYLOAD);
+  const meta = await page.evaluate(() => window.__TAIXIN_LAST_SHARE_META);
+  if (!payload || payload.sales_advantages.length !== 3 || payload.life_talents.length !== 3) throw new Error('share payload missing report content');
+  if (!payload.course_path.includes('極致效率')) throw new Error('share payload missing course path');
+  if (!meta || meta.width !== 1080 || meta.height !== 1920 || meta.portrait_mode !== 'cover') throw new Error('share metadata missing portrait/layout proof');
+  if (meta.design_asset !== 'img/sales-talent-share-template.png') throw new Error('share image did not use design skill template asset');
   await page.getByRole('link', { name: '填寫報名表單' }).waitFor();
   await page.getByRole('link', { name: 'LINE 詢問最新場次' }).waitFor();
 }
