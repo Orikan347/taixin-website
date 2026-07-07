@@ -59,11 +59,16 @@ async function mockGemini(page) {
             next_question: '',
             profile_spec: {
               disc_type: 'S 偏 I',
-              life_number: '7',
-              sales_talents: [
-                { title: '你容易建立安全感', insight: '你在意關係，不會急著壓客戶做決定。', strategy: '先用五連問問出真正擔心，再進入價值說明。' },
-                { title: '你適合用故事說服', insight: '你的語氣有溫度，適合讓客戶看見真實情境。', strategy: '用 MBAF 把保障規格翻成家庭會感受到的利益。' },
-                { title: '你能做長期信任', insight: '你不適合只追一次成交，適合累積接觸點。', strategy: '用極致效率的紀錄與追蹤，讓每次互動留下下一步。' }
+              life_number: '3、4、7',
+              sales_advantages: [
+                { title: '你容易建立安全感', insight: '你不會急著壓客戶做決定，對方比較敢說真話。', strategy: '先用五連問問出真正擔心，再進入價值說明。' },
+                { title: '你適合長期信任型成交', insight: '你不適合只追一次成交，適合累積接觸點。', strategy: '每次互動都留下一個清楚下一步，信任會慢慢變成成交。' },
+                { title: '你會照顧客戶感受', insight: '你能注意到客戶的不安，這會讓對方覺得你懂他。', strategy: '拒絕處理時先接住情緒，再處理價格或方案。' }
+              ],
+              life_talents: [
+                { title: '3 號：表達力', insight: '你能把保險講得有畫面，不只是在背條款。', strategy: '用故事讓客戶聽懂保障跟他家庭的關係。' },
+                { title: '4 號：落地力', insight: '你做事有步驟，能讓客戶覺得後續有人照顧。', strategy: '把方案、流程和服務講清楚，客戶會比較安心。' },
+                { title: '7 號：洞察力', insight: '你會想知道客戶猶豫背後真正的原因。', strategy: '用提問找出他是怕買錯、怕預算，還是還沒看見差異。' }
               ],
               sales_rhythm: '先信任，再提問，最後用小成交推進。',
               persuasion_power: '把客戶的擔心翻成可以行動的理由。',
@@ -145,6 +150,10 @@ async function verifyAgreementGate(page) {
   await mockGemini(page);
   await fillIntake(page);
   await reachProfileSpec(page);
+  await page.getByText('你容易建立安全感').waitFor();
+  await page.getByText('3 號：表達力').waitFor();
+  await page.getByText('4 號：落地力').waitFor();
+  await page.getByText('7 號：洞察力').waitFor();
   if (await page.locator('#coursePanel.is-visible').count()) {
     throw new Error('course panel appeared before agreement');
   }
@@ -212,6 +221,8 @@ async function verifyNoAiLanguage(page) {
   await mobile.getByRole('heading', { name: '先找出你的銷售天賦' }).waitFor();
   await fillIntake(mobile, { region: 'my', problems: ['看不懂客戶'], goals: ['建立信任'] });
   await reachProfileSpec(mobile);
+  await mobile.getByText('3 號：表達力').waitFor();
+  await mobile.getByText('7 號：洞察力').waitFor();
   await mobile.evaluate(() => window.scrollTo(0, 0));
   await mobile.screenshot({ path: '/private/tmp/ai-student-qa-mobile.png', fullPage: true });
 

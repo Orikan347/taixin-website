@@ -744,11 +744,23 @@ function getPhaseText(phase) {
 
 function renderProfile(spec, strategy) {
   profilePanel.classList.add('is-visible');
-  const talents = Array.isArray(spec.sales_talents) ? spec.sales_talents.slice(0, 3) : [];
-  const items = talents.map((talent, index) => [
-    talent.title || `銷售天賦 ${index + 1}`,
-    [talent.insight, talent.strategy].filter(Boolean).join('\n')
-  ]);
+  const salesAdvantages = Array.isArray(spec.sales_advantages)
+    ? spec.sales_advantages.slice(0, 3)
+    : (Array.isArray(spec.sales_talents) ? spec.sales_talents.slice(0, 3) : []);
+  const lifeTalents = Array.isArray(spec.life_talents) ? spec.life_talents.slice(0, 3) : [];
+  const items = [];
+  salesAdvantages.forEach((talent, index) => {
+    items.push([
+      talent.title || `行為模式銷售優點 ${index + 1}`,
+      [talent.insight, talent.strategy].filter(Boolean).join('\n')
+    ]);
+  });
+  lifeTalents.forEach((talent, index) => {
+    items.push([
+      talent.title || `生涯運數天賦 ${index + 1}`,
+      [talent.insight, talent.strategy].filter(Boolean).join('\n')
+    ]);
+  });
   items.push(['行為模式觀察', `${spec.disc_type || (strategy && strategy.disc_label) || '探索中'}${spec.life_number ? `｜生涯運數 ${spec.life_number}` : ''}`]);
   if (spec.sales_rhythm) items.push(['適合的成交節奏', spec.sales_rhythm]);
   if (spec.persuasion_power) items.push(['最該放大的說服力量', spec.persuasion_power]);

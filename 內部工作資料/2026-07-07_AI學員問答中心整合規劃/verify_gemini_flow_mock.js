@@ -43,10 +43,15 @@ global.fetch = async (_url, options) => {
           profile_spec: {
             disc_type: 'S',
             life_number: '7',
-            sales_talents: [
+            sales_advantages: [
               { title: '信任力', insight: '你讓人放下防備。', strategy: '先問出擔心，再說明價值。' },
               { title: '穩定力', insight: '你適合長期互動。', strategy: '把每次接觸留下下一步。' },
               { title: '故事力', insight: '你適合用真實案例說服。', strategy: '用 MBAF 接故事。' }
+            ],
+            life_talents: [
+              { title: '3 號：表達力', insight: '你能把事情講得有畫面。', strategy: '用故事讓客戶聽懂價值。' },
+              { title: '4 號：落地力', insight: '你讓人覺得可靠。', strategy: '把流程和服務說清楚。' },
+              { title: '7 號：洞察力', insight: '你能追到真正原因。', strategy: '用提問找出真顧慮。' }
             ],
             sales_rhythm: '先信任，再提問，最後推進。',
             persuasion_power: '把擔心翻成行動理由。',
@@ -102,7 +107,9 @@ global.fetch = async (_url, options) => {
   response = await gemini.transition(response.state, '客戶說太貴，想再考慮看看。');
   assert(response.profile_spec);
   assert.strictEqual(response.course_path, null);
-  assert(response.profile_spec.sales_talents.length === 3);
+  assert(response.profile_spec.sales_advantages.length === 3);
+  assert(response.profile_spec.life_talents.length === 3);
+  assert(response.profile_spec.life_talents.some((item) => item.title.includes('7')));
   assert(response.profile_spec.final_quote.length <= 30);
   assert(!response.reply.includes('我先不急著推薦課程'));
   assert(!response.reply.includes('最大卡點'));
