@@ -22,6 +22,7 @@ async function fillIntake(page, options = {}) {
   }
   await page.locator('#consent').check();
   await page.getByRole('button', { name: '開始探索' }).click();
+  await page.getByText('我來分析一下你的報告，接下來會問你幾個問題').waitFor();
   await page.waitForFunction(() => !document.querySelector('#chatMessage').disabled);
 }
 
@@ -56,7 +57,7 @@ async function mockGemini(page) {
             next_question: '',
             profile_spec: null,
             course_path: [
-              { id: 'zhizhi', name: '直指人心', reason: '先看懂客戶真正重視什麼，信任會比較快建立起來。' },
+              { id: 'zhizhi', name: '直指人心', reason: '<b>先看懂客戶真正重視什麼</b>，信任會比較快建立起來。' },
               { id: 'xiaolu', name: '極致效率', reason: '把客戶資料、追蹤和每天要做的事整理成方法，不再漏掉機會。' },
               { id: 'chengjiao', name: '成交地圖', reason: '再把五連問、MBAF 和拒絕處理接成一套成交流程。' }
             ],
@@ -71,7 +72,7 @@ async function mockGemini(page) {
                 disc_type: 'S 偏 I',
                 life_number: '7',
                 sales_advantages: [
-                  { title: '你容易建立安全感', insight: '你不會急著壓客戶做決定，對方比較敢說真話。', strategy: '先問出真正擔心，再進入價值說明。' },
+                  { title: '<b>你容易建立安全感</b>', insight: '你不會急著壓客戶做決定，對方比較敢說真話。', strategy: '先問出真正擔心，再進入價值說明。' },
                   { title: '你適合長期信任型成交', insight: '你不靠硬推，而是靠一次一次互動累積信任。', strategy: '每次互動都留下一個清楚下一步。' },
                   { title: '你會照顧客戶感受', insight: '你能注意到客戶的不安，這會讓對方覺得你懂他。', strategy: '先接住情緒，再處理價格或方案。' }
                 ],
@@ -168,13 +169,17 @@ async function verifyAgreementGateAndShare(page) {
   await page.getByText('生涯運數 7').waitFor();
   await page.getByText('你容易建立安全感').waitFor();
   await page.getByText('7 號：洞察力').waitFor();
+  if ((await page.locator('body').innerText()).includes('<b>')) throw new Error('raw HTML tag appeared in report');
   if (await page.getByText('生涯運數 3').count()) throw new Error('unexpected reduction chain number displayed');
   if (await page.locator('#coursePanel.is-visible').count()) throw new Error('course panel appeared before agreement');
-  if (!(await page.getByRole('button', { name: '確認準了再下載' }).isDisabled())) throw new Error('download should be disabled before agreement');
+  await page.getByRole('button', { name: '確認準了再下載' }).click();
+  await page.getByText('確認準了之後，我會把建議學習順序放進報告').waitFor();
+  await page.getByRole('button', { name: '看完準了，再看路徑' }).waitFor();
   if (await page.getByRole('button', { name: '像我，看看學習順序' }).count()) throw new Error('old accuracy button still visible');
   await send(page, '很準，有像我');
   await page.locator('#coursePanel.is-visible').waitFor();
   await page.locator('#coursePanel').getByRole('heading', { name: '極致效率' }).waitFor();
+  await page.getByRole('button', { name: '建議學習路徑' }).waitFor();
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: '下載 9:16 圖片' }).click();
   const download = await downloadPromise;
@@ -188,7 +193,7 @@ async function verifyAgreementGateAndShare(page) {
   const meta = await page.evaluate(() => window.__TAIXIN_LAST_SHARE_META);
   if (!payload || payload.sales_advantages.length !== 3 || payload.life_talents.length !== 3) throw new Error('share payload missing report content');
   if (!payload.course_path.includes('極致效率')) throw new Error('share payload missing course path');
-  if (!meta || meta.width !== 1080 || meta.height !== 1920 || meta.portrait_mode !== 'cover') throw new Error('share metadata missing portrait/layout proof');
+  if (!meta || meta.width !== 1080 || meta.height !== 1920 || meta.portrait_mode !== 'contain') throw new Error('share metadata missing portrait/layout proof');
   if (meta.design_asset !== 'img/sales-talent-share-template.png') throw new Error('share image did not use design skill template asset');
   await page.getByRole('link', { name: '填寫報名表單' }).waitFor();
   await page.getByRole('link', { name: 'LINE 詢問最新場次' }).waitFor();

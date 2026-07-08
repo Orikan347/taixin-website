@@ -61,7 +61,9 @@ a { color: inherit; }
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center top;
+  background: #eef1f6;
 }
 .nav-links {
   display: flex;
@@ -129,7 +131,9 @@ h3 { font-size: 1rem; }
   width: 180px;
   height: 180px;
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center top;
+  background: #eef1f6;
   border: 1px solid var(--line);
 }
 .signature-line {
@@ -294,10 +298,11 @@ textarea {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center top;
   border: 1px solid #d7dde8;
   flex: 0 0 auto;
-  background: #fff;
+  background: #eef1f6;
 }
 .message-wrap {
   max-width: 82%;
@@ -360,7 +365,9 @@ textarea {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center top;
+  background: rgba(255,255,255,0.18);
   border: 2px solid rgba(255,255,255,0.8);
 }
 .talent-card-head h3 {
@@ -450,7 +457,7 @@ textarea {
   .nav { padding: 12px; }
   .intro { grid-template-columns: 1fr; }
   .portrait { width: 126px; height: 126px; }
-  .choice-grid,
+  .choice-grid { grid-template-columns: 1fr; }
   .talent-card-head { grid-template-columns: 58px minmax(0, 1fr); }
   .talent-card-head img { width: 58px; height: 58px; }
   .chat-input { grid-template-columns: 1fr; }
@@ -616,6 +623,7 @@ textarea {
         <div class="btn-row share-actions">
           <button class="btn btn-primary" type="button" id="downloadReportButton">下載 9:16 圖片</button>
           <button class="btn btn-outline" type="button" id="shareReportButton">分享圖片</button>
+          <button class="btn btn-soft" type="button" id="showCoursePathButton">建議學習路徑</button>
         </div>
       </div>
 
@@ -650,6 +658,7 @@ const coursePanel = document.getElementById('coursePanel');
 const coursePath = document.getElementById('coursePath');
 const downloadReportButton = document.getElementById('downloadReportButton');
 const shareReportButton = document.getElementById('shareReportButton');
+const showCoursePathButton = document.getElementById('showCoursePathButton');
 const offeringRows = document.getElementById('offeringRows');
 const offeringNote = document.getElementById('offeringNote');
 let currentState = null;
@@ -695,9 +704,12 @@ form.addEventListener('submit', async (event) => {
   lastReport = null;
   lastCoursePath = null;
   updateShareButtons();
+  phaseLabel.textContent = '探索中';
+  const greeting = `${profile.name || '你好'}，你好！我來分析一下你的報告，接下來會問你幾個問題。你不用回答得很漂亮，講你真實的銷售現場就好，這樣我抓你的銷售天賦才會準。`;
+  addMessage(greeting, 'bot');
   chatMessage.disabled = false;
   sendButton.disabled = false;
-  setBusy(true, '整理中...');
+  setBusy(true, '分析中...');
   try {
     const response = await TaixinGeminiStudentQA.start(profile, appContext);
     currentState = response.state;
@@ -768,6 +780,15 @@ shareReportButton.addEventListener('click', async () => {
   link.remove();
   URL.revokeObjectURL(url);
   sendLeadEvent('report_downloaded_share_fallback');
+});
+
+showCoursePathButton.addEventListener('click', () => {
+  if (Array.isArray(lastCoursePath) && lastCoursePath.length) {
+    coursePanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  addMessage('你先回我這份報告像不像你。只要你說「有準」或「像我」，我就會把適合你的學習順序整理在報告底下。', 'bot');
+  chatMessage.focus();
 });
 
 function getProfile() {
@@ -907,7 +928,7 @@ function addMessage(text, type) {
     speaker.textContent = 'Orikan 李泰欣';
     const bubble = document.createElement('div');
     bubble.className = 'message bot';
-    bubble.textContent = text;
+    bubble.textContent = stripDisplayText(text);
     wrap.appendChild(speaker);
     wrap.appendChild(bubble);
     row.appendChild(avatar);
@@ -917,7 +938,7 @@ function addMessage(text, type) {
     wrap.className = 'message-wrap';
     const bubble = document.createElement('div');
     bubble.className = 'message user';
-    bubble.textContent = text;
+    bubble.textContent = stripDisplayText(text);
     wrap.appendChild(bubble);
     row.appendChild(wrap);
   }
@@ -954,11 +975,11 @@ function renderProfile(spec, strategy) {
   }
   profilePanel.classList.add('is-visible');
   const salesAdvantages = Array.isArray(spec.sales_advantages)
-    ? spec.sales_advantages.slice(0, 3)
-    : (Array.isArray(spec.sales_talents) ? spec.sales_talents.slice(0, 3) : []);
-  const lifeTalents = Array.isArray(spec.life_talents) ? spec.life_talents.slice(0, 3) : [];
+    ? cleanReportItems(spec.sales_advantages).slice(0, 3)
+    : (Array.isArray(spec.sales_talents) ? cleanReportItems(spec.sales_talents).slice(0, 3) : []);
+  const lifeTalents = Array.isArray(spec.life_talents) ? cleanReportItems(spec.life_talents).slice(0, 3) : [];
   const profile = getProfile();
-  const disc = spec.disc_type || (strategy && strategy.disc_label) || '探索中';
+  const disc = stripDisplayText(spec.disc_type || (strategy && strategy.disc_label) || '探索中');
   const primaryDisc = normalizeDisc(disc);
   const theme = getTheme(primaryDisc);
   const mainLife = extractMainLifeNumber(spec.life_number || (currentState && currentState.deterministic_state && currentState.deterministic_state.computed && currentState.deterministic_state.computed.life_number) || '');
@@ -966,7 +987,7 @@ function renderProfile(spec, strategy) {
   lastCoursePath = null;
   lastReport = {
     profile,
-    spec: Object.assign({}, spec, { life_number: mainLife, final_quote: quote }),
+    spec: Object.assign({}, cleanReportSpec(spec), { life_number: mainLife, final_quote: quote }),
     strategy,
     primaryDisc,
     theme,
@@ -1014,8 +1035,8 @@ function renderProfile(spec, strategy) {
 
 function renderCoursePath(path) {
   coursePanel.classList.add('is-visible');
-  lastCoursePath = path;
-  coursePath.innerHTML = path.map((course) => `
+  lastCoursePath = (path || []).map(cleanCourseItem);
+  coursePath.innerHTML = lastCoursePath.map((course) => `
     <div class="course-item">
       <h3>${escapeHtml(course.order ? `${course.order}. ` : '')}${escapeHtml(course.name)}</h3>
       <p>${escapeHtml(course.reason)}</p>
@@ -1035,9 +1056,39 @@ function coursePage(course) {
 function renderList(items) {
   const normalized = (items || []).slice(0, 3);
   return `<ol>${normalized.map((item) => {
-    const body = [item.insight, item.strategy].filter(Boolean).join(' ');
+    const body = [item.insight, item.strategy].filter(Boolean).map(stripDisplayText).join(' ');
     return `<li><strong>${escapeHtml(item.title || '')}</strong>${escapeHtml(body)}</li>`;
   }).join('')}</ol>`;
+}
+
+function cleanReportItems(items) {
+  return (Array.isArray(items) ? items : []).map((item, index) => ({
+    title: stripDisplayText(item && item.title || `第 ${index + 1} 點`),
+    insight: stripDisplayText(item && item.insight || ''),
+    strategy: stripDisplayText(item && item.strategy || '')
+  }));
+}
+
+function cleanReportSpec(spec) {
+  const clean = Object.assign({}, spec || {});
+  clean.disc_type = stripDisplayText(clean.disc_type);
+  clean.life_number = stripDisplayText(clean.life_number);
+  clean.practical_advice = stripDisplayText(clean.practical_advice);
+  clean.persuasion_power = stripDisplayText(clean.persuasion_power);
+  clean.final_quote = stripDisplayText(clean.final_quote);
+  clean.sales_advantages = cleanReportItems(clean.sales_advantages);
+  clean.life_talents = cleanReportItems(clean.life_talents);
+  return clean;
+}
+
+function cleanCourseItem(course) {
+  return {
+    order: course && course.order,
+    id: stripDisplayText(course && course.id),
+    name: stripDisplayText(course && course.name),
+    page: course && course.page,
+    reason: stripDisplayText(course && course.reason)
+  };
 }
 
 function isCompleteReportSpec(spec) {
@@ -1072,7 +1123,7 @@ function updateShareButtons() {
   if (!downloadReportButton || !shareReportButton) return;
   const validation = getReportValidation();
   [downloadReportButton, shareReportButton].forEach((button) => {
-    button.disabled = !validation.ok;
+    button.disabled = !lastReport;
     button.title = validation.ok ? '' : validation.message;
   });
   if (validation.ok) {
@@ -1081,6 +1132,10 @@ function updateShareButtons() {
   } else if (lastReport) {
     downloadReportButton.textContent = '確認準了再下載';
     shareReportButton.textContent = '確認準了再分享';
+  }
+  if (showCoursePathButton) {
+    showCoursePathButton.disabled = !lastReport;
+    showCoursePathButton.textContent = Array.isArray(lastCoursePath) && lastCoursePath.length ? '建議學習路徑' : '看完準了，再看路徑';
   }
 }
 
@@ -1106,7 +1161,7 @@ function extractMainLifeNumber(value) {
 }
 
 function formatQuote(value) {
-  const text = String(value || '').replace(/[「」"']/g, '').replace(/^Orikan 李泰欣送你一句話：?/, '').trim();
+  const text = stripDisplayText(value).replace(/[「」"']/g, '').replace(/^Orikan 李泰欣送你一句話：?/, '').trim();
   return `Orikan 李泰欣送你一句話：${text}`;
 }
 
@@ -1183,17 +1238,17 @@ async function buildShareImageBlob() {
     name: profile.name || '你',
     disc: spec.disc_type || '',
     life_number: spec.life_number || '',
-    sales_advantages: lastReport.salesAdvantages.map((item) => item.title),
-    life_talents: lastReport.lifeTalents.map((item) => item.title),
-    practical_advice: spec.practical_advice || '',
-    final_quote: spec.final_quote || '',
-    course_path: path.map((course) => course.name)
+    sales_advantages: lastReport.salesAdvantages.map((item) => stripDisplayText(item.title)),
+    life_talents: lastReport.lifeTalents.map((item) => stripDisplayText(item.title)),
+    practical_advice: stripDisplayText(spec.practical_advice || ''),
+    final_quote: stripDisplayText(spec.final_quote || ''),
+    course_path: path.map((course) => stripDisplayText(course.name))
   };
   window.__TAIXIN_LAST_SHARE_PAYLOAD = sharePayload;
   window.__TAIXIN_LAST_SHARE_META = {
     width: canvasWidth,
     height: canvasHeight,
-    portrait_mode: 'cover',
+    portrait_mode: 'contain',
     template: 'v3-premium-story-card',
     design_asset: 'img/sales-talent-share-template.png',
     blocks: ['headline', 'identity', 'sales_advantages', 'life_talents', 'practical_advice', 'quote', 'course_path']
@@ -1219,9 +1274,9 @@ async function buildShareImageBlob() {
   ctx.fill();
   ctx.fillStyle = theme.dark;
   ctx.font = '900 44px "Noto Sans TC", sans-serif';
-  ctx.fillText(`${profile.name || '你'}`, 146, 522);
+  ctx.fillText(`${stripDisplayText(profile.name || '你')}`, 146, 522);
   ctx.font = '800 31px "Noto Sans TC", sans-serif';
-  ctx.fillText(`${spec.disc_type || ''}｜生涯運數 ${spec.life_number || ''}`, 146, 572);
+  ctx.fillText(`${stripDisplayText(spec.disc_type || '')}｜生涯運數 ${stripDisplayText(spec.life_number || '')}`, 146, 572);
 
   let y = 650;
   y = drawPremiumReportBlock(ctx, theme, '你的銷售優點是', lastReport.salesAdvantages, 112, y, 856);
@@ -1233,9 +1288,9 @@ async function buildShareImageBlob() {
   ctx.fill();
   ctx.fillStyle = theme.dark;
   ctx.font = '900 29px "Noto Sans TC", sans-serif';
-  wrapTextMax(ctx, spec.final_quote || 'Orikan 李泰欣送你一句話：銷售力不從心，因為從沒遇過李泰欣。', 144, y + 66, 792, 40, 2);
+  wrapTextMax(ctx, stripDisplayText(spec.final_quote || 'Orikan 李泰欣送你一句話：銷售力不從心，因為從沒遇過李泰欣。'), 144, y + 66, 792, 40, 2);
 
-  const courseText = path.map((course, index) => `${index + 1}. ${course.name}`).join('  ');
+  const courseText = path.map((course, index) => `${index + 1}. ${stripDisplayText(course.name)}`).join('  ');
   ctx.fillStyle = theme.dark;
   roundedRect(ctx, 72, 1732, 936, 92, 46);
   ctx.fill();
@@ -1289,9 +1344,26 @@ async function drawPortrait(ctx, x, y, width, height) {
   roundedRect(ctx, x, y, width, height, 28);
   ctx.clip();
   if (image.complete && image.naturalWidth) {
-    drawImageCover(ctx, image, x, y, width, height);
+    drawImageContain(ctx, image, x, y, width, height, '#eef1f6');
   }
   ctx.restore();
+}
+
+function drawImageContain(ctx, image, x, y, width, height, fill) {
+  ctx.fillStyle = fill || '#ffffff';
+  ctx.fillRect(x, y, width, height);
+  const imageRatio = image.naturalWidth / image.naturalHeight;
+  const boxRatio = width / height;
+  let targetWidth = width;
+  let targetHeight = height;
+  if (imageRatio > boxRatio) {
+    targetHeight = width / imageRatio;
+  } else {
+    targetWidth = height * imageRatio;
+  }
+  const targetX = x + (width - targetWidth) / 2;
+  const targetY = y + Math.max(0, (height - targetHeight) * 0.08);
+  ctx.drawImage(image, targetX, targetY, targetWidth, targetHeight);
 }
 
 function drawImageCover(ctx, image, x, y, width, height) {
@@ -1320,10 +1392,10 @@ function drawPremiumReportBlock(ctx, theme, title, items, x, y, width) {
   (items || []).slice(0, 3).forEach((item, index) => {
     ctx.fillStyle = theme.main;
     ctx.font = '900 25px "Noto Sans TC", sans-serif';
-    ctx.fillText(`${index + 1}. ${item.title || ''}`, x, cursor);
+    ctx.fillText(`${index + 1}. ${stripDisplayText(item.title || '')}`, x, cursor);
     ctx.fillStyle = '#263245';
     ctx.font = '700 23px "Noto Sans TC", sans-serif';
-    const body = [item.insight, item.strategy].filter(Boolean).join(' ');
+    const body = [item.insight, item.strategy].filter(Boolean).map(stripDisplayText).join(' ');
     cursor = wrapTextMax(ctx, body, x + 34, cursor + 34, width - 34, 31, 2) + 8;
   });
   return cursor;
@@ -1335,7 +1407,7 @@ function drawSingleTextBlock(ctx, theme, title, text, x, y, width) {
   ctx.fillText(title, x, y);
   ctx.fillStyle = '#263245';
   ctx.font = '800 25px "Noto Sans TC", sans-serif';
-  return wrapTextMax(ctx, text, x, y + 46, width, 35, 3) + 8;
+  return wrapTextMax(ctx, stripDisplayText(text), x, y + 46, width, 35, 3) + 8;
 }
 
 function roundedRect(ctx, x, y, width, height, radius) {
@@ -1419,12 +1491,21 @@ function withAlpha(hex, alpha) {
 }
 
 function escapeHtml(value) {
-  return String(value || '')
+  return stripDisplayText(value)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+function stripDisplayText(value) {
+  return String(value || '')
+    .replace(/<\/?[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&lt;\/?[^&]+&gt;/g, '')
+    .replace(/[ \t]{2,}/g, ' ')
+    .trim();
 }
 </script>
 </body>
