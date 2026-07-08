@@ -41,7 +41,7 @@ async function mockGemini(page) {
     const discovery = discoveryMatch ? JSON.parse(discoveryMatch[1]) : { can_build_report: false };
     const slots = discovery.slots || {};
     const asksOffering = /開課|多少錢|複訓|價格|課程學什麼|會學到什麼/.test(latestMessage);
-    const agreed = /^(有|有啊|有喔)$/.test(latestMessage.trim()) || /(有準|很準|像我|有像)/.test(latestMessage);
+    const agreed = /^(有|有啊|有喔|yes)$/i.test(latestMessage.trim()) || /(有準|很準|像我|有像)/.test(latestMessage);
     const fixedBadDiscovery = /(考慮看看|沒錢|再比較|家人討論|怕沒有效|沒時間|很忙)/.test(latestMessage)
       ? {
           phase: 'discovery',
@@ -73,7 +73,7 @@ async function mockGemini(page) {
       : agreed
         ? {
             phase: 'recommendation',
-            reply: '太好了，這代表你的優勢其實很清楚。接下來照這個學習順序補，你會更快把信任、追蹤和成交接起來。',
+            reply: '太好了，這代表你的優勢其實很清楚。我直接把最適合你的三堂課先列給你：\n\n1. 直指人心：先看懂客戶真正重視什麼。\n2. 極致效率：把客戶資料和追蹤整理成方法。\n3. 成交地圖：再把五連問、MBAF 和拒絕處理接成一套流程。',
             next_question: '',
             profile_spec: null,
             course_path: [
@@ -86,7 +86,7 @@ async function mockGemini(page) {
         : discovery.can_build_report
           ? {
               phase: 'profile_ready',
-              reply: 'andy，我聽到你說客戶覺得高價服務很貴，這確實是很多專業人士會遇到的挑戰。這通常不是服務本身沒有價值，而是客戶還沒看見那份值得。我把你的銷售天賦整理成表格，已經放在底下給你囉。\n\n你覺得有準嗎？也可以繼續了解怎麼做，讓自己成長更快。',
+              reply: 'andy，我聽到你說客戶覺得高價服務很貴，這確實是很多專業人士會遇到的挑戰。這通常不是服務本身沒有價值，而是客戶還沒看見那份值得。我把你的銷售天賦整理成表格，已經放在底下給你囉。\n\n你覺得有準嗎？也可以繼續了解怎麼做，讓自己成長更快。想繼續了解，直接回 yes。',
               next_question: '',
               profile_spec: {
                 disc_type: 'S 偏 I',
@@ -197,7 +197,11 @@ async function verifyAgreementGateAndShare(page) {
   if (await page.getByText('生涯運數 3').count()) throw new Error('unexpected reduction chain number displayed');
   if (await page.locator('#coursePanel.is-visible').count()) throw new Error('course panel appeared before agreement');
   if (!reportBody.includes('我把你的銷售天賦整理成表格')) throw new Error('new report-ready wording missing');
+  if (!reportBody.includes('直接回 yes')) throw new Error('yes action hint missing after report');
   if (reportBody.includes('你看完之後，覺得像你嗎？有準嗎？')) throw new Error('old accuracy wording still visible');
+  const actionsBox = await page.locator('.share-actions').boundingBox();
+  const reportBox = await page.locator('#reportCard').boundingBox();
+  if (!actionsBox || !reportBox || actionsBox.y >= reportBox.y) throw new Error('report action buttons are not above report card');
   await page.getByRole('button', { name: '建議學習路徑' }).click();
   await page.locator('#coursePanel.is-visible').waitFor();
   await page.locator('#coursePanel').getByRole('heading', { name: /直指人心|極致效率|成交地圖/ }).first().waitFor();
@@ -206,12 +210,15 @@ async function verifyAgreementGateAndShare(page) {
   const firstDownload = await downloadBeforeAgreement;
   if (!firstDownload.suggestedFilename().endsWith('.png')) throw new Error('pre-agreement report download is not png');
   if (await page.getByRole('button', { name: '像我，看看學習順序' }).count()) throw new Error('old accuracy button still visible');
-  await send(page, '有');
+  await send(page, 'yes');
   await page.locator('#coursePanel.is-visible').waitFor();
   const agreedBody = await page.locator('body').innerText();
   const reportRepeats = agreedBody.match(/我已經把你剛剛講的銷售現場整理好了/g) || [];
   if (reportRepeats.length > 1) throw new Error('agreement repeated report instead of course path');
   if (agreedBody.includes('[object Object]')) throw new Error('object serialization appeared after agreement');
+  if (!agreedBody.includes('1. 直指人心') || !agreedBody.includes('2. 極致效率') || !agreedBody.includes('3. 成交地圖')) {
+    throw new Error('agreement reply did not list three recommended courses in text');
+  }
   await page.locator('#coursePanel').getByRole('heading', { name: '極致效率' }).waitFor();
   await page.getByRole('button', { name: '建議學習路徑' }).waitFor();
   const downloadPromise = page.waitForEvent('download');
@@ -237,6 +244,27 @@ async function verifyAgreementGateAndShare(page) {
 async function verifyShortAnswerMemory(page) {
   await page.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
   await mockGemini(page);
+  await fillIntake(page, {
+    name: 'amy',
+    industry: '教育課程',
+    problems: [],
+    goals: []
+  });
+  await send(page, '賣教育課程');
+  const educationBody1 = await page.locator('body').innerText();
+  if (!educationBody1.includes('教育課程')) throw new Error('education product answer was not retained');
+  await send(page, '上班族');
+  const educationBody2 = await page.locator('body').innerText();
+  if (!educationBody2.includes('教育課程') || !educationBody2.includes('上班族')) throw new Error('education customer context was not retained');
+  if (!/(沒時間|價格高|看不到效果|再想想)/.test(educationBody2)) throw new Error('education customer answer did not move to pain question');
+  const repeatedEducation = educationBody2.match(/我會先看它跟教育課程、上班族的關係/g) || [];
+  if (repeatedEducation.length) throw new Error('generic diagnosis appeared for education short answers');
+  await send(page, '成交率提高');
+  const educationBody3 = await page.locator('body').innerText();
+  if (await page.locator('#profilePanel.is-visible').count()) throw new Error('goal answer was incorrectly treated as pain and produced report');
+  if (!/(真實阻力|沒有往前走|最常不買|太貴|再想想|看不到效果)/.test(educationBody3)) throw new Error('goal without pain did not ask for real blocker');
+
+  await page.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
   await fillIntake(page, {
     name: 'amy',
     industry: '保健品',

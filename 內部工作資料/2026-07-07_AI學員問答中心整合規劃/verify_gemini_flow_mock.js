@@ -50,21 +50,22 @@ global.fetch = async (_url, options) => {
         course_path: [],
         cta_ready: false
       }
-    : /^(有|有啊|有喔)$/.test(latestMessage.trim()) || /(有準|像我)/.test(latestMessage)
+    : /^(有|有啊|有喔|yes)$/i.test(latestMessage.trim()) || /(有準|像我)/.test(latestMessage)
     ? {
         phase: 'recommendation',
-        reply: '太好了，這代表你的優勢其實很清楚。接下來照這個學習順序補，你會更快把看懂客戶、追蹤和成交接起來。',
+        reply: '太好了，這代表你的優勢其實很清楚。我直接把最適合你的三堂課先列給你：\n\n1. 直指人心：先看懂客戶與信任建立。\n2. 成交地圖：再補五連問、MBAF 與拒絕處理。\n3. 極致效率：把追蹤整理起來。',
         next_question: '',
         profile_spec: null,
         course_path: [
           { id: 'zhizhi', name: '直指人心', reason: '先看懂客戶與信任建立。' },
-          { id: 'chengjiao', name: '成交地圖', reason: '再補五連問、MBAF 與拒絕處理。' }
+          { id: 'chengjiao', name: '成交地圖', reason: '再補五連問、MBAF 與拒絕處理。' },
+          { id: 'xiaolu', name: '極致效率', reason: '把追蹤整理起來。' }
         ]
       }
     : discovery.can_build_report
       ? {
           phase: 'profile_ready',
-          reply: '我把你的銷售天賦整理成表格，已經放在底下給你囉。\n\n你覺得有準嗎？也可以繼續了解怎麼做，讓自己成長更快。',
+          reply: '我把你的銷售天賦整理成表格，已經放在底下給你囉。\n\n你覺得有準嗎？也可以繼續了解怎麼做，讓自己成長更快。想繼續了解，直接回 yes。',
           next_question: '',
           profile_spec: {
             disc_type: 'S',
@@ -154,12 +155,17 @@ global.fetch = async (_url, options) => {
   assert(!response.reply.includes('最大卡點'));
   assert(!response.reply.includes('卡住'));
   assert(response.reply.includes('我把你的銷售天賦整理成表格'));
+  assert(response.reply.includes('直接回 yes'));
   assert(!response.reply.includes('你看完之後，覺得像你嗎？有準嗎？'));
 
-  const recommended = await gemini.transition(response.state, '有啊');
+  const recommended = await gemini.transition(response.state, 'yes');
   assert(recommended.course_path);
   assert.strictEqual(recommended.phase, 'recommendation');
   assert(recommended.cta);
+  assert(recommended.reply.includes('1.'));
+  assert(recommended.reply.includes('2.'));
+  assert(recommended.reply.includes('3.'));
+  assert(recommended.reply.includes('直指人心') || recommended.reply.includes('成交地圖'));
 
   const shortAnswerEvidence = gemini.analyzeDiscoveryEvidence([
     { role: 'user', content: '保健品' },
@@ -229,6 +235,42 @@ global.fetch = async (_url, options) => {
   assert(repeatedResponse.reply.includes('保健品'));
   assert(repeatedResponse.reply.includes('上班族'));
   assert(!repeatedResponse.reply.includes('哪一種客戶'));
+  assert(!repeatedResponse.reply.includes('這句話其實已經透露一個銷售訊號'));
+
+  const educationState = gemini.createSession({
+    birthdate: '1991-07-07',
+    name: 'amy',
+    email: 'amy@example.com',
+    phone: 'LINE-amy',
+    region: 'tw',
+    role: 'sales_consultant',
+    industry: '教育課程',
+    disc_hate_sales: 'I',
+    disc_hate_workplace: 'I',
+    disc_hate_customer: 'I',
+    problems: [],
+    goals: []
+  }, context);
+  let educationResponse = await gemini.transition(educationState, '賣教育課程');
+  assert(educationResponse.reply.includes('教育課程'));
+  assert(educationResponse.reply.includes('誰') || educationResponse.reply.includes('哪一種人'));
+  educationResponse = await gemini.transition(educationResponse.state, '上班族');
+  assert(educationResponse.reply.includes('教育課程'));
+  assert(educationResponse.reply.includes('上班族'));
+  assert(/沒時間|價格高|看不到效果|再想想/.test(educationResponse.reply));
+  const firstEducationReply = educationResponse.state.messages.find((msg) => msg.role === 'assistant').content;
+  assert.notStrictEqual(
+    firstEducationReply.replace(/\s+/g, ''),
+    educationResponse.reply.replace(/\s+/g, '')
+  );
+  const goalWithoutProblem = await gemini.transition(educationResponse.state, '成交率提高');
+  assert(!goalWithoutProblem.profile_spec);
+  assert.strictEqual(goalWithoutProblem.phase, 'discovery');
+  assert(
+    goalWithoutProblem.reply.includes('真實阻力') ||
+    goalWithoutProblem.reply.includes('沒有往前走') ||
+    goalWithoutProblem.reply.includes('最常不買')
+  );
 
   const enoughState = gemini.createSession({
     birthdate: '1991-07-07',
@@ -287,7 +329,7 @@ global.fetch = async (_url, options) => {
     assert(!consultResponse.reply.includes('最後補一個真實情境'), consultResponse.reply);
     assert(consultResponse.reply.includes('我再問你一個關鍵就好'), consultResponse.reply);
   }
-  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nSHORT-ANSWER-CONTEXT: PASS\nFIVE-INDUSTRY-SHORT-ANSWER: PASS\nVOICE-OF-CUSTOMER-DIAGNOSIS: PASS\nENOUGH-DATA-FORCES-REPORT: PASS\nOBJECTION-RECOVERY: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
+  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nSHORT-ANSWER-CONTEXT: PASS\nEDUCATION-SHORT-ANSWER-NO-REPEAT: PASS\nFIVE-INDUSTRY-SHORT-ANSWER: PASS\nVOICE-OF-CUSTOMER-DIAGNOSIS: PASS\nENOUGH-DATA-FORCES-REPORT: PASS\nOBJECTION-RECOVERY: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
 })().catch((error) => {
   console.error(error);
   process.exit(1);
