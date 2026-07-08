@@ -29,7 +29,7 @@ global.fetch = async (_url, options) => {
 
   const latestMatch = prompt.match(/使用者最新訊息：\n([\s\S]*?)\n\n輸出 JSON/);
   const latestMessage = latestMatch ? latestMatch[1] : '';
-  const discoveryMatch = prompt.match(/對話蒐集狀態：\n([\s\S]*?)\n\n規則型輔助判斷/);
+  const discoveryMatch = prompt.match(/對話蒐集狀態：\n([\s\S]*?)\n\n目前已確認的學生資訊欄位/);
   const discovery = discoveryMatch ? JSON.parse(discoveryMatch[1]) : { can_build_report: false };
   const payload = /(有準|像我)/.test(latestMessage)
     ? {
@@ -71,8 +71,8 @@ global.fetch = async (_url, options) => {
       : {
           phase: 'discovery',
           reply: callCount === 1
-            ? '你先跟我說一下，你現在主要賣什麼？客戶通常是哪一種人？'
-            : '你剛剛提到客戶會猶豫。最近一次沒有成交的情境是什麼？',
+            ? '好，我抓到了。你賣的是保險，對象是家庭客戶。我再往下看一點：最近一次沒有成交，對方是怎麼回你的？'
+            : '你剛剛提到客戶會猶豫。下一次遇到同樣狀況，你最想讓自己哪個地方更強？',
           next_question: '',
           profile_spec: null,
           course_path: [],
@@ -111,7 +111,7 @@ global.fetch = async (_url, options) => {
     goals: ['提升成交']
   }, context);
 
-  assert(response.reply.includes('主要賣什麼'));
+  assert.strictEqual(response.reply, '');
   response = await gemini.transition(response.state, '我賣保險，客戶多半是家庭客戶。');
   assert(response.reply.includes('最近一次'));
   response = await gemini.transition(response.state, '客戶說太貴，想再考慮看看。');

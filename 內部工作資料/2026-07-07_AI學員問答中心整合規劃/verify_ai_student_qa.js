@@ -22,7 +22,7 @@ async function fillIntake(page, options = {}) {
   }
   await page.locator('#consent').check();
   await page.getByRole('button', { name: '開始探索' }).click();
-  await page.getByText('我來分析一下你的報告，接下來會問你幾個問題').waitFor();
+  await page.getByText('我是泰欣，我先幫你看一下你的銷售狀況').waitFor();
   await page.waitForFunction(() => !document.querySelector('#chatMessage').disabled);
 }
 
@@ -37,8 +37,9 @@ async function mockGemini(page) {
     }
     const latestMatch = prompt.match(/使用者最新訊息：\n([\s\S]*?)\n\n輸出 JSON/);
     const latestMessage = latestMatch ? latestMatch[1] : '';
-    const discoveryMatch = prompt.match(/對話蒐集狀態：\n([\s\S]*?)\n\n規則型輔助判斷/);
+    const discoveryMatch = prompt.match(/對話蒐集狀態：\n([\s\S]*?)\n\n目前已確認的學生資訊欄位/);
     const discovery = discoveryMatch ? JSON.parse(discoveryMatch[1]) : { can_build_report: false };
+    const slots = discovery.slots || {};
     const asksOffering = /開課|多少錢|複訓|價格|課程學什麼|會學到什麼/.test(latestMessage);
     const agreed = /(有準|很準|像我|有像)/.test(latestMessage);
     const payload = asksOffering
@@ -92,8 +93,8 @@ async function mockGemini(page) {
           : {
               phase: 'discovery',
               reply: count === 1
-                ? '你先跟我說一下，你現在主要賣什麼？客戶通常是哪一種人？'
-                : '你剛剛提到客戶會猶豫。最近一次沒有成交的情境是什麼？對方當時怎麼回你？',
+                ? `好，我抓到了，你現在談的是${slots.product || '你的商品'}，對象是${slots.customer || '你的客戶'}。我再往下看一點：最近一次沒有成交，對方是怎麼回你的？`
+                : `我有抓到你說的狀況了。接下來我想看你的成交天賦：下次遇到同樣客戶，你最想讓自己哪個地方更強？`,
             next_question: '',
             profile_spec: null,
             course_path: [],
@@ -193,10 +194,39 @@ async function verifyAgreementGateAndShare(page) {
   const meta = await page.evaluate(() => window.__TAIXIN_LAST_SHARE_META);
   if (!payload || payload.sales_advantages.length !== 3 || payload.life_talents.length !== 3) throw new Error('share payload missing report content');
   if (!payload.course_path.includes('極致效率')) throw new Error('share payload missing course path');
-  if (!meta || meta.width !== 1080 || meta.height !== 1920 || meta.portrait_mode !== 'contain') throw new Error('share metadata missing portrait/layout proof');
+  if (!meta || meta.width !== 1080 || meta.height !== 1920 || meta.portrait_mode !== 'face-centered-cover') throw new Error('share metadata missing portrait/layout proof');
   if (meta.design_asset !== 'img/sales-talent-share-template.png') throw new Error('share image did not use design skill template asset');
   await page.getByRole('link', { name: '填寫報名表單' }).waitFor();
   await page.getByRole('link', { name: 'LINE 詢問最新場次' }).waitFor();
+}
+
+async function verifyShortAnswerMemory(page) {
+  await page.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
+  await mockGemini(page);
+  await fillIntake(page, {
+    name: 'amy',
+    industry: '高端汽車',
+    problems: ['成交不了', '很忙沒結果'],
+    goals: ['提升成交']
+  });
+  await send(page, '保時捷');
+  await page.getByText('保時捷').last().waitFor();
+  await send(page, '企業老闆');
+  const bodyAfterSecond = await page.locator('body').innerText();
+  if ((bodyAfterSecond.match(/你先跟我說清楚一點/g) || []).length) throw new Error('banned fixed question appeared');
+  await send(page, '成交');
+  await page.locator('#profilePanel.is-visible').waitFor({ timeout: 5000 });
+  const body = await page.locator('body').innerText();
+  const banned = ['你先跟我說清楚一點', '我還差一點點', '最後我再確認一題'];
+  for (const phrase of banned) {
+    if (body.includes(phrase)) throw new Error(`banned repeated question appeared: ${phrase}`);
+  }
+  const repeats = body.match(/你現在主要賣什麼/g) || [];
+  if (repeats.length > 1) throw new Error('product question repeated');
+  await page
+    .locator('#profilePanel.is-visible')
+    .locator('h2', { hasText: '你的銷售天賦報告' })
+    .waitFor();
 }
 
 async function verifyOfferingQuestion(page) {
@@ -211,7 +241,7 @@ async function verifyOfferingQuestion(page) {
 async function verifyNoFrontendAiLanguage(page) {
   await page.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
   const body = await page.locator('body').innerText();
-  const banned = ['我先不急著推薦課程', '先判斷像不像你，再推薦課程', '我目前不直接猜', '最大卡點', '成交節奏'];
+  const banned = ['我先不急著推薦課程', '先判斷像不像你，再推薦課程', '我目前不直接猜', '最大卡點', '成交節奏', '你先跟我說清楚一點', '我還差一點點', '最後我再確認一題'];
   for (const phrase of banned) {
     if (body.includes(phrase)) throw new Error(`banned phrase appears: ${phrase}`);
   }
@@ -227,6 +257,7 @@ async function verifyNoFrontendAiLanguage(page) {
   await verifyCourseOfferingsVisible(desktop);
   await verifyNoFrontendAiLanguage(desktop);
   await verifyAgreementGateAndShare(desktop);
+  await verifyShortAnswerMemory(desktop);
   await verifyOfferingQuestion(desktop);
   await desktop.screenshot({ path: '/private/tmp/ai-student-qa-desktop.png', fullPage: true });
 

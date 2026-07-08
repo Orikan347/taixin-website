@@ -61,8 +61,8 @@ a { color: inherit; }
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  object-fit: contain;
-  object-position: center top;
+  object-fit: cover;
+  object-position: center 18%;
   background: #eef1f6;
 }
 .nav-links {
@@ -131,8 +131,8 @@ h3 { font-size: 1rem; }
   width: 180px;
   height: 180px;
   border-radius: 8px;
-  object-fit: contain;
-  object-position: center top;
+  object-fit: cover;
+  object-position: center 18%;
   background: #eef1f6;
   border: 1px solid var(--line);
 }
@@ -298,8 +298,8 @@ textarea {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  object-fit: contain;
-  object-position: center top;
+  object-fit: cover;
+  object-position: center 18%;
   border: 1px solid #d7dde8;
   flex: 0 0 auto;
   background: #eef1f6;
@@ -365,8 +365,8 @@ textarea {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  object-fit: contain;
-  object-position: center top;
+  object-fit: cover;
+  object-position: center 18%;
   background: rgba(255,255,255,0.18);
   border: 2px solid rgba(255,255,255,0.8);
 }
@@ -705,18 +705,18 @@ form.addEventListener('submit', async (event) => {
   lastCoursePath = null;
   updateShareButtons();
   phaseLabel.textContent = '探索中';
-  const greeting = `${profile.name || '你好'}，你好！我來分析一下你的報告，接下來會問你幾個問題。你不用回答得很漂亮，講你真實的銷售現場就好，這樣我抓你的銷售天賦才會準。`;
+  const greeting = `${profile.name || '你好'}，你好！我是泰欣，我先幫你看一下你的銷售狀況。接下來我會問你幾個問題，你不用回答得很完美，講真實情況就好。\n\n先用一句話跟我說：你現在主要賣什麼？你的客戶通常是哪一種人？`;
   addMessage(greeting, 'bot');
   chatMessage.disabled = false;
   sendButton.disabled = false;
-  setBusy(true, '分析中...');
+  setBusy(true, '準備中...');
   try {
     const response = await TaixinGeminiStudentQA.start(profile, appContext);
     currentState = response.state;
-    addMessage(response.reply, 'bot');
+    if (response.reply) addMessage(response.reply, 'bot');
     applyResponse(response);
     sendLeadEvent('intake_started');
-    chatMessage.placeholder = '用你的話回答就好，越像真實情境越準。';
+    chatMessage.placeholder = '例如：我賣保時捷，客戶多半是企業老闆。';
     chatMessage.focus();
   } finally {
     setBusy(false);
@@ -779,7 +779,7 @@ shareReportButton.addEventListener('click', async () => {
   link.click();
   link.remove();
   URL.revokeObjectURL(url);
-  sendLeadEvent('report_downloaded_share_fallback');
+  sendLeadEvent('report_downloaded_share_backup');
 });
 
 showCoursePathButton.addEventListener('click', () => {
@@ -828,13 +828,13 @@ async function loadAppContext() {
   renderOfferings(appContext.offerings);
 }
 
-async function loadJson(url, fallback) {
+async function loadJson(url, backupValue) {
   try {
     const response = await fetch(url, { cache: 'no-store' });
     if (!response.ok) throw new Error(`${url} unavailable`);
     return await response.json();
   } catch (error) {
-    return fallback;
+    return backupValue;
   }
 }
 
@@ -1248,7 +1248,7 @@ async function buildShareImageBlob() {
   window.__TAIXIN_LAST_SHARE_META = {
     width: canvasWidth,
     height: canvasHeight,
-    portrait_mode: 'contain',
+    portrait_mode: 'face-centered-cover',
     template: 'v3-premium-story-card',
     design_asset: 'img/sales-talent-share-template.png',
     blocks: ['headline', 'identity', 'sales_advantages', 'life_talents', 'practical_advice', 'quote', 'course_path']
@@ -1303,7 +1303,7 @@ async function buildShareImageBlob() {
   ctx.shadowColor = 'rgba(0,0,0,0.28)';
   ctx.shadowBlur = 8;
   ctx.font = '900 28px "Noto Sans TC", sans-serif';
-  ctx.fillText('Orikan 李泰欣', 72, 1878);
+  ctx.fillText('Orikan 李泰欣', 72, 1848);
   ctx.shadowBlur = 0;
   return new Promise((resolve) => canvas.toBlob(resolve, 'image/png', 0.95));
 }
@@ -1344,7 +1344,7 @@ async function drawPortrait(ctx, x, y, width, height) {
   roundedRect(ctx, x, y, width, height, 28);
   ctx.clip();
   if (image.complete && image.naturalWidth) {
-    drawImageContain(ctx, image, x, y, width, height, '#eef1f6');
+    drawImageCover(ctx, image, x, y, width, height);
   }
   ctx.restore();
 }
