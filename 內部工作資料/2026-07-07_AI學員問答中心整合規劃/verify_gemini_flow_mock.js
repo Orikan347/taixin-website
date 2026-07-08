@@ -168,6 +168,36 @@ global.fetch = async (_url, options) => {
   assert(shortAnswerEvidence.coverage.product);
   assert(shortAnswerEvidence.coverage.customer);
 
+  const fiveIndustryCases = [
+    ['保健品', '上班族', '太貴，也怕沒有效', '提升成交'],
+    ['保時捷', '企業老闆', '覺得價格高，想再比較', '建立信任'],
+    ['保險', '家庭客戶', '說再想想，怕買錯', '提升成交'],
+    ['醫美療程', '媽媽', '擔心效果，也覺得預算高', '表達價值'],
+    ['企業顧問服務', '高階主管', '沒時間了解，也怕看不到效益', '極致效率']
+  ];
+  for (const [product, customer, problem, goal] of fiveIndustryCases) {
+    const evidence = gemini.analyzeDiscoveryEvidence([
+      { role: 'user', content: product },
+      { role: 'assistant', content: `我先抓到你賣的是${product}。那通常會買單的是哪一種客戶？` },
+      { role: 'user', content: customer },
+      { role: 'assistant', content: `好，我抓到了，你賣的是${product}，對象是${customer}。最近一次沒有往前走，對方是停在價格、信任，還是一直說再想想？` },
+      { role: 'user', content: problem },
+      { role: 'assistant', content: '我有抓到你遇到的狀況了。那你現在最想先解決哪一件事？成交、信任、追蹤、表達價值，還是每天太忙沒結果？' },
+      { role: 'user', content: goal }
+    ], {
+      role: 'sales_consultant',
+      industry: product,
+      problems: [],
+      goals: []
+    });
+    assert.strictEqual(evidence.slots.product, product);
+    assert.strictEqual(evidence.slots.customer, customer);
+    assert(evidence.coverage.product);
+    assert(evidence.coverage.customer);
+    assert(evidence.coverage.problem);
+    assert(evidence.coverage.goal);
+  }
+
   const repeatedState = gemini.createSession({
     birthdate: '1991-07-07',
     name: 'amy',
@@ -188,7 +218,7 @@ global.fetch = async (_url, options) => {
   assert(repeatedResponse.reply.includes('保健品'));
   assert(repeatedResponse.reply.includes('上班族'));
   assert(!repeatedResponse.reply.includes('哪一種客戶'));
-  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nSHORT-ANSWER-CONTEXT: PASS\nOBJECTION-RECOVERY: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
+  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nSHORT-ANSWER-CONTEXT: PASS\nFIVE-INDUSTRY-SHORT-ANSWER: PASS\nOBJECTION-RECOVERY: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
 })().catch((error) => {
   console.error(error);
   process.exit(1);
