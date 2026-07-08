@@ -27,6 +27,8 @@ wrangler d1 create deal-alliance-lead-hub
 cp worker/wrangler.toml.example worker/wrangler.toml
 ```
 
+`worker/wrangler.toml` 已由 `worker/.gitignore` 排除，不得提交。
+
 ## 套用資料表
 
 ```bash
@@ -71,6 +73,21 @@ node 內部工作資料/2026-07-07_AI學員問答中心整合規劃/verify_live_
 ```
 
 更新後必須再跑 live E2E，確認公開 AI 問答頁填資料後，後台可查到該筆名單。
+
+## 部署前安全檢查
+
+每次部署或準備啟用 capture 前，先跑：
+
+```bash
+node 內部工作資料/2026-07-07_AI學員問答中心整合規劃/verify_lead_hub_deployment_safety.js
+```
+
+這會檢查：
+
+- 正式 capture 在批准前仍是關閉。
+- `worker/wrangler.toml` 沒有被 Git 追蹤。
+- Worker / Admin / config 沒有 hard-coded API key、Admin Token 或 database id。
+- Worker 使用 Cloudflare env secret 讀取 `ADMIN_TOKEN`。
 
 ## 安全規則
 
