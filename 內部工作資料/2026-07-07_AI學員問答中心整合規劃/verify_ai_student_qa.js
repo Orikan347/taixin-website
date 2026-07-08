@@ -42,7 +42,16 @@ async function mockGemini(page) {
     const slots = discovery.slots || {};
     const asksOffering = /開課|多少錢|複訓|價格|課程學什麼|會學到什麼/.test(latestMessage);
     const agreed = /^(有|有啊|有喔)$/.test(latestMessage.trim()) || /(有準|很準|像我|有像)/.test(latestMessage);
-    const payload = asksOffering
+    const payload = latestMessage.trim() === '上班族'
+      ? {
+          phase: 'discovery',
+          reply: '我先抓到你賣的是保健品。那通常會買單的是哪一種客戶？',
+          next_question: '',
+          profile_spec: null,
+          course_path: [],
+          cta_ready: false
+        }
+      : asksOffering
       ? {
           phase: 'discovery',
           reply: '我先講你的優勢。你很適合用信任打開客戶，只是現在追蹤和下一步需要整理得更清楚。這堂課會讓你得到三個好處：1. 更知道客戶重視什麼。2. 更會把價值講成對方聽得懂的好處。3. 更能把追蹤變成方法。複訓費用是 NT$ 3,200；吉隆坡場日期已確認，金額由顧問依最新公告回覆。',
@@ -214,6 +223,21 @@ async function verifyShortAnswerMemory(page) {
   await mockGemini(page);
   await fillIntake(page, {
     name: 'amy',
+    industry: '保健品',
+    problems: ['成交不了', '看不懂客戶'],
+    goals: ['提升成交']
+  });
+  await send(page, '保健品');
+  await page.getByText('保健品').last().waitFor();
+  await send(page, '上班族');
+  const bodyAfterCustomer = await page.locator('body').innerText();
+  if (!bodyAfterCustomer.includes('上班族')) throw new Error('short customer answer was not retained');
+  if (bodyAfterCustomer.includes('那通常會買單的是哪一種客戶？')) throw new Error('customer question repeated after short answer');
+  if (!bodyAfterCustomer.includes('最近一次沒有往前走')) throw new Error('short customer answer did not move to problem follow-up');
+
+  await page.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
+  await fillIntake(page, {
+    name: 'amy',
     industry: '高端汽車',
     problems: ['成交不了', '很忙沒結果'],
     goals: ['提升成交']
@@ -363,7 +387,7 @@ async function waitFor(predicate, timeoutMs, label) {
   await mobile.screenshot({ path: '/private/tmp/ai-student-qa-mobile.png', fullPage: true });
 
   await browser.close();
-  console.log('PASS\nHOME-ENTRY: PASS\nCOURSE-OFFERINGS-VISIBLE: PASS\nNO-AI-LANGUAGE: PASS\nENTER-SEND: PASS\nREPORT-CARD: PASS\nAGREEMENT-GATE: PASS\nSHARE-DOWNLOAD: PASS\nOBJECTION-RECOVERY: PASS\nCOURSE-QA: PASS\nGEMINI-FAIL-AUTO-REPORT: PASS\nLEAD-PAYLOAD: PASS\nMOBILE-MY: PASS');
+  console.log('PASS\nHOME-ENTRY: PASS\nCOURSE-OFFERINGS-VISIBLE: PASS\nNO-AI-LANGUAGE: PASS\nENTER-SEND: PASS\nREPORT-CARD: PASS\nAGREEMENT-GATE: PASS\nSHARE-DOWNLOAD: PASS\nSHORT-ANSWER-CONTEXT: PASS\nOBJECTION-RECOVERY: PASS\nCOURSE-QA: PASS\nGEMINI-FAIL-AUTO-REPORT: PASS\nLEAD-PAYLOAD: PASS\nMOBILE-MY: PASS');
 })().catch((error) => {
   console.error(error);
   process.exit(1);

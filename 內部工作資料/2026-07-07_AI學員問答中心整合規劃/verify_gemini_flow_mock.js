@@ -31,7 +31,16 @@ global.fetch = async (_url, options) => {
   const latestMessage = latestMatch ? latestMatch[1] : '';
   const discoveryMatch = prompt.match(/對話蒐集狀態：\n([\s\S]*?)\n\n目前已確認的學生資訊欄位/);
   const discovery = discoveryMatch ? JSON.parse(discoveryMatch[1]) : { can_build_report: false };
-  const payload = /^(有|有啊|有喔)$/.test(latestMessage.trim()) || /(有準|像我)/.test(latestMessage)
+  const payload = latestMessage.trim() === '上班族'
+    ? {
+        phase: 'discovery',
+        reply: '我先抓到你賣的是保健品。那通常會買單的是哪一種客戶？',
+        next_question: '',
+        profile_spec: null,
+        course_path: [],
+        cta_ready: false
+      }
+    : /^(有|有啊|有喔)$/.test(latestMessage.trim()) || /(有準|像我)/.test(latestMessage)
     ? {
         phase: 'recommendation',
         reply: '太好了，這代表你的優勢其實很清楚。接下來照這個學習順序補，你會更快把看懂客戶、追蹤和成交接起來。',
@@ -140,7 +149,46 @@ global.fetch = async (_url, options) => {
   assert(recommended.course_path);
   assert.strictEqual(recommended.phase, 'recommendation');
   assert(recommended.cta);
-  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nOBJECTION-RECOVERY: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
+
+  const shortAnswerEvidence = gemini.analyzeDiscoveryEvidence([
+    { role: 'user', content: '保健品' },
+    { role: 'assistant', content: '我先抓到你賣的是保健品。那通常會買單的是哪一種客戶？' },
+    { role: 'user', content: '上班族' },
+    { role: 'assistant', content: '那上班族通常最在意的是效果、價格、信任，還是沒時間了解？' },
+    { role: 'user', content: '太貴，也怕沒有效' }
+  ], {
+    role: 'sales_consultant',
+    industry: '保健品',
+    problems: [],
+    goals: ['提升成交']
+  });
+  assert.strictEqual(shortAnswerEvidence.slots.product, '保健品');
+  assert.strictEqual(shortAnswerEvidence.slots.customer, '上班族');
+  assert(shortAnswerEvidence.slots.problem.includes('太貴'));
+  assert(shortAnswerEvidence.coverage.product);
+  assert(shortAnswerEvidence.coverage.customer);
+
+  const repeatedState = gemini.createSession({
+    birthdate: '1991-07-07',
+    name: 'amy',
+    email: 'amy@example.com',
+    phone: 'LINE-amy',
+    region: 'tw',
+    role: 'sales_consultant',
+    industry: '保健品',
+    disc_hate_sales: 'I',
+    disc_hate_workplace: 'I',
+    disc_hate_customer: 'I',
+    problems: [],
+    goals: ['提升成交']
+  }, context);
+  repeatedState.messages.push({ role: 'user', content: '保健品' });
+  repeatedState.messages.push({ role: 'assistant', content: '我先抓到你賣的是保健品。那通常會買單的是哪一種客戶？' });
+  const repeatedResponse = await gemini.transition(repeatedState, '上班族');
+  assert(repeatedResponse.reply.includes('保健品'));
+  assert(repeatedResponse.reply.includes('上班族'));
+  assert(!repeatedResponse.reply.includes('哪一種客戶'));
+  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nSHORT-ANSWER-CONTEXT: PASS\nOBJECTION-RECOVERY: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
 })().catch((error) => {
   console.error(error);
   process.exit(1);
