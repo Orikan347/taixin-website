@@ -111,6 +111,8 @@ async function mockGemini(page) {
 async function send(page, text) {
   await page.locator('#chatMessage').fill(text);
   await page.locator('#chatMessage').press('Enter');
+  await page.waitForTimeout(100);
+  await page.waitForFunction(() => !document.querySelector('#chatMessage')?.disabled, null, { timeout: 12000 }).catch(() => {});
 }
 
 async function reachProfileSpec(page) {
@@ -271,9 +273,9 @@ async function verifyAutoReportWhenGeminiFailsAndLeadPayload(page) {
     problems: ['成交不了', '每天很忙但不知道忙什麼'],
     goals: ['提升成交', '讓每天工作更有效率']
   });
-  await send(page, '保時捷');
-  await send(page, '企業老闆');
-  await send(page, '成交');
+  await send(page, '我主要賣保時捷高端車款，客戶多半是企業老闆。');
+  await send(page, '最近客戶常說價格太高，也會說想回去再比較。');
+  await send(page, '我想提升成交率，也想把追蹤整理成更有效率的方法。');
   await page.locator('#profilePanel.is-visible').waitFor({ timeout: 5000 });
   const body = await page.locator('body').innerText();
   const banned = ['等一下再送一次', '你先不要重填資料', '剛剛連線慢了一點'];

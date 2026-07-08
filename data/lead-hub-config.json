@@ -1,6 +1,6 @@
 {
-  "enabled": false,
-  "capture_url": "",
+  "enabled": true,
+  "capture_url": "https://deal-alliance-lead-hub.orikan347.workers.dev/lead-events",
   "admin_url": "admin/lead-hub-admin.html",
   "source": "taixin-website-ai-student-qa",
   "future_shared_scope": "deal-alliance-lead-intelligence-hub",

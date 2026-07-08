@@ -20,8 +20,13 @@ function assertNoSecretLikeValue(path, text) {
 }
 
 const config = JSON.parse(read('data/lead-hub-config.json'));
-assert.strictEqual(config.enabled, false, 'capture must remain disabled before approved deployment');
-assert.strictEqual(config.capture_url, '', 'capture_url must remain empty before approved deployment');
+if (process.env.EXPECT_CAPTURE_DISABLED === '1') {
+  assert.strictEqual(config.enabled, false, 'capture must remain disabled before approved deployment');
+  assert.strictEqual(config.capture_url, '', 'capture_url must remain empty before approved deployment');
+} else {
+  assert.strictEqual(config.enabled, true, 'capture must be enabled after approved deployment');
+  assert(/^https:\/\/[^/]+\.workers\.dev\/lead-events$/.test(config.capture_url), 'capture_url must be an HTTPS workers.dev /lead-events endpoint');
+}
 assert.strictEqual(config.admin_url, 'admin/lead-hub-admin.html', 'admin url should be present');
 
 const workerGitignore = read('worker/.gitignore');
@@ -51,7 +56,7 @@ assert(admin.includes('sessionStorage'), 'admin token should stay session-scoped
 assert(!admin.includes('ADMIN_TOKEN='), 'admin page must not contain a real token assignment');
 
 console.log('PASS');
-console.log('CAPTURE-DISABLED-BEFORE-APPROVAL: PASS');
+console.log(process.env.EXPECT_CAPTURE_DISABLED === '1' ? 'CAPTURE-DISABLED-BEFORE-APPROVAL: PASS' : 'CAPTURE-ENABLED-AFTER-APPROVAL: PASS');
 console.log('WRANGLER-TOML-IGNORED: PASS');
 console.log('NO-TRACKED-WRANGLER-TOML: PASS');
 console.log('NO-HARDCODED-SECRETS: PASS');
