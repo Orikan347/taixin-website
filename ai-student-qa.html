@@ -1276,21 +1276,21 @@ async function buildShareImageBlob() {
   window.__TAIXIN_LAST_SHARE_META = {
     width: canvasWidth,
     height: canvasHeight,
-    portrait_mode: 'face-centered-cover',
-    template: 'v3-premium-story-card',
+    portrait_mode: 'upper-body-contain',
+    template: 'v5-premium-story-card',
     design_asset: 'img/sales-talent-share-template.png',
     blocks: ['headline', 'identity', 'sales_advantages', 'life_talents', 'practical_advice', 'quote', 'course_path']
   };
 
   await drawShareTemplate(ctx, theme, canvasWidth, canvasHeight);
-  await drawPortrait(ctx, 804, 108, 150, 190);
+  await drawPortrait(ctx, 790, 96, 188, 226);
   ctx.fillStyle = '#ffffff';
   ctx.font = '900 54px "Noto Sans TC", sans-serif';
   wrapTextMax(ctx, '銷售力不從心，因為從沒遇過李泰欣。', 112, 140, 640, 64, 3);
   ctx.font = '800 28px "Noto Sans TC", sans-serif';
   ctx.fillText('Orikan 李泰欣｜銷售天賦報告', 128, 336);
 
-  roundedRect(ctx, 72, 430, 936, 1238, 40);
+  roundedRect(ctx, 72, 430, 936, 1154, 40);
   ctx.fillStyle = '#ffffff';
   ctx.fill();
   ctx.strokeStyle = 'rgba(24,33,47,0.08)';
@@ -1311,27 +1311,33 @@ async function buildShareImageBlob() {
   y = drawPremiumReportBlock(ctx, theme, '你的銷售天賦是', lastReport.lifeTalents, 112, y + 18, 856);
   y = drawSingleTextBlock(ctx, theme, '給你的實戰建議', spec.practical_advice || '先把客戶資料、追蹤和下一步整理起來，讓每一次努力都能累積成結果。', 112, y + 18, 856);
 
+  const quoteY = Math.min(y + 18, 1450);
   ctx.fillStyle = theme.soft;
-  roundedRect(ctx, 112, y + 18, 856, 126, 24);
+  roundedRect(ctx, 112, quoteY, 856, 118, 24);
   ctx.fill();
   ctx.fillStyle = theme.dark;
-  ctx.font = '900 29px "Noto Sans TC", sans-serif';
-  wrapTextMax(ctx, stripDisplayText(spec.final_quote || 'Orikan 李泰欣送你一句話：銷售力不從心，因為從沒遇過李泰欣。'), 144, y + 66, 792, 40, 2);
+  ctx.font = '900 27px "Noto Sans TC", sans-serif';
+  wrapTextMax(ctx, stripDisplayText(spec.final_quote || 'Orikan 李泰欣送你一句話：銷售力不從心，因為從沒遇過李泰欣。'), 144, quoteY + 48, 792, 36, 2);
 
   const courseText = path.map((course, index) => `${index + 1}. ${stripDisplayText(course.name)}`).join('  ');
+  ctx.fillStyle = '#fff7ef';
+  ctx.fillRect(0, 1616, canvasWidth, 304);
   ctx.fillStyle = theme.dark;
-  roundedRect(ctx, 72, 1732, 936, 92, 46);
+  roundedRect(ctx, 72, 1654, 936, 100, 50);
   ctx.fill();
   ctx.fillStyle = '#ffffff';
   ctx.font = '900 28px "Noto Sans TC", sans-serif';
   ctx.textAlign = 'center';
-  fitText(ctx, `建議學習順序｜${courseText}`, 540, 1789, 820, 28, 22);
+  fitText(ctx, `建議學習順序｜${courseText}`, 540, 1716, 820, 28, 21);
   ctx.textAlign = 'left';
+  ctx.fillStyle = theme.main;
+  roundedRect(ctx, 72, 1810, 936, 80, 20);
+  ctx.fill();
   ctx.fillStyle = '#ffffff';
   ctx.shadowColor = 'rgba(0,0,0,0.28)';
   ctx.shadowBlur = 8;
   ctx.font = '900 28px "Noto Sans TC", sans-serif';
-  ctx.fillText('Orikan 李泰欣', 72, 1848);
+  ctx.fillText('Orikan 李泰欣', 112, 1860);
   ctx.shadowBlur = 0;
   return new Promise((resolve) => canvas.toBlob(resolve, 'image/png', 0.95));
 }
@@ -1355,10 +1361,7 @@ async function drawShareTemplate(ctx, theme, width, height) {
   ctx.fillStyle = topGradient;
   ctx.fillRect(0, 0, width, 404);
   ctx.fillStyle = withAlpha(theme.main, 0.36);
-  ctx.fillRect(0, 1576, width, 180);
-  ctx.fillStyle = 'rgba(255,255,255,0.88)';
-  roundedRect(ctx, 72, 430, 936, 1238, 40);
-  ctx.fill();
+  ctx.fillRect(0, 1810, width, 110);
 }
 
 async function drawPortrait(ctx, x, y, width, height) {
@@ -1372,7 +1375,7 @@ async function drawPortrait(ctx, x, y, width, height) {
   roundedRect(ctx, x, y, width, height, 28);
   ctx.clip();
   if (image.complete && image.naturalWidth) {
-    drawImageCover(ctx, image, x, y, width, height);
+    drawImageContain(ctx, image, x, y, width, height, '#eef1f6');
   }
   ctx.restore();
 }

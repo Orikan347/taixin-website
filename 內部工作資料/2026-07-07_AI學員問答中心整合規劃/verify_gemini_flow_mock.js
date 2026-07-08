@@ -112,6 +112,11 @@ global.fetch = async (_url, options) => {
   }, context);
 
   assert.strictEqual(response.reply, '');
+  const objection = await gemini.transition(response.state, '看不懂你在講什麼');
+  assert(objection.reply.includes('我懂'));
+  assert(objection.reply.includes('你指的是哪裡看不懂'));
+  assert(objection.reply.includes('這樣有比較清楚嗎'));
+  assert(!objection.reply.includes('你最想讓這份報告幫你看見哪一個銷售優勢'));
   response = await gemini.transition(response.state, '我賣保險，客戶多半是家庭客戶。');
   assert(response.reply.includes('最近一次'));
   response = await gemini.transition(response.state, '客戶說太貴，想再考慮看看。');
@@ -133,7 +138,7 @@ global.fetch = async (_url, options) => {
   const recommended = await gemini.transition(response.state, '很有準，有像我');
   assert(recommended.course_path);
   assert(recommended.cta);
-  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
+  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nOBJECTION-RECOVERY: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
 })().catch((error) => {
   console.error(error);
   process.exit(1);

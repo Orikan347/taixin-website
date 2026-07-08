@@ -196,7 +196,8 @@ async function verifyAgreementGateAndShare(page) {
   const meta = await page.evaluate(() => window.__TAIXIN_LAST_SHARE_META);
   if (!payload || payload.sales_advantages.length !== 3 || payload.life_talents.length !== 3) throw new Error('share payload missing report content');
   if (!payload.course_path.includes('極致效率')) throw new Error('share payload missing course path');
-  if (!meta || meta.width !== 1080 || meta.height !== 1920 || meta.portrait_mode !== 'face-centered-cover') throw new Error('share metadata missing portrait/layout proof');
+  if (!meta || meta.width !== 1080 || meta.height !== 1920 || meta.portrait_mode !== 'upper-body-contain') throw new Error('share metadata missing portrait/layout proof');
+  if (meta.template !== 'v5-premium-story-card') throw new Error('share image is not using v5 layout');
   if (meta.design_asset !== 'img/sales-talent-share-template.png') throw new Error('share image did not use design skill template asset');
   await page.getByRole('link', { name: '填寫報名表單' }).waitFor();
   await page.getByRole('link', { name: 'LINE 詢問最新場次' }).waitFor();
@@ -229,6 +230,25 @@ async function verifyShortAnswerMemory(page) {
     .locator('#profilePanel.is-visible')
     .locator('h2', { hasText: '你的銷售天賦報告' })
     .waitFor();
+}
+
+async function verifyObjectionRecovery(page) {
+  await page.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
+  await mockGemini(page);
+  await fillIntake(page, {
+    name: '修誠',
+    industry: '高端汽車',
+    problems: ['成交不了', '看不懂客戶'],
+    goals: ['提升成交']
+  });
+  await send(page, '看不懂你在講什麼');
+  const body = await page.locator('body').innerText();
+  if (!body.includes('修誠，我懂')) throw new Error('objection recovery did not empathize first');
+  if (!body.includes('你指的是哪裡看不懂')) throw new Error('objection recovery missing clarify step');
+  if (!body.includes('這樣有比較清楚嗎')) throw new Error('objection recovery missing confirmation step');
+  if (!body.includes('你賣什麼？客戶是誰？')) throw new Error('objection recovery missing simple next question');
+  const repeated = body.match(/你現在主要賣什麼/g) || [];
+  if (repeated.length > 1) throw new Error('objection recovery repeated original question');
 }
 
 async function verifyOfferingQuestion(page) {
@@ -318,6 +338,7 @@ async function waitFor(predicate, timeoutMs, label) {
   await verifyNoFrontendAiLanguage(desktop);
   await verifyAgreementGateAndShare(desktop);
   await verifyShortAnswerMemory(desktop);
+  await verifyObjectionRecovery(desktop);
   await verifyOfferingQuestion(desktop);
   await desktop.screenshot({ path: '/private/tmp/ai-student-qa-desktop.png', fullPage: true });
 
@@ -335,7 +356,7 @@ async function waitFor(predicate, timeoutMs, label) {
   await mobile.screenshot({ path: '/private/tmp/ai-student-qa-mobile.png', fullPage: true });
 
   await browser.close();
-  console.log('PASS\nHOME-ENTRY: PASS\nCOURSE-OFFERINGS-VISIBLE: PASS\nNO-AI-LANGUAGE: PASS\nENTER-SEND: PASS\nREPORT-CARD: PASS\nAGREEMENT-GATE: PASS\nSHARE-DOWNLOAD: PASS\nCOURSE-QA: PASS\nGEMINI-FAIL-AUTO-REPORT: PASS\nLEAD-PAYLOAD: PASS\nMOBILE-MY: PASS');
+  console.log('PASS\nHOME-ENTRY: PASS\nCOURSE-OFFERINGS-VISIBLE: PASS\nNO-AI-LANGUAGE: PASS\nENTER-SEND: PASS\nREPORT-CARD: PASS\nAGREEMENT-GATE: PASS\nSHARE-DOWNLOAD: PASS\nOBJECTION-RECOVERY: PASS\nCOURSE-QA: PASS\nGEMINI-FAIL-AUTO-REPORT: PASS\nLEAD-PAYLOAD: PASS\nMOBILE-MY: PASS');
 })().catch((error) => {
   console.error(error);
   process.exit(1);
