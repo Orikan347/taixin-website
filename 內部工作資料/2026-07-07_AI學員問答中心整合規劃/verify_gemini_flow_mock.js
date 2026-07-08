@@ -31,7 +31,17 @@ global.fetch = async (_url, options) => {
   const latestMessage = latestMatch ? latestMatch[1] : '';
   const discoveryMatch = prompt.match(/對話蒐集狀態：\n([\s\S]*?)\n\n目前已確認的學生資訊欄位/);
   const discovery = discoveryMatch ? JSON.parse(discoveryMatch[1]) : { can_build_report: false };
-  const payload = latestMessage.trim() === '上班族'
+  const fixedBadDiscovery = /(考慮看看|沒錢|再比較|家人討論|怕沒有效|沒時間|很忙)/.test(latestMessage)
+    ? {
+        phase: 'discovery',
+        reply: '你前面講的我都記下來了。最後補一個真實情境就好：最近一次客戶沒有往前走，他原話大概怎麼說？',
+        next_question: '',
+        profile_spec: null,
+        course_path: [],
+        cta_ready: false
+      }
+    : null;
+  const payload = fixedBadDiscovery || (latestMessage.trim() === '上班族'
     ? {
         phase: 'discovery',
         reply: '我先抓到你賣的是保健品。那通常會買單的是哪一種客戶？',
@@ -86,7 +96,7 @@ global.fetch = async (_url, options) => {
           profile_spec: null,
           course_path: [],
           cta_ready: false
-        };
+        });
 
   return {
     ok: true,
@@ -218,7 +228,65 @@ global.fetch = async (_url, options) => {
   assert(repeatedResponse.reply.includes('保健品'));
   assert(repeatedResponse.reply.includes('上班族'));
   assert(!repeatedResponse.reply.includes('哪一種客戶'));
-  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nSHORT-ANSWER-CONTEXT: PASS\nFIVE-INDUSTRY-SHORT-ANSWER: PASS\nOBJECTION-RECOVERY: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
+
+  const enoughState = gemini.createSession({
+    birthdate: '1991-07-07',
+    name: 'amy',
+    email: 'amy@example.com',
+    phone: 'LINE-amy',
+    region: 'tw',
+    role: 'sales_consultant',
+    industry: '保健品',
+    disc_hate_sales: 'I',
+    disc_hate_workplace: 'I',
+    disc_hate_customer: 'I',
+    problems: [],
+    goals: ['提升成交']
+  }, context);
+  enoughState.messages.push({ role: 'user', content: '保健品' });
+  enoughState.messages.push({ role: 'assistant', content: '我先抓到你賣的是保健品。那通常會買單的是哪一種客戶？' });
+  enoughState.messages.push({ role: 'user', content: '上班族' });
+  enoughState.messages.push({ role: 'assistant', content: '你前面講的我都記下來了。最後補一個真實情境就好：最近一次客戶沒有往前走，他原話大概怎麼說？' });
+  const enoughResponse = await gemini.transition(enoughState, '考慮看看，沒錢');
+  assert(enoughResponse.profile_spec);
+  assert.strictEqual(enoughResponse.phase, 'profile_ready');
+  assert(!enoughResponse.reply.includes('最後補一個真實情境'));
+
+  const consultativeCases = [
+    ['保健品', '上班族', '考慮看看，沒錢', '沒錢', '五連問'],
+    ['保時捷', '企業老闆', '想再比較', '再比較', '言之有物'],
+    ['保險', '家庭客戶', '要回去跟家人討論', '家人討論', '拒絕處理'],
+    ['醫美療程', '媽媽', '怕沒有效', '怕沒有效', '言之有物'],
+    ['企業顧問服務', '高階主管', '沒時間，很忙', '沒時間，很忙', '極致效率']
+  ];
+  for (const [product, customer, userText, quoteToken, methodToken] of consultativeCases) {
+    const consultState = gemini.createSession({
+      birthdate: '1991-07-07',
+      name: 'amy',
+      email: 'amy@example.com',
+      phone: 'LINE-amy',
+      region: 'tw',
+      role: 'sales_consultant',
+      industry: product,
+      disc_hate_sales: 'I',
+      disc_hate_workplace: 'I',
+      disc_hate_customer: 'I',
+      problems: [],
+      goals: []
+    }, context);
+    consultState.messages.push({ role: 'user', content: product });
+    consultState.messages.push({ role: 'assistant', content: `我先抓到你賣的是${product}。那通常會買單的是哪一種客戶？` });
+    consultState.messages.push({ role: 'user', content: customer });
+    consultState.messages.push({ role: 'assistant', content: `以${customer}來說，最近沒有往前走時，對方通常會怎麼說？` });
+    const consultResponse = await gemini.transition(consultState, userText);
+    assert.strictEqual(consultResponse.phase, 'discovery');
+    assert(!consultResponse.profile_spec);
+    assert(consultResponse.reply.includes(quoteToken), consultResponse.reply);
+    assert(consultResponse.reply.includes(methodToken), consultResponse.reply);
+    assert(!consultResponse.reply.includes('最後補一個真實情境'), consultResponse.reply);
+    assert(consultResponse.reply.includes('我再問你一個關鍵就好'), consultResponse.reply);
+  }
+  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nSHORT-ANSWER-CONTEXT: PASS\nFIVE-INDUSTRY-SHORT-ANSWER: PASS\nVOICE-OF-CUSTOMER-DIAGNOSIS: PASS\nENOUGH-DATA-FORCES-REPORT: PASS\nOBJECTION-RECOVERY: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
 })().catch((error) => {
   console.error(error);
   process.exit(1);

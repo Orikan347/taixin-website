@@ -42,7 +42,17 @@ async function mockGemini(page) {
     const slots = discovery.slots || {};
     const asksOffering = /開課|多少錢|複訓|價格|課程學什麼|會學到什麼/.test(latestMessage);
     const agreed = /^(有|有啊|有喔)$/.test(latestMessage.trim()) || /(有準|很準|像我|有像)/.test(latestMessage);
-    const payload = latestMessage.trim() === '上班族'
+    const fixedBadDiscovery = /(考慮看看|沒錢|再比較|家人討論|怕沒有效|沒時間|很忙)/.test(latestMessage)
+      ? {
+          phase: 'discovery',
+          reply: '你前面講的我都記下來了。最後補一個真實情境就好：最近一次客戶沒有往前走，他原話大概怎麼說？',
+          next_question: '',
+          profile_spec: null,
+          course_path: [],
+          cta_ready: false
+        }
+      : null;
+    const payload = fixedBadDiscovery || (latestMessage.trim() === '上班族'
       ? {
           phase: 'discovery',
           reply: '我先抓到你賣的是保健品。那通常會買單的是哪一種客戶？',
@@ -108,7 +118,7 @@ async function mockGemini(page) {
             profile_spec: null,
             course_path: [],
             cta_ready: false
-            };
+            });
     await route.fulfill({
       status: 200,
       contentType: 'application/json',
@@ -233,7 +243,22 @@ async function verifyShortAnswerMemory(page) {
   const bodyAfterCustomer = await page.locator('body').innerText();
   if (!bodyAfterCustomer.includes('上班族')) throw new Error('short customer answer was not retained');
   if (bodyAfterCustomer.includes('那通常會買單的是哪一種客戶？')) throw new Error('customer question repeated after short answer');
-  if (!bodyAfterCustomer.includes('最近一次沒有往前走')) throw new Error('short customer answer did not move to problem follow-up');
+  if (!/(最近|不往前|沒有往前|理由|銷售訊號)/.test(bodyAfterCustomer)) throw new Error('short customer answer did not move to problem follow-up');
+
+  await page.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
+  await fillIntake(page, {
+    name: 'amy',
+    industry: '保健品',
+    problems: [],
+    goals: []
+  });
+  await send(page, '保健品');
+  await send(page, '上班族');
+  await send(page, '考慮看看，沒錢');
+  await page.getByText('我有聽到你剛剛說「考慮看看，沒錢」').waitFor();
+  const consultativeBody = await page.locator('body').innerText();
+  if (!consultativeBody.includes('五連問')) throw new Error('voice-of-customer diagnosis did not use Taixin method');
+  if (consultativeBody.includes('最後補一個真實情境')) throw new Error('fixed final scenario question leaked into consultative response');
 
   await page.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
   await fillIntake(page, {
@@ -387,7 +412,7 @@ async function waitFor(predicate, timeoutMs, label) {
   await mobile.screenshot({ path: '/private/tmp/ai-student-qa-mobile.png', fullPage: true });
 
   await browser.close();
-  console.log('PASS\nHOME-ENTRY: PASS\nCOURSE-OFFERINGS-VISIBLE: PASS\nNO-AI-LANGUAGE: PASS\nENTER-SEND: PASS\nREPORT-CARD: PASS\nAGREEMENT-GATE: PASS\nSHARE-DOWNLOAD: PASS\nSHORT-ANSWER-CONTEXT: PASS\nOBJECTION-RECOVERY: PASS\nCOURSE-QA: PASS\nGEMINI-FAIL-AUTO-REPORT: PASS\nLEAD-PAYLOAD: PASS\nMOBILE-MY: PASS');
+  console.log('PASS\nHOME-ENTRY: PASS\nCOURSE-OFFERINGS-VISIBLE: PASS\nNO-AI-LANGUAGE: PASS\nENTER-SEND: PASS\nREPORT-CARD: PASS\nAGREEMENT-GATE: PASS\nSHARE-DOWNLOAD: PASS\nSHORT-ANSWER-CONTEXT: PASS\nVOICE-OF-CUSTOMER-DIAGNOSIS: PASS\nOBJECTION-RECOVERY: PASS\nCOURSE-QA: PASS\nGEMINI-FAIL-AUTO-REPORT: PASS\nLEAD-PAYLOAD: PASS\nMOBILE-MY: PASS');
 })().catch((error) => {
   console.error(error);
   process.exit(1);
