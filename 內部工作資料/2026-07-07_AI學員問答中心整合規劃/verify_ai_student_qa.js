@@ -41,7 +41,7 @@ async function mockGemini(page) {
     const discovery = discoveryMatch ? JSON.parse(discoveryMatch[1]) : { can_build_report: false };
     const slots = discovery.slots || {};
     const asksOffering = /開課|多少錢|複訓|價格|課程學什麼|會學到什麼/.test(latestMessage);
-    const agreed = /(有準|很準|像我|有像)/.test(latestMessage);
+    const agreed = /^(有|有啊|有喔)$/.test(latestMessage.trim()) || /(有準|很準|像我|有像)/.test(latestMessage);
     const payload = asksOffering
       ? {
           phase: 'discovery',
@@ -172,15 +172,21 @@ async function verifyAgreementGateAndShare(page) {
   await page.getByText('生涯運數 7').waitFor();
   await page.getByText('你容易建立安全感').waitFor();
   await page.getByText('7 號：洞察力').waitFor();
-  if ((await page.locator('body').innerText()).includes('<b>')) throw new Error('raw HTML tag appeared in report');
+  const reportBody = await page.locator('body').innerText();
+  if (reportBody.includes('<b>')) throw new Error('raw HTML tag appeared in report');
+  if (reportBody.includes('[object Object]')) throw new Error('object serialization appeared in report');
   if (await page.getByText('生涯運數 3').count()) throw new Error('unexpected reduction chain number displayed');
   if (await page.locator('#coursePanel.is-visible').count()) throw new Error('course panel appeared before agreement');
   await page.getByRole('button', { name: '確認準了再下載' }).click();
   await page.getByText('確認準了之後，我會把建議學習順序放進報告').waitFor();
   await page.getByRole('button', { name: '看完準了，再看路徑' }).waitFor();
   if (await page.getByRole('button', { name: '像我，看看學習順序' }).count()) throw new Error('old accuracy button still visible');
-  await send(page, '很準，有像我');
+  await send(page, '有');
   await page.locator('#coursePanel.is-visible').waitFor();
+  const agreedBody = await page.locator('body').innerText();
+  const reportRepeats = agreedBody.match(/我已經把你剛剛講的銷售現場整理好了/g) || [];
+  if (reportRepeats.length > 1) throw new Error('agreement repeated report instead of course path');
+  if (agreedBody.includes('[object Object]')) throw new Error('object serialization appeared after agreement');
   await page.locator('#coursePanel').getByRole('heading', { name: '極致效率' }).waitFor();
   await page.getByRole('button', { name: '建議學習路徑' }).waitFor();
   const downloadPromise = page.waitForEvent('download');
@@ -298,6 +304,7 @@ async function verifyAutoReportWhenGeminiFailsAndLeadPayload(page) {
   await send(page, '我想提升成交率，也想把追蹤整理成更有效率的方法。');
   await page.locator('#profilePanel.is-visible').waitFor({ timeout: 5000 });
   const body = await page.locator('body').innerText();
+  if (body.includes('[object Object]')) throw new Error('object serialization appeared in fallback report');
   const banned = ['等一下再送一次', '你先不要重填資料', '剛剛連線慢了一點'];
   for (const phrase of banned) {
     if (body.includes(phrase)) throw new Error(`visible waiting instruction appeared: ${phrase}`);

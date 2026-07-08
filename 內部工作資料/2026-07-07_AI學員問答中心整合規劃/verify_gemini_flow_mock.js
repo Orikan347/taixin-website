@@ -31,7 +31,7 @@ global.fetch = async (_url, options) => {
   const latestMessage = latestMatch ? latestMatch[1] : '';
   const discoveryMatch = prompt.match(/對話蒐集狀態：\n([\s\S]*?)\n\n目前已確認的學生資訊欄位/);
   const discovery = discoveryMatch ? JSON.parse(discoveryMatch[1]) : { can_build_report: false };
-  const payload = /(有準|像我)/.test(latestMessage)
+  const payload = /^(有|有啊|有喔)$/.test(latestMessage.trim()) || /(有準|像我)/.test(latestMessage)
     ? {
         phase: 'recommendation',
         reply: '太好了，這代表你的優勢其實很清楚。接下來照這個學習順序補，你會更快把看懂客戶、追蹤和成交接起來。',
@@ -130,13 +130,15 @@ global.fetch = async (_url, options) => {
   assert(response.profile_spec.life_talents.length === 3);
   assert(response.profile_spec.life_talents.some((item) => item.title.includes('7')));
   assert(response.profile_spec.final_quote.length <= 30);
+  assert(!JSON.stringify(response.profile_spec).includes('[object Object]'));
   assert(!response.reply.includes('我先不急著推薦課程'));
   assert(!response.reply.includes('最大卡點'));
   assert(!response.reply.includes('卡住'));
   assert(response.reply.includes('你看完之後，覺得像你嗎？有準嗎？'));
 
-  const recommended = await gemini.transition(response.state, '很有準，有像我');
+  const recommended = await gemini.transition(response.state, '有啊');
   assert(recommended.course_path);
+  assert.strictEqual(recommended.phase, 'recommendation');
   assert(recommended.cta);
   console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nOBJECTION-RECOVERY: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
 })().catch((error) => {

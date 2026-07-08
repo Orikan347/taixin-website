@@ -1531,6 +1531,10 @@ function escapeHtml(value) {
 }
 
 function stripDisplayText(value) {
+  if (Array.isArray(value)) value = value.map((item) => stripDisplayText(item)).filter(Boolean).join('、');
+  if (value && typeof value === 'object') {
+    value = value.title || value.name || value.label || value.line || value.id || value.insight || value.strategy || '';
+  }
   return String(value || '')
     .replace(/<\/?[^>]+>/g, '')
     .replace(/&nbsp;/g, ' ')
