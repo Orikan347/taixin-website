@@ -64,7 +64,7 @@ global.fetch = async (_url, options) => {
     : discovery.can_build_report
       ? {
           phase: 'profile_ready',
-          reply: '我把你的銷售現場整理成報告。你適合先用信任打開對話，再用提問找到真正原因。\n\n你看完之後，覺得像你嗎？有準嗎？',
+          reply: '我把你的銷售天賦整理成表格，已經放在底下給你囉。\n\n你覺得有準嗎？也可以繼續了解怎麼做，讓自己成長更快。',
           next_question: '',
           profile_spec: {
             disc_type: 'S',
@@ -153,7 +153,8 @@ global.fetch = async (_url, options) => {
   assert(!response.reply.includes('我先不急著推薦課程'));
   assert(!response.reply.includes('最大卡點'));
   assert(!response.reply.includes('卡住'));
-  assert(response.reply.includes('你看完之後，覺得像你嗎？有準嗎？'));
+  assert(response.reply.includes('我把你的銷售天賦整理成表格'));
+  assert(!response.reply.includes('你看完之後，覺得像你嗎？有準嗎？'));
 
   const recommended = await gemini.transition(response.state, '有啊');
   assert(recommended.course_path);

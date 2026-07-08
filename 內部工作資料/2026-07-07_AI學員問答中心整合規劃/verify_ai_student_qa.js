@@ -86,7 +86,7 @@ async function mockGemini(page) {
         : discovery.can_build_report
           ? {
               phase: 'profile_ready',
-              reply: 'andy，我聽到你說客戶覺得高價服務很貴，這確實是很多專業人士會遇到的挑戰。這通常不是服務本身沒有價值，而是客戶還沒看見那份值得。我現在已經掌握到你的產業、客戶和遇到的狀況，我幫你整理成一份可以帶走的銷售天賦報告。\n\n你看完之後，覺得像你嗎？有準嗎？',
+              reply: 'andy，我聽到你說客戶覺得高價服務很貴，這確實是很多專業人士會遇到的挑戰。這通常不是服務本身沒有價值，而是客戶還沒看見那份值得。我把你的銷售天賦整理成表格，已經放在底下給你囉。\n\n你覺得有準嗎？也可以繼續了解怎麼做，讓自己成長更快。',
               next_question: '',
               profile_spec: {
                 disc_type: 'S 偏 I',
@@ -196,9 +196,15 @@ async function verifyAgreementGateAndShare(page) {
   if (reportBody.includes('[object Object]')) throw new Error('object serialization appeared in report');
   if (await page.getByText('生涯運數 3').count()) throw new Error('unexpected reduction chain number displayed');
   if (await page.locator('#coursePanel.is-visible').count()) throw new Error('course panel appeared before agreement');
-  await page.getByRole('button', { name: '確認準了再下載' }).click();
-  await page.getByText('確認準了之後，我會把建議學習順序放進報告').waitFor();
-  await page.getByRole('button', { name: '看完準了，再看路徑' }).waitFor();
+  if (!reportBody.includes('我把你的銷售天賦整理成表格')) throw new Error('new report-ready wording missing');
+  if (reportBody.includes('你看完之後，覺得像你嗎？有準嗎？')) throw new Error('old accuracy wording still visible');
+  await page.getByRole('button', { name: '建議學習路徑' }).click();
+  await page.locator('#coursePanel.is-visible').waitFor();
+  await page.locator('#coursePanel').getByRole('heading', { name: /直指人心|極致效率|成交地圖/ }).first().waitFor();
+  const downloadBeforeAgreement = page.waitForEvent('download');
+  await page.getByRole('button', { name: '下載 9:16 圖片' }).click();
+  const firstDownload = await downloadBeforeAgreement;
+  if (!firstDownload.suggestedFilename().endsWith('.png')) throw new Error('pre-agreement report download is not png');
   if (await page.getByRole('button', { name: '像我，看看學習順序' }).count()) throw new Error('old accuracy button still visible');
   await send(page, '有');
   await page.locator('#coursePanel.is-visible').waitFor();
@@ -368,7 +374,7 @@ async function verifyAutoReportWhenGeminiFailsAndLeadPayload(page) {
 async function verifyNoFrontendAiLanguage(page) {
   await page.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
   const body = await page.locator('body').innerText();
-  const banned = ['我先不急著推薦課程', '先判斷像不像你，再推薦課程', '我目前不直接猜', '最大卡點', '成交節奏', '你先跟我說清楚一點', '我還差一點點', '最後我再確認一題', '等一下再送一次', '你先不要重填資料'];
+  const banned = ['我先不急著推薦課程', '先判斷像不像你，再推薦課程', '我目前不直接猜', '最大卡點', '成交節奏', '你先跟我說清楚一點', '我還差一點點', '最後我再確認一題', '等一下再送一次', '你先不要重填資料', '哪一句話講得更有力量', '哪個地方變得更強', '確認準了再下載', '看完準了，再看路徑'];
   for (const phrase of banned) {
     if (body.includes(phrase)) throw new Error(`banned phrase appears: ${phrase}`);
   }
@@ -412,7 +418,7 @@ async function waitFor(predicate, timeoutMs, label) {
   await mobile.screenshot({ path: '/private/tmp/ai-student-qa-mobile.png', fullPage: true });
 
   await browser.close();
-  console.log('PASS\nHOME-ENTRY: PASS\nCOURSE-OFFERINGS-VISIBLE: PASS\nNO-AI-LANGUAGE: PASS\nENTER-SEND: PASS\nREPORT-CARD: PASS\nAGREEMENT-GATE: PASS\nSHARE-DOWNLOAD: PASS\nSHORT-ANSWER-CONTEXT: PASS\nVOICE-OF-CUSTOMER-DIAGNOSIS: PASS\nOBJECTION-RECOVERY: PASS\nCOURSE-QA: PASS\nGEMINI-FAIL-AUTO-REPORT: PASS\nLEAD-PAYLOAD: PASS\nMOBILE-MY: PASS');
+  console.log('PASS\nHOME-ENTRY: PASS\nCOURSE-OFFERINGS-VISIBLE: PASS\nNO-AI-LANGUAGE: PASS\nENTER-SEND: PASS\nREPORT-CARD: PASS\nDIRECT-COURSE-PATH-BUTTON: PASS\nPRE-AGREEMENT-SHARE-DOWNLOAD: PASS\nNO-AWKWARD-SALES-QUESTION: PASS\nAGREEMENT-GATE: PASS\nSHARE-DOWNLOAD: PASS\nSHORT-ANSWER-CONTEXT: PASS\nVOICE-OF-CUSTOMER-DIAGNOSIS: PASS\nOBJECTION-RECOVERY: PASS\nCOURSE-QA: PASS\nGEMINI-FAIL-AUTO-REPORT: PASS\nLEAD-PAYLOAD: PASS\nMOBILE-MY: PASS');
 })().catch((error) => {
   console.error(error);
   process.exit(1);

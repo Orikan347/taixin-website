@@ -619,7 +619,7 @@ textarea {
       <div class="result-panel" id="profilePanel">
         <h2>你的銷售天賦報告</h2>
         <div id="reportCard"></div>
-        <p class="accuracy-prompt">你看完之後，覺得像你嗎？有準嗎？</p>
+        <p class="accuracy-prompt">你覺得有準嗎？也可以繼續了解怎麼做，讓自己成長更快。</p>
         <div class="btn-row share-actions">
           <button class="btn btn-primary" type="button" id="downloadReportButton">下載 9:16 圖片</button>
           <button class="btn btn-outline" type="button" id="shareReportButton">分享圖片</button>
@@ -784,11 +784,9 @@ shareReportButton.addEventListener('click', async () => {
 });
 
 showCoursePathButton.addEventListener('click', () => {
-  if (Array.isArray(lastCoursePath) && lastCoursePath.length) {
-    coursePanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    return;
-  }
-  addMessage('你先回我這份報告像不像你。只要你說「有準」或「像我」，我就會把適合你的學習順序整理在報告底下。', 'bot');
+  if (!lastReport) return;
+  ensureCoursePath();
+  coursePanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
   chatMessage.focus();
 });
 
@@ -1121,9 +1119,6 @@ function getReportValidation() {
   if (!lastReport || !isCompleteReportSpec(lastReport.spec)) {
     return { ok: false, message: '這份報告資料還不完整，我不會讓你下載一張空的圖。先把剛剛的問題補完，我再幫你做完整報告。' };
   }
-  if (!Array.isArray(lastCoursePath) || lastCoursePath.length < 1) {
-    return { ok: false, message: '你先回我這份報告像不像你。確認準了之後，我會把建議學習順序放進報告，再讓你下載分享圖。' };
-  }
   return { ok: true, message: '' };
 }
 
@@ -1138,13 +1133,39 @@ function updateShareButtons() {
     downloadReportButton.textContent = '下載 9:16 圖片';
     shareReportButton.textContent = '分享圖片';
   } else if (lastReport) {
-    downloadReportButton.textContent = '確認準了再下載';
-    shareReportButton.textContent = '確認準了再分享';
+    downloadReportButton.textContent = '下載 9:16 圖片';
+    shareReportButton.textContent = '分享圖片';
   }
   if (showCoursePathButton) {
     showCoursePathButton.disabled = !lastReport;
-    showCoursePathButton.textContent = Array.isArray(lastCoursePath) && lastCoursePath.length ? '建議學習路徑' : '看完準了，再看路徑';
+    showCoursePathButton.textContent = '建議學習路徑';
   }
+}
+
+function ensureCoursePath() {
+  if (Array.isArray(lastCoursePath) && lastCoursePath.length) return lastCoursePath;
+  const path = buildVisibleCoursePath();
+  renderCoursePath(path);
+  sendLeadEvent('course_path_opened_from_report');
+  return lastCoursePath;
+}
+
+function buildVisibleCoursePath() {
+  if (currentState && currentState.deterministic_state && TaixinStudentQA && typeof TaixinStudentQA.buildCoursePath === 'function') {
+    return TaixinStudentQA.buildCoursePath(currentState.deterministic_state);
+  }
+  const primary = lastReport && lastReport.spec && lastReport.spec.primary_course ? lastReport.spec.primary_course : 'zhizhi';
+  const courses = {
+    zhizhi: { id: 'zhizhi', name: '直指人心', page: 'zhizhirenxin.html', reason: '先看懂客戶在意什麼，信任建立起來，後面的成交才自然。' },
+    chengjiao: { id: 'chengjiao', name: '成交地圖', page: 'chengjiaoditu.html', reason: '把提問、價值說明與拒絕處理接成一套清楚流程。' },
+    xiaolu: { id: 'xiaolu', name: '極致效率', page: 'jizhixiaolv.html', reason: '把客戶資料、追蹤與下一步整理成方法，不再忙了卻沒結果。' },
+    yanzhi: { id: 'yanzhi', name: '言之有物', page: 'yanzhiyouwu.html', reason: '把產品介紹講得更有畫面，讓客戶聽懂價值。' },
+    liuliang: { id: 'liuliang', name: '流量磁鐵', page: 'liuliangcitie.html', reason: '先把名單來源打開，讓成交有更多可經營的對象。' }
+  };
+  const order = [primary, 'chengjiao', 'zhizhi', 'xiaolu', 'yanzhi', 'liuliang']
+    .filter((id, index, array) => id && array.indexOf(id) === index)
+    .slice(0, 3);
+  return order.map((id, index) => Object.assign({ order: index + 1 }, courses[id] || courses.zhizhi));
 }
 
 function normalizeDisc(value) {
@@ -1252,6 +1273,7 @@ function sendLeadEvent(eventType) {
 
 async function buildShareImageBlob() {
   if (!getReportValidation().ok) return null;
+  ensureCoursePath();
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
   canvas.height = 1920;
@@ -1290,7 +1312,9 @@ async function buildShareImageBlob() {
   ctx.font = '800 28px "Noto Sans TC", sans-serif';
   ctx.fillText('Orikan 李泰欣｜銷售天賦報告', 128, 336);
 
-  roundedRect(ctx, 72, 430, 936, 1154, 40);
+  const cardTop = 430;
+  const cardBottom = 1604;
+  roundedRect(ctx, 72, cardTop, 936, cardBottom - cardTop, 40);
   ctx.fillStyle = '#ffffff';
   ctx.fill();
   ctx.strokeStyle = 'rgba(24,33,47,0.08)';
@@ -1309,11 +1333,12 @@ async function buildShareImageBlob() {
   let y = 650;
   y = drawPremiumReportBlock(ctx, theme, '你的銷售優點是', lastReport.salesAdvantages, 112, y, 856);
   y = drawPremiumReportBlock(ctx, theme, '你的銷售天賦是', lastReport.lifeTalents, 112, y + 18, 856);
-  y = drawSingleTextBlock(ctx, theme, '給你的實戰建議', spec.practical_advice || '先把客戶資料、追蹤和下一步整理起來，讓每一次努力都能累積成結果。', 112, y + 18, 856);
+  y = drawSingleTextBlock(ctx, theme, '給你的實戰建議', spec.practical_advice || '先把客戶資料、追蹤和下一步整理起來，讓每一次努力都能累積成結果。', 112, y + 20, 856, 2);
 
-  const quoteY = Math.min(y + 18, 1450);
+  const quoteHeight = 112;
+  const quoteY = Math.min(y + 34, cardBottom - quoteHeight - 28);
   ctx.fillStyle = theme.soft;
-  roundedRect(ctx, 112, quoteY, 856, 118, 24);
+  roundedRect(ctx, 112, quoteY, 856, quoteHeight, 24);
   ctx.fill();
   ctx.fillStyle = theme.dark;
   ctx.font = '900 27px "Noto Sans TC", sans-serif';
@@ -1321,23 +1346,23 @@ async function buildShareImageBlob() {
 
   const courseText = path.map((course, index) => `${index + 1}. ${stripDisplayText(course.name)}`).join('  ');
   ctx.fillStyle = '#fff7ef';
-  ctx.fillRect(0, 1616, canvasWidth, 304);
+  ctx.fillRect(0, 1628, canvasWidth, 292);
   ctx.fillStyle = theme.dark;
-  roundedRect(ctx, 72, 1654, 936, 100, 50);
+  roundedRect(ctx, 72, 1660, 936, 96, 48);
   ctx.fill();
   ctx.fillStyle = '#ffffff';
   ctx.font = '900 28px "Noto Sans TC", sans-serif';
   ctx.textAlign = 'center';
-  fitText(ctx, `建議學習順序｜${courseText}`, 540, 1716, 820, 28, 21);
+  fitText(ctx, `建議學習順序｜${courseText}`, 540, 1719, 820, 28, 21);
   ctx.textAlign = 'left';
   ctx.fillStyle = theme.main;
-  roundedRect(ctx, 72, 1810, 936, 80, 20);
+  roundedRect(ctx, 72, 1818, 936, 74, 20);
   ctx.fill();
   ctx.fillStyle = '#ffffff';
   ctx.shadowColor = 'rgba(0,0,0,0.28)';
   ctx.shadowBlur = 8;
   ctx.font = '900 28px "Noto Sans TC", sans-serif';
-  ctx.fillText('Orikan 李泰欣', 112, 1860);
+  ctx.fillText('Orikan 李泰欣', 112, 1864);
   ctx.shadowBlur = 0;
   return new Promise((resolve) => canvas.toBlob(resolve, 'image/png', 0.95));
 }
@@ -1432,13 +1457,13 @@ function drawPremiumReportBlock(ctx, theme, title, items, x, y, width) {
   return cursor;
 }
 
-function drawSingleTextBlock(ctx, theme, title, text, x, y, width) {
+function drawSingleTextBlock(ctx, theme, title, text, x, y, width, maxLines) {
   ctx.fillStyle = theme.dark;
   ctx.font = '900 32px "Noto Sans TC", sans-serif';
   ctx.fillText(title, x, y);
   ctx.fillStyle = '#263245';
   ctx.font = '800 25px "Noto Sans TC", sans-serif';
-  return wrapTextMax(ctx, stripDisplayText(text), x, y + 46, width, 35, 3) + 8;
+  return wrapTextMax(ctx, stripDisplayText(text), x, y + 46, width, 35, maxLines || 3) + 8;
 }
 
 function roundedRect(ctx, x, y, width, height, radius) {
