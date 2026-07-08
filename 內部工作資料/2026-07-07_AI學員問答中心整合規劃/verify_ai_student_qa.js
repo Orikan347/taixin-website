@@ -238,13 +238,71 @@ async function verifyOfferingQuestion(page) {
   await page.getByText('NT$ 3,200').first().waitFor();
 }
 
+async function verifyAutoReportWhenGeminiFailsAndLeadPayload(page) {
+  const captured = [];
+  await page.route('**/data/lead-hub-config.json', async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        enabled: true,
+        capture_url: 'https://lead.test/lead-events',
+        source: 'taixin-website-ai-student-qa',
+        consent_version: 'test-v4'
+      })
+    });
+  });
+  await page.route('https://lead.test/lead-events', async (route) => {
+    captured.push(route.request().postDataJSON());
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ ok: true, lead_id: 'amy@example.com' })
+    });
+  });
+  await page.route('https://smart-close-api.toleratestar.workers.dev/**', async (route) => {
+    await route.fulfill({ status: 504, contentType: 'application/json', body: JSON.stringify({ error: 'timeout' }) });
+  });
+  await page.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
+  await fillIntake(page, {
+    name: 'amy',
+    email: 'amy@example.com',
+    industry: '高端汽車',
+    problems: ['成交不了', '每天很忙但不知道忙什麼'],
+    goals: ['提升成交', '讓每天工作更有效率']
+  });
+  await send(page, '保時捷');
+  await send(page, '企業老闆');
+  await send(page, '成交');
+  await page.locator('#profilePanel.is-visible').waitFor({ timeout: 5000 });
+  const body = await page.locator('body').innerText();
+  const banned = ['等一下再送一次', '你先不要重填資料', '剛剛連線慢了一點'];
+  for (const phrase of banned) {
+    if (body.includes(phrase)) throw new Error(`visible waiting instruction appeared: ${phrase}`);
+  }
+  await waitFor(() => captured.some((payload) => payload.event_type === 'report_ready'), 2500, 'lead report_ready payload');
+  const reportPayload = captured.find((payload) => payload.event_type === 'report_ready');
+  if (!reportPayload.profile || reportPayload.profile.email !== 'amy@example.com') throw new Error('lead payload missing profile email');
+  if (!reportPayload.report || !reportPayload.report.disc_type || !reportPayload.report.life_number) throw new Error('lead payload missing report');
+  if (!Array.isArray(reportPayload.conversation) || !reportPayload.conversation.some((msg) => msg.content.includes('保時捷'))) throw new Error('lead payload missing conversation');
+}
+
 async function verifyNoFrontendAiLanguage(page) {
   await page.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
   const body = await page.locator('body').innerText();
-  const banned = ['我先不急著推薦課程', '先判斷像不像你，再推薦課程', '我目前不直接猜', '最大卡點', '成交節奏', '你先跟我說清楚一點', '我還差一點點', '最後我再確認一題'];
+  const banned = ['我先不急著推薦課程', '先判斷像不像你，再推薦課程', '我目前不直接猜', '最大卡點', '成交節奏', '你先跟我說清楚一點', '我還差一點點', '最後我再確認一題', '等一下再送一次', '你先不要重填資料'];
   for (const phrase of banned) {
     if (body.includes(phrase)) throw new Error(`banned phrase appears: ${phrase}`);
   }
+}
+
+async function waitFor(predicate, timeoutMs, label) {
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    if (predicate()) return;
+    await new Promise((resolve) => setTimeout(resolve, 50));
+  }
+  throw new Error(`timed out waiting for ${label}`);
 }
 
 (async () => {
@@ -261,6 +319,10 @@ async function verifyNoFrontendAiLanguage(page) {
   await verifyOfferingQuestion(desktop);
   await desktop.screenshot({ path: '/private/tmp/ai-student-qa-desktop.png', fullPage: true });
 
+  const failurePage = await browser.newPage({ viewport: { width: 1440, height: 1000 }, acceptDownloads: true });
+  await verifyAutoReportWhenGeminiFailsAndLeadPayload(failurePage);
+  await failurePage.close();
+
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
   await mockGemini(mobile);
   await mobile.goto(`${baseUrl}/ai-student-qa.html`, { waitUntil: 'networkidle' });
@@ -271,7 +333,7 @@ async function verifyNoFrontendAiLanguage(page) {
   await mobile.screenshot({ path: '/private/tmp/ai-student-qa-mobile.png', fullPage: true });
 
   await browser.close();
-  console.log('PASS\nHOME-ENTRY: PASS\nCOURSE-OFFERINGS-VISIBLE: PASS\nNO-AI-LANGUAGE: PASS\nENTER-SEND: PASS\nREPORT-CARD: PASS\nAGREEMENT-GATE: PASS\nSHARE-DOWNLOAD: PASS\nCOURSE-QA: PASS\nMOBILE-MY: PASS');
+  console.log('PASS\nHOME-ENTRY: PASS\nCOURSE-OFFERINGS-VISIBLE: PASS\nNO-AI-LANGUAGE: PASS\nENTER-SEND: PASS\nREPORT-CARD: PASS\nAGREEMENT-GATE: PASS\nSHARE-DOWNLOAD: PASS\nCOURSE-QA: PASS\nGEMINI-FAIL-AUTO-REPORT: PASS\nLEAD-PAYLOAD: PASS\nMOBILE-MY: PASS');
 })().catch((error) => {
   console.error(error);
   process.exit(1);

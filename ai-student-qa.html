@@ -664,6 +664,7 @@ const offeringNote = document.getElementById('offeringNote');
 let currentState = null;
 let lastReport = null;
 let lastCoursePath = null;
+let leadHubLeadId = '';
 let appContext = {
   config: null,
   leadHub: null,
@@ -894,11 +895,11 @@ async function sendUserMessage(value) {
   if (!text || !currentState) return;
   addMessage(text, 'user');
   chatMessage.value = '';
-  setBusy(true, '整理中...');
+  setBusy(true, '泰欣整理中...');
   try {
     const response = await TaixinGeminiStudentQA.transition(currentState, text);
     currentState = response.state;
-    addMessage(response.reply, 'bot');
+    if (response.reply) addMessage(response.reply, 'bot');
     applyResponse(response);
     sendLeadEvent(response.course_path ? 'course_path_ready' : 'chat_turn');
   } finally {
@@ -912,6 +913,13 @@ function setBusy(isBusy, label) {
   if (label) sendButton.textContent = label;
   else sendButton.textContent = '送出';
 }
+
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a');
+  if (!link || !link.href) return;
+  if (link.href.includes('docs.google.com/forms')) sendLeadEvent('signup_clicked');
+  if (link.href.includes('line.me/')) sendLeadEvent('line_clicked');
+});
 
 function addMessage(text, type) {
   const row = document.createElement('div');
@@ -1168,7 +1176,14 @@ function formatQuote(value) {
 function buildLeadPayload(eventType) {
   const profile = getProfile();
   const spec = lastReport && lastReport.spec ? lastReport.spec : {};
+  const conversation = currentState && Array.isArray(currentState.messages)
+    ? currentState.messages.slice(-20).map((msg) => ({
+        role: msg.role,
+        content: stripDisplayText(msg.content)
+      }))
+    : [];
   return {
+    lead_id: leadHubLeadId,
     event_type: eventType,
     source: 'taixin-website-ai-student-qa',
     source_page: location.href,
@@ -1200,11 +1215,19 @@ function buildLeadPayload(eventType) {
       primary_disc: lastReport.primaryDisc
     } : null,
     course_path: lastCoursePath || [],
+    conversation,
     state_summary: currentState ? {
       session_id: currentState.session_id,
       phase: currentState.phase,
-      recommendation_allowed: currentState.recommendation_allowed
+      recommendation_allowed: currentState.recommendation_allowed,
+      discovery_slots: currentState.discovery_slots || null,
+      discovery_evidence: currentState.discovery_evidence || null
     } : null,
+    browser: {
+      user_agent: navigator.userAgent,
+      language: navigator.language,
+      referrer: document.referrer || ''
+    },
     created_at: new Date().toISOString()
   };
 }
@@ -1219,7 +1242,12 @@ function sendLeadEvent(eventType) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
     keepalive: true
-  }).catch(() => {});
+  })
+    .then((response) => response.ok ? response.json().catch(() => null) : null)
+    .then((data) => {
+      if (data && data.lead_id) leadHubLeadId = data.lead_id;
+    })
+    .catch(() => {});
 }
 
 async function buildShareImageBlob() {

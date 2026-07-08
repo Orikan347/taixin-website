@@ -1,8 +1,9 @@
 {
   "enabled": false,
   "capture_url": "",
+  "admin_url": "admin/lead-hub-admin.html",
   "source": "taixin-website-ai-student-qa",
   "future_shared_scope": "deal-alliance-lead-intelligence-hub",
-  "consent_version": "2026-07-08-ai-course-advisor-v1",
+  "consent_version": "2026-07-08-ai-course-advisor-v4",
   "api_key_location": "Cloudflare Worker environment variables; never store admin token or database credentials in browser code."
 }
