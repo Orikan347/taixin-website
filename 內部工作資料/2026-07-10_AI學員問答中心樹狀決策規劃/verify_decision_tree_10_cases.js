@@ -240,6 +240,30 @@ function runCase(student) {
 }
 
 const results = cases.map(runCase);
+
+const officialLineProfile = engine.createSession({
+  birthdate: '1991-05-03',
+  disc_hate_sales: 'S',
+  disc_hate_workplace: 'S',
+  disc_hate_customer: 'S',
+  disc_hate_think: 'S'
+});
+const officialLineSpec = engine.buildProfileSpec(officialLineProfile);
+assert(officialLineSpec.life_talents[2].title === '事必躬親線', '159 line must use the verified calculator name');
+assert(!/目標貫通線/.test(JSON.stringify(officialLineSpec)), 'report must not use invented life-number line names');
+assert(!/銷售力不從心，因為從沒遇過李泰欣/.test(officialLineSpec.final_quote), 'report gift quote must help the student instead of repeating the brand slogan');
+
+const expressionReplies = ['怎麼講得更有感', '怎麼講出差異', '怎麼講給主管聽'].map((answer) => {
+  const state = engine.createSession({ name: '表達測試', birthdate: '1991-05-03' });
+  state.phase = 'explanation';
+  return engine.transition(state, answer);
+});
+assert(new Set(expressionReplies.map((response) => response.reply)).size === 3, 'expression buttons must have three distinct replies');
+expressionReplies.forEach((response, index) => {
+  assertButtons(response, `expression detail ${index + 1}`);
+  assertCleanText(response.reply, `expression detail ${index + 1}`);
+});
+
 const outputPath = path.join(__dirname, '10-case-verification-result.json');
 fs.writeFileSync(outputPath, JSON.stringify({
   generated_at: new Date().toISOString(),

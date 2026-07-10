@@ -51,17 +51,20 @@ pages.forEach((page) => {
 
 const indexHtml = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const qaHtml = fs.readFileSync(path.join(root, 'ai-student-qa.html'), 'utf8');
+const stateMachine = fs.readFileSync(path.join(root, 'lib/state-machine.js'), 'utf8');
 [
   ['index has AI QA entry', /ai-student-qa\.html/.test(indexHtml)],
   ['qa has state machine script', /lib\/state-machine\.js/.test(qaHtml)],
   ['qa has four button CSS', /\.option-actions/.test(qaHtml) && /\.option-button/.test(qaHtml)],
-  ['qa retires completed option groups', /function retireOptionButtons\(\)/.test(qaHtml) && /\.option-actions\.is-complete/.test(qaHtml)],
+  ['qa hides completed option groups', /function retireOptionButtons\(\)/.test(qaHtml) && /\.option-actions\.is-complete\s*\{\s*display:\s*none;/.test(qaHtml)],
   ['qa has product field', /name="product"/.test(qaHtml)],
   ['qa has fourth DISC question', /name="disc_hate_think"/.test(qaHtml)],
   ['qa has course path button above report', qaHtml.indexOf('id="showCoursePathButton"') < qaHtml.indexOf('id="reportCard"')],
   ['qa keeps share download alive long enough', /function downloadBlob\(blob\)/.test(qaHtml) && /setTimeout\(\(\) => URL\.revokeObjectURL\(url\), 1500\)/.test(qaHtml)],
   ['qa has line CTA', /https:\/\/line\.me\/ti\/p\/jzdho94spl/.test(qaHtml)],
-  ['qa has signup CTA', /docs\.google\.com\/forms/.test(qaHtml)]
+  ['qa has signup CTA', /docs\.google\.com\/forms/.test(qaHtml)],
+  ['state machine uses no invented target line', !/目標貫通線/.test(stateMachine)],
+  ['state machine does not gift the brand slogan', !/銷售力不從心，因為從沒遇過李泰欣。/.test(stateMachine)]
 ].forEach(([label, ok]) => {
   if (!ok) issues.push(label);
 });
@@ -71,6 +74,7 @@ const visibleBadPatterns = [
   /\[object Object\]/,
   /你先跟我說清楚/,
   /你想把哪一句話/,
+  /目標貫通線/,
   /不是叫你一次全買/,
   /我目前不直接猜/,
   /我先不急著推薦課程/
