@@ -61,8 +61,8 @@ a { color: inherit; }
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  object-fit: cover;
-  object-position: center 18%;
+  object-fit: contain;
+  object-position: center top;
   background: #eef1f6;
 }
 .nav-links {
@@ -131,8 +131,8 @@ h3 { font-size: 1rem; }
   width: 180px;
   height: 180px;
   border-radius: 8px;
-  object-fit: cover;
-  object-position: center 18%;
+  object-fit: contain;
+  object-position: center top;
   background: #eef1f6;
   border: 1px solid var(--line);
 }
@@ -298,8 +298,8 @@ textarea {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  object-fit: cover;
-  object-position: center 18%;
+  object-fit: contain;
+  object-position: center top;
   border: 1px solid #d7dde8;
   flex: 0 0 auto;
   background: #eef1f6;
@@ -326,6 +326,41 @@ textarea {
 .message.user {
   background: var(--brand);
   color: #fff;
+}
+.option-actions {
+  margin-top: 9px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.option-actions.is-complete {
+  opacity: .5;
+  pointer-events: none;
+}
+.option-actions.is-complete .option-button {
+  cursor: default;
+}
+.option-button {
+  border: 1px solid #bfd1e5;
+  background: #fff;
+  color: var(--brand-dark);
+  border-radius: 6px;
+  padding: 10px 12px;
+  text-align: left;
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+  min-height: 42px;
+}
+.option-button:hover,
+.option-button:focus {
+  background: #edf5fb;
+  outline: 2px solid rgba(31,95,139,.2);
+}
+.option-button.clear-option {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
 }
 .chat-input {
   border-top: 1px solid var(--line);
@@ -365,8 +400,8 @@ textarea {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  object-fit: cover;
-  object-position: center 18%;
+  object-fit: contain;
+  object-position: center top;
   background: rgba(255,255,255,0.18);
   border: 2px solid rgba(255,255,255,0.8);
 }
@@ -422,7 +457,7 @@ textarea {
   font-weight: 900;
 }
 .share-actions {
-  margin: 12px 0 14px;
+  margin-top: 14px;
 }
 .course-path {
   display: grid;
@@ -458,6 +493,7 @@ textarea {
   .intro { grid-template-columns: 1fr; }
   .portrait { width: 126px; height: 126px; }
   .choice-grid { grid-template-columns: 1fr; }
+  .option-actions { grid-template-columns: 1fr; }
   .talent-card-head { grid-template-columns: 58px minmax(0, 1fr); }
   .talent-card-head img { width: 58px; height: 58px; }
   .chat-input { grid-template-columns: 1fr; }
@@ -536,6 +572,10 @@ textarea {
           <input id="industry" name="industry" placeholder="例如：保險、房仲、醫美、汽車">
         </div>
         <div class="field">
+          <label for="product">主要賣什麼產品或服務</label>
+          <input id="product" name="product" placeholder="例如：保單、房屋、療程、企業顧問服務">
+        </div>
+        <div class="field">
           <label>銷售上你最討厭做哪一件事？</label>
           <div class="choice-grid single">
             <label class="choice"><input type="radio" name="disc_hate_sales" value="D" required> 一直拖、一直開會，最後沒有明確下一步</label>
@@ -560,6 +600,15 @@ textarea {
             <label class="choice"><input type="radio" name="disc_hate_customer" value="I"> 客戶沒有熱度，我不知道怎麼讓他有感覺</label>
             <label class="choice"><input type="radio" name="disc_hate_customer" value="S"> 我怕太強勢，破壞關係或讓對方有壓力</label>
             <label class="choice"><input type="radio" name="disc_hate_customer" value="C"> 客戶問細節或比較方案時，我怕講不精準</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>當客戶說「我再想想」，你心裡最常出現哪一個想法？</label>
+          <div class="choice-grid single">
+            <label class="choice"><input type="radio" name="disc_hate_think" value="D" required> 他到底卡在哪裡，我想直接問清楚</label>
+            <label class="choice"><input type="radio" name="disc_hate_think" value="I"> 氣氛是不是不夠好，我想再拉近一點</label>
+            <label class="choice"><input type="radio" name="disc_hate_think" value="S"> 我是不是給他太大壓力，我想慢慢來</label>
+            <label class="choice"><input type="radio" name="disc_hate_think" value="C"> 我是不是證據不夠，我想再補資料</label>
           </div>
         </div>
         <div class="field">
@@ -618,13 +667,13 @@ textarea {
 
       <div class="result-panel" id="profilePanel">
         <h2>你的銷售天賦報告</h2>
+        <p class="accuracy-prompt">你看完之後，覺得像你嗎？有準嗎？想繼續了解就回 yes，或直接按建議學習路徑。</p>
         <div class="btn-row share-actions">
-          <button class="btn btn-soft" type="button" id="showCoursePathButton">建議學習路徑</button>
           <button class="btn btn-primary" type="button" id="downloadReportButton">下載 9:16 圖片</button>
           <button class="btn btn-outline" type="button" id="shareReportButton">分享圖片</button>
+          <button class="btn btn-soft" type="button" id="showCoursePathButton">建議學習路徑</button>
         </div>
         <div id="reportCard"></div>
-        <p class="accuracy-prompt">你覺得有準嗎？也可以繼續了解怎麼做，讓自己成長更快。</p>
       </div>
 
       <div class="result-panel" id="coursePanel">
@@ -664,7 +713,6 @@ const offeringNote = document.getElementById('offeringNote');
 let currentState = null;
 let lastReport = null;
 let lastCoursePath = null;
-let leadHubLeadId = '';
 let appContext = {
   config: null,
   leadHub: null,
@@ -706,18 +754,18 @@ form.addEventListener('submit', async (event) => {
   lastCoursePath = null;
   updateShareButtons();
   phaseLabel.textContent = '探索中';
-  const greeting = `${profile.name || '你好'}，你好！我是泰欣，我先幫你看一下你的銷售狀況。接下來我會問你幾個問題，你不用回答得很完美，講真實情況就好。\n\n先用一句話跟我說：你現在主要賣什麼？你的客戶通常是哪一種人？`;
+  const greeting = `${profile.name || '你好'}，你好！我來分析一下你的報告，接下來會問你幾個問題。你不用回答得很漂亮，講你真實的銷售現場就好，這樣我抓你的銷售天賦才會準。`;
   addMessage(greeting, 'bot');
   chatMessage.disabled = false;
   sendButton.disabled = false;
-  setBusy(true, '準備中...');
+  setBusy(true, '分析中...');
   try {
     const response = await TaixinGeminiStudentQA.start(profile, appContext);
     currentState = response.state;
-    if (response.reply) addMessage(response.reply, 'bot');
+    addMessage(response.reply, 'bot', response.buttons);
     applyResponse(response);
     sendLeadEvent('intake_started');
-    chatMessage.placeholder = '例如：我賣保時捷，客戶多半是企業老闆。';
+    chatMessage.placeholder = '用你的話回答就好，越像真實情境越準。';
     chatMessage.focus();
   } finally {
     setBusy(false);
@@ -743,14 +791,7 @@ downloadReportButton.addEventListener('click', async () => {
   }
   const blob = await buildShareImageBlob();
   if (!blob) return;
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = `orikan-sales-talent-${Date.now()}.png`;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
+  downloadBlob(blob);
   sendLeadEvent('report_downloaded');
 });
 
@@ -764,29 +805,40 @@ shareReportButton.addEventListener('click', async () => {
   if (!blob) return;
   const file = new File([blob], 'orikan-sales-talent.png', { type: 'image/png' });
   if (navigator.canShare && navigator.canShare({ files: [file] })) {
-    await navigator.share({
-      title: '我的銷售天賦報告',
-      text: '銷售力不從心，因為從沒遇過李泰欣。',
-      files: [file]
-    });
-    sendLeadEvent('report_shared');
-    return;
+    try {
+      await navigator.share({
+        title: '我的銷售天賦報告',
+        text: '銷售力不從心，因為從沒遇過李泰欣。',
+        files: [file]
+      });
+      sendLeadEvent('report_shared');
+      return;
+    } catch (error) {
+      if (error && error.name === 'AbortError') return;
+    }
   }
+  downloadBlob(blob);
+  sendLeadEvent('report_downloaded_share_fallback');
+});
+
+function downloadBlob(blob) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
   link.download = `orikan-sales-talent-${Date.now()}.png`;
+  link.style.display = 'none';
   document.body.appendChild(link);
   link.click();
   link.remove();
-  URL.revokeObjectURL(url);
-  sendLeadEvent('report_downloaded_share_backup');
-});
+  window.setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
 
 showCoursePathButton.addEventListener('click', () => {
-  if (!lastReport) return;
-  ensureCoursePath();
-  coursePanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (Array.isArray(lastCoursePath) && lastCoursePath.length) {
+    coursePanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  addMessage('你可以直接按「建議學習路徑」，我會把最適合你的三堂課順序放在報告底下。', 'bot');
   chatMessage.focus();
 });
 
@@ -800,9 +852,11 @@ function getProfile() {
     region: data.get('region') || 'tw',
     role: data.get('role') || 'sales_consultant',
     industry: data.get('industry') || '',
+    product: data.get('product') || '',
     disc_hate_sales: data.get('disc_hate_sales') || '',
     disc_hate_workplace: data.get('disc_hate_workplace') || '',
     disc_hate_customer: data.get('disc_hate_customer') || '',
+    disc_hate_think: data.get('disc_hate_think') || '',
     problems: data.getAll('problems'),
     goals: data.getAll('goals'),
     consent: data.get('consent') === 'yes'
@@ -827,13 +881,13 @@ async function loadAppContext() {
   renderOfferings(appContext.offerings);
 }
 
-async function loadJson(url, backupValue) {
+async function loadJson(url, fallback) {
   try {
     const response = await fetch(url, { cache: 'no-store' });
     if (!response.ok) throw new Error(`${url} unavailable`);
     return await response.json();
   } catch (error) {
-    return backupValue;
+    return fallback;
   }
 }
 
@@ -891,13 +945,14 @@ function pad(value) {
 async function sendUserMessage(value) {
   const text = String(value || '').trim();
   if (!text || !currentState) return;
+  retireOptionButtons();
   addMessage(text, 'user');
   chatMessage.value = '';
-  setBusy(true, '泰欣整理中...');
+  setBusy(true, '整理中...');
   try {
     const response = await TaixinGeminiStudentQA.transition(currentState, text);
     currentState = response.state;
-    if (response.reply) addMessage(response.reply, 'bot');
+    addMessage(response.reply, 'bot', response.buttons);
     applyResponse(response);
     sendLeadEvent(response.course_path ? 'course_path_ready' : 'chat_turn');
   } finally {
@@ -912,14 +967,7 @@ function setBusy(isBusy, label) {
   else sendButton.textContent = '送出';
 }
 
-document.addEventListener('click', (event) => {
-  const link = event.target.closest('a');
-  if (!link || !link.href) return;
-  if (link.href.includes('docs.google.com/forms')) sendLeadEvent('signup_clicked');
-  if (link.href.includes('line.me/')) sendLeadEvent('line_clicked');
-});
-
-function addMessage(text, type) {
+function addMessage(text, type, buttons) {
   const row = document.createElement('div');
   row.className = `message-row ${type}`;
   if (type === 'bot') {
@@ -937,6 +985,9 @@ function addMessage(text, type) {
     bubble.textContent = stripDisplayText(text);
     wrap.appendChild(speaker);
     wrap.appendChild(bubble);
+    if (Array.isArray(buttons) && buttons.length) {
+      wrap.appendChild(renderOptionButtons(buttons));
+    }
     row.appendChild(avatar);
     row.appendChild(wrap);
   } else {
@@ -950,6 +1001,57 @@ function addMessage(text, type) {
   }
   messages.appendChild(row);
   messages.scrollTop = messages.scrollHeight;
+}
+
+function renderOptionButtons(buttons) {
+  const box = document.createElement('div');
+  box.className = 'option-actions';
+  buttons.slice(0, 4).forEach((label) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `option-button${String(label).includes('我都清楚') ? ' clear-option' : ''}`;
+    button.textContent = stripDisplayText(label);
+    button.addEventListener('click', () => handleOption(label));
+    box.appendChild(button);
+  });
+  return box;
+}
+
+function retireOptionButtons() {
+  document.querySelectorAll('.option-actions:not(.is-complete)').forEach((box) => {
+    box.classList.add('is-complete');
+    box.querySelectorAll('.option-button').forEach((button) => {
+      button.disabled = true;
+      button.setAttribute('aria-disabled', 'true');
+    });
+  });
+}
+
+async function handleOption(label) {
+  const text = stripDisplayText(label);
+  if (!text || sendButton.disabled) return;
+  retireOptionButtons();
+  if (/下載/.test(text) && lastReport) {
+    downloadReportButton.click();
+    return;
+  }
+  if (/分享/.test(text) && lastReport) {
+    shareReportButton.click();
+    return;
+  }
+  if (/報名表單|直接報名|我要報名/.test(text)) {
+    sendLeadEvent('signup_clicked');
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header', '_blank', 'noopener');
+    await sendUserMessage(text);
+    return;
+  }
+  if (/LINE|顧問|加 LINE/.test(text)) {
+    sendLeadEvent('line_clicked');
+    window.open('https://line.me/ti/p/jzdho94spl', '_blank', 'noopener');
+    await sendUserMessage(text);
+    return;
+  }
+  await sendUserMessage(text);
 }
 
 function applyResponse(response) {
@@ -1117,7 +1219,10 @@ function hasThreeCompleteReportItems(items) {
 
 function getReportValidation() {
   if (!lastReport || !isCompleteReportSpec(lastReport.spec)) {
-    return { ok: false, message: '這份報告資料還不完整，我不會讓你下載一張空的圖。先把剛剛的問題補完，我再幫你做完整報告。' };
+    return { ok: false, message: '我正在把你的報告整理完整，等下面出現完整銷售優點、銷售天賦、實戰建議和學習順序後，就可以下載。' };
+  }
+  if (!Array.isArray(lastCoursePath) || lastCoursePath.length < 1) {
+    return { ok: false, message: '我先把建議學習順序補到報告底下，補完就可以下載分享圖。' };
   }
   return { ok: true, message: '' };
 }
@@ -1140,32 +1245,6 @@ function updateShareButtons() {
     showCoursePathButton.disabled = !lastReport;
     showCoursePathButton.textContent = '建議學習路徑';
   }
-}
-
-function ensureCoursePath() {
-  if (Array.isArray(lastCoursePath) && lastCoursePath.length) return lastCoursePath;
-  const path = buildVisibleCoursePath();
-  renderCoursePath(path);
-  sendLeadEvent('course_path_opened_from_report');
-  return lastCoursePath;
-}
-
-function buildVisibleCoursePath() {
-  if (currentState && currentState.deterministic_state && TaixinStudentQA && typeof TaixinStudentQA.buildCoursePath === 'function') {
-    return TaixinStudentQA.buildCoursePath(currentState.deterministic_state);
-  }
-  const primary = lastReport && lastReport.spec && lastReport.spec.primary_course ? lastReport.spec.primary_course : 'zhizhi';
-  const courses = {
-    zhizhi: { id: 'zhizhi', name: '直指人心', page: 'zhizhirenxin.html', reason: '先看懂客戶在意什麼，信任建立起來，後面的成交才自然。' },
-    chengjiao: { id: 'chengjiao', name: '成交地圖', page: 'chengjiaoditu.html', reason: '把提問、價值說明與拒絕處理接成一套清楚流程。' },
-    xiaolu: { id: 'xiaolu', name: '極致效率', page: 'jizhixiaolv.html', reason: '把客戶資料、追蹤與下一步整理成方法，不再忙了卻沒結果。' },
-    yanzhi: { id: 'yanzhi', name: '言之有物', page: 'yanzhiyouwu.html', reason: '把產品介紹講得更有畫面，讓客戶聽懂價值。' },
-    liuliang: { id: 'liuliang', name: '流量磁鐵', page: 'liuliangcitie.html', reason: '先把名單來源打開，讓成交有更多可經營的對象。' }
-  };
-  const order = [primary, 'chengjiao', 'zhizhi', 'xiaolu', 'yanzhi', 'liuliang']
-    .filter((id, index, array) => id && array.indexOf(id) === index)
-    .slice(0, 3);
-  return order.map((id, index) => Object.assign({ order: index + 1 }, courses[id] || courses.zhizhi));
 }
 
 function normalizeDisc(value) {
@@ -1197,14 +1276,7 @@ function formatQuote(value) {
 function buildLeadPayload(eventType) {
   const profile = getProfile();
   const spec = lastReport && lastReport.spec ? lastReport.spec : {};
-  const conversation = currentState && Array.isArray(currentState.messages)
-    ? currentState.messages.slice(-20).map((msg) => ({
-        role: msg.role,
-        content: stripDisplayText(msg.content)
-      }))
-    : [];
   return {
-    lead_id: leadHubLeadId,
     event_type: eventType,
     source: 'taixin-website-ai-student-qa',
     source_page: location.href,
@@ -1216,6 +1288,7 @@ function buildLeadPayload(eventType) {
       region: profile.region,
       role: profile.role,
       industry: profile.industry,
+      product: profile.product,
       birthdate: profile.birthdate,
       consent: profile.consent
     },
@@ -1223,6 +1296,7 @@ function buildLeadPayload(eventType) {
       disc_hate_sales: profile.disc_hate_sales,
       disc_hate_workplace: profile.disc_hate_workplace,
       disc_hate_customer: profile.disc_hate_customer,
+      disc_hate_think: profile.disc_hate_think,
       problems: profile.problems,
       goals: profile.goals
     },
@@ -1236,19 +1310,11 @@ function buildLeadPayload(eventType) {
       primary_disc: lastReport.primaryDisc
     } : null,
     course_path: lastCoursePath || [],
-    conversation,
     state_summary: currentState ? {
       session_id: currentState.session_id,
       phase: currentState.phase,
-      recommendation_allowed: currentState.recommendation_allowed,
-      discovery_slots: currentState.discovery_slots || null,
-      discovery_evidence: currentState.discovery_evidence || null
+      recommendation_allowed: currentState.recommendation_allowed
     } : null,
-    browser: {
-      user_agent: navigator.userAgent,
-      language: navigator.language,
-      referrer: document.referrer || ''
-    },
     created_at: new Date().toISOString()
   };
 }
@@ -1263,17 +1329,11 @@ function sendLeadEvent(eventType) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
     keepalive: true
-  })
-    .then((response) => response.ok ? response.json().catch(() => null) : null)
-    .then((data) => {
-      if (data && data.lead_id) leadHubLeadId = data.lead_id;
-    })
-    .catch(() => {});
+  }).catch(() => {});
 }
 
 async function buildShareImageBlob() {
   if (!getReportValidation().ok) return null;
-  ensureCoursePath();
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
   canvas.height = 1920;
@@ -1298,23 +1358,21 @@ async function buildShareImageBlob() {
   window.__TAIXIN_LAST_SHARE_META = {
     width: canvasWidth,
     height: canvasHeight,
-    portrait_mode: 'upper-body-contain',
-    template: 'v5-premium-story-card',
+    portrait_mode: 'contain',
+    template: 'v3-premium-story-card',
     design_asset: 'img/sales-talent-share-template.png',
     blocks: ['headline', 'identity', 'sales_advantages', 'life_talents', 'practical_advice', 'quote', 'course_path']
   };
 
   await drawShareTemplate(ctx, theme, canvasWidth, canvasHeight);
-  await drawPortrait(ctx, 790, 96, 188, 226);
+  await drawPortrait(ctx, 804, 108, 150, 190);
   ctx.fillStyle = '#ffffff';
   ctx.font = '900 54px "Noto Sans TC", sans-serif';
   wrapTextMax(ctx, '銷售力不從心，因為從沒遇過李泰欣。', 112, 140, 640, 64, 3);
   ctx.font = '800 28px "Noto Sans TC", sans-serif';
   ctx.fillText('Orikan 李泰欣｜銷售天賦報告', 128, 336);
 
-  const cardTop = 430;
-  const cardBottom = 1604;
-  roundedRect(ctx, 72, cardTop, 936, cardBottom - cardTop, 40);
+  roundedRect(ctx, 72, 430, 936, 1238, 40);
   ctx.fillStyle = '#ffffff';
   ctx.fill();
   ctx.strokeStyle = 'rgba(24,33,47,0.08)';
@@ -1333,36 +1391,29 @@ async function buildShareImageBlob() {
   let y = 650;
   y = drawPremiumReportBlock(ctx, theme, '你的銷售優點是', lastReport.salesAdvantages, 112, y, 856);
   y = drawPremiumReportBlock(ctx, theme, '你的銷售天賦是', lastReport.lifeTalents, 112, y + 18, 856);
-  y = drawSingleTextBlock(ctx, theme, '給你的實戰建議', spec.practical_advice || '先把客戶資料、追蹤和下一步整理起來，讓每一次努力都能累積成結果。', 112, y + 20, 856, 2);
+  y = drawSingleTextBlock(ctx, theme, '給你的實戰建議', spec.practical_advice || '先把客戶資料、追蹤和下一步整理起來，讓每一次努力都能累積成結果。', 112, y + 18, 856);
 
-  const quoteHeight = 112;
-  const quoteY = Math.min(y + 34, cardBottom - quoteHeight - 28);
   ctx.fillStyle = theme.soft;
-  roundedRect(ctx, 112, quoteY, 856, quoteHeight, 24);
+  roundedRect(ctx, 112, y + 18, 856, 126, 24);
   ctx.fill();
   ctx.fillStyle = theme.dark;
-  ctx.font = '900 27px "Noto Sans TC", sans-serif';
-  wrapTextMax(ctx, stripDisplayText(spec.final_quote || 'Orikan 李泰欣送你一句話：銷售力不從心，因為從沒遇過李泰欣。'), 144, quoteY + 48, 792, 36, 2);
+  ctx.font = '900 29px "Noto Sans TC", sans-serif';
+  wrapTextMax(ctx, stripDisplayText(spec.final_quote || 'Orikan 李泰欣送你一句話：銷售力不從心，因為從沒遇過李泰欣。'), 144, y + 66, 792, 40, 2);
 
   const courseText = path.map((course, index) => `${index + 1}. ${stripDisplayText(course.name)}`).join('  ');
-  ctx.fillStyle = '#fff7ef';
-  ctx.fillRect(0, 1628, canvasWidth, 292);
   ctx.fillStyle = theme.dark;
-  roundedRect(ctx, 72, 1660, 936, 96, 48);
+  roundedRect(ctx, 72, 1732, 936, 92, 46);
   ctx.fill();
   ctx.fillStyle = '#ffffff';
   ctx.font = '900 28px "Noto Sans TC", sans-serif';
   ctx.textAlign = 'center';
-  fitText(ctx, `建議學習順序｜${courseText}`, 540, 1719, 820, 28, 21);
+  fitText(ctx, `建議學習順序｜${courseText}`, 540, 1789, 820, 28, 22);
   ctx.textAlign = 'left';
-  ctx.fillStyle = theme.main;
-  roundedRect(ctx, 72, 1818, 936, 74, 20);
-  ctx.fill();
   ctx.fillStyle = '#ffffff';
   ctx.shadowColor = 'rgba(0,0,0,0.28)';
   ctx.shadowBlur = 8;
   ctx.font = '900 28px "Noto Sans TC", sans-serif';
-  ctx.fillText('Orikan 李泰欣', 112, 1864);
+  ctx.fillText('Orikan 李泰欣', 72, 1878);
   ctx.shadowBlur = 0;
   return new Promise((resolve) => canvas.toBlob(resolve, 'image/png', 0.95));
 }
@@ -1386,7 +1437,10 @@ async function drawShareTemplate(ctx, theme, width, height) {
   ctx.fillStyle = topGradient;
   ctx.fillRect(0, 0, width, 404);
   ctx.fillStyle = withAlpha(theme.main, 0.36);
-  ctx.fillRect(0, 1810, width, 110);
+  ctx.fillRect(0, 1576, width, 180);
+  ctx.fillStyle = 'rgba(255,255,255,0.88)';
+  roundedRect(ctx, 72, 430, 936, 1238, 40);
+  ctx.fill();
 }
 
 async function drawPortrait(ctx, x, y, width, height) {
@@ -1457,13 +1511,13 @@ function drawPremiumReportBlock(ctx, theme, title, items, x, y, width) {
   return cursor;
 }
 
-function drawSingleTextBlock(ctx, theme, title, text, x, y, width, maxLines) {
+function drawSingleTextBlock(ctx, theme, title, text, x, y, width) {
   ctx.fillStyle = theme.dark;
   ctx.font = '900 32px "Noto Sans TC", sans-serif';
   ctx.fillText(title, x, y);
   ctx.fillStyle = '#263245';
   ctx.font = '800 25px "Noto Sans TC", sans-serif';
-  return wrapTextMax(ctx, stripDisplayText(text), x, y + 46, width, 35, maxLines || 3) + 8;
+  return wrapTextMax(ctx, stripDisplayText(text), x, y + 46, width, 35, 3) + 8;
 }
 
 function roundedRect(ctx, x, y, width, height, radius) {
@@ -1556,10 +1610,6 @@ function escapeHtml(value) {
 }
 
 function stripDisplayText(value) {
-  if (Array.isArray(value)) value = value.map((item) => stripDisplayText(item)).filter(Boolean).join('、');
-  if (value && typeof value === 'object') {
-    value = value.title || value.name || value.label || value.line || value.id || value.insight || value.strategy || '';
-  }
   return String(value || '')
     .replace(/<\/?[^>]+>/g, '')
     .replace(/&nbsp;/g, ' ')
