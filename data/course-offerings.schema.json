@@ -56,7 +56,7 @@
         "properties": {
           "course_id": {
             "type": "string",
-            "enum": ["liuliang", "chengjiao", "zhizhi", "xiaolu", "yanzhi", "all_courses_package", "super_sales_kl"]
+            "enum": ["liuliang", "chengjiao", "zhizhi", "xiaolu", "yanzhi", "all_courses_package", "super_sales_kl", "super_sales_tw"]
           },
           "course_name": {
             "type": "string",
@@ -91,7 +91,7 @@
           },
           "status": {
             "type": "string",
-            "enum": ["pending_confirmation", "confirmed", "available_now", "date_confirmed_price_pending", "sold_out", "closed", "waitlist"]
+            "enum": ["pending_confirmation", "confirmed", "available_now", "date_confirmed_price_pending", "price_confirmed_date_pending", "sold_out", "closed", "waitlist"]
           },
           "signup_url": {
             "type": "string",

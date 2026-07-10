@@ -210,7 +210,12 @@ function runCase(student) {
     seenReplies.push(response.reply);
   });
 
-  response = engine.transition(response.state, '我都清楚了');
+  assert(response.phase === 'route_choice', `${student.name} should choose a route after three answers`);
+  assert(!response.profile_spec, `${student.name} must not receive a report before choosing the talent route`);
+  assert(response.buttons.includes('了解課程介紹'), `${student.name} course-introduction route missing`);
+  assert(response.buttons.includes('找出我的銷售天賦'), `${student.name} talent route missing`);
+
+  response = engine.transition(response.state, '找出我的銷售天賦');
   assertCleanText(response.reply, `${student.name} report`);
   assert(response.profile_spec, `${student.name} report missing`);
   assert(response.course_path && response.course_path.length === 3, `${student.name} course path missing`);
@@ -280,6 +285,31 @@ function verifyTreeNodeUniqueness() {
 
 const results = cases.map(runCase);
 const treeCoverage = verifyTreeNodeUniqueness();
+
+const routeProfile = Object.assign({}, cases[0]);
+delete routeProfile.answers;
+let routeResponse = engine.start(routeProfile);
+cases[0].answers.forEach((answer) => {
+  routeResponse = engine.transition(routeResponse.state, answer);
+});
+assert(routeResponse.phase === 'route_choice', 'three answers must lead to the course-or-talent choice');
+assert(!routeResponse.profile_spec, 'route choice must not render a report before the student chooses talent');
+assertButtons(routeResponse, 'route choice');
+assert(routeResponse.buttons.includes('了解課程介紹'), 'route choice must show course introduction');
+assert(routeResponse.buttons.includes('找出我的銷售天賦'), 'route choice must show talent report');
+
+const courseIntro = engine.transition(routeResponse.state, '了解課程介紹');
+assert(courseIntro.phase === 'course_intro', 'course route must open course introduction');
+assertButtons(courseIntro, 'course introduction');
+['流量磁鐵', '成交地圖', '直指人心', '極致效率', '言之有物'].forEach((courseName) => {
+  assert(courseIntro.reply.includes(courseName), `course introduction missing ${courseName}`);
+});
+assert(/利益點/.test(courseIntro.reply), 'course introduction must explain benefits without teaching the full lesson');
+assertCleanText(courseIntro.reply, 'course introduction');
+
+const talentReport = engine.transition(courseIntro.state, '找出我的銷售天賦');
+assert(talentReport.profile_spec, 'talent route must render the report from the three collected answers');
+assert(talentReport.course_path && talentReport.course_path.length === 3, 'talent route must prepare a three-course path');
 
 const officialLineProfile = engine.createSession({
   birthdate: '1991-05-03',

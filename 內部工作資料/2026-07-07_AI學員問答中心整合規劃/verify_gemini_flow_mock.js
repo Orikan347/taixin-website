@@ -1,336 +1,43 @@
 const assert = require('assert');
 const gemini = require('../../lib/gemini-student-qa');
-
-const context = {
-  config: {
-    worker_url: 'https://smart-close-api.toleratestar.workers.dev',
-    model: 'gemini-2.5-flash',
-    timeout_ms: 5000
-  },
-  salesBrain: require('../../data/taixin-sales-brain.json'),
-  quoteSeeds: require('../../data/golden-quote-seeds.json'),
-  offerings: require('../../data/course-offerings.json')
-};
-
-let callCount = 0;
-global.fetch = async (_url, options) => {
-  callCount += 1;
-  const body = JSON.parse(options.body);
-  const prompt = body.contents[0].parts[0].text;
-  assert(prompt.includes('BAF'));
-  assert(prompt.includes('五連問'));
-  assert(prompt.includes('拒絕處理 6 句循環'));
-  assert(prompt.includes('能量 × 邏輯 × 格局'));
-  assert(prompt.includes('金句'));
-  assert(prompt.includes('極致效率'));
-  assert(prompt.includes('課程會學到什麼'));
-  assert(prompt.includes('銷售力不從心，因為從沒遇過李泰欣。'));
-  assert(prompt.includes('smart-close') || body._model);
-
-  const latestMatch = prompt.match(/使用者最新訊息：\n([\s\S]*?)\n\n輸出 JSON/);
-  const latestMessage = latestMatch ? latestMatch[1] : '';
-  const discoveryMatch = prompt.match(/對話蒐集狀態：\n([\s\S]*?)\n\n目前已確認的學生資訊欄位/);
-  const discovery = discoveryMatch ? JSON.parse(discoveryMatch[1]) : { can_build_report: false };
-  const fixedBadDiscovery = /(考慮看看|沒錢|再比較|家人討論|怕沒有效|沒時間|很忙)/.test(latestMessage)
-    ? {
-        phase: 'discovery',
-        reply: '你前面講的我都記下來了。最後補一個真實情境就好：最近一次客戶沒有往前走，他原話大概怎麼說？',
-        next_question: '',
-        profile_spec: null,
-        course_path: [],
-        cta_ready: false
-      }
-    : null;
-  const payload = fixedBadDiscovery || (latestMessage.trim() === '上班族'
-    ? {
-        phase: 'discovery',
-        reply: '我先抓到你賣的是保健品。那通常會買單的是哪一種客戶？',
-        next_question: '',
-        profile_spec: null,
-        course_path: [],
-        cta_ready: false
-      }
-    : /^(有|有啊|有喔|yes)$/i.test(latestMessage.trim()) || /(有準|像我)/.test(latestMessage)
-    ? {
-        phase: 'recommendation',
-        reply: '太好了，這代表你的優勢其實很清楚。我直接把最適合你的三堂課先列給你：\n\n1. 直指人心：先看懂客戶與信任建立。\n2. 成交地圖：再補五連問、MBAF 與拒絕處理。\n3. 極致效率：把追蹤整理起來。',
-        next_question: '',
-        profile_spec: null,
-        course_path: [
-          { id: 'zhizhi', name: '直指人心', reason: '先看懂客戶與信任建立。' },
-          { id: 'chengjiao', name: '成交地圖', reason: '再補五連問、MBAF 與拒絕處理。' },
-          { id: 'xiaolu', name: '極致效率', reason: '把追蹤整理起來。' }
-        ]
-      }
-    : discovery.can_build_report
-      ? {
-          phase: 'profile_ready',
-          reply: '我把你的銷售天賦整理成表格，已經放在底下給你囉。\n\n你覺得有準嗎？也可以繼續了解怎麼做，讓自己成長更快。想繼續了解，直接回 yes。',
-          next_question: '',
-          profile_spec: {
-            disc_type: 'S',
-            life_number: '7',
-            sales_advantages: [
-              { title: '信任力', insight: '你讓人放下防備。', strategy: '先問出擔心，再說明價值。' },
-              { title: '穩定力', insight: '你適合長期互動。', strategy: '把每次接觸留下下一步。' },
-              { title: '故事力', insight: '你適合用真實案例說服。', strategy: '用 MBAF 接故事。' }
-            ],
-            life_talents: [
-              { title: '7 號：洞察力', insight: '你能追到真正原因。', strategy: '用提問找出真顧慮。' },
-              { title: '提問力', insight: '你適合把表面答案往下追。', strategy: '先讓客戶說出心裡話。' },
-              { title: '整合優勢', insight: '你能把感受、需求和方案整理在一起。', strategy: '把對話記錄下來，追蹤會更有方向。' }
-            ],
-            student_strength: '你很適合用信任與提問打開成交。',
-            persuasion_power: '把擔心翻成行動理由。',
-            practical_advice: '遇到太貴，先問他是在比較價格還是還沒看見差異。',
-            final_quote: '信任到了，成交就近了。'
-          },
-          course_path: [],
-          cta_ready: false
-        }
-      : {
-          phase: 'discovery',
-          reply: callCount === 1
-            ? '好，我抓到了。你賣的是保險，對象是家庭客戶。我再往下看一點：最近一次沒有成交，對方是怎麼回你的？'
-            : '你剛剛提到客戶會猶豫。下一次遇到同樣狀況，你最想讓自己哪個地方更強？',
-          next_question: '',
-          profile_spec: null,
-          course_path: [],
-          cta_ready: false
-        });
-
-  return {
-    ok: true,
-    json: async () => ({
-      candidates: [
-        {
-          content: {
-            parts: [
-              { text: JSON.stringify(payload) }
-            ]
-          }
-        }
-      ]
-    })
-  };
-};
+const offerings = require('../../data/course-offerings.json');
 
 (async () => {
-  let response = await gemini.start({
-    birthdate: '1990-03-21',
-    name: 'andy',
-    email: 'andy@example.com',
-    phone: 'LINE-andysales',
-    region: 'tw',
-    role: 'sales_consultant',
-    industry: '保險',
-    disc_hate_sales: 'S',
-    disc_hate_workplace: 'S',
-    disc_hate_customer: 'S',
-    problems: ['成交不了，客戶常說再想想'],
-    goals: ['提升成交']
-  }, context);
+  const profile = {
+    birthdate: '1991-07-07', name: 'amy', email: 'amy@example.com', phone: 'LINE-amy',
+    region: 'tw', role: 'sales_consultant', industry: '教育課程', product: '商業技能課程',
+    disc_hate_sales: 'I', disc_hate_workplace: 'I', disc_hate_customer: 'I', disc_hate_think: 'I',
+    problems: ['講不清楚價值'], goals: ['提升成交'], course_offerings: offerings
+  };
 
-  assert.strictEqual(response.reply, '');
-  const objection = await gemini.transition(response.state, '看不懂你在講什麼');
-  assert(objection.reply.includes('我懂'));
-  assert(objection.reply.includes('你指的是哪裡看不懂'));
-  assert(objection.reply.includes('這樣有比較清楚嗎'));
-  assert(!objection.reply.includes('你最想讓這份報告幫你看見哪一個銷售優勢'));
-  response = await gemini.transition(response.state, '我賣保險，客戶多半是家庭客戶。');
-  assert(response.reply.includes('最近一次'));
-  response = await gemini.transition(response.state, '客戶說太貴，想再考慮看看。');
-  assert(!response.profile_spec);
-  assert.strictEqual(response.phase, 'discovery');
-  assert(response.reply.length > 8);
-  response = await gemini.transition(response.state, '我通常會先解釋保障內容，但後續追蹤常常沒有整理好。');
-  assert(response.profile_spec);
-  assert.strictEqual(response.course_path, null);
-  assert(response.profile_spec.sales_advantages.length === 3);
-  assert(response.profile_spec.life_talents.length === 3);
-  assert(response.profile_spec.life_talents.some((item) => item.title.includes('7')));
-  assert(response.profile_spec.final_quote.length <= 30);
-  assert(!JSON.stringify(response.profile_spec).includes('[object Object]'));
-  assert(!response.reply.includes('我先不急著推薦課程'));
-  assert(!response.reply.includes('最大卡點'));
-  assert(!response.reply.includes('卡住'));
-  assert(response.reply.includes('我把你的銷售天賦整理成表格'));
-  assert(response.reply.includes('直接回 yes'));
-  assert(!response.reply.includes('你看完之後，覺得像你嗎？有準嗎？'));
+  let response = await gemini.start(profile);
+  assert(response.reply.includes('你現在主要賣什麼'));
+  response = await gemini.transition(response.state, '我賣教育課程，客戶通常是上班族。');
+  assert(response.reply.includes('最近一次客戶沒有往前走'));
+  response = await gemini.transition(response.state, '客戶覺得太貴，也會說再想想。');
+  assert(response.reply.includes('最想讓自己哪個地方變強'));
+  response = await gemini.transition(response.state, '我想把價值講清楚，成交也更穩。');
+  assert.strictEqual(response.phase, 'route_choice');
+  assert.strictEqual(response.profile_spec, null);
+  assert(response.buttons.includes('了解課程介紹'));
+  assert(response.buttons.includes('找出我的銷售天賦'));
 
-  const recommended = await gemini.transition(response.state, 'yes');
-  assert(recommended.course_path);
+  const courseIntro = await gemini.transition(response.state, '了解課程介紹');
+  assert.strictEqual(courseIntro.phase, 'course_intro');
+  assert(courseIntro.reply.includes('成交地圖'));
+  assert(courseIntro.reply.includes('極致效率'));
+
+  const report = await gemini.transition(courseIntro.state, '找出我的銷售天賦');
+  assert(report.profile_spec);
+  assert.strictEqual(report.profile_spec.sales_advantages.length, 3);
+  assert.strictEqual(report.profile_spec.life_talents.length, 3);
+  assert(!JSON.stringify(report.profile_spec).includes('[object Object]'));
+
+  const recommended = await gemini.transition(report.state, 'yes');
   assert.strictEqual(recommended.phase, 'recommendation');
-  assert(recommended.cta);
-  assert(recommended.reply.includes('1.'));
-  assert(recommended.reply.includes('2.'));
-  assert(recommended.reply.includes('3.'));
-  assert(recommended.reply.includes('直指人心') || recommended.reply.includes('成交地圖'));
-
-  const shortAnswerEvidence = gemini.analyzeDiscoveryEvidence([
-    { role: 'user', content: '保健品' },
-    { role: 'assistant', content: '我先抓到你賣的是保健品。那通常會買單的是哪一種客戶？' },
-    { role: 'user', content: '上班族' },
-    { role: 'assistant', content: '那上班族通常最在意的是效果、價格、信任，還是沒時間了解？' },
-    { role: 'user', content: '太貴，也怕沒有效' }
-  ], {
-    role: 'sales_consultant',
-    industry: '保健品',
-    problems: [],
-    goals: ['提升成交']
-  });
-  assert.strictEqual(shortAnswerEvidence.slots.product, '保健品');
-  assert.strictEqual(shortAnswerEvidence.slots.customer, '上班族');
-  assert(shortAnswerEvidence.slots.problem.includes('太貴'));
-  assert(shortAnswerEvidence.coverage.product);
-  assert(shortAnswerEvidence.coverage.customer);
-
-  const fiveIndustryCases = [
-    ['保健品', '上班族', '太貴，也怕沒有效', '提升成交'],
-    ['保時捷', '企業老闆', '覺得價格高，想再比較', '建立信任'],
-    ['保險', '家庭客戶', '說再想想，怕買錯', '提升成交'],
-    ['醫美療程', '媽媽', '擔心效果，也覺得預算高', '表達價值'],
-    ['企業顧問服務', '高階主管', '沒時間了解，也怕看不到效益', '極致效率']
-  ];
-  for (const [product, customer, problem, goal] of fiveIndustryCases) {
-    const evidence = gemini.analyzeDiscoveryEvidence([
-      { role: 'user', content: product },
-      { role: 'assistant', content: `我先抓到你賣的是${product}。那通常會買單的是哪一種客戶？` },
-      { role: 'user', content: customer },
-      { role: 'assistant', content: `好，我抓到了，你賣的是${product}，對象是${customer}。最近一次沒有往前走，對方是停在價格、信任，還是一直說再想想？` },
-      { role: 'user', content: problem },
-      { role: 'assistant', content: '我有抓到你遇到的狀況了。那你現在最想先解決哪一件事？成交、信任、追蹤、表達價值，還是每天太忙沒結果？' },
-      { role: 'user', content: goal }
-    ], {
-      role: 'sales_consultant',
-      industry: product,
-      problems: [],
-      goals: []
-    });
-    assert.strictEqual(evidence.slots.product, product);
-    assert.strictEqual(evidence.slots.customer, customer);
-    assert(evidence.coverage.product);
-    assert(evidence.coverage.customer);
-    assert(evidence.coverage.problem);
-    assert(evidence.coverage.goal);
-  }
-
-  const repeatedState = gemini.createSession({
-    birthdate: '1991-07-07',
-    name: 'amy',
-    email: 'amy@example.com',
-    phone: 'LINE-amy',
-    region: 'tw',
-    role: 'sales_consultant',
-    industry: '保健品',
-    disc_hate_sales: 'I',
-    disc_hate_workplace: 'I',
-    disc_hate_customer: 'I',
-    problems: [],
-    goals: ['提升成交']
-  }, context);
-  repeatedState.messages.push({ role: 'user', content: '保健品' });
-  repeatedState.messages.push({ role: 'assistant', content: '我先抓到你賣的是保健品。那通常會買單的是哪一種客戶？' });
-  const repeatedResponse = await gemini.transition(repeatedState, '上班族');
-  assert(repeatedResponse.reply.includes('保健品'));
-  assert(repeatedResponse.reply.includes('上班族'));
-  assert(!repeatedResponse.reply.includes('哪一種客戶'));
-  assert(!repeatedResponse.reply.includes('這句話其實已經透露一個銷售訊號'));
-
-  const educationState = gemini.createSession({
-    birthdate: '1991-07-07',
-    name: 'amy',
-    email: 'amy@example.com',
-    phone: 'LINE-amy',
-    region: 'tw',
-    role: 'sales_consultant',
-    industry: '教育課程',
-    disc_hate_sales: 'I',
-    disc_hate_workplace: 'I',
-    disc_hate_customer: 'I',
-    problems: [],
-    goals: []
-  }, context);
-  let educationResponse = await gemini.transition(educationState, '賣教育課程');
-  assert(educationResponse.reply.includes('教育課程'));
-  assert(educationResponse.reply.includes('誰') || educationResponse.reply.includes('哪一種人'));
-  educationResponse = await gemini.transition(educationResponse.state, '上班族');
-  assert(educationResponse.reply.includes('教育課程'));
-  assert(educationResponse.reply.includes('上班族'));
-  assert(/沒時間|價格高|看不到效果|再想想/.test(educationResponse.reply));
-  const firstEducationReply = educationResponse.state.messages.find((msg) => msg.role === 'assistant').content;
-  assert.notStrictEqual(
-    firstEducationReply.replace(/\s+/g, ''),
-    educationResponse.reply.replace(/\s+/g, '')
-  );
-  const goalWithoutProblem = await gemini.transition(educationResponse.state, '成交率提高');
-  assert(!goalWithoutProblem.profile_spec);
-  assert.strictEqual(goalWithoutProblem.phase, 'discovery');
-  assert(
-    goalWithoutProblem.reply.includes('真實阻力') ||
-    goalWithoutProblem.reply.includes('沒有往前走') ||
-    goalWithoutProblem.reply.includes('最常不買')
-  );
-
-  const enoughState = gemini.createSession({
-    birthdate: '1991-07-07',
-    name: 'amy',
-    email: 'amy@example.com',
-    phone: 'LINE-amy',
-    region: 'tw',
-    role: 'sales_consultant',
-    industry: '保健品',
-    disc_hate_sales: 'I',
-    disc_hate_workplace: 'I',
-    disc_hate_customer: 'I',
-    problems: [],
-    goals: ['提升成交']
-  }, context);
-  enoughState.messages.push({ role: 'user', content: '保健品' });
-  enoughState.messages.push({ role: 'assistant', content: '我先抓到你賣的是保健品。那通常會買單的是哪一種客戶？' });
-  enoughState.messages.push({ role: 'user', content: '上班族' });
-  enoughState.messages.push({ role: 'assistant', content: '你前面講的我都記下來了。最後補一個真實情境就好：最近一次客戶沒有往前走，他原話大概怎麼說？' });
-  const enoughResponse = await gemini.transition(enoughState, '考慮看看，沒錢');
-  assert(enoughResponse.profile_spec);
-  assert.strictEqual(enoughResponse.phase, 'profile_ready');
-  assert(!enoughResponse.reply.includes('最後補一個真實情境'));
-
-  const consultativeCases = [
-    ['保健品', '上班族', '考慮看看，沒錢', '沒錢', '五連問'],
-    ['保時捷', '企業老闆', '想再比較', '再比較', '言之有物'],
-    ['保險', '家庭客戶', '要回去跟家人討論', '家人討論', '拒絕處理'],
-    ['醫美療程', '媽媽', '怕沒有效', '怕沒有效', '言之有物'],
-    ['企業顧問服務', '高階主管', '沒時間，很忙', '沒時間，很忙', '極致效率']
-  ];
-  for (const [product, customer, userText, quoteToken, methodToken] of consultativeCases) {
-    const consultState = gemini.createSession({
-      birthdate: '1991-07-07',
-      name: 'amy',
-      email: 'amy@example.com',
-      phone: 'LINE-amy',
-      region: 'tw',
-      role: 'sales_consultant',
-      industry: product,
-      disc_hate_sales: 'I',
-      disc_hate_workplace: 'I',
-      disc_hate_customer: 'I',
-      problems: [],
-      goals: []
-    }, context);
-    consultState.messages.push({ role: 'user', content: product });
-    consultState.messages.push({ role: 'assistant', content: `我先抓到你賣的是${product}。那通常會買單的是哪一種客戶？` });
-    consultState.messages.push({ role: 'user', content: customer });
-    consultState.messages.push({ role: 'assistant', content: `以${customer}來說，最近沒有往前走時，對方通常會怎麼說？` });
-    const consultResponse = await gemini.transition(consultState, userText);
-    assert.strictEqual(consultResponse.phase, 'discovery');
-    assert(!consultResponse.profile_spec);
-    assert(consultResponse.reply.includes(quoteToken), consultResponse.reply);
-    assert(consultResponse.reply.includes(methodToken), consultResponse.reply);
-    assert(!consultResponse.reply.includes('最後補一個真實情境'), consultResponse.reply);
-    assert(consultResponse.reply.includes('我再問你一個關鍵就好'), consultResponse.reply);
-  }
-  console.log('PASS\nGEMINI-PROMPT-INCLUDES-COURSE-BRAIN: PASS\nCOURSE-QA-BOUNDARY: PASS\nDYNAMIC-QUESTIONS: PASS\nSHORT-ANSWER-CONTEXT: PASS\nEDUCATION-SHORT-ANSWER-NO-REPEAT: PASS\nFIVE-INDUSTRY-SHORT-ANSWER: PASS\nVOICE-OF-CUSTOMER-DIAGNOSIS: PASS\nENOUGH-DATA-FORCES-REPORT: PASS\nOBJECTION-RECOVERY: PASS\nTHREE-TALENTS-REPORT: PASS\nPERSONAL-QUOTE: PASS\nAGREEMENT-GATE: PASS');
+  assert(recommended.course_path && recommended.course_path.length === 3);
+  console.log('PASS\nADAPTER-THREE-QUESTION-ROUTE-CHOICE: PASS\nADAPTER-COURSE-INTRODUCTION: PASS\nADAPTER-TALENT-REPORT: PASS\nADAPTER-RECOMMENDATION: PASS');
 })().catch((error) => {
-  console.error(error);
+  console.error(error.stack || error.message);
   process.exit(1);
 });

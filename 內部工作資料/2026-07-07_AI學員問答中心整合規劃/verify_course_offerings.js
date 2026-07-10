@@ -33,7 +33,22 @@ for (const offering of publicData.offerings) {
   }
 }
 assert(publicData.offerings.some((offering) => offering.course_name === '成交地圖' && offering.price === 11000));
-assert(publicData.offerings.some((offering) => offering.course_name === '超級銷冠系統' && offering.price === null));
+assert(publicData.offerings.some((offering) => (
+  offering.course_name === '超級銷冠系統（吉隆坡場）'
+  && offering.price === 4680
+  && offering.currency === 'MYR'
+  && offering.status === 'confirmed'
+  && offering.display_note === '已確認'
+)));
+assert(publicData.offerings.some((offering) => (
+  offering.course_name === '超級銷冠系統（台灣場）'
+  && offering.price === 31000
+  && offering.currency === 'TWD'
+  && offering.status === 'price_confirmed_date_pending'
+  && offering.date_time === null
+  && offering.end_date_time === null
+  && offering.display_note === '價格已確認，日期待確認'
+)));
 
 const invalidPending = JSON.parse(JSON.stringify(loaded));
 invalidPending.offerings[0].status = 'pending_confirmation';
@@ -54,4 +69,4 @@ const invalidConfirmedResult = validateCourseOfferings(invalidConfirmed);
 assert.strictEqual(invalidConfirmedResult.ok, false);
 assert(invalidConfirmedResult.errors.some((error) => error.includes('cannot use pending verifier')));
 
-console.log('PASS\nCOURSE-OFFERINGS-SCHEMA: PASS\nPUBLIC-OFFERINGS: PASS\nRETAKE-POLICY: PASS\nPENDING-REDACTION: PASS\nAVAILABLE-NOW: PASS\nDATE-CONFIRMED-PRICE-PENDING: PASS\nINVALID-PENDING-COMMERCIAL-INFO: PASS\nCONFIRMED-REQUIRES-VERIFIER: PASS');
+console.log('PASS\nCOURSE-OFFERINGS-SCHEMA: PASS\nPUBLIC-OFFERINGS: PASS\nRETAKE-POLICY: PASS\nPENDING-REDACTION: PASS\nAVAILABLE-NOW: PASS\nSUPER-SALES-KL-CONFIRMED-PRICE: PASS\nSUPER-SALES-TW-CONFIRMED-DATE-PRICE: PASS\nINVALID-PENDING-COMMERCIAL-INFO: PASS\nCONFIRMED-REQUIRES-VERIFIER: PASS');
