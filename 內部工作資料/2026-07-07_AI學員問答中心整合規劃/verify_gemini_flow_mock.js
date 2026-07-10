@@ -24,8 +24,10 @@ const offerings = require('../../data/course-offerings.json');
 
   const courseIntro = await gemini.transition(response.state, '了解課程介紹');
   assert.strictEqual(courseIntro.phase, 'course_intro');
-  assert(courseIntro.reply.includes('成交地圖'));
-  assert(courseIntro.reply.includes('極致效率'));
+  ['流量磁鐵', '成交地圖', '直指人心', '極致效率', '言之有物', '天地人網', 'MBAF', 'DISC', 'YPD'].forEach((term) => {
+    assert(courseIntro.reply.includes(term), `course intro missing ${term}`);
+  });
+  assert(!/3,000 萬|破億|36,000|三個月新人第一名/.test(courseIntro.reply));
 
   const report = await gemini.transition(courseIntro.state, '找出我的銷售天賦');
   assert(report.profile_spec);

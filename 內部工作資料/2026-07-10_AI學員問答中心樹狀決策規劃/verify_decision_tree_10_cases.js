@@ -230,7 +230,10 @@ function runCase(student) {
 
   const contentResponse = engine.transition(courseResponse.state, '這個課程會學什麼');
   assertButtons(contentResponse, `${student.name} course content`);
-  assert(/利益點/.test(contentResponse.reply), `${student.name} course content should explain benefits`);
+  ['流量磁鐵', '成交地圖', '直指人心', '極致效率', '言之有物', '天地人網', 'MBAF', 'DISC', '存→記→分→細', '能量、邏輯、格局', 'YPD'].forEach((term) => {
+    assert(contentResponse.reply.includes(term), `${student.name} course content missing ${term}`);
+  });
+  assert(!/3,000 萬|破億|36,000|三個月新人第一名|2019 保時捷/.test(contentResponse.reply), `${student.name} course content exposed unconfirmed performance claim`);
   assertCleanText(contentResponse.reply, `${student.name} course content`);
 
   return {
@@ -304,8 +307,20 @@ assertButtons(courseIntro, 'course introduction');
 ['流量磁鐵', '成交地圖', '直指人心', '極致效率', '言之有物'].forEach((courseName) => {
   assert(courseIntro.reply.includes(courseName), `course introduction missing ${courseName}`);
 });
-assert(/利益點/.test(courseIntro.reply), 'course introduction must explain benefits without teaching the full lesson');
+['天地人網', 'MBAF', 'DISC', '存→記→分→細', '能量、邏輯、格局', 'YPD'].forEach((term) => {
+  assert(courseIntro.reply.includes(term), `course introduction missing ${term}`);
+});
+assert(!/3,000 萬|破億|36,000|三個月新人第一名|2019 保時捷/.test(courseIntro.reply), 'course introduction exposed unconfirmed performance claim');
 assertCleanText(courseIntro.reply, 'course introduction');
+
+const courseButtons = courseIntro.buttons;
+assert(new Set(courseButtons).size === courseButtons.length, 'course introduction buttons must be unique');
+assert(courseButtons.includes('看其餘三堂課'), 'course introduction must expose the remaining three courses');
+const otherCourses = engine.transition(courseIntro.state, '看其餘三堂課');
+['直指人心', '極致效率', '言之有物', 'DISC', 'YPD'].forEach((term) => {
+  assert(otherCourses.reply.includes(term), `remaining course details missing ${term}`);
+});
+assertCleanText(otherCourses.reply, 'remaining course details');
 
 const talentReport = engine.transition(courseIntro.state, '找出我的銷售天賦');
 assert(talentReport.profile_spec, 'talent route must render the report from the three collected answers');

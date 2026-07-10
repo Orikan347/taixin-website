@@ -6,6 +6,12 @@
       "name": "流量磁鐵",
       "page": "liuliang.html",
       "positioning": "建立 24 小時自動吸客的名單系統。",
+      "public_learning": [
+        "天地人網：把線上、線下、社群、個人品牌、實體場景與人脈整理成開發方向。",
+        "存→記→分→細：把名單留下、記錄、分類，再安排後續。",
+        "讓你不只等介紹，而是知道下一批客戶可以從哪裡來。"
+      ],
+      "public_audience": "客戶來源不穩、名單不夠，或業績常常要靠介紹的人。",
       "solves": ["缺客", "名單不足", "陌生開發被拒絕", "流量成本上升"],
       "primary_talents": ["lead_generation", "relationship_nurture"],
       "recommended_when": ["客戶不夠多", "不知道去哪裡找客戶", "業績靠運氣"]
@@ -15,6 +21,12 @@
       "name": "成交地圖",
       "page": "chengjiaoditu.html",
       "positioning": "把銷售變成導航系統，從第一印象到順利收單。",
+      "public_learning": [
+        "第一印象：用具體事實和正面特質建立信任。",
+        "五大核心問題：問出客戶真正想解決的事，不只停在表面需求。",
+        "MBAF 產品介紹法與成交 365：把價值說清楚，處理顧慮，再帶到下一步。"
+      ],
+      "public_audience": "客戶會談後常常停住、常聽到再想想，或不知道下一句怎麼接的人。",
       "solves": ["成交不了", "客戶猶豫", "害怕拒絕", "不知道下一句怎麼接"],
       "primary_talents": ["needs_diagnosis", "objection_handling", "closing"],
       "recommended_when": ["客戶說再想想", "不敢逼單", "流程不清楚"]
@@ -24,6 +36,12 @@
       "name": "直指人心",
       "page": "zhizhirenxin.html",
       "positioning": "用 DISC 與觀人術快速讀懂客戶行為模式。",
+      "public_learning": [
+        "從外貌舉止、聲音語調和互動反應，觀察客戶的行為模式。",
+        "用 DISC 四型調整說法：D 重結果、I 重互動、S 重安全、C 重資料和邏輯。",
+        "把判斷放回成交流程，讓你不是對每個人都講同一套。"
+      ],
+      "public_audience": "常覺得客戶很難懂、信任建立不夠，或每個人都只能用同一套說法的人。",
       "solves": ["看不懂客戶", "信任建立不足", "溝通流於表面"],
       "primary_talents": ["trust_building", "disc_reading", "relationship_nurture"],
       "recommended_when": ["客戶有戒心", "不知道對方在意什麼", "想縮短信任建立時間"]
@@ -33,6 +51,12 @@
       "name": "極致效率",
       "page": "jizhixiaolv.html",
       "positioning": "整理客戶資料、時間與追蹤系統，省下無效工時。",
+      "public_learning": [
+        "把客戶資料和過去互動整理好，找得到資料，才跟得上客戶。",
+        "用存→記→分→細管理名單，再配合時間碼和行事曆安排追蹤。",
+        "搭配智能 AI 成交助手，把重複整理交給工具，把時間留給真正重要的客戶。"
+      ],
+      "public_audience": "每天很忙卻沒有結果、資料散落各處，或常常忘記追蹤客戶的人。",
       "solves": ["每天很忙但沒結果", "客戶資料散亂", "忘記追蹤", "行政耗時"],
       "primary_talents": ["follow_up_system", "workflow_design"],
       "recommended_when": ["忙到沒時間成交", "客戶資料找不到", "追蹤沒有系統"]
@@ -42,6 +66,12 @@
       "name": "言之有物",
       "page": "yanzhiyouwu.html",
       "positioning": "把想法變成清楚、有感、有格局的表達。",
+      "public_learning": [
+        "用能量、邏輯、格局，把專業講得清楚、有感，而且和對方有關。",
+        "學向上、平級、向下三種溝通方式，知道面對不同對象該怎麼說。",
+        "用 30 秒電梯簡報和 YPD 三部曲，把想法說出來，也讓別人願意跟著做。"
+      ],
+      "public_audience": "專業做得到卻講不清楚、介紹產品沒有感染力，或需要帶人和影響團隊的人。",
       "solves": ["表達無力", "講不清楚", "不敢上台", "無法複製經驗"],
       "primary_talents": ["value_presentation", "stage_expression", "team_influence"],
       "recommended_when": ["想帶團隊", "需要一對多影響", "專業做得出來但說不出來"]
