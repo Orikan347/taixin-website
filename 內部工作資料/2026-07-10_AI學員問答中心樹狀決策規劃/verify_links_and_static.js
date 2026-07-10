@@ -63,6 +63,9 @@ const stateMachine = fs.readFileSync(path.join(root, 'lib/state-machine.js'), 'u
   ['qa keeps share download alive long enough', /function downloadBlob\(blob\)/.test(qaHtml) && /setTimeout\(\(\) => URL\.revokeObjectURL\(url\), 1500\)/.test(qaHtml)],
   ['qa has line CTA', /https:\/\/line\.me\/ti\/p\/jzdho94spl/.test(qaHtml)],
   ['qa has signup CTA', /docs\.google\.com\/forms/.test(qaHtml)],
+  ['state machine has explicit tree nodes', /const TREE_NODES\s*=\s*\{/.test(stateMachine)],
+  ['state machine stores the active tree node', /active_tree_node/.test(stateMachine)],
+  ['state machine gives tree buttons priority in explanation', /if \(TREE_BUTTON_TO_NODE\[text\]\) return buildTreeNodeResponse/.test(stateMachine)],
   ['state machine uses no invented target line', !/目標貫通線/.test(stateMachine)],
   ['state machine does not gift the brand slogan', !/銷售力不從心，因為從沒遇過李泰欣。/.test(stateMachine)]
 ].forEach(([label, ok]) => {

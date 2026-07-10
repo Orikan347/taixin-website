@@ -1,6 +1,10 @@
 {
-  "generated_at": "2026-07-10T12:07:12.477Z",
+  "generated_at": "2026-07-10T14:27:57.524Z",
   "case_count": 10,
+  "tree_coverage": {
+    "rootNodes": 21,
+    "leafNodes": 63
+  },
   "passed": true,
   "results": [
     {

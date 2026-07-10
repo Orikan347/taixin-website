@@ -239,7 +239,47 @@ function runCase(student) {
   };
 }
 
+function verifyTreeNodeUniqueness() {
+  const rootButtons = [
+    '不知道去哪找客戶', '內容發了沒人問', '想建立穩定來源',
+    '客戶覺得現在不需要', '客戶不確定有沒有效', '客戶想跟別人比較',
+    '他在想價格', '他在想效果', '他在想要問誰',
+    '怎麼跟主管說', '怎麼整理價值', '怎麼降低風險',
+    '怎麼看懂客戶', '怎麼讓客戶安心', '怎麼問出真話',
+    '客戶資料很亂', '常常忘記追蹤', '想用工具省時間',
+    '怎麼講得更有感', '怎麼講出差異', '怎麼講給主管聽'
+  ];
+  const rootReplies = new Set();
+  let leafCount = 0;
+
+  rootButtons.forEach((rootButton) => {
+    const state = engine.createSession({ name: '樹狀測試', birthdate: '1991-05-03' });
+    state.phase = 'explanation';
+    const rootResponse = engine.transition(state, rootButton);
+    assertButtons(rootResponse, `${rootButton} root`);
+    assertCleanText(rootResponse.reply, `${rootButton} root`);
+    assert(!rootReplies.has(rootResponse.reply), `${rootButton} reused another root reply`);
+    rootReplies.add(rootResponse.reply);
+
+    const childReplies = new Set();
+    rootResponse.buttons.slice(0, 3).forEach((childButton) => {
+      const leafResponse = engine.transition(rootResponse.state, childButton);
+      assertButtons(leafResponse, `${rootButton} -> ${childButton}`);
+      assertCleanText(leafResponse.reply, `${rootButton} -> ${childButton}`);
+      assert(leafResponse.reply !== rootResponse.reply, `${rootButton} -> ${childButton} repeated root reply`);
+      assert(!childReplies.has(leafResponse.reply), `${rootButton} child replies repeat`);
+      childReplies.add(leafResponse.reply);
+      leafCount += 1;
+    });
+  });
+
+  assert(rootReplies.size === 21, 'all 21 root button replies must be unique');
+  assert(leafCount === 63, 'all 63 second-level replies must exist');
+  return { rootNodes: rootReplies.size, leafNodes: leafCount };
+}
+
 const results = cases.map(runCase);
+const treeCoverage = verifyTreeNodeUniqueness();
 
 const officialLineProfile = engine.createSession({
   birthdate: '1991-05-03',
@@ -268,6 +308,7 @@ const outputPath = path.join(__dirname, '10-case-verification-result.json');
 fs.writeFileSync(outputPath, JSON.stringify({
   generated_at: new Date().toISOString(),
   case_count: results.length,
+  tree_coverage: treeCoverage,
   passed: true,
   results
 }, null, 2));
