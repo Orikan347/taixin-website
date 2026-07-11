@@ -35,6 +35,15 @@ function finishTalent(p) {
   return result;
 }
 
+function finishTalentAsDisc(p, discIndex) {
+  let result = engine.start(p);
+  result = engine.transition(result.state, result.buttons[discIndex]);
+  result = engine.transition(result.state, result.buttons[discIndex]);
+  result = engine.transition(result.state, result.buttons[discIndex]);
+  assert.equal(result.phase, 'report_ready');
+  return result;
+}
+
 const reportResults = students.map(([name, industry, problems]) => finishTalent(profile(name, industry, problems)));
 
 const courseReplies = new Map();
@@ -57,22 +66,35 @@ courseNames.forEach((courseName) => {
 });
 assert.equal(courseReplies.size, 15, 'all fifteen course answers must be unique');
 
-let objectionResult = reportResults[1];
-objectionResult = engine.transition(objectionResult.state, '課程介紹');
-objectionResult = engine.transition(objectionResult.state, '成交地圖');
-objectionResult = engine.transition(objectionResult.state, '我都清楚了');
-objectionResult = engine.transition(objectionResult.state, '我還有一個疑慮');
-assert.equal(objectionResult.phase, 'objection_gate');
 const objectionReplies = new Set();
-map.objections.forEach((node) => {
-  const label = node.ask;
-  const detail = engine.transition(objectionResult.state, label);
-  assert.equal(detail.phase, 'objection_detail');
-  assert.equal(detail.buttons.length, 4);
-  assert(!objectionReplies.has(detail.reply), `duplicate objection reply: ${label}`);
-  objectionReplies.add(detail.reply);
+const objectionFollowReplies = new Set();
+['D', 'I', 'S', 'C'].forEach((disc, discIndex) => {
+  map.objections.forEach((node) => {
+    let objectionResult = finishTalentAsDisc(profile(`${disc}-${node.key}`, '測試產業', ['成交不了']), discIndex);
+    objectionResult = engine.transition(objectionResult.state, '課程介紹');
+    objectionResult = engine.transition(objectionResult.state, '成交地圖');
+    objectionResult = engine.transition(objectionResult.state, '我都清楚了');
+    objectionResult = engine.transition(objectionResult.state, '我還有一個疑慮');
+    assert.equal(objectionResult.phase, 'objection_gate');
+    const detail = engine.transition(objectionResult.state, node.ask);
+    assert.equal(detail.phase, 'objection_detail');
+    assert.equal(detail.response_strategy.primary_disc, disc);
+    assert(!/流量磁鐵.{0,16}(第一步|先上)|第一步.{0,16}流量磁鐵/.test(detail.reply), `${disc}/${node.key} fixed-course leakage`);
+    assert(!objectionReplies.has(detail.reply), `duplicate objection reply: ${disc}/${node.key}`);
+    objectionReplies.add(detail.reply);
+    node.follow.forEach((label) => {
+      const follow = engine.transition(detail.state, label);
+      assert.equal(follow.phase, 'objection_detail');
+      assert.deepEqual(follow.buttons, ['這樣有回答我的問題', '我還有一個疑慮', '課程介紹', '依我的情況推薦課程']);
+      assert(!/流量磁鐵.{0,16}(第一步|先上)|第一步.{0,16}流量磁鐵/.test(follow.reply), `${disc}/${node.key}/${label} fixed-course leakage`);
+      if (disc === 'C') assert(/1\./.test(follow.reply), `${node.key}/${label} C response must be structured`);
+      assert(!objectionFollowReplies.has(follow.reply), `duplicate objection follow reply: ${disc}/${node.key}/${label}`);
+      objectionFollowReplies.add(follow.reply);
+    });
+  });
 });
-assert.equal(objectionReplies.size, 7, 'all seven objections must be unique');
+assert.equal(objectionReplies.size, 28, 'all 7 objections x 4 DISC answers must be unique');
+assert.equal(objectionFollowReplies.size, 84, 'all 7 objections x 3 followups x 4 DISC answers must be unique');
 
 let recommendation = reportResults[2];
 recommendation = engine.transition(recommendation.state, '推薦我的課程');
@@ -81,4 +103,4 @@ recommendation = engine.transition(recommendation.state, '他覺得太貴');
 recommendation = engine.transition(recommendation.state, '把價值講清楚');
 assert(/1\. 《.+》[\s\S]*2\. 《.+》[\s\S]*3\. 《.+》/.test(recommendation.reply), 'recommendation must list all three courses in chat');
 
-console.log(JSON.stringify({ status: 'PASS', students: students.length, course_nodes: courseReplies.size, objection_nodes: objectionReplies.size }, null, 2));
+console.log(JSON.stringify({ status: 'PASS', students: students.length, course_nodes: courseReplies.size, objection_nodes: objectionReplies.size, objection_followups: objectionFollowReplies.size }, null, 2));

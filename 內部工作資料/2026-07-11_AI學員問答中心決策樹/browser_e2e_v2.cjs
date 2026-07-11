@@ -76,6 +76,16 @@ async function main() {
   if (!openedUrls.some((url) => url.includes('docs.google.com/forms/'))) throw new Error('single-course signup CTA did not open the official form');
   await clickText(page, '我還有一個疑慮');
   if (!(await page.getByText('真的要做決定前，如果心裡還卡著一件事').count())) throw new Error('objection gate missing after single-course CTA');
+  await clickText(page, '我覺得自己看書、看影片就好了');
+  const selfStudyGate = await page.locator('.message.bot').last().textContent();
+  if (/流量磁鐵.{0,16}(第一步|先上)|第一步.{0,16}流量磁鐵/.test(selfStudyGate)) throw new Error('objection gate forced a fixed course');
+  await clickText(page, '我想知道跟自學差在哪');
+  const selfStudyAnswer = await page.locator('.message.bot').last().textContent();
+  if (!selfStudyAnswer.includes('你遇到客戶說太貴或再想想時')) throw new Error('self-study six-step answer missing');
+  if (/流量磁鐵.{0,16}(第一步|先上)|第一步.{0,16}流量磁鐵/.test(selfStudyAnswer)) throw new Error('self-study answer forced a fixed course');
+  for (const label of ['這樣有回答我的問題', '我還有一個疑慮', '課程介紹', '依我的情況推薦課程']) {
+    if (!await page.getByRole('button', { name: label, exact: true }).count()) throw new Error(`objection resolution CTA missing: ${label}`);
+  }
   await page.screenshot({ path: path.join(outDir, 'desktop-flow.png'), fullPage: true });
 
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
@@ -84,9 +94,32 @@ async function main() {
   if (mobileOverflow) throw new Error('mobile horizontal overflow');
   await mobile.screenshot({ path: path.join(outDir, 'mobile-initial.png'), fullPage: true });
 
+  const analytical = await browser.newPage({ viewport: { width: 1280, height: 960 } });
+  await analytical.goto(baseUrl, { waitUntil: 'networkidle' });
+  await analytical.locator('#name').fill('Chris');
+  await analytical.locator('#email').fill('chris@example.com');
+  await analytical.locator('#birthdate').fill('1990-04-18');
+  await analytical.locator('#industry').fill('B2B SaaS');
+  await analytical.locator('#product').fill('企業訂閱服務');
+  await analytical.locator('input[name="problems"]').nth(1).check();
+  await analytical.locator('#consent').check();
+  await analytical.locator('#intakeForm button[type="submit"]').click();
+  await clickText(analytical, '資料不完整，大家卻憑感覺亂講');
+  await clickText(analytical, '先補資料、確認細節，再判斷');
+  await clickText(analytical, '你很可靠，事情交給你比較放心');
+  await clickText(analytical, '課程介紹');
+  await clickText(analytical, '成交地圖');
+  await clickText(analytical, '我都清楚了');
+  await clickText(analytical, '我還有一個疑慮');
+  await clickText(analytical, '我覺得自己看書、看影片就好了');
+  await clickText(analytical, '我想知道跟自學差在哪');
+  const analyticalAnswer = await analytical.locator('.message.bot').last().textContent();
+  if (!/1\.[\s\S]*2\.[\s\S]*3\./.test(analyticalAnswer)) throw new Error('C-style objection answer is not structured');
+  if (/流量磁鐵.{0,16}(第一步|先上)|第一步.{0,16}流量磁鐵/.test(analyticalAnswer)) throw new Error('C-style objection answer forced a fixed course');
+
   if (errors.length) throw new Error(`page errors: ${errors.join(' | ')}`);
   await browser.close();
-  console.log(JSON.stringify({ status: 'PASS', greetingCount, courseAnswerLength: courseAnswer.length, screenshots: ['desktop-flow.png', 'mobile-initial.png', 'amy-report.png'] }, null, 2));
+  console.log(JSON.stringify({ status: 'PASS', greetingCount, courseAnswerLength: courseAnswer.length, analyticalAnswerLength: analyticalAnswer.length, screenshots: ['desktop-flow.png', 'mobile-initial.png', 'amy-report.png'] }, null, 2));
 }
 
 main().catch((error) => {

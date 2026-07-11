@@ -49,13 +49,27 @@ courseNames.forEach((course) => {
 ['course_next_step', 'course_next_confirmation'].forEach((key) => requireValue(map.dialogue && map.dialogue[key], `dialogue.${key}`));
 
 if (!Array.isArray(map.objections) || map.objections.length !== 7) failures.push('疑慮區必須有七種公開疑慮');
+const expectedProtocol = ['理解顧慮', '確認真正問題', '找出顧慮來源', '用 MBAF 回應', '確認是否已解決', '提供下一步'];
 (map.objections || []).forEach((node) => {
+  if (JSON.stringify(node.response_protocol) !== JSON.stringify(expectedProtocol)) failures.push(`${node.id} 的拒絕處理六步驟不完整`);
   if (!Array.isArray(node.follow) || node.follow.length !== 3) failures.push(`${node.id} 必須有三個追問按鈕`);
   ['D', 'I', 'S', 'C'].forEach((disc) => requireValue(node.responses && node.responses[disc], `${node.id}/${disc} 回覆`));
   const variants = Object.values(node.responses || {}).map(normalize);
   if (new Set(variants).size !== variants.length) failures.push(`${node.id} 的四型回覆重複`);
   if (!Array.isArray(node.follow_responses) || node.follow_responses.length !== 3) failures.push(`${node.id} 必須有三個追問完整回答`);
-  (node.follow_responses || []).forEach((follow) => ['D', 'I', 'S', 'C'].forEach((disc) => requireValue(follow.responses && follow.responses[disc], `${node.id}/${follow.label}/${disc} 回覆`)));
+  (node.follow_responses || []).forEach((follow) => {
+    const steps = follow.six_steps || {};
+    ['understand', 'clarify', 'source', 'mbaf', 'confirm', 'next_actions'].forEach((field) => requireValue(steps[field], `${node.id}/${follow.label}/六步驟.${field}`));
+    ['mini_yes', 'benefit', 'advantage', 'feature'].forEach((field) => requireValue(steps.mbaf && steps.mbaf[field], `${node.id}/${follow.label}/MBAF.${field}`));
+    ['D', 'I', 'S', 'C'].forEach((disc) => {
+      const response = follow.responses && follow.responses[disc];
+      requireValue(response, `${node.id}/${follow.label}/${disc} 回覆`);
+      if (/流量磁鐵.{0,16}(第一步|先上)|第一步.{0,16}流量磁鐵/.test(response || '')) failures.push(`${node.id}/${follow.label}/${disc} 不可固定推流量磁鐵`);
+    });
+    if (!/1\./.test(follow.responses && follow.responses.C || '')) failures.push(`${node.id}/${follow.label}/C 型必須有條列比較`);
+    const values = Object.values(follow.responses || {}).map(normalize);
+    if (new Set(values).size !== values.length) failures.push(`${node.id}/${follow.label} 的四型回答重複`);
+  });
 });
 
 if (failures.length) {

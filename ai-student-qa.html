@@ -707,8 +707,8 @@ textarea {
   © 2026 Orikan 李泰欣 ｜ 日期、金額、名額以頁面揭露與顧問回覆為準。
 </footer>
 
-<script src="lib/state-machine.js?v=20260711-course-cta"></script>
-<script src="lib/gemini-student-qa.js?v=20260711-course-cta"></script>
+<script src="lib/state-machine.js?v=20260711-objection-v3"></script>
+<script src="lib/gemini-student-qa.js?v=20260711-objection-v3"></script>
 <script>
 const form = document.getElementById('intakeForm');
 const messages = document.getElementById('messages');
@@ -902,7 +902,7 @@ async function loadAppContext() {
     loadJson('data/taixin-sales-brain.json', null),
     loadJson('data/golden-quote-seeds.json', null),
     loadJson('data/course-offerings.json', FALLBACK_OFFERINGS),
-    loadJson('data/taixin-closing-map.json?v=20260711-course-cta', null)
+    loadJson('data/taixin-closing-map.json?v=20260711-objection-v3', null)
   ]);
   appContext = {
     config,

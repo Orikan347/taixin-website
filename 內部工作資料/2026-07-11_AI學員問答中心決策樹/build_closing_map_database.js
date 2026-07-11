@@ -28,11 +28,15 @@ for (const node of map.course_nodes) {
 }
 
 for (const node of map.objections) {
+  assert(Array.isArray(node.response_protocol) && node.response_protocol.length === 6, `${node.id} 必須有拒絕處理六步驟`);
   assert(node.responses, `${node.id} 缺少四型回覆`);
   for (const disc of ['D', 'I', 'S', 'C']) assert(node.responses[disc], `${node.id} 缺少 ${disc} 回覆`);
   assert(Array.isArray(node.buttons) && node.buttons.length === 4, `${node.id} 必須有三個追問與我都清楚了`);
   assert(Array.isArray(node.follow_responses) && node.follow_responses.length === 3, `${node.id} 必須有三個追問的完整回答`);
   for (const followup of node.follow_responses) {
+    assert(followup.six_steps, `${node.id}/${followup.label} 缺少六步驟內容`);
+    for (const field of ['understand', 'clarify', 'source', 'mbaf', 'confirm', 'next_actions']) assert(followup.six_steps[field], `${node.id}/${followup.label} 缺少六步驟.${field}`);
+    for (const field of ['mini_yes', 'benefit', 'advantage', 'feature']) assert(followup.six_steps.mbaf[field], `${node.id}/${followup.label} 缺少 MBAF.${field}`);
     for (const disc of ['D', 'I', 'S', 'C']) assert(followup.responses && followup.responses[disc], `${node.id}/${followup.label} 缺少 ${disc} 回覆`);
   }
 }
@@ -48,12 +52,13 @@ for (const node of map.course_nodes) {
   lines.push('');
 }
 for (const node of map.objections) {
-  lines.push(`## 疑慮｜${node.ask}`, '', `- 節點：\`${node.id}\``, `- 信任證據：${node.evidence || '依情境提供'}`, '');
+  lines.push(`## 疑慮｜${node.ask}`, '', `- 節點：\`${node.id}\``, `- 信任證據：${node.evidence || '依情境提供'}`, `- 處理順序：${(node.response_protocol || []).join(' -> ')}`, '');
   for (const disc of ['D', 'I', 'S', 'C']) lines.push(`### ${disc} 型完整回答`, node.responses[disc], '');
   lines.push('### 按鈕與下一題');
   node.buttons.forEach((button) => lines.push(`- ${button.label} -> \`${button.next}\``));
   for (const followup of node.follow_responses || []) {
-    lines.push('', `### 追問｜${followup.label}`);
+    const steps = followup.six_steps || {};
+    lines.push('', `### 追問｜${followup.label}`, '', '#### 六步驟規格', `1. 理解：${steps.understand || ''}`, `2. 確認：${steps.clarify || ''}`, `3. 原因：${steps.source || ''}`, `4. MBAF：${steps.mbaf ? `${steps.mbaf.mini_yes}／${steps.mbaf.benefit}／${steps.mbaf.advantage}／${steps.mbaf.feature}` : ''}`, `5. 確認是否解除：${steps.confirm || ''}`, `6. 下一步：${(steps.next_actions || []).join('／')}`, '');
     for (const disc of ['D', 'I', 'S', 'C']) lines.push(`#### ${disc} 型完整回答`, followup.responses[disc], '');
   }
   lines.push('');
