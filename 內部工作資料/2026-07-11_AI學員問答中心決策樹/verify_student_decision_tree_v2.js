@@ -38,10 +38,9 @@ function finishTalent(p) {
 const reportResults = students.map(([name, industry, problems]) => finishTalent(profile(name, industry, problems)));
 
 const courseReplies = new Map();
-let courseResult = reportResults[0];
-courseResult = engine.transition(courseResult.state, '課程介紹');
 const courseNames = ['流量磁鐵', '成交地圖', '直指人心', '言之有物', '極致效率'];
-courseNames.forEach((courseName, courseIndex) => {
+courseNames.forEach((courseName) => {
+  let courseResult = engine.transition(reportResults[0].state, '課程介紹');
   courseResult = engine.transition(courseResult.state, courseName);
   map.course_nodes.filter((node) => node.course === courseName).forEach((node) => {
     const label = node.ask;
@@ -53,17 +52,16 @@ courseNames.forEach((courseName, courseIndex) => {
     courseResult = detail;
   });
   courseResult = engine.transition(courseResult.state, '我都清楚了');
-  if (courseIndex < courseNames.length - 1) assert.equal(courseResult.phase, 'course_overview');
-  else assert.equal(courseResult.phase, 'objection_gate');
+  assert.equal(courseResult.phase, 'course_next_step');
+  assert.deepEqual(courseResult.buttons, ['我要報名課程', '找教育顧問聊一聊', '我還有一個疑慮', '看看其他課程']);
 });
 assert.equal(courseReplies.size, 15, 'all fifteen course answers must be unique');
 
 let objectionResult = reportResults[1];
 objectionResult = engine.transition(objectionResult.state, '課程介紹');
-courseNames.forEach((courseName) => {
-  objectionResult = engine.transition(objectionResult.state, courseName);
-  objectionResult = engine.transition(objectionResult.state, '我都清楚了');
-});
+objectionResult = engine.transition(objectionResult.state, '成交地圖');
+objectionResult = engine.transition(objectionResult.state, '我都清楚了');
+objectionResult = engine.transition(objectionResult.state, '我還有一個疑慮');
 assert.equal(objectionResult.phase, 'objection_gate');
 const objectionReplies = new Set();
 map.objections.forEach((node) => {

@@ -32,10 +32,21 @@ courseNames.forEach((course) => {
   nodes.forEach((node) => {
     ['id', 'ask', 'source'].forEach((field) => requireValue(node[field], `${course}/${node.id}/${field}`));
     ['mini_yes', 'benefit', 'advantage', 'feature'].forEach((field) => requireValue(node.mbaf && node.mbaf[field], `${course}/${node.id}/MBAF.${field}`));
-    ['D', 'I', 'S', 'C'].forEach((disc) => requireValue(node.responses && node.responses[disc], `${course}/${node.id}/${disc} 回覆`));
+    if (!/[？?]/.test(node.mbaf && node.mbaf.mini_yes)) failures.push(`${course}/${node.id} 的 Mini Yes 必須是學生能回答的問題`);
+    ['D', 'I', 'S', 'C'].forEach((disc) => {
+      const response = node.responses && node.responses[disc];
+      requireValue(response, `${course}/${node.id}/${disc} 回覆`);
+      const paragraphs = String(response || '').split(/\n\s*\n/);
+      if (!paragraphs[0] || !paragraphs[0].includes(node.mbaf.mini_yes)) failures.push(`${course}/${node.id}/${disc} 第一段必須先說 Mini Yes`);
+      if (!paragraphs[1] || !paragraphs[1].includes(node.mbaf.benefit)) failures.push(`${course}/${node.id}/${disc} 第二段必須先說學完的利益點`);
+    });
     if (!Array.isArray(node.buttons) || node.buttons.length !== 4) failures.push(`${course}/${node.id} 必須有四個按鈕`);
+    const clear = (node.buttons || []).find((button) => button.label === '我都清楚了');
+    if (!clear || clear.next !== 'course-next-step') failures.push(`${course}/${node.id} 的我都清楚了必須進入單堂課下一步`);
   });
 });
+
+['course_next_step', 'course_next_confirmation'].forEach((key) => requireValue(map.dialogue && map.dialogue[key], `dialogue.${key}`));
 
 if (!Array.isArray(map.objections) || map.objections.length !== 7) failures.push('疑慮區必須有七種公開疑慮');
 (map.objections || []).forEach((node) => {

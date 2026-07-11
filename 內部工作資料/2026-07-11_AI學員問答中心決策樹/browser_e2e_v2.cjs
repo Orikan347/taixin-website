@@ -16,6 +16,10 @@ async function main() {
   const errors = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto(baseUrl, { waitUntil: 'networkidle' });
+  await page.evaluate(() => {
+    window.__openedUrls = [];
+    window.open = (url) => { window.__openedUrls.push(String(url)); return null; };
+  });
   const taiwanSuperSales = await page.locator('.offering-row', { hasText: '超級銷冠系統（台灣場）' }).textContent();
   const klSuperSales = await page.locator('.offering-row', { hasText: '超級銷冠系統（吉隆坡場）' }).textContent();
   if (/09:00|18:00/.test(taiwanSuperSales) || /09:00|18:00/.test(klSuperSales)) throw new Error('unconfirmed super sales time is visible');
@@ -57,10 +61,21 @@ async function main() {
   await clickText(page, '成交地圖');
   await clickText(page, '客戶說「再想想」，我到底要怎麼接？');
   const courseAnswer = await page.locator('.message.bot').last().textContent();
-  ['五連問', '能把模糊的猶豫問成可處理的原因', '不是背話術', '核心問題與成交 365'].forEach((text) => {
+  ['客戶說「再想想」時，你是不是也想知道他真正還在想什麼？', '你學會之後，你能把模糊的猶豫問成可處理的原因', '不是背話術', '核心問題與成交 365'].forEach((text) => {
     if (!courseAnswer.includes(text)) throw new Error(`course MBAF answer missing: ${text}`);
   });
   if (await page.locator('#coursePath .course-item').count() !== 3) throw new Error('course path disappeared after course detail');
+  await clickText(page, '我都清楚了');
+  const nextStep = await page.locator('.message.bot').last().textContent();
+  if (!nextStep.includes('這一堂課你已經看懂它能怎麼幫你了')) throw new Error('single-course next-step message missing');
+  for (const label of ['我要報名課程', '找教育顧問聊一聊', '我還有一個疑慮', '看看其他課程']) {
+    if (!await page.getByRole('button', { name: label, exact: true }).count()) throw new Error(`single-course CTA missing: ${label}`);
+  }
+  await clickText(page, '我要報名課程');
+  const openedUrls = await page.evaluate(() => window.__openedUrls);
+  if (!openedUrls.some((url) => url.includes('docs.google.com/forms/'))) throw new Error('single-course signup CTA did not open the official form');
+  await clickText(page, '我還有一個疑慮');
+  if (!(await page.getByText('真的要做決定前，如果心裡還卡著一件事').count())) throw new Error('objection gate missing after single-course CTA');
   await page.screenshot({ path: path.join(outDir, 'desktop-flow.png'), fullPage: true });
 
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
