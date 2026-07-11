@@ -18,6 +18,8 @@ function assert(condition, message) {
 assert(map.schema_version, '缺少 schema_version');
 assert(Array.isArray(map.course_nodes) && map.course_nodes.length === 15, '必須有五堂課共 15 個課程節點');
 assert(Array.isArray(map.objections) && map.objections.length === 7, '必須有七種學生疑慮');
+assert(Array.isArray(map.proof_cards) && map.proof_cards.length >= 10, '必須有至少十張公開證據卡');
+assert(map.public_copy_rules, '缺少學生可見文案規則');
 
 for (const node of map.course_nodes) {
   assert(node.mbaf, `${node.id} 缺少 MBAF`);
@@ -38,12 +40,17 @@ for (const node of map.objections) {
     for (const field of ['understand', 'clarify', 'source', 'mbaf', 'confirm', 'next_actions']) assert(followup.six_steps[field], `${node.id}/${followup.label} 缺少六步驟.${field}`);
     for (const field of ['mini_yes', 'benefit', 'advantage', 'feature']) assert(followup.six_steps.mbaf[field], `${node.id}/${followup.label} 缺少 MBAF.${field}`);
     for (const disc of ['D', 'I', 'S', 'C']) assert(followup.responses && followup.responses[disc], `${node.id}/${followup.label} 缺少 ${disc} 回覆`);
+    assert(Array.isArray(followup.proof_card_ids), `${node.id}/${followup.label} 缺少證據卡欄位`);
   }
 }
 
 const lines = ['# 成交地圖資料庫｜逐句展開版', '', `資料庫版本：${map.schema_version}`, ''];
 lines.push('## 全站固定對話', '');
 Object.entries(map.dialogue || {}).forEach(([id, text]) => lines.push(`### ${id}`, text, ''));
+lines.push('## 公開證據卡', '');
+for (const card of map.proof_cards || []) {
+  lines.push(`### ${card.title}`, `- 證據代號：\`${card.id}\``, `- 學生可見文字：${card.public_text}`, `- 正式來源：${card.source}`, `- 使用情境：${(card.use_when || []).join('、')}`, '');
+}
 for (const node of map.course_nodes) {
   lines.push(`## ${node.course}｜${node.ask}`, '', `- 節點：\`${node.id}\``, `- 來源：${node.source}`, '', '### MBAF', `- 接住：${node.mbaf.mini_yes}`, `- 學生得到的好處：${node.mbaf.benefit}`, `- 泰欣老師的優勢：${node.mbaf.advantage}`, `- 課堂會帶他的內容：${node.mbaf.feature}`, '');
   for (const disc of ['D', 'I', 'S', 'C']) lines.push(`### ${disc} 型完整回答`, node.responses[disc], '');
@@ -59,6 +66,7 @@ for (const node of map.objections) {
   for (const followup of node.follow_responses || []) {
     const steps = followup.six_steps || {};
     lines.push('', `### 追問｜${followup.label}`, '', '#### 六步驟規格', `1. 理解：${steps.understand || ''}`, `2. 確認：${steps.clarify || ''}`, `3. 原因：${steps.source || ''}`, `4. MBAF：${steps.mbaf ? `${steps.mbaf.mini_yes}／${steps.mbaf.benefit}／${steps.mbaf.advantage}／${steps.mbaf.feature}` : ''}`, `5. 確認是否解除：${steps.confirm || ''}`, `6. 下一步：${(steps.next_actions || []).join('／')}`, '');
+    lines.push(`- 使用證據卡：${(followup.proof_card_ids || []).map((id) => `\`${id}\``).join('、') || '無需證據卡'}`, '');
     for (const disc of ['D', 'I', 'S', 'C']) lines.push(`#### ${disc} 型完整回答`, followup.responses[disc], '');
   }
   lines.push('');

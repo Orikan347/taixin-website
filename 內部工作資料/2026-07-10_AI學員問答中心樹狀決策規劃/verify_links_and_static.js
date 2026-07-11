@@ -52,24 +52,30 @@ pages.forEach((page) => {
 const indexHtml = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const qaHtml = fs.readFileSync(path.join(root, 'ai-student-qa.html'), 'utf8');
 const stateMachine = fs.readFileSync(path.join(root, 'lib/state-machine.js'), 'utf8');
+const closingMapText = fs.readFileSync(path.join(root, 'data/taixin-closing-map.json'), 'utf8');
+const closingMap = JSON.parse(closingMapText);
+const studentVisibleCopy = [
+  ...closingMap.course_nodes.flatMap((node) => Object.values(node.responses || {})),
+  ...closingMap.objections.flatMap((node) => [
+    ...Object.values(node.responses || {}),
+    ...node.follow_responses.flatMap((follow) => Object.values(follow.responses || {}))
+  ])
+].join('\n');
 [
   ['index has AI QA entry', /ai-student-qa\.html/.test(indexHtml)],
   ['qa has state machine script', /lib\/state-machine\.js/.test(qaHtml)],
   ['qa has four button CSS', /\.option-actions/.test(qaHtml) && /\.option-button/.test(qaHtml)],
   ['qa hides completed option groups', /function retireOptionButtons\(\)/.test(qaHtml) && /\.option-actions\.is-complete\s*\{\s*display:\s*none;/.test(qaHtml)],
   ['qa has product field', /name="product"/.test(qaHtml)],
-  ['qa has fourth DISC question', /name="disc_hate_think"/.test(qaHtml)],
   ['qa has course path button above report', qaHtml.indexOf('id="showCoursePathButton"') < qaHtml.indexOf('id="reportCard"')],
   ['qa keeps share download alive long enough', /function downloadBlob\(blob\)/.test(qaHtml) && /setTimeout\(\(\) => URL\.revokeObjectURL\(url\), 1500\)/.test(qaHtml)],
   ['qa has line CTA', /https:\/\/line\.me\/ti\/p\/jzdho94spl/.test(qaHtml)],
   ['qa has signup CTA', /docs\.google\.com\/forms/.test(qaHtml)],
-  ['state machine has explicit tree nodes', /const TREE_NODES\s*=\s*\{/.test(stateMachine)],
+  ['qa loads the versioned closing map', /data\/taixin-closing-map\.json\?v=20260711-objection-v4/.test(qaHtml)],
+  ['state machine reads the closing map', /function objections\(\)/.test(stateMachine) && /closingMap\.objections/.test(stateMachine)],
   ['state machine has course overview phase', /course_overview/.test(stateMachine)],
   ['state machine has course detail phase', /course_detail/.test(stateMachine)],
-  ['state machine has five overview buttons', /function courseOverviewButtons\(\)/.test(stateMachine)],
-  ['state machine tracks answered course questions', /course_detail_answered/.test(stateMachine)],
-  ['state machine stores the active tree node', /active_tree_node/.test(stateMachine)],
-  ['state machine gives tree buttons priority in explanation', /if \(TREE_BUTTON_TO_NODE\[text\]\) return buildTreeNodeResponse/.test(stateMachine)],
+  ['closing map has public proof cards', Array.isArray(closingMap.proof_cards) && closingMap.proof_cards.some((card) => card.id === 'refund-policy') && closingMap.proof_cards.some((card) => card.id === 'map-rookie')],
   ['state machine uses no invented target line', !/目標貫通線/.test(stateMachine)],
   ['state machine does not gift the brand slogan', !/銷售力不從心，因為從沒遇過李泰欣。/.test(stateMachine)]
 ].forEach(([label, ok]) => {
@@ -84,10 +90,11 @@ const visibleBadPatterns = [
   /目標貫通線/,
   /不是叫你一次全買/,
   /我目前不直接猜/,
-  /我先不急著推薦課程/
+  /我先不急著推薦課程/,
+  /我懂你不是只想聽一個答案/
 ];
 visibleBadPatterns.forEach((pattern) => {
-  if (pattern.test(indexHtml) || pattern.test(qaHtml)) issues.push(`visible bad text: ${pattern}`);
+  if (pattern.test(indexHtml) || pattern.test(qaHtml) || pattern.test(studentVisibleCopy)) issues.push(`visible bad text: ${pattern}`);
 });
 
 if (issues.length) {

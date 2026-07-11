@@ -87,6 +87,18 @@ const objectionFollowReplies = new Set();
       assert.equal(follow.phase, 'objection_detail');
       assert.deepEqual(follow.buttons, ['這樣有回答我的問題', '我還有一個疑慮', '課程介紹', '依我的情況推薦課程']);
       assert(!/流量磁鐵.{0,16}(第一步|先上)|第一步.{0,16}流量磁鐵/.test(follow.reply), `${disc}/${node.key}/${label} fixed-course leakage`);
+      assert(follow.reply.split(/\n\s*\n/)[0].includes(label), `${disc}/${node.key}/${label} must start from the selected button`);
+      const sourceFollow = node.follow_responses.find((entry) => entry.label === label);
+      (sourceFollow.proof_card_ids || []).forEach((proofId) => {
+        const proof = map.proof_cards.find((entry) => entry.id === proofId);
+        assert(proof && follow.reply.includes(proof.public_text), `${disc}/${node.key}/${label} missing public proof ${proofId}`);
+      });
+      if (label === '我想先看退費保障') {
+        ['第一堂課', '無條件全額退費', '無效、無解、無理由'].forEach((text) => assert(follow.reply.includes(text), `${disc}/${node.key}/${label} missing ${text}`));
+      }
+      if (label === '我想先看成功案例') {
+        ['保險業張小姐', '保險業林先生'].forEach((text) => assert(follow.reply.includes(text), `${disc}/${node.key}/${label} missing ${text}`));
+      }
       if (disc === 'C') assert(/1\./.test(follow.reply), `${node.key}/${label} C response must be structured`);
       assert(!objectionFollowReplies.has(follow.reply), `duplicate objection follow reply: ${disc}/${node.key}/${label}`);
       objectionFollowReplies.add(follow.reply);

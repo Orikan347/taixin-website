@@ -17,6 +17,12 @@ if (!sourceMatch) failures.push('成交地圖資料庫.md 缺少內容資料區'
 else if (JSON.stringify(JSON.parse(sourceMatch[1])) !== JSON.stringify(map)) failures.push('網站 JSON 與成交地圖資料庫.md 不一致，必須先跑 build_closing_map_database.js');
 
 requireValue(map.map_name, '地圖名稱');
+if (!Array.isArray(map.proof_cards) || map.proof_cards.length < 10) failures.push('公開證據卡不足十張');
+const proofCards = new Map((map.proof_cards || []).map((card) => [card.id, card]));
+for (const card of proofCards.values()) {
+  ['id', 'title', 'public_text', 'source'].forEach((field) => requireValue(card[field], `證據卡/${card.id}/${field}`));
+}
+const bannedPublicCopy = (map.public_copy_rules && map.public_copy_rules.banned) || [];
 if (!Array.isArray(map.talent_line && map.talent_line.nodes) || map.talent_line.nodes.length !== 3) failures.push('DISC 天賦線必須有三題');
 (map.talent_line && map.talent_line.nodes || []).forEach((node) => {
   if (Object.keys(node.options || {}).length !== 4) failures.push(`${node.id} 必須有四個 DISC 選項`);
@@ -65,7 +71,32 @@ const expectedProtocol = ['理解顧慮', '確認真正問題', '找出顧慮來
       const response = follow.responses && follow.responses[disc];
       requireValue(response, `${node.id}/${follow.label}/${disc} 回覆`);
       if (/流量磁鐵.{0,16}(第一步|先上)|第一步.{0,16}流量磁鐵/.test(response || '')) failures.push(`${node.id}/${follow.label}/${disc} 不可固定推流量磁鐵`);
+      if (!String(response || '').split(/\n\s*\n/)[0].includes(follow.label)) failures.push(`${node.id}/${follow.label}/${disc} 第一段必須直接承接上一顆按鈕`);
+      bannedPublicCopy.forEach((phrase) => {
+        if (String(response || '').includes(phrase)) failures.push(`${node.id}/${follow.label}/${disc} 含禁用公版句：${phrase}`);
+      });
     });
+    if (!Array.isArray(follow.proof_card_ids)) failures.push(`${node.id}/${follow.label} 缺少證據卡清單`);
+    (follow.proof_card_ids || []).forEach((id) => {
+      const card = proofCards.get(id);
+      if (!card) failures.push(`${node.id}/${follow.label} 引用不存在的證據卡：${id}`);
+      else if (!Object.values(follow.responses || {}).every((response) => String(response).includes(card.public_text))) failures.push(`${node.id}/${follow.label} 沒有把證據卡文字直接說給學生`);
+    });
+    if (follow.label === '我想先看退費保障') {
+      ['refund-policy', 'refund-record'].forEach((id) => {
+        if (!(follow.proof_card_ids || []).includes(id)) failures.push(`${node.id}/${follow.label} 缺少 ${id}`);
+      });
+      Object.values(follow.responses || {}).forEach((response) => {
+        ['第一堂課', '無條件全額退費', '無效、無解、無理由'].forEach((required) => {
+          if (!String(response).includes(required)) failures.push(`${node.id}/${follow.label} 必須明確說明：${required}`);
+        });
+      });
+    }
+    if (follow.label === '我想先看成功案例') {
+      ['map-rookie', 'human-premium'].forEach((id) => {
+        if (!(follow.proof_card_ids || []).includes(id)) failures.push(`${node.id}/${follow.label} 缺少真實成果：${id}`);
+      });
+    }
     if (!/1\./.test(follow.responses && follow.responses.C || '')) failures.push(`${node.id}/${follow.label}/C 型必須有條列比較`);
     const values = Object.values(follow.responses || {}).map(normalize);
     if (new Set(values).size !== values.length) failures.push(`${node.id}/${follow.label} 的四型回答重複`);
