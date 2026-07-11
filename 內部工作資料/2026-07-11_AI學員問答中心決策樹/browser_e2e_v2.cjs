@@ -49,13 +49,18 @@ async function main() {
   await clickText(page, '上班族或家庭客戶');
   await clickText(page, '他覺得太貴');
   await clickText(page, '把價值講清楚');
+  const recommendationBubble = await page.locator('.message.bot').last().textContent();
+  if (!/1\. 《.+》[\s\S]*2\. 《.+》[\s\S]*3\. 《.+》/.test(recommendationBubble)) throw new Error('recommendation bubble does not list three courses');
   await page.getByText('建議學習順序').last().waitFor();
 
   await page.getByRole('button', { name: '課程介紹', exact: true }).last().click();
   await clickText(page, '成交地圖');
   await clickText(page, '客戶說「再想想」，我到底要怎麼接？');
   const courseAnswer = await page.locator('.message.bot').last().textContent();
-  if (!courseAnswer.includes('五連問')) throw new Error('course MBAF / five-question answer missing');
+  ['五連問', '能把模糊的猶豫問成可處理的原因', '不是背話術', '核心問題與成交 365'].forEach((text) => {
+    if (!courseAnswer.includes(text)) throw new Error(`course MBAF answer missing: ${text}`);
+  });
+  if (await page.locator('#coursePath .course-item').count() !== 3) throw new Error('course path disappeared after course detail');
   await page.screenshot({ path: path.join(outDir, 'desktop-flow.png'), fullPage: true });
 
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });

@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..', '..');
+const sourcePath = path.join(__dirname, '成交地圖資料庫.md');
 const map = JSON.parse(fs.readFileSync(path.join(root, 'data/taixin-closing-map.json'), 'utf8'));
 const failures = [];
 const normalize = (value) => String(value || '').replace(/\s+/g, '').replace(/[，。！？、：]/g, '');
@@ -9,6 +10,11 @@ const normalize = (value) => String(value || '').replace(/\s+/g, '').replace(/[�
 function requireValue(value, label) {
   if (!value) failures.push(`${label} 缺少內容`);
 }
+
+const source = fs.readFileSync(sourcePath, 'utf8');
+const sourceMatch = source.match(/<!-- CLOSING_MAP_JSON_START -->\s*```json\s*([\s\S]*?)\s*```\s*<!-- CLOSING_MAP_JSON_END -->/);
+if (!sourceMatch) failures.push('成交地圖資料庫.md 缺少內容資料區');
+else if (JSON.stringify(JSON.parse(sourceMatch[1])) !== JSON.stringify(map)) failures.push('網站 JSON 與成交地圖資料庫.md 不一致，必須先跑 build_closing_map_database.js');
 
 requireValue(map.map_name, '地圖名稱');
 if (!Array.isArray(map.talent_line && map.talent_line.nodes) || map.talent_line.nodes.length !== 3) failures.push('DISC 天賦線必須有三題');
@@ -21,17 +27,24 @@ const courseNames = new Set(['流量磁鐵', '成交地圖', '直指人心', '�
 courseNames.forEach((course) => {
   const nodes = map.course_nodes.filter((node) => node.course === course);
   if (nodes.length !== 3) failures.push(`${course} 必須有三個學生問題`);
-  const answers = nodes.map((node) => normalize(node.base_answer));
+  const answers = nodes.map((node) => normalize(node.responses && node.responses.D));
   if (new Set(answers).size !== answers.length) failures.push(`${course} 的不同按鈕回覆重複`);
-  nodes.forEach((node) => ['id', 'ask', 'base_answer', 'source'].forEach((field) => requireValue(node[field], `${course}/${node.id}/${field}`)));
+  nodes.forEach((node) => {
+    ['id', 'ask', 'source'].forEach((field) => requireValue(node[field], `${course}/${node.id}/${field}`));
+    ['mini_yes', 'benefit', 'advantage', 'feature'].forEach((field) => requireValue(node.mbaf && node.mbaf[field], `${course}/${node.id}/MBAF.${field}`));
+    ['D', 'I', 'S', 'C'].forEach((disc) => requireValue(node.responses && node.responses[disc], `${course}/${node.id}/${disc} 回覆`));
+    if (!Array.isArray(node.buttons) || node.buttons.length !== 4) failures.push(`${course}/${node.id} 必須有四個按鈕`);
+  });
 });
 
 if (!Array.isArray(map.objections) || map.objections.length !== 7) failures.push('疑慮區必須有七種公開疑慮');
 (map.objections || []).forEach((node) => {
   if (!Array.isArray(node.follow) || node.follow.length !== 3) failures.push(`${node.id} 必須有三個追問按鈕`);
-  ['D', 'I', 'S', 'C'].forEach((disc) => requireValue(node.reply_by_disc && node.reply_by_disc[disc], `${node.id}/${disc} 回覆`));
-  const variants = Object.values(node.reply_by_disc || {}).map(normalize);
+  ['D', 'I', 'S', 'C'].forEach((disc) => requireValue(node.responses && node.responses[disc], `${node.id}/${disc} 回覆`));
+  const variants = Object.values(node.responses || {}).map(normalize);
   if (new Set(variants).size !== variants.length) failures.push(`${node.id} 的四型回覆重複`);
+  if (!Array.isArray(node.follow_responses) || node.follow_responses.length !== 3) failures.push(`${node.id} 必須有三個追問完整回答`);
+  (node.follow_responses || []).forEach((follow) => ['D', 'I', 'S', 'C'].forEach((disc) => requireValue(follow.responses && follow.responses[disc], `${node.id}/${follow.label}/${disc} 回覆`)));
 });
 
 if (failures.length) {

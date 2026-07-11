@@ -1132,7 +1132,6 @@ function renderProfile(spec, strategy) {
   const theme = getTheme(primaryDisc);
   const mainLife = extractMainLifeNumber(spec.life_number || (currentState && currentState.deterministic_state && currentState.deterministic_state.computed && currentState.deterministic_state.computed.life_number) || '');
   const quote = formatQuote(spec.final_quote || '讓客戶有感，價值就會被看見。');
-  lastCoursePath = null;
   lastReport = {
     profile,
     spec: Object.assign({}, cleanReportSpec(spec), { life_number: mainLife, final_quote: quote }),
