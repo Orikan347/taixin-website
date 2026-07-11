@@ -96,6 +96,9 @@
           "signup_url": {
             "type": "string",
             "pattern": "^https://"
+          },
+          "time_confirmed": {
+            "type": "boolean"
           }
         }
       }

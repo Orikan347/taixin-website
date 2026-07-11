@@ -44,10 +44,11 @@ assert(publicData.offerings.some((offering) => (
   offering.course_name === '超級銷冠系統（台灣場）'
   && offering.price === 31000
   && offering.currency === 'TWD'
-  && offering.status === 'price_confirmed_date_pending'
-  && offering.date_time === null
-  && offering.end_date_time === null
-  && offering.display_note === '價格已確認，日期待確認'
+  && offering.status === 'confirmed'
+  && offering.date_time === '2026-10-16T09:00:00+08:00'
+  && offering.end_date_time === '2026-10-18T18:00:00+08:00'
+  && offering.time_confirmed === false
+  && offering.display_note === '已確認'
 )));
 
 const invalidPending = JSON.parse(JSON.stringify(loaded));

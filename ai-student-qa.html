@@ -257,7 +257,7 @@ textarea {
 .chat-panel {
   min-height: 720px;
   display: grid;
-  grid-template-rows: auto minmax(280px, 1fr) auto;
+  grid-template-rows: auto minmax(280px, 1fr) auto auto;
   overflow: hidden;
 }
 .chat-head {
@@ -360,6 +360,18 @@ textarea {
   background: var(--brand);
   color: #fff;
   border-color: var(--brand);
+}
+.chat-home-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--line);
+  background: #fff;
+}
+.chat-home-actions .btn {
+  min-height: 40px;
+  font-size: .9rem;
 }
 .chat-input {
   border-top: 1px solid var(--line);
@@ -658,6 +670,10 @@ textarea {
           <span class="phase-pill" id="phaseLabel">尚未開始</span>
         </div>
         <div class="messages" id="messages" aria-live="polite"></div>
+        <div class="chat-home-actions" aria-label="主要問答入口">
+          <button class="btn btn-outline" type="button" data-root-action="課程介紹">課程介紹</button>
+          <button class="btn btn-soft" type="button" data-root-action="我的銷售天賦">我的銷售天賦</button>
+        </div>
         <form class="chat-input" id="chatForm">
           <textarea id="chatMessage" placeholder="先完成左側基本資料，再在這裡回答泰欣老師的追問。" disabled></textarea>
           <button class="btn btn-primary" type="submit" id="sendButton" disabled>送出</button>
@@ -720,10 +736,29 @@ let appContext = {
   offerings: null
 };
 
+// DISC 題目已移到聊天裡，前置表單只留下必要資料。
+document.querySelectorAll('input[name^="disc_hate_"]').forEach((input) => {
+  const field = input.closest('.field');
+  if (field) {
+    field.style.display = 'none';
+    field.querySelectorAll('input').forEach((item) => { item.disabled = true; });
+  }
+});
+const legacyGoals = document.querySelector('input[name="goals"]');
+if (legacyGoals) {
+  const field = legacyGoals.closest('.field');
+  if (field) {
+    field.style.display = 'none';
+    field.querySelectorAll('input').forEach((item) => { item.disabled = true; });
+  }
+}
+const optionalPhone = document.getElementById('phone');
+if (optionalPhone && optionalPhone.closest('.field')) optionalPhone.closest('.field').style.display = 'none';
+
 const FALLBACK_OFFERINGS = {
   updated_at: '2026-07-11',
   verified_by: '使用者提供截圖與文字確認 2026-07-07；超級銷冠系統地區價格由使用者文字確認 2026-07-10 至 2026-07-11',
-  status_note: '台灣課程日期與金額依使用者提供截圖與文字確認；超級銷冠系統吉隆坡場 RM 4,680，台灣場 NT$ 31,000，台灣日期待確認。名額未提供，不顯示。',
+  status_note: '台灣課程日期與金額依使用者提供截圖與文字確認；超級銷冠系統吉隆坡場 RM 4,680，台灣場 10/16-10/18、NT$ 31,000。名額未提供，不顯示。',
   retake_policy: {
     price: 3200,
     currency: 'TWD',
@@ -736,8 +771,8 @@ const FALLBACK_OFFERINGS = {
     { course_name: '流量磁鐵', date_time: null, end_date_time: null, price: 9200, currency: 'TWD', venue: '線上課錄播，可直接開通', status: 'available_now', display_note: '可直接開通' },
     { course_name: '直指人心', date_time: null, end_date_time: null, price: 9200, currency: 'TWD', venue: '線上課錄播，可直接開通', status: 'available_now', display_note: '可直接開通' },
     { course_name: '五堂課全包', date_time: null, end_date_time: null, price: 40000, currency: 'TWD', venue: '依所選課程形式', status: 'available_now', display_note: '可直接開通' },
-    { course_name: '超級銷冠系統（吉隆坡場）', date_time: '2026-10-21T09:00:00+08:00', end_date_time: '2026-10-23T18:00:00+08:00', price: 4680, currency: 'MYR', venue: '吉隆坡三天線下課，地點待確認', status: 'confirmed', display_note: '已確認' },
-    { course_name: '超級銷冠系統（台灣場）', date_time: null, end_date_time: null, price: 31000, currency: 'TWD', venue: '台灣場次，日期待確認', status: 'price_confirmed_date_pending', display_note: '價格已確認，日期待確認' }
+    { course_name: '超級銷冠系統（吉隆坡場）', date_time: '2026-10-21T09:00:00+08:00', end_date_time: '2026-10-23T18:00:00+08:00', time_confirmed: false, price: 4680, currency: 'MYR', venue: '吉隆坡三天線下課，地點待確認', status: 'confirmed', display_note: '已確認' },
+    { course_name: '超級銷冠系統（台灣場）', date_time: '2026-10-16T09:00:00+08:00', end_date_time: '2026-10-18T18:00:00+08:00', time_confirmed: false, price: 31000, currency: 'TWD', venue: '台灣三天課程，地點待確認', status: 'confirmed', display_note: '已確認' }
   ]
 };
 
@@ -755,8 +790,6 @@ form.addEventListener('submit', async (event) => {
   lastCoursePath = null;
   updateShareButtons();
   phaseLabel.textContent = '探索中';
-  const greeting = `${profile.name || '你好'}，你好！我先來認識你現在的銷售現場。接下來會問你三個問題，你不用回答得很漂亮，講真實狀況就好。第三題後，你可以自己選要先了解課程介紹，還是找出你的銷售天賦。`;
-  addMessage(greeting, 'bot');
   chatMessage.disabled = false;
   sendButton.disabled = false;
   setBusy(true, '分析中...');
@@ -784,6 +817,10 @@ chatMessage.addEventListener('keydown', (event) => {
   chatForm.requestSubmit();
 });
 
+document.querySelectorAll('[data-root-action]').forEach((button) => {
+  button.addEventListener('click', () => handleOption(button.dataset.rootAction));
+});
+
 downloadReportButton.addEventListener('click', async () => {
   const validation = getReportValidation();
   if (!validation.ok) {
@@ -809,7 +846,7 @@ shareReportButton.addEventListener('click', async () => {
     try {
       await navigator.share({
         title: '我的銷售天賦報告',
-        text: '銷售力不從心，因為從沒遇過李泰欣。',
+        text: '我的 Orikan 李泰欣銷售天賦報告。',
         files: [file]
       });
       sendLeadEvent('report_shared');
@@ -848,36 +885,32 @@ function getProfile() {
   return {
     name: data.get('name') || '',
     email: data.get('email') || '',
-    phone: data.get('phone') || '',
     birthdate: data.get('birthdate') || '',
     region: data.get('region') || 'tw',
     role: data.get('role') || 'sales_consultant',
     industry: data.get('industry') || '',
     product: data.get('product') || '',
-    disc_hate_sales: data.get('disc_hate_sales') || '',
-    disc_hate_workplace: data.get('disc_hate_workplace') || '',
-    disc_hate_customer: data.get('disc_hate_customer') || '',
-    disc_hate_think: data.get('disc_hate_think') || '',
     problems: data.getAll('problems'),
-    goals: data.getAll('goals'),
     consent: data.get('consent') === 'yes'
   };
 }
 
 async function loadAppContext() {
-  const [config, leadHub, brain, quotes, offerings] = await Promise.all([
+  const [config, leadHub, brain, quotes, offerings, closingMap] = await Promise.all([
     loadJson('data/gemini-config.json', null),
     loadJson('data/lead-hub-config.json', null),
     loadJson('data/taixin-sales-brain.json', null),
     loadJson('data/golden-quote-seeds.json', null),
-    loadJson('data/course-offerings.json', FALLBACK_OFFERINGS)
+    loadJson('data/course-offerings.json', FALLBACK_OFFERINGS),
+    loadJson('data/taixin-closing-map.json', null)
   ]);
   appContext = {
     config,
     leadHub,
     salesBrain: brain,
     quoteSeeds: quotes,
-    offerings: offerings || FALLBACK_OFFERINGS
+    offerings: offerings || FALLBACK_OFFERINGS,
+    closingMap
   };
   renderOfferings(appContext.offerings);
 }
@@ -919,9 +952,9 @@ function formatSchedule(offering) {
   const startText = `${start.getMonth() + 1}/${start.getDate()}（${weekday(start)}）`;
   if (!end) return startText;
   const sameDay = start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth() && start.getDate() === end.getDate();
-  const timeText = `${pad(start.getHours())}:${pad(start.getMinutes())}-${pad(end.getHours())}:${pad(end.getMinutes())}`;
-  if (sameDay) return `${startText} ${timeText}`;
-  return `${startText}-${end.getMonth() + 1}/${end.getDate()}（${weekday(end)}） ${timeText}`;
+  const timeText = offering.time_confirmed === false ? '' : ` ${pad(start.getHours())}:${pad(start.getMinutes())}-${pad(end.getHours())}:${pad(end.getMinutes())}`;
+  if (sameDay) return `${startText}${timeText}`;
+  return `${startText}-${end.getMonth() + 1}/${end.getDate()}（${weekday(end)}）${timeText}`;
 }
 
 function formatPrice(offering) {
@@ -952,7 +985,7 @@ async function sendUserMessage(value) {
   chatMessage.value = '';
   setBusy(true, '整理中...');
   try {
-    const response = await TaixinGeminiStudentQA.transition(currentState, text);
+    const response = await TaixinGeminiStudentQA.transition(currentState, text, appContext);
     currentState = response.state;
     addMessage(response.reply, 'bot', response.buttons);
     applyResponse(response);
@@ -1008,7 +1041,7 @@ function addMessage(text, type, buttons) {
 function renderOptionButtons(buttons) {
   const box = document.createElement('div');
   box.className = 'option-actions';
-  buttons.slice(0, buttons.length === 5 ? 5 : 4).forEach((label) => {
+  buttons.forEach((label) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = `option-button${String(label).includes('我都清楚') ? ' clear-option' : ''}`;
@@ -1092,12 +1125,13 @@ function renderProfile(spec, strategy) {
     ? cleanReportItems(spec.sales_advantages).slice(0, 3)
     : (Array.isArray(spec.sales_talents) ? cleanReportItems(spec.sales_talents).slice(0, 3) : []);
   const lifeTalents = Array.isArray(spec.life_talents) ? cleanReportItems(spec.life_talents).slice(0, 3) : [];
+  const improvementPoints = cleanReportItems(spec.improvement_points || []).slice(0, 3);
   const profile = getProfile();
   const disc = stripDisplayText(spec.disc_type || (strategy && strategy.disc_label) || '探索中');
   const primaryDisc = normalizeDisc(disc);
   const theme = getTheme(primaryDisc);
   const mainLife = extractMainLifeNumber(spec.life_number || (currentState && currentState.deterministic_state && currentState.deterministic_state.computed && currentState.deterministic_state.computed.life_number) || '');
-  const quote = formatQuote(spec.final_quote || '銷售力不從心，因為從沒遇過李泰欣。');
+  const quote = formatQuote(spec.final_quote || '讓客戶有感，價值就會被看見。');
   lastCoursePath = null;
   lastReport = {
     profile,
@@ -1106,7 +1140,8 @@ function renderProfile(spec, strategy) {
     primaryDisc,
     theme,
     salesAdvantages,
-    lifeTalents
+    lifeTalents,
+    improvementPoints
   };
   document.documentElement.style.setProperty('--theme-main', theme.main);
   document.documentElement.style.setProperty('--theme-dark', theme.dark);
@@ -1134,6 +1169,10 @@ function renderProfile(spec, strategy) {
         <div class="report-section">
           <strong>你的銷售天賦是：</strong>
           ${renderList(lifeTalents)}
+        </div>
+        <div class="report-section">
+          <strong>建議補強的點</strong>
+          ${renderList(cleanReportItems(spec.improvement_points || []))}
         </div>
         <div class="report-section">
           <strong>給你的實戰建議</strong>
@@ -1290,7 +1329,6 @@ function buildLeadPayload(eventType) {
     profile: {
       name: profile.name,
       email: profile.email,
-      phone: profile.phone,
       region: profile.region,
       role: profile.role,
       industry: profile.industry,
@@ -1299,12 +1337,9 @@ function buildLeadPayload(eventType) {
       consent: profile.consent
     },
     intake: {
-      disc_hate_sales: profile.disc_hate_sales,
-      disc_hate_workplace: profile.disc_hate_workplace,
-      disc_hate_customer: profile.disc_hate_customer,
-      disc_hate_think: profile.disc_hate_think,
       problems: profile.problems,
-      goals: profile.goals
+      conversation: currentState && currentState.conversation ? currentState.conversation : [],
+      course_context: currentState && currentState.courseAnswers ? currentState.courseAnswers : {}
     },
     report: lastReport ? {
       disc_type: spec.disc_type,
@@ -1356,6 +1391,7 @@ async function buildShareImageBlob() {
     life_number: spec.life_number || '',
     sales_advantages: lastReport.salesAdvantages.map((item) => stripDisplayText(item.title)),
     life_talents: lastReport.lifeTalents.map((item) => stripDisplayText(item.title)),
+    improvement_points: lastReport.improvementPoints.map((item) => stripDisplayText(item.title)),
     practical_advice: stripDisplayText(spec.practical_advice || ''),
     final_quote: stripDisplayText(spec.final_quote || ''),
     course_path: path.map((course) => stripDisplayText(course.name))
@@ -1398,13 +1434,14 @@ async function buildShareImageBlob() {
   y = drawPremiumReportBlock(ctx, theme, '你的銷售優點是', lastReport.salesAdvantages, 112, y, 856);
   y = drawPremiumReportBlock(ctx, theme, '你的銷售天賦是', lastReport.lifeTalents, 112, y + 18, 856);
   y = drawSingleTextBlock(ctx, theme, '給你的實戰建議', spec.practical_advice || '先把客戶資料、追蹤和下一步整理起來，讓每一次努力都能累積成結果。', 112, y + 18, 856);
+  y = drawCompactTitleBlock(ctx, theme, '建議補強的點', lastReport.improvementPoints, 112, y + 18, 856);
 
   ctx.fillStyle = theme.soft;
   roundedRect(ctx, 112, y + 18, 856, 126, 24);
   ctx.fill();
   ctx.fillStyle = theme.dark;
   ctx.font = '900 29px "Noto Sans TC", sans-serif';
-  wrapTextMax(ctx, stripDisplayText(spec.final_quote || 'Orikan 李泰欣送你一句話：銷售力不從心，因為從沒遇過李泰欣。'), 144, y + 66, 792, 40, 2);
+  wrapTextMax(ctx, stripDisplayText(spec.final_quote || 'Orikan 李泰欣送你一句話：把方法整理好，專業才會變成果。'), 144, y + 66, 792, 40, 2);
 
   const courseText = path.map((course, index) => `${index + 1}. ${stripDisplayText(course.name)}`).join('  ');
   ctx.fillStyle = theme.dark;
@@ -1524,6 +1561,16 @@ function drawSingleTextBlock(ctx, theme, title, text, x, y, width) {
   ctx.fillStyle = '#263245';
   ctx.font = '800 25px "Noto Sans TC", sans-serif';
   return wrapTextMax(ctx, stripDisplayText(text), x, y + 46, width, 35, 3) + 8;
+}
+
+function drawCompactTitleBlock(ctx, theme, title, items, x, y, width) {
+  ctx.fillStyle = theme.dark;
+  ctx.font = '900 30px "Noto Sans TC", sans-serif';
+  ctx.fillText(title, x, y);
+  ctx.fillStyle = '#263245';
+  ctx.font = '800 22px "Noto Sans TC", sans-serif';
+  const text = (items || []).slice(0, 3).map((item, index) => `${index + 1}. ${stripDisplayText(item.title)}`).join('　');
+  return wrapTextMax(ctx, text, x, y + 37, width, 28, 2) + 8;
 }
 
 function roundedRect(ctx, x, y, width, height, radius) {

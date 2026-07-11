@@ -1,7 +1,7 @@
 {
   "updated_at": "2026-07-11",
   "verified_by": "使用者提供截圖與文字確認 2026-07-07；超級銷冠系統地區價格由使用者文字確認 2026-07-10 至 2026-07-11",
-  "status_note": "台灣課程日期與金額依使用者提供截圖與文字確認；超級銷冠系統吉隆坡場 RM 4,680，台灣場 NT$ 31,000，台灣日期待確認。名額未提供，不顯示。",
+  "status_note": "台灣課程日期與金額依使用者提供截圖與文字確認；超級銷冠系統吉隆坡場 RM 4,680，台灣場 10/16–10/18、NT$ 31,000。名額未提供，不顯示。",
   "retake_policy": {
     "price": 3200,
     "currency": "TWD",
@@ -92,6 +92,7 @@
       "region": "my",
       "date_time": "2026-10-21T09:00:00+08:00",
       "end_date_time": "2026-10-23T18:00:00+08:00",
+      "time_confirmed": false,
       "price": 4680,
       "early_bird_price": null,
       "currency": "MYR",
@@ -103,13 +104,14 @@
       "course_id": "super_sales_tw",
       "course_name": "超級銷冠系統（台灣場）",
       "region": "tw",
-      "date_time": null,
-      "end_date_time": null,
+      "date_time": "2026-10-16T09:00:00+08:00",
+      "end_date_time": "2026-10-18T18:00:00+08:00",
+      "time_confirmed": false,
       "price": 31000,
       "early_bird_price": null,
       "currency": "TWD",
-      "venue": "台灣場次，日期待確認",
-      "status": "price_confirmed_date_pending",
+      "venue": "台灣三天課程，地點待確認",
+      "status": "confirmed",
       "signup_url": "https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header"
     }
   ]
