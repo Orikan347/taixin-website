@@ -29,7 +29,9 @@ async function completeTalentAndOpenObjection(page, { name, email, industry, pro
 
 async function main() {
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage({ viewport: { width: 1440, height: 1050 } });
+  const context = await browser.newContext({ viewport: { width: 1440, height: 1050 } });
+  await context.route('**/lead-events', (route) => route.fulfill({ status: 204, body: '' }));
+  const page = await context.newPage();
   const errors = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto(baseUrl, { waitUntil: 'networkidle' });
@@ -105,13 +107,54 @@ async function main() {
   }
   await page.screenshot({ path: path.join(outDir, 'desktop-flow.png'), fullPage: true });
 
-  const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
+  const mobile = await context.newPage();
+  await mobile.setViewportSize({ width: 390, height: 844 });
   await mobile.goto(baseUrl, { waitUntil: 'networkidle' });
+  await mobile.evaluate(() => {
+    window.__reportShareCalls = 0;
+    Object.defineProperty(navigator, 'canShare', { configurable: true, value: () => true });
+    Object.defineProperty(navigator, 'share', {
+      configurable: true,
+      value: async () => { window.__reportShareCalls += 1; }
+    });
+  });
   const mobileOverflow = await mobile.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 2);
   if (mobileOverflow) throw new Error('mobile horizontal overflow');
+  const mobilePrimaryLabel = await mobile.locator('#downloadReportButton').textContent();
+  const mobileSecondaryLabel = await mobile.locator('#shareReportButton').textContent();
+  if (mobilePrimaryLabel !== '儲存到相簿／分享圖片' || mobileSecondaryLabel !== '下載到檔案') {
+    throw new Error(`mobile report actions are wrong: ${mobilePrimaryLabel} / ${mobileSecondaryLabel}`);
+  }
+  await mobile.locator('#name').fill('Mobile Share');
+  await mobile.locator('#email').fill('mobile-share@example.com');
+  await mobile.locator('#birthdate').fill('1990-04-18');
+  await mobile.locator('#industry').fill('電商');
+  await mobile.locator('#product').fill('高單價顧問服務');
+  await mobile.locator('input[name="problems"]').nth(1).check();
+  await mobile.locator('#consent').check();
+  await mobile.locator('#intakeForm button[type="submit"]').click();
+  await clickText(mobile, '事情一直拖，卻沒有結論');
+  await clickText(mobile, '直接把問題問清楚，趕快推進');
+  await clickText(mobile, '你會把事情往前推，不喜歡拖');
+  await clickText(mobile, '推薦我的課程');
+  await clickText(mobile, '上班族或家庭客戶');
+  await clickText(mobile, '他覺得太貴');
+  await clickText(mobile, '把價值講清楚');
+  await mobile.locator('#downloadReportButton').click();
+  await mobile.waitForFunction(() => window.__reportShareCalls === 1, null, { timeout: 10000 }).catch(() => {});
+  const mobileShareDebug = await mobile.evaluate(() => ({
+    calls: window.__reportShareCalls,
+    buttonText: document.querySelector('#downloadReportButton')?.textContent,
+    disabled: document.querySelector('#downloadReportButton')?.disabled,
+    latestReply: [...document.querySelectorAll('.message.bot')].at(-1)?.textContent
+  }));
+  if (mobileShareDebug.calls !== 1) {
+    throw new Error(`mobile primary report action did not open the system share flow: ${JSON.stringify(mobileShareDebug)}`);
+  }
   await mobile.screenshot({ path: path.join(outDir, 'mobile-initial.png'), fullPage: true });
 
-  const analytical = await browser.newPage({ viewport: { width: 1280, height: 960 } });
+  const analytical = await context.newPage();
+  await analytical.setViewportSize({ width: 1280, height: 960 });
   await analytical.goto(baseUrl, { waitUntil: 'networkidle' });
   await analytical.locator('#name').fill('Chris');
   await analytical.locator('#email').fill('chris@example.com');
@@ -134,7 +177,8 @@ async function main() {
   if (!/1\.[\s\S]*2\.[\s\S]*3\./.test(analyticalAnswer)) throw new Error('C-style objection answer is not structured');
   if (/流量磁鐵.{0,16}(第一步|先上)|第一步.{0,16}流量磁鐵/.test(analyticalAnswer)) throw new Error('C-style objection answer forced a fixed course');
 
-  const refund = await browser.newPage({ viewport: { width: 1280, height: 960 } });
+  const refund = await context.newPage();
+  await refund.setViewportSize({ width: 1280, height: 960 });
   await refund.goto(baseUrl, { waitUntil: 'networkidle' });
   await completeTalentAndOpenObjection(refund, {
     name: 'Rita', email: 'rita@example.com', industry: '房仲', product: '高單價房產服務',
@@ -147,7 +191,8 @@ async function main() {
     if (!refundAnswer.includes(text)) throw new Error(`refund answer missing: ${text}`);
   });
 
-  const cases = await browser.newPage({ viewport: { width: 1280, height: 960 } });
+  const cases = await context.newPage();
+  await cases.setViewportSize({ width: 1280, height: 960 });
   await cases.goto(baseUrl, { waitUntil: 'networkidle' });
   await completeTalentAndOpenObjection(cases, {
     name: 'Casey', email: 'casey@example.com', industry: '醫美顧問', product: '高價療程',
@@ -160,7 +205,8 @@ async function main() {
     if (!casesAnswer.includes(text)) throw new Error(`case answer missing: ${text}`);
   });
 
-  const manager = await browser.newPage({ viewport: { width: 1280, height: 960 } });
+  const manager = await context.newPage();
+  await manager.setViewportSize({ width: 1280, height: 960 });
   await manager.goto(baseUrl, { waitUntil: 'networkidle' });
   await completeTalentAndOpenObjection(manager, {
     name: 'Derek', email: 'derek@example.com', industry: 'B2B SaaS', product: '企業訂閱服務',
@@ -175,7 +221,7 @@ async function main() {
 
   if (errors.length) throw new Error(`page errors: ${errors.join(' | ')}`);
   await browser.close();
-  console.log(JSON.stringify({ status: 'PASS', greetingCount, courseAnswerLength: courseAnswer.length, analyticalAnswerLength: analyticalAnswer.length, refundAnswerLength: refundAnswer.length, casesAnswerLength: casesAnswer.length, managerAnswerLength: managerAnswer.length, screenshots: ['desktop-flow.png', 'mobile-initial.png', 'amy-report.png'] }, null, 2));
+  console.log(JSON.stringify({ status: 'PASS', greetingCount, courseAnswerLength: courseAnswer.length, analyticalAnswerLength: analyticalAnswer.length, refundAnswerLength: refundAnswer.length, casesAnswerLength: casesAnswer.length, managerAnswerLength: managerAnswer.length, mobilePrimaryLabel, mobileSecondaryLabel, mobileShareCalls: 1, screenshots: ['desktop-flow.png', 'mobile-initial.png', 'amy-report.png'] }, null, 2));
 }
 
 main().catch((error) => {

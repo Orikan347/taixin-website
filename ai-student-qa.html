@@ -776,7 +776,9 @@ const FALLBACK_OFFERINGS = {
   ]
 };
 
+updateShareButtons();
 loadAppContext();
+window.addEventListener('resize', updateShareButtons);
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -822,6 +824,22 @@ document.querySelectorAll('[data-root-action]').forEach((button) => {
 });
 
 downloadReportButton.addEventListener('click', async () => {
+  if (isMobileShareSurface()) {
+    await shareReportImage();
+    return;
+  }
+  await downloadReportImage();
+});
+
+shareReportButton.addEventListener('click', async () => {
+  if (isMobileShareSurface()) {
+    await downloadReportImage();
+    return;
+  }
+  await shareReportImage();
+});
+
+async function downloadReportImage() {
   const validation = getReportValidation();
   if (!validation.ok) {
     addMessage(validation.message, 'bot');
@@ -831,9 +849,9 @@ downloadReportButton.addEventListener('click', async () => {
   if (!blob) return;
   downloadBlob(blob);
   sendLeadEvent('report_downloaded');
-});
+}
 
-shareReportButton.addEventListener('click', async () => {
+async function shareReportImage() {
   const validation = getReportValidation();
   if (!validation.ok) {
     addMessage(validation.message, 'bot');
@@ -857,7 +875,11 @@ shareReportButton.addEventListener('click', async () => {
   }
   downloadBlob(blob);
   sendLeadEvent('report_downloaded_share_fallback');
-});
+}
+
+function isMobileShareSurface() {
+  return window.matchMedia('(max-width: 720px), (pointer: coarse)').matches;
+}
 
 function downloadBlob(blob) {
   const url = URL.createObjectURL(blob);
@@ -1278,13 +1300,9 @@ function updateShareButtons() {
     button.disabled = !lastReport;
     button.title = validation.ok ? '' : validation.message;
   });
-  if (validation.ok) {
-    downloadReportButton.textContent = '下載 9:16 圖片';
-    shareReportButton.textContent = '分享圖片';
-  } else if (lastReport) {
-    downloadReportButton.textContent = '下載 9:16 圖片';
-    shareReportButton.textContent = '分享圖片';
-  }
+  const onMobile = isMobileShareSurface();
+  downloadReportButton.textContent = onMobile ? '儲存到相簿／分享圖片' : '下載 9:16 圖片';
+  shareReportButton.textContent = onMobile ? '下載到檔案' : '分享圖片';
   if (showCoursePathButton) {
     showCoursePathButton.disabled = !lastReport;
     showCoursePathButton.textContent = '建議學習路徑';
