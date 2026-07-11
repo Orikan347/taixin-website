@@ -56,9 +56,22 @@ async function fillIntake(page) {
   assert(await page.locator('#profilePanel.is-visible').count() === 0, 'report appeared before talent choice');
 
   await page.getByRole('button', { name: '了解課程介紹' }).click();
-  await page.getByText('流量磁鐵', { exact: true }).waitFor();
-  await page.getByText('極致效率', { exact: true }).waitFor();
-  await page.getByRole('button', { name: '找出我的銷售天賦' }).click();
+  const overviewCourses = ['流量磁鐵', '成交地圖', '直指人心', '極致效率', '言之有物'];
+  for (const courseName of overviewCourses) {
+    assert(await page.getByRole('button', { name: courseName, exact: true }).count() === 1, `course overview missing ${courseName}`);
+  }
+  const overviewText = await page.locator('#messages').innerText();
+  assert(!/天地人網|MBAF|DISC|YPD|存→記→分→細/.test(overviewText), 'course detail leaked into overview');
+
+  await page.getByRole('button', { name: '成交地圖' }).click();
+  await page.getByText('成交地圖先幫你處理', { exact: false }).waitFor();
+  assert(await page.getByRole('button', { name: '怎麼問出客戶真正的需求？', exact: true }).count() === 1, 'needs question missing');
+  assert(await page.getByRole('button', { name: 'MBAF 怎麼介紹產品價值？', exact: true }).count() === 1, 'MBAF question missing');
+  assert(await page.getByRole('button', { name: '客戶拒絕時要怎麼處理？', exact: true }).count() === 1, 'objection question missing');
+  await page.getByRole('button', { name: 'MBAF 怎麼介紹產品價值？' }).click();
+  await page.getByText('先講客戶得到的利益', { exact: false }).waitFor();
+  assert(await page.getByRole('button', { name: 'MBAF 怎麼介紹產品價值？', exact: true }).count() === 0, 'answered course question was repeated');
+  await send(page, '找出我的銷售天賦');
   await page.locator('#profilePanel.is-visible').waitFor();
   await page.getByText('你的銷售優點是：').waitFor();
   await page.getByText('你的銷售天賦是：').waitFor();
@@ -71,7 +84,7 @@ async function fillIntake(page) {
   assert(!body.includes('目標貫通線'), 'invented life-number line appeared');
 
   await browser.close();
-  console.log('PASS\nCOURSE-OFFERINGS-VISIBLE: PASS\nTHREE-QUESTION-ROUTE-CHOICE: PASS\nCOURSE-INTRODUCTION-BRANCH: PASS\nTALENT-REPORT-BRANCH: PASS\nCOURSE-PATH-BUTTON: PASS');
+  console.log('PASS\nCOURSE-OFFERINGS-VISIBLE: PASS\nTHREE-QUESTION-ROUTE-CHOICE: PASS\nCOURSE-OVERVIEW-FIVE-BUTTONS: PASS\nCOURSE-DETAIL-FOLLOW-UP: PASS\nTALENT-REPORT-BRANCH: PASS\nCOURSE-PATH-BUTTON: PASS');
 })().catch((error) => {
   console.error(error.stack || error.message);
   process.exit(1);

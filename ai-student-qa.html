@@ -1008,7 +1008,7 @@ function addMessage(text, type, buttons) {
 function renderOptionButtons(buttons) {
   const box = document.createElement('div');
   box.className = 'option-actions';
-  buttons.slice(0, 4).forEach((label) => {
+  buttons.slice(0, buttons.length === 5 ? 5 : 4).forEach((label) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = `option-button${String(label).includes('我都清楚') ? ' clear-option' : ''}`;
@@ -1068,7 +1068,9 @@ function getPhaseText(phase) {
     intake: '基本資料',
     discovery: '探索中',
     route_choice: '選擇方向',
-    course_intro: '課程介紹',
+    course_overview: '課程總覽',
+    course_detail: '課程細節',
+    course_intro: '課程總覽',
     profile_ready: '報告完成',
     accuracy_check: '報告完成',
     revision: '補充中',

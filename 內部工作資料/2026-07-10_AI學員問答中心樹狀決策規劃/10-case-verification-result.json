@@ -1,9 +1,31 @@
 {
-  "generated_at": "2026-07-10T16:36:41.028Z",
+  "generated_at": "2026-07-11T02:07:12.556Z",
   "case_count": 10,
   "tree_coverage": {
     "rootNodes": 21,
     "leafNodes": 63
+  },
+  "course_tree_coverage": {
+    "流量磁鐵": {
+      "question_count": 3,
+      "distinct_replies": 3
+    },
+    "成交地圖": {
+      "question_count": 3,
+      "distinct_replies": 3
+    },
+    "直指人心": {
+      "question_count": 3,
+      "distinct_replies": 3
+    },
+    "極致效率": {
+      "question_count": 3,
+      "distinct_replies": 3
+    },
+    "言之有物": {
+      "question_count": 3,
+      "distinct_replies": 3
+    }
   },
   "passed": true,
   "results": [

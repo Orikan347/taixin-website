@@ -191,6 +191,18 @@ function assertButtons(response, label) {
   assert(response.buttons.some((button) => /我都清楚/.test(button)), `${label} should include clear button`);
 }
 
+function assertCourseOverview(response, label) {
+  assert(response.phase === 'course_overview', `${label} should be course overview`);
+  assert(Array.isArray(response.buttons), `${label} course buttons missing`);
+  assert(response.buttons.length === 5, `${label} should have five course buttons`);
+  assert(new Set(response.buttons).size === 5, `${label} course buttons must be unique`);
+  ['流量磁鐵', '成交地圖', '直指人心', '極致效率', '言之有物'].forEach((course) => {
+    assert(response.buttons.includes(course), `${label} missing course button ${course}`);
+    assert(response.reply.includes(course), `${label} missing course overview ${course}`);
+  });
+  assert(!/天地人網|MBAF|DISC|YPD|存→記→分→細/.test(response.reply), `${label} overview exposed course detail too early`);
+}
+
 function runCase(student) {
   const profile = Object.assign({}, student);
   delete profile.answers;
@@ -229,12 +241,19 @@ function runCase(student) {
   assertCleanText(courseResponse.reply, `${student.name} yes`);
 
   const contentResponse = engine.transition(courseResponse.state, '這個課程會學什麼');
-  assertButtons(contentResponse, `${student.name} course content`);
-  ['流量磁鐵', '成交地圖', '直指人心', '極致效率', '言之有物', '天地人網', 'MBAF', 'DISC', '存→記→分→細', '能量、邏輯、格局', 'YPD'].forEach((term) => {
-    assert(contentResponse.reply.includes(term), `${student.name} course content missing ${term}`);
-  });
+  assertCourseOverview(contentResponse, `${student.name} course content`);
   assert(!/3,000 萬|破億|36,000|三個月新人第一名|2019 保時捷/.test(contentResponse.reply), `${student.name} course content exposed unconfirmed performance claim`);
   assertCleanText(contentResponse.reply, `${student.name} course content`);
+
+  const courseDetail = engine.transition(contentResponse.state, '成交地圖');
+  assert(courseDetail.phase === 'course_detail', `${student.name} course detail phase missing`);
+  assert(courseDetail.reply.includes('成交地圖'), `${student.name} selected course missing`);
+  assert(!/天地人網|DISC|YPD/.test(courseDetail.reply), `${student.name} course detail dumped other course content`);
+  assertButtons(courseDetail, `${student.name} course detail`);
+  const detailAnswer = engine.transition(courseDetail.state, 'MBAF 怎麼介紹產品價值？');
+  assert(detailAnswer.reply.includes('MBAF'), `${student.name} course detail answer missing MBAF`);
+  assert(detailAnswer.reply.includes('客戶得到的利益'), `${student.name} course detail answer missed benefit-first explanation`);
+  assertButtons(detailAnswer, `${student.name} course follow-up`);
 
   return {
     name: student.name,
@@ -286,8 +305,39 @@ function verifyTreeNodeUniqueness() {
   return { rootNodes: rootReplies.size, leafNodes: leafCount };
 }
 
+function verifyCourseDetailTrees() {
+  const courseQuestions = {
+    '流量磁鐵': ['天地人網怎麼找名單？', '名單找到後怎麼管理？', '沒有名單的人適合嗎？'],
+    '成交地圖': ['怎麼問出客戶真正的需求？', 'MBAF 怎麼介紹產品價值？', '客戶拒絕時要怎麼處理？'],
+    '直指人心': ['怎麼從互動看出客戶類型？', 'D、I、S、C 要怎麼說？', '怎麼讓客戶更快建立信任？'],
+    '極致效率': ['怎麼處理業務員每天很忙？', '客戶資料怎麼整理才不會漏？', '時間碼和行事曆怎麼配合？'],
+    '言之有物': ['能量、邏輯、格局是什麼？', '面對不同對象要怎麼說？', '30 秒電梯簡報和 YPD 能幫什麼？']
+  };
+  const coverage = {};
+  Object.entries(courseQuestions).forEach(([courseName, questions]) => {
+    const state = engine.createSession({ name: '課程樹測試', birthdate: '1991-05-03' });
+    state.phase = 'course_overview';
+    const intro = engine.transition(state, courseName);
+    assert(intro.phase === 'course_detail', `${courseName} detail phase missing`);
+    assertButtons(intro, `${courseName} detail intro`);
+    const replies = [];
+    let response = intro;
+    questions.forEach((question, index) => {
+      response = engine.transition(response.state, question);
+      assertButtons(response, `${courseName} detail question ${index + 1}`);
+      assertCleanText(response.reply, `${courseName} detail question ${index + 1}`);
+      assert(!replies.includes(response.reply), `${courseName} repeated detail reply ${index + 1}`);
+      assert(new Set(response.buttons).size === response.buttons.length, `${courseName} repeated detail buttons ${index + 1}`);
+      replies.push(response.reply);
+    });
+    coverage[courseName] = { question_count: questions.length, distinct_replies: replies.length };
+  });
+  return coverage;
+}
+
 const results = cases.map(runCase);
 const treeCoverage = verifyTreeNodeUniqueness();
+const courseTreeCoverage = verifyCourseDetailTrees();
 
 const routeProfile = Object.assign({}, cases[0]);
 delete routeProfile.answers;
@@ -302,25 +352,21 @@ assert(routeResponse.buttons.includes('了解課程介紹'), 'route choice must 
 assert(routeResponse.buttons.includes('找出我的銷售天賦'), 'route choice must show talent report');
 
 const courseIntro = engine.transition(routeResponse.state, '了解課程介紹');
-assert(courseIntro.phase === 'course_intro', 'course route must open course introduction');
-assertButtons(courseIntro, 'course introduction');
-['流量磁鐵', '成交地圖', '直指人心', '極致效率', '言之有物'].forEach((courseName) => {
-  assert(courseIntro.reply.includes(courseName), `course introduction missing ${courseName}`);
-});
-['天地人網', 'MBAF', 'DISC', '存→記→分→細', '能量、邏輯、格局', 'YPD'].forEach((term) => {
-  assert(courseIntro.reply.includes(term), `course introduction missing ${term}`);
-});
+assertCourseOverview(courseIntro, 'course introduction');
 assert(!/3,000 萬|破億|36,000|三個月新人第一名|2019 保時捷/.test(courseIntro.reply), 'course introduction exposed unconfirmed performance claim');
 assertCleanText(courseIntro.reply, 'course introduction');
 
 const courseButtons = courseIntro.buttons;
 assert(new Set(courseButtons).size === courseButtons.length, 'course introduction buttons must be unique');
-assert(courseButtons.includes('看其餘三堂課'), 'course introduction must expose the remaining three courses');
-const otherCourses = engine.transition(courseIntro.state, '看其餘三堂課');
-['直指人心', '極致效率', '言之有物', 'DISC', 'YPD'].forEach((term) => {
-  assert(otherCourses.reply.includes(term), `remaining course details missing ${term}`);
-});
-assertCleanText(otherCourses.reply, 'remaining course details');
+const courseDetail = engine.transition(courseIntro.state, '成交地圖');
+assert(courseDetail.phase === 'course_detail', 'selected course must open course detail');
+assertButtons(courseDetail, 'course detail');
+assert(courseDetail.reply.includes('成交地圖'), 'selected course detail missing course name');
+assert(!/天地人網|DISC|YPD/.test(courseDetail.reply), 'selected course detail dumped another course');
+const courseDetailAnswer = engine.transition(courseDetail.state, 'MBAF 怎麼介紹產品價值？');
+assert(courseDetailAnswer.reply.includes('MBAF'), 'course detail answer missing MBAF');
+assert(courseDetailAnswer.reply.includes('客戶得到的利益'), 'course detail answer must lead with benefit');
+assertButtons(courseDetailAnswer, 'course detail follow-up');
 
 const talentReport = engine.transition(courseIntro.state, '找出我的銷售天賦');
 assert(talentReport.profile_spec, 'talent route must render the report from the three collected answers');
@@ -354,6 +400,7 @@ fs.writeFileSync(outputPath, JSON.stringify({
   generated_at: new Date().toISOString(),
   case_count: results.length,
   tree_coverage: treeCoverage,
+  course_tree_coverage: courseTreeCoverage,
   passed: true,
   results
 }, null, 2));

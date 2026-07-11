@@ -41,8 +41,10 @@ function runScenario(scenario) {
   assert(response.response_strategy.disc_primary === scenario.expectedDisc, `${scenario.id}: DISC mismatch`);
 
   const courseIntro = engine.transition(response.state, '了解課程介紹');
-  assert(courseIntro.phase === 'course_intro', `${scenario.id}: course introduction did not open`);
+  assert(courseIntro.phase === 'course_overview', `${scenario.id}: course overview did not open`);
+  assert(courseIntro.buttons.length === 5, `${scenario.id}: course overview should have five course buttons`);
   assert(courseIntro.reply.includes('流量磁鐵') && courseIntro.reply.includes('言之有物'), `${scenario.id}: five-course benefit overview missing`);
+  assert(!/天地人網|MBAF|DISC|YPD|存→記→分→細/.test(courseIntro.reply), `${scenario.id}: course details leaked into overview`);
 
   const priceReply = engine.transition(courseIntro.state, '看開課時間費用');
   assert(priceReply.reply.includes('超級銷冠系統（台灣場）：日期待確認，NT$ 31,000'), `${scenario.id}: Taiwan course details missing`);

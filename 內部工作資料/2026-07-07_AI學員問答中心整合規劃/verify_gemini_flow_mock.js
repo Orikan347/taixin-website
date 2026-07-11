@@ -23,13 +23,25 @@ const offerings = require('../../data/course-offerings.json');
   assert(response.buttons.includes('找出我的銷售天賦'));
 
   const courseIntro = await gemini.transition(response.state, '了解課程介紹');
-  assert.strictEqual(courseIntro.phase, 'course_intro');
-  ['流量磁鐵', '成交地圖', '直指人心', '極致效率', '言之有物', '天地人網', 'MBAF', 'DISC', 'YPD'].forEach((term) => {
+  assert.strictEqual(courseIntro.phase, 'course_overview');
+  assert.strictEqual(courseIntro.buttons.length, 5);
+  ['流量磁鐵', '成交地圖', '直指人心', '極致效率', '言之有物'].forEach((term) => {
     assert(courseIntro.reply.includes(term), `course intro missing ${term}`);
   });
+  assert(!/天地人網|MBAF|DISC|YPD|存→記→分→細/.test(courseIntro.reply));
   assert(!/3,000 萬|破億|36,000|三個月新人第一名/.test(courseIntro.reply));
 
-  const report = await gemini.transition(courseIntro.state, '找出我的銷售天賦');
+  const courseDetail = await gemini.transition(courseIntro.state, '成交地圖');
+  assert.strictEqual(courseDetail.phase, 'course_detail');
+  assert(courseDetail.reply.includes('成交地圖'));
+  assert(!/天地人網|DISC|YPD/.test(courseDetail.reply));
+  assert.strictEqual(courseDetail.buttons.length, 4);
+  const mbaAnswer = await gemini.transition(courseDetail.state, 'MBAF 怎麼介紹產品價值？');
+  assert(mbaAnswer.reply.includes('MBAF'));
+  assert(mbaAnswer.reply.includes('客戶得到的利益'));
+  assert(mbaAnswer.buttons.length === 4);
+
+  const report = await gemini.transition(courseDetail.state, '找出我的銷售天賦');
   assert(report.profile_spec);
   assert.strictEqual(report.profile_spec.sales_advantages.length, 3);
   assert.strictEqual(report.profile_spec.life_talents.length, 3);
