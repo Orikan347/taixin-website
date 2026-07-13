@@ -1,38 +1,456 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
   "generated_at": "2026-07-13",
-  "canonical_policy": "官網已輸出 canonical；Vocus canonical 設定與公開 HTML 讀回仍需另行驗證。",
+  "source": "Vocus public API read-only",
   "articles": [
     {
-      "record_id": "ORI-SYNC-20260713-VOCUS-6A5439EC",
+      "record_id": "ORI-VOCUS-6A5439ECFD8978000133A2D3",
+      "vocus_article_id": "6a5439ecfd8978000133a2d3",
       "slug": "virtue-capability-results-pyramid",
       "title": "德性能力結果金字塔",
       "seo_title": "德性能力結果金字塔｜Orikan 李泰欣",
-      "description": "從德性、能力與結果三層，重新理解一個人是否值得長期信任。",
-      "author": "Orikan 李泰欣",
+      "description": "子曰：「不患人之不己知，患其不能也。」 子曰：「驥不稱其力，稱其德也。」  「不患人之不己知」這句話，在《論語》裡出現過好幾次。 孔子也說過：「不患莫己知，求為可知也。」 以及：「不患人之不己知，患不知人也。」  把這幾句話合起來看，其實孔子一直在提醒我們： 不要一直擔心別人不知道你的價值。 真正要",
       "published_at": "2026-07-13",
       "updated_at": "2026-07-13",
-      "site_url": "https://orikan347.github.io/taixin-website/blog/virtue-capability-results-pyramid/",
       "vocus_url": "https://vocus.cc/article/6a5439ecfd8978000133a2d3",
-      "source_sha256": "dea64db34efb530e40db3ade391e1958d8331c41f6ceed84b367f1623c2494fe",
-      "source_label": "查看 Vocus 原始發布頁",
-      "cover": {
-        "url": "https://images.vocus.cc/44dc041d-2b8a-43fc-8433-7ee4b1a35300.png",
-        "alt": "德性能力結果金字塔文章封面圖",
-        "status": "PASS_NONEMPTY_ALT_PENDING_VISUAL_REVIEW"
-      },
-      "inline": {
-        "url": "https://images.vocus.cc/4aad91ba-0009-4606-a622-80a0541bc83b.png",
-        "alt": "德性、能力與結果關係的文章插圖",
-        "status": "PASS_NONEMPTY_ALT_PENDING_VISUAL_REVIEW"
-      },
-      "canonical_status": "PERSONAL_SITE_RENDERED_VOCUS_LIVE_READBACK_PENDING",
-      "vocus_canonical_readback": "PENDING_LIVE_AUTHOR_SETTING_READBACK",
-      "cta": {
-        "label": "想把這套思考用在銷售與團隊？和我聊聊",
-        "url": "https://orikan347.github.io/taixin-website/#contact"
-      }
+      "site_url": "https://orikan347.github.io/taixin-website/blog/virtue-capability-results-pyramid/",
+      "source_sha256": "b8f9042e7c72c00434b1ac076a7dd7636db07a5a42f52b76751c0ddd3ced701b",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/44dc041d-2b8a-43fc-8433-7ee4b1a35300.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a5439ecfd8978000133a2d3-1.png",
+          "filename": "6a5439ecfd8978000133a2d3-1.png",
+          "sha256": "b81a1b04325685b4edfa4bb3b3f567e5b2fa522e6e10b2347d909b12f352bc55",
+          "alt": "德性能力結果金字塔｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/4aad91ba-0009-4606-a622-80a0541bc83b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a5439ecfd8978000133a2d3-2.png",
+          "filename": "6a5439ecfd8978000133a2d3-2.png",
+          "sha256": "657e63bf42228b9e56d15e8058298189711846ce2656e58576956aa8afada45e",
+          "alt": "德性能力結果金字塔｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A5196D6FD8978000180E87E",
+      "vocus_article_id": "6a5196d6fd8978000180e87e",
+      "slug": "ig-story-output",
+      "title": "心大了才懂人",
+      "seo_title": "心大了才懂人｜Orikan 李泰欣",
+      "description": "宋朝張載說：  「大其心則能體天下之物，物有未體，則心為有外。世人之心，止於聞見之狹。聖人盡性，不以見聞梏其心，其視天下無一物非我，孟子謂盡心則知性知天以此。天大無外，故有外之心不足以合天心。見聞之知，乃物交而知，非德性所知；德性所知，不萌於見聞。」  我覺得這一段話，也可以用來解釋《解惑》這本書所",
+      "published_at": "2026-07-11",
+      "updated_at": "2026-07-11",
+      "vocus_url": "https://vocus.cc/article/6a5196d6fd8978000180e87e",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/ig-story-output/",
+      "source_sha256": "26b1808a4a8d88f6e4a5b180197df6d3949ca7cddb0bae76ffe007c886ae8e5b",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/8c2424d2-844f-456a-a02c-e7f985654ef4.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a5196d6fd8978000180e87e-1.png",
+          "filename": "6a5196d6fd8978000180e87e-1.png",
+          "sha256": "6873762983456658bb56bb635ee2c53078a849ebe09554f9118d0af049238ce7",
+          "alt": "心大了才懂人｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/64649321-8b36-4c30-bbec-6bbd6c4d8316.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a5196d6fd8978000180e87e-2.png",
+          "filename": "6a5196d6fd8978000180e87e-2.png",
+          "sha256": "f5a31c1be9710c49e819cd6d26bb3c2f484bfedbd820fb16633dcd1ee0f9c493",
+          "alt": "心大了才懂人｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A5045E6FD89780001283436",
+      "vocus_article_id": "6a5045e6fd89780001283436",
+      "slug": "vocus-6a5045e6fd89780001283436",
+      "title": "「我要回去跟老婆商量」不是真的要問老婆",
+      "seo_title": "「我要回去跟老婆商量」不是真的要問老婆｜Orikan 李泰欣",
+      "description": "▍EDM 主旨行 主旨：客戶說「我要問老婆」其實在跟你講三件事｜延遲成交破解 預覽文字：3 種最常見的延遲說話技巧，一張對照卡破解",
+      "published_at": "2026-07-10",
+      "updated_at": "2026-07-10",
+      "vocus_url": "https://vocus.cc/article/6a5045e6fd89780001283436",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/vocus-6a5045e6fd89780001283436/",
+      "source_sha256": "330bd1cad2bf8c2939e2fda90eac2f88c075587304ac362cb59a076f8771920b",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/38389648-cfe7-4aba-bec3-50082075c97a.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a5045e6fd89780001283436-1.png",
+          "filename": "6a5045e6fd89780001283436-1.png",
+          "sha256": "d5dd67c69b9705e3b239f09db6a9937d7803a970d220e1e6d51bc7fdf82e6dec",
+          "alt": "「我要回去跟老婆商量」不是真的要問老婆｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/688603f7-2f21-4694-be4c-a1d673894b8c.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a5045e6fd89780001283436-2.png",
+          "filename": "6a5045e6fd89780001283436-2.png",
+          "sha256": "26a7bba766ce83f205803fb584ec011c79cde81f137686450b9ed2672a0b29b3",
+          "alt": "「我要回去跟老婆商量」不是真的要問老婆｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A4EF4D1FD89780001467BB3",
+      "vocus_article_id": "6a4ef4d1fd89780001467bb3",
+      "slug": "vocus-6a4ef4d1fd89780001467bb3",
+      "title": "客戶說「我只是看看」，不是不買，是還沒信任你",
+      "seo_title": "客戶說「我只是看看」，不是不買，是還沒信任你｜Orikan 李泰欣",
+      "description": "▍EDM 主旨行（EDM 版用） 主旨：客戶說「我只是看看」的時候，你聽到的不是真話｜下個月業績的關鍵 預覽文字：六種軟拒絕一張對照卡，看完今晚就能用",
+      "published_at": "2026-07-09",
+      "updated_at": "2026-07-09",
+      "vocus_url": "https://vocus.cc/article/6a4ef4d1fd89780001467bb3",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/vocus-6a4ef4d1fd89780001467bb3/",
+      "source_sha256": "d424782e226bc13e6d6f1ab83322759cfdd84867d64aace9233411223d21ac2c",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/382fb348-15b8-4467-9ef1-6c3bb45af6bd.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a4ef4d1fd89780001467bb3-1.png",
+          "filename": "6a4ef4d1fd89780001467bb3-1.png",
+          "sha256": "c5eb0ca33f374f0518836af1d74b5ed4787f72b2aa76b819e10b505ddf911026",
+          "alt": "客戶說「我只是看看」，不是不買，是還沒信任你｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/cb276c2f-bcf2-429e-a132-d9eacb805c47.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a4ef4d1fd89780001467bb3-2.png",
+          "filename": "6a4ef4d1fd89780001467bb3-2.png",
+          "sha256": "7e3c6ccfc6fdbed7dcfeb99ec698ec2182e4cb553ae066d661c4b0c9f19fd15d",
+          "alt": "客戶說「我只是看看」，不是不買，是還沒信任你｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A4DA391FD89780001E54ADF",
+      "vocus_article_id": "6a4da391fd89780001e54adf",
+      "slug": "vocus-6a4da391fd89780001e54adf",
+      "title": "你手機裡 500 個放棄的客戶，才是今年最大的業績缺口",
+      "seo_title": "你手機裡 500 個放棄的客戶，才是今年最大的業績缺口｜Orikan 李泰欣",
+      "description": "上週我課後站在門口收筆電，有個做 4 年的房仲學員走過來攔住我。他沒有笑——臉很累：",
+      "published_at": "2026-07-08",
+      "updated_at": "2026-07-08",
+      "vocus_url": "https://vocus.cc/article/6a4da391fd89780001e54adf",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/vocus-6a4da391fd89780001e54adf/",
+      "source_sha256": "a7cb123c0308b26c9896e12d11fa923fa153727ec865e10074b09605d1027953",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/5c422162-4bb0-4d87-a48d-6babdd3fdd16.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a4da391fd89780001e54adf-1.png",
+          "filename": "6a4da391fd89780001e54adf-1.png",
+          "sha256": "ce1582a1865d6957b93fe7f0975fae46a685f102620bd8a8aee9373d9b27b93c",
+          "alt": "你手機裡 500 個放棄的客戶，才是今年最大的業績缺口｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/92c30286-e846-4947-a68c-095f3fd02a60.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a4da391fd89780001e54adf-2.png",
+          "filename": "6a4da391fd89780001e54adf-2.png",
+          "sha256": "584c0afe52ae92fff5dd9a71e72c87a4464195c123f8fb3b64f5756c4a0384a5",
+          "alt": "你手機裡 500 個放棄的客戶，才是今年最大的業績缺口｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A4C57DFFD897800014EBC2C",
+      "vocus_article_id": "6a4c57dffd897800014ebc2c",
+      "slug": "vocus-6a4c57dffd897800014ebc2c",
+      "title": "頂尖業務員從不說服客戶——他們讓客戶自己說服自己",
+      "seo_title": "頂尖業務員從不說服客戶——他們讓客戶自己說服自己｜Orikan 李泰欣",
+      "description": "你有沒有這種經驗——見完一個客戶，你講了 45 分鐘的產品特色、CP 值、成功案例、學員見證……講到口乾舌燥，客戶最後只說了一句：",
+      "published_at": "2026-07-07",
+      "updated_at": "2026-07-07",
+      "vocus_url": "https://vocus.cc/article/6a4c57dffd897800014ebc2c",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/vocus-6a4c57dffd897800014ebc2c/",
+      "source_sha256": "78761ddd91fc3d4521134d15d84bb1ae913343b15769caa72785792666a5eaaa",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/2f1acfa5-5983-4e73-9a6a-d653b05a729c.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a4c57dffd897800014ebc2c-1.png",
+          "filename": "6a4c57dffd897800014ebc2c-1.png",
+          "sha256": "c623c7f63cfe6b5b4e9dc94696b111ad177e96d06afe98b4bf000299231c3139",
+          "alt": "頂尖業務員從不說服客戶——他們讓客戶自己說服自己｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/681eba89-dae1-416d-a1cb-7cf359f5bf50.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a4c57dffd897800014ebc2c-2.png",
+          "filename": "6a4c57dffd897800014ebc2c-2.png",
+          "sha256": "44d40c1726fc8818dbb5c216b0d8920810b4a1845dc6ed988261d64c8b6053f3",
+          "alt": "頂尖業務員從不說服客戶——他們讓客戶自己說服自己｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A4AFF70FD89780001DE8C8C",
+      "vocus_article_id": "6a4aff70fd89780001de8c8c",
+      "slug": "2026-unknown",
+      "title": "慢則穩、穩則順、順則快：為什麼「慢下來」才是頂尖業務的加速器",
+      "seo_title": "慢則穩、穩則順、順則快：為什麼「慢下來」才是頂尖業務的加速器｜Orikan 李泰欣",
+      "description": "你有沒有發現一件弔詭的事：身邊業績最好的那個人，通常不是最忙的那個？",
+      "published_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "vocus_url": "https://vocus.cc/article/6a4aff70fd89780001de8c8c",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/2026-unknown/",
+      "source_sha256": "b148a750657d43917389535f5fc313a85ab4c0ae87c22066908a15fcf6ca92b2",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/9cee4b4f-9dbd-4277-a9ad-77122c64540e.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a4aff70fd89780001de8c8c-1.png",
+          "filename": "6a4aff70fd89780001de8c8c-1.png",
+          "sha256": "7562caddeb3ae36e2d5bc1f4d95b77c8613a28f0b1ce6f2e197a132df4fb06da",
+          "alt": "慢則穩、穩則順、順則快：為什麼「慢下來」才是頂尖業務的加速器｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/37b52a83-efc4-4bf8-9eab-5657e920ad88.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a4aff70fd89780001de8c8c-2.png",
+          "filename": "6a4aff70fd89780001de8c8c-2.png",
+          "sha256": "97e6a2cb38da283786b879c4ddc39234e8615dd49f998f4a79307d52ff8270fd",
+          "alt": "慢則穩、穩則順、順則快：為什麼「慢下來」才是頂尖業務的加速器｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A49ADF9FD89780001F19689",
+      "vocus_article_id": "6a49adf9fd89780001f19689",
+      "slug": "vocus-6a49adf9fd89780001f19689",
+      "title": "自媒體不是人設：人設怕被看破，修身不怕被看見",
+      "seo_title": "自媒體不是人設：人設怕被看破，修身不怕被看見｜Orikan 李泰欣",
+      "description": "子曰：「君子易事而難說也：說之不以道，不說也；及其使人也，器之。小人難事而易說也；說之雖不以道，說也；及其使人也，求備焉。」",
+      "published_at": "2026-07-05",
+      "updated_at": "2026-07-10",
+      "vocus_url": "https://vocus.cc/article/6a49adf9fd89780001f19689",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/vocus-6a49adf9fd89780001f19689/",
+      "source_sha256": "04412e0640ab229237e708df21ec582d75b9549bd004f69317616a7a275a7767",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/345f5379-dc91-4cc8-b6a0-e08aa3974ee7.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a49adf9fd89780001f19689-1.png",
+          "filename": "6a49adf9fd89780001f19689-1.png",
+          "sha256": "8c314c7333f91350b613c13045b6eecc59619f1545f2d0c9dd6a3e802b287d9a",
+          "alt": "自媒體不是人設：人設怕被看破，修身不怕被看見｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/0ab843f2-00a6-46e8-b122-35e945b18984.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a49adf9fd89780001f19689-2.png",
+          "filename": "6a49adf9fd89780001f19689-2.png",
+          "sha256": "936298bad2c951917554c5562d6bfee0ca6d8d96315c4878d2d80c76d8105643",
+          "alt": "自媒體不是人設：人設怕被看破，修身不怕被看見｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A485CBFFD8978000198F744",
+      "vocus_article_id": "6a485cbffd8978000198f744",
+      "slug": "learning-anxiety",
+      "title": "學如不及：學習焦慮",
+      "seo_title": "學如不及：學習焦慮｜Orikan 李泰欣",
+      "description": "學習焦慮不是因為學得太少，而是沒有把學到的東西真正消化。",
+      "published_at": "2026-07-04",
+      "updated_at": "2026-07-10",
+      "vocus_url": "https://vocus.cc/article/6a485cbffd8978000198f744",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/learning-anxiety/",
+      "source_sha256": "d632bc9e95f783e2f8188d4c3be1ee54b0fe74b2544f6b0bf5a279dce87d2c4c",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/8f732fa7-1d6e-4fa2-9bc2-a417e590ce31.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a485cbffd8978000198f744-1.png",
+          "filename": "6a485cbffd8978000198f744-1.png",
+          "sha256": "dd3073547917f7e7a8c9efa0d2abaf457d827340d2635053ee2fe49ec2a598cb",
+          "alt": "學如不及：學習焦慮｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/eae1bc74-9be3-474f-bb80-fc2ffeb6498f.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a485cbffd8978000198f744-2.png",
+          "filename": "6a485cbffd8978000198f744-2.png",
+          "sha256": "817f46b13d30037c7d885b570d2b3ab57d03a7ed15f736abe9dd2538a7ba0d18",
+          "alt": "學如不及：學習焦慮｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A470C60FD8978000130C875",
+      "vocus_article_id": "6a470c60fd8978000130c875",
+      "slug": "review-and-practice",
+      "title": "學而時習之：知識大會",
+      "seo_title": "學而時習之：知識大會｜Orikan 李泰欣",
+      "description": "知識真正有用，不是因為知道，而是因為反覆練習後變成自己的能力。",
+      "published_at": "2026-07-03",
+      "updated_at": "2026-07-03",
+      "vocus_url": "https://vocus.cc/article/6a470c60fd8978000130c875",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/review-and-practice/",
+      "source_sha256": "6fc51663682de2f8b4c07b0fd48d4e6c604ba907883947499fd40c252bb247cc",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/822d8f43-5f29-43cb-8969-c35711d18522.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a470c60fd8978000130c875-1.png",
+          "filename": "6a470c60fd8978000130c875-1.png",
+          "sha256": "63639d03130c6bba5a3f9a73530cbb88e98a19af6e6ccdb3209cb1cab0ddf709",
+          "alt": "學而時習之：知識大會｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/70671236-3155-40a4-875c-752e442ba5c6.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a470c60fd8978000130c875-2.png",
+          "filename": "6a470c60fd8978000130c875-2.png",
+          "sha256": "bae07e7969c7c3104421977d369b039024a8e14dc0e39a101e696675e0209d62",
+          "alt": "學而時習之：知識大會｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A45B9ACFD89780001D2E4C0",
+      "vocus_article_id": "6a45b9acfd89780001d2e4c0",
+      "slug": "moderation-sales-boundary",
+      "title": "中庸銷售力：成交靠進取，長久靠底線",
+      "seo_title": "中庸銷售力：成交靠進取，長久靠底線｜Orikan 李泰欣",
+      "description": "成交需要進取，長久合作需要底線。",
+      "published_at": "2026-07-02",
+      "updated_at": "2026-07-02",
+      "vocus_url": "https://vocus.cc/article/6a45b9acfd89780001d2e4c0",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/moderation-sales-boundary/",
+      "source_sha256": "de9c1dcfc4a3ae7f83a9fe9ae3c8bc191cd49380eb705a8fc54e9537071aa49a",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/2195f56b-7a9c-4105-ae15-c3cb8b0615bf.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a45b9acfd89780001d2e4c0-1.png",
+          "filename": "6a45b9acfd89780001d2e4c0-1.png",
+          "sha256": "cd545bd8aa8549364f94f6f5d6b6691b14628e88a1c837cc6ed8f8c63ede84f1",
+          "alt": "中庸銷售力：成交靠進取，長久靠底線｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/f280f13e-e415-49ea-96b0-e1812c9c0de9.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a45b9acfd89780001d2e4c0-2.png",
+          "filename": "6a45b9acfd89780001d2e4c0-2.png",
+          "sha256": "4c629528b6034738f48046fd262debfcedcf000dcfadb7d509e100007660f455",
+          "alt": "中庸銷售力：成交靠進取，長久靠底線｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A44680EFD89780001C806FC",
+      "vocus_article_id": "6a44680efd89780001c806fc",
+      "slug": "moderation-boldness-boundary",
+      "title": "中庸銷售力：狂狷與底線",
+      "seo_title": "中庸銷售力：狂狷與底線｜Orikan 李泰欣",
+      "description": "真正的中庸，不是沒有態度，而是知道什麼時候進、什麼時候守。",
+      "published_at": "2026-07-01",
+      "updated_at": "2026-07-01",
+      "vocus_url": "https://vocus.cc/article/6a44680efd89780001c806fc",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/moderation-boldness-boundary/",
+      "source_sha256": "f4adc2bc6436f6d910cb04fc21840dd6cf2f32b0b87ddee1e2183c92b023ac45",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/022ab987-1913-4539-b2fa-828507bfc370.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a44680efd89780001c806fc-1.png",
+          "filename": "6a44680efd89780001c806fc-1.png",
+          "sha256": "f0ccfa0c56ffb3458668c2b15b013087cf9a39b5966a25ddb481ca58973413d6",
+          "alt": "中庸銷售力：狂狷與底線｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/76adffdf-f156-4b6a-883e-4e34e31a9005.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a44680efd89780001c806fc-2.png",
+          "filename": "6a44680efd89780001c806fc-2.png",
+          "sha256": "e23602490d760157ffad66a863793a422ff89fbed73da4708699615c4e285753",
+          "alt": "中庸銷售力：狂狷與底線｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A4316D5FD897800014C8468",
+      "vocus_article_id": "6a4316d5fd897800014c8468",
+      "slug": "meaning-map",
+      "title": "解惑：重要訊息地圖",
+      "seo_title": "解惑：重要訊息地圖｜Orikan 李泰欣",
+      "description": "真正困住我們的，不是沒有答案，而是拿著少了重要訊息的地圖。",
+      "published_at": "2026-06-30",
+      "updated_at": "2026-06-30",
+      "vocus_url": "https://vocus.cc/article/6a4316d5fd897800014c8468",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/meaning-map/",
+      "source_sha256": "02cf28ec0e78eb4d882974ce815ec20b1485885d381e8956a4f85ec2d4bc1a4b",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/dea3a194-4c59-42a7-b198-2cd3b9874c65.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a4316d5fd897800014c8468-1.png",
+          "filename": "6a4316d5fd897800014c8468-1.png",
+          "sha256": "a75c128f8c3e4c0ee1db759b7db74ab893c25fe8c5ba082a2263fdb4281e6e4f",
+          "alt": "解惑：重要訊息地圖｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/219ce459-8252-444a-a5c8-e8e6a5edea21.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a4316d5fd897800014c8468-2.png",
+          "filename": "6a4316d5fd897800014c8468-2.png",
+          "sha256": "38b55e847bd7eef029c162afe5120eb678f7a169ebcdf8fee679ebdac4f50070",
+          "alt": "解惑：重要訊息地圖｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A41DE51FD89780001E6A934",
+      "vocus_article_id": "6a41de51fd89780001e6a934",
+      "slug": "science-and-wisdom",
+      "title": "科學與智慧",
+      "seo_title": "科學與智慧｜Orikan 李泰欣",
+      "description": "科學需要智慧來引導，智慧也需要科學來落地。",
+      "published_at": "2026-06-29",
+      "updated_at": "2026-06-29",
+      "vocus_url": "https://vocus.cc/article/6a41de51fd89780001e6a934",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/science-and-wisdom/",
+      "source_sha256": "ac793b2e09c70af467b90c51254dbcbe6533b7c9d67eac8856558de7df007afc",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/f5c2b873-6b7d-4258-9bee-ee4e818ed601.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a41de51fd89780001e6a934-1.png",
+          "filename": "6a41de51fd89780001e6a934-1.png",
+          "sha256": "68b45c967b6d459f7ff9f4648c603785ad7af6271a2595a448f01ca789572741",
+          "alt": "科學與智慧｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/94e565b9-e28a-4f9d-ba71-26e58993b15a.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a41de51fd89780001e6a934-2.png",
+          "filename": "6a41de51fd89780001e6a934-2.png",
+          "sha256": "91167598eb4a7f8b9c7f435125fb276bd21dd14a81e198d5ea3b68be24ceb9da",
+          "alt": "科學與智慧｜Vocus 原圖 2"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6A3A1F56FD89780001C17443",
+      "vocus_article_id": "6a3a1f56fd89780001c17443",
+      "slug": "harmony-independent-judgment",
+      "title": "和而不同：獨立判斷",
+      "seo_title": "和而不同：獨立判斷｜Orikan 李泰欣",
+      "description": "真正成熟的人，不是永遠順從，也不是永遠反對，而是能和而不同。",
+      "published_at": "2026-06-23",
+      "updated_at": "2026-06-23",
+      "vocus_url": "https://vocus.cc/article/6a3a1f56fd89780001c17443",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/harmony-independent-judgment/",
+      "source_sha256": "6e0db9cf7ae60cab3023b911a308fb75f260eec94e6054dd06922fde7a9cd647",
+      "images": []
+    },
+    {
+      "record_id": "ORI-VOCUS-6A38AD7EFD8978000197CB3C",
+      "vocus_article_id": "6a38ad7efd8978000197cb3c",
+      "slug": "speaking-responsibility",
+      "title": "說話要有羞恥心，做事才有責任感",
+      "seo_title": "說話要有羞恥心，做事才有責任感｜Orikan 李泰欣",
+      "description": "真正拉開差距的，不是誰比較會說，而是誰願意為自己說過的話負責。",
+      "published_at": "2026-06-22",
+      "updated_at": "2026-06-22",
+      "vocus_url": "https://vocus.cc/article/6a38ad7efd8978000197cb3c",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/speaking-responsibility/",
+      "source_sha256": "14a3c16a1a381e37dcc752b5930dd6c335a80d8f3f5f8f8ed4a761465fab4c13",
+      "images": []
+    },
+    {
+      "record_id": "ORI-VOCUS-6A365B68FD89780001BBE4DD",
+      "vocus_article_id": "6a365b68fd89780001bbe4dd",
+      "slug": "cognitive-dissonance",
+      "title": "認知失調：進步與怨恨",
+      "seo_title": "認知失調：進步與怨恨｜Orikan 李泰欣",
+      "description": "進步往往不是知道更多，而是願意面對自己原本不想承認的矛盾。",
+      "published_at": "2026-06-20",
+      "updated_at": "2026-06-20",
+      "vocus_url": "https://vocus.cc/article/6a365b68fd89780001bbe4dd",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/cognitive-dissonance/",
+      "source_sha256": "68c0feb78118e0b55d1ff5bcffe8e004a5d130c020a20291187a43b9a0e0fa07",
+      "images": []
     }
   ]
 }
