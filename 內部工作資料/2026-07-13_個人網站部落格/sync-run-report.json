@@ -1,0 +1,28 @@
+{
+  "record_id": "ORI-SYNC-20260713-VOCUS-6A5439EC",
+  "checked_at": "2026-07-13",
+  "mode": "OFFLINE_READ_ONLY_SOURCE_TO_LOCAL_STATIC_SITE",
+  "external_write_attempted": false,
+  "vocus_status": 2,
+  "source_sha256": "dea64db34efb530e40db3ade391e1958d8331c41f6ceed84b367f1623c2494fe",
+  "generated_article_url": "https://orikan347.github.io/taixin-website/blog/virtue-capability-results-pyramid/",
+  "canonical_status": "PERSONAL_SITE_RENDERED_VOCUS_LIVE_READBACK_PENDING",
+  "pending_live_readback": [
+    "Vocus canonical account setting",
+    "Vocus public HTML canonical",
+    "GitHub Pages deployed DOM",
+    "Search Console index state",
+    "image visual-alt review"
+  ],
+  "outputs": [
+    "404.html",
+    "blog/index.html",
+    "blog/styles.css",
+    "blog/virtue-capability-results-pyramid/index.html",
+    "data/blog/articles.json",
+    "index.html",
+    "robots.txt",
+    "rss.xml",
+    "sitemap.xml"
+  ]
+}

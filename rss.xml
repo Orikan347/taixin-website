@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Orikan 李泰欣文章</title>
+    <link>https://orikan347.github.io/taixin-website/blog/</link>
+    <description>Orikan 李泰欣的銷售、客戶經營、成交與工作方法文章。</description>
+    <language>zh-TW</language>
+    <lastBuildDate>Mon, 13 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://orikan347.github.io/taixin-website/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>德性能力結果金字塔</title>
+      <link>https://orikan347.github.io/taixin-website/blog/virtue-capability-results-pyramid/</link>
+      <guid isPermaLink="true">https://orikan347.github.io/taixin-website/blog/virtue-capability-results-pyramid/</guid>
+      <pubDate>Mon, 13 Jul 2026 00:00:00 GMT</pubDate>
+      <description>從德性、能力與結果三層，重新理解一個人是否值得長期信任。</description>
+      <source url="https://vocus.cc/article/6a5439ecfd8978000133a2d3">Vocus 原始發布頁</source>
+    </item>
+  </channel>
+</rss>

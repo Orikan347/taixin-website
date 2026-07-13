@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orikan 李泰欣｜亞洲銷冠系統架構導師</title>
 <meta name="description" content="前保時捷全台銷售第一名。14 年實戰銷售經歷，把心理學、哲學與商業思維融合成可複製的人性成交系統。">
+<link rel="canonical" href="https://orikan347.github.io/taixin-website/">
 <meta property="og:title" content="Orikan 李泰欣｜亞洲銷冠系統架構導師">
 <meta property="og:description" content="前保時捷全台銷售第一名。培訓超過 50 家企業、5,000+ 學員。銷售主題演講與企業內訓邀約。">
 <meta property="og:image" content="https://orikan347.github.io/taixin-website/img/og-cover.jpg">
@@ -585,6 +586,35 @@ p { margin-bottom: 18px; font-weight: 300; font-size: 1.1rem; }
 .result-card .trophy { font-size: 1.8rem; margin-bottom: 10px; }
 .result-card h4 { color: var(--white); font-size: 1.15rem; margin-bottom: 6px; }
 .result-card p { color: var(--text-dim); font-size: 0.95rem; margin: 0; }
+
+/* === LATEST ARTICLE === */
+.article-feature {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+  overflow: hidden;
+  margin-top: 46px;
+  border: 1px solid rgba(201,168,76,0.16);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(16,32,58,0.98), rgba(6,13,24,0.98));
+  box-shadow: 0 20px 60px rgba(0,0,0,0.24);
+}
+.article-feature-image { display: block; min-height: 100%; background: var(--navy-mid); overflow: hidden; }
+.article-feature-image img { display: block; width: 100%; height: 100%; min-height: 360px; object-fit: cover; transition: transform 0.45s ease; }
+.article-feature:hover .article-feature-image img { transform: scale(1.035); }
+.article-feature-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 52px; }
+.article-feature-kicker { color: var(--gold); font-family: 'Poppins', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 2px; }
+.article-feature-meta { color: var(--gold-light); font-size: 0.92rem; margin: 16px 0 6px; }
+.article-feature h3 { color: var(--white); font-size: clamp(1.8rem, 3.4vw, 2.65rem); margin: 0 0 18px; }
+.article-feature p { color: var(--text-dim); max-width: 510px; }
+.article-feature .article-quote { color: var(--gold-light); font-size: 1rem; font-weight: 500; margin: 10px 0 26px; padding-left: 16px; border-left: 2px solid var(--gold); }
+.article-feature-actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.article-feature-actions .text-link { color: var(--gold-light); font-weight: 600; text-decoration: none; }
+.article-feature-actions .text-link:hover { color: var(--white); }
+@media (max-width: 768px) {
+  .article-feature { grid-template-columns: 1fr; }
+  .article-feature-image img { min-height: 250px; max-height: 360px; }
+  .article-feature-copy { padding: 34px 28px 38px; }
+}
 
 /* === TESTIMONIALS === */
 .testimonial-screenshots {
@@ -1354,6 +1384,35 @@ footer {
         <span class="industry-tag">藥局</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- LATEST ARTICLE -->
+<section class="section section-dark" id="articles">
+  <div class="container fade-in">
+    <div class="text-center">
+      <div class="label">Latest Insights</div>
+      <h2>不只教你成交，<br>也陪你把<span class="gold">自己走穩</span>。</h2>
+      <p class="lead" style="max-width:650px;margin:0 auto;">這裡收錄我對銷售、人性、成長與長期信任的思考。每篇文章都從一個真正會卡住人的問題開始。</p>
+      <div class="divider divider-center"></div>
+    </div>
+
+    <article class="article-feature">
+      <a class="article-feature-image" href="blog/virtue-capability-results-pyramid/" aria-label="閱讀：德性能力結果金字塔">
+        <img src="img/og-cover.jpg" alt="Orikan 李泰欣銷售系統文章封面" loading="lazy">
+      </a>
+      <div class="article-feature-copy">
+        <div class="article-feature-kicker">LATEST ARTICLE</div>
+        <div class="article-feature-meta">2026 / 07 / 13　·　思考與成長</div>
+        <h3>德性能力結果金字塔</h3>
+        <p>結果會讓人看見你，但能不能被長期信任，取決於你用什麼德性承接能力。先看一個人是否值得同行，再談他能走多快。</p>
+        <p class="article-quote">「才華決定一個人能走多快；德性決定一個人會不會走偏。」</p>
+        <div class="article-feature-actions">
+          <a href="blog/virtue-capability-results-pyramid/" class="btn btn-gold">閱讀這篇文章 →</a>
+          <a href="blog/" class="text-link">查看全部文章 →</a>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 

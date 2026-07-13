@@ -1,0 +1,28 @@
+{
+  "artifact_id": "ORI-WEBSITE-VOCUS-SYNC-20260713-V2",
+  "creator": "Orikan 李泰欣",
+  "created_at": "2026-07-13",
+  "version": "local-replay-v2",
+  "classification": "published-vocus-to-personal-site-local-replay",
+  "record_id": "ORI-SYNC-20260713-VOCUS-6A5439EC",
+  "source": {
+    "vocus_url": "https://vocus.cc/article/6a5439ecfd8978000133a2d3",
+    "published_status": 2,
+    "source_sha256": "dea64db34efb530e40db3ade391e1958d8331c41f6ceed84b367f1623c2494fe"
+  },
+  "publication_or_delivery_record": "NO_EXTERNAL_PUBLICATION",
+  "verification_status": "LOCAL_BUILD_READY_FOR_BROWSER_E2E",
+  "privacy_status": "PASS_NO_CUSTOMER_DATA_OR_SECRETS_IN_GENERATED_OUTPUTS",
+  "canonical_status": "PERSONAL_SITE_RENDERED_VOCUS_LIVE_READBACK_PENDING",
+  "sha256": {
+    "blog/virtue-capability-results-pyramid/index.html": "d885fd5b28152fc400cecf8524557d721e7068b3f7d2a5fe631ce2ecbf53c1a1",
+    "blog/index.html": "faf4b78288c06c7ec384653465693119a9f165754830d34c5d46f937d426c719",
+    "rss.xml": "107f608993d8e788f7652306e5f56ae5c1369a2d2fcafd5dfceafb89592a5e75",
+    "sitemap.xml": "f0257034cf52366de5e7f4979fabb730e8f93ee5d8bd52fbb4f42c877357288c",
+    "data/blog/articles.json": "ccc1c37b1e847f06ad9c9829f7241e0751079b2e858f0cffe0846d65847563a0",
+    "index.html": "2717fe59d680bcca8942d3b2f128a734bd955cab23b6d1ef9876445cdf7183f5",
+    "blog/styles.css": "be498f7260396e4abf6d60ce4afdf35eafdea83aea91ce0805e4368bf3a233c0",
+    "robots.txt": "b776b05c89f515c79a84bb4b632acb2dba784eab9a2f9171c38058e52f15bbde",
+    "404.html": "8288790b9af1948e90b4498a01b46f8a3dc213301a400fdc19bc4330afd0027d"
+  }
+}

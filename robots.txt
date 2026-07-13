@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /worker/
+Disallow: /內部工作資料/
+
+Sitemap: https://orikan347.github.io/taixin-website/sitemap.xml

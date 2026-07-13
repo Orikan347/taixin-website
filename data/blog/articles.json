@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "site_base_url": "https://orikan347.github.io/taixin-website",
+  "generated_at": "2026-07-13",
+  "canonical_policy": "官網已輸出 canonical；Vocus canonical 設定與公開 HTML 讀回仍需另行驗證。",
+  "articles": [
+    {
+      "record_id": "ORI-SYNC-20260713-VOCUS-6A5439EC",
+      "slug": "virtue-capability-results-pyramid",
+      "title": "德性能力結果金字塔",
+      "seo_title": "德性能力結果金字塔｜Orikan 李泰欣",
+      "description": "從德性、能力與結果三層，重新理解一個人是否值得長期信任。",
+      "author": "Orikan 李泰欣",
+      "published_at": "2026-07-13",
+      "updated_at": "2026-07-13",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/virtue-capability-results-pyramid/",
+      "vocus_url": "https://vocus.cc/article/6a5439ecfd8978000133a2d3",
+      "source_sha256": "dea64db34efb530e40db3ade391e1958d8331c41f6ceed84b367f1623c2494fe",
+      "source_label": "查看 Vocus 原始發布頁",
+      "cover": {
+        "url": "https://images.vocus.cc/44dc041d-2b8a-43fc-8433-7ee4b1a35300.png",
+        "alt": "德性能力結果金字塔文章封面圖",
+        "status": "PASS_NONEMPTY_ALT_PENDING_VISUAL_REVIEW"
+      },
+      "inline": {
+        "url": "https://images.vocus.cc/4aad91ba-0009-4606-a622-80a0541bc83b.png",
+        "alt": "德性、能力與結果關係的文章插圖",
+        "status": "PASS_NONEMPTY_ALT_PENDING_VISUAL_REVIEW"
+      },
+      "canonical_status": "PERSONAL_SITE_RENDERED_VOCUS_LIVE_READBACK_PENDING",
+      "vocus_canonical_readback": "PENDING_LIVE_AUTHOR_SETTING_READBACK",
+      "cta": {
+        "label": "想把這套思考用在銷售與團隊？和我聊聊",
+        "url": "https://orikan347.github.io/taixin-website/#contact"
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "record_id": "ORI-SYNC-20260713-VOCUS-6A5439EC",
+  "artifact": {
+    "creator": "Orikan 李泰欣",
+    "title": "德性能力結果金字塔",
+    "language": "zh-Hant-TW",
+    "content_sha256": "dea64db34efb530e40db3ade391e1958d8331c41f6ceed84b367f1623c2494fe",
+    "classification": "published_article_local_replay"
+  },
+  "vocus": {
+    "article_id": "6a5439ecfd8978000133a2d3",
+    "public_url": "https://vocus.cc/article/6a5439ecfd8978000133a2d3",
+    "published_status": 2,
+    "published_at": "2026-07-13",
+    "source_of_truth": "published_vocus_article"
+  },
+  "source_snapshot": {
+    "archive_relative_path": "old/已發布/2026-07-13/2026-07-02_德性能力結果金字塔.md",
+    "sha256": "dea64db34efb530e40db3ade391e1958d8331c41f6ceed84b367f1623c2494fe",
+    "immutability_rule": "內容變更須新增新版本記錄，不覆蓋本次 hash。"
+  },
+  "personal_site": {
+    "slug": "virtue-capability-results-pyramid",
+    "site_url_status": "PENDING_OFFICIAL_PERSONAL_SITE_DOMAIN",
+    "seo": {
+      "title": "德性能力結果金字塔｜Orikan 李泰欣",
+      "description": "從德性、能力與結果三層，重新理解一個人是否值得長期信任。",
+      "h1": "德性能力結果金字塔",
+      "author_name": "Orikan 李泰欣",
+      "source_link_label": "查看 Vocus 原始發布頁"
+    },
+    "schema_types": ["BlogPosting", "BreadcrumbList"],
+    "publication_mode": "LOCAL_PREVIEW_ONLY"
+  },
+  "canonical": {
+    "primary_copy": "PERSONAL_SITE_INTENDED_PRIMARY",
+    "vocus_canonical_target": "PENDING_PERSONAL_SITE_ARTICLE_URL",
+    "vocus_setting_status": "PENDING_LIVE_AUTHOR_SETTING_READBACK",
+    "personal_site_canonical_status": "PENDING_SITE_IMPLEMENTATION",
+    "required_readback": ["Vocus 公開 HTML canonical", "個人站公開 HTML canonical", "Search Console 索引結果"]
+  },
+  "images": [
+    {
+      "role": "cover",
+      "source_url": "https://images.vocus.cc/44dc041d-2b8a-43fc-8433-7ee4b1a35300.png",
+      "alt": "德性能力結果金字塔文章封面圖",
+      "status": "PASS_NONEMPTY_ALT_PENDING_VISUAL_REVIEW"
+    },
+    {
+      "role": "inline",
+      "source_url": "https://images.vocus.cc/4aad91ba-0009-4606-a622-80a0541bc83b.png",
+      "alt": "德性、能力與結果關係的文章插圖",
+      "status": "PASS_NONEMPTY_ALT_PENDING_VISUAL_REVIEW"
+    }
+  ],
+  "cta": {
+    "personal_site_cta_status": "PENDING_OFFICIAL_PERSONAL_SITE_URL",
+    "personal_site_cta_label": "閱讀更多銷售與成長觀點"
+  },
+  "retry": {
+    "state": "READY_FOR_LOCAL_REPLAY",
+    "attempt_count": 0,
+    "failure_policy": "任何同步建置或預覽驗證失敗均保留原記錄與來源 hash；不得改寫 Vocus、不得跳過文章、不得自動發布。",
+    "next_action_requires_approval": true
+  }
+}
