@@ -4,4 +4,12 @@ Disallow: /admin/
 Disallow: /worker/
 Disallow: /內部工作資料/
 
+# The website welcomes public search and AI search crawlers.  Actual inclusion
+# in any search result or AI response remains the crawler's decision.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
 Sitemap: https://orikan347.github.io/taixin-website/sitemap.xml
