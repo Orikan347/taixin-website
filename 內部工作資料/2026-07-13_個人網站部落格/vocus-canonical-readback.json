@@ -1,0 +1,10 @@
+{
+  "audit": "vocus-public-canonical-readback",
+  "checked_at": "2026-07-14",
+  "published_articles": 37,
+  "canonical_url_empty": 37,
+  "canonical_url_nonempty": 0,
+  "decision": "PENDING_OWNER_VOCUS_SETTING_FOR_ALL_PUBLIC_ARTICLES",
+  "method": "read-only public Vocus API; no credentials and no Vocus write",
+  "external_write_attempted": false
+}
