@@ -33,7 +33,7 @@ class DiscoveryReadbackTests(unittest.TestCase):
         ]
         (root / "data/blog/articles.json").write_text(json.dumps({"articles": articles}), encoding="utf-8")
         (root / "robots.txt").write_text("User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nSitemap: " + base + "/sitemap.xml\n", encoding="utf-8")
-        sitemap = "<?xml version=\"1.0\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">" + "".join(f"<url><loc>{a['site_url']}</loc></url>" for a in articles) + "</urlset>"
+        sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url>\n    <loc>{a['site_url']}</loc>\n  </url>\n" for a in articles) + "</urlset>\n"
         (root / "sitemap.xml").write_text(sitemap, encoding="utf-8")
         rss = "<?xml version=\"1.0\"?><rss><channel>" + "".join(f"<item><link>{a['site_url']}</link></item>" for a in articles) + "</channel></rss>"
         (root / "rss.xml").write_text(rss, encoding="utf-8")

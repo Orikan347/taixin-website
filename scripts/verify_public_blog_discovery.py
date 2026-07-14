@@ -117,6 +117,8 @@ def main() -> int:
     if sitemap_status != 200:
         errors.append(f"sitemap HTTP {sitemap_status}")
     else:
+        require(errors, sitemap.startswith('<?xml version="1.0" encoding="UTF-8"?>\n'), "sitemap lacks the expected UTF-8 XML declaration")
+        require(errors, "\n  <url>\n" in sitemap, "sitemap lacks readable per-URL XML records")
         try:
             root_xml = ET.fromstring(sitemap)
             namespace = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
