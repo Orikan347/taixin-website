@@ -301,14 +301,19 @@ def main() -> int:
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument("--queue", type=Path, help="Local Vocus publisher queue; only PUBLISHED rows are read.")
     source.add_argument("--creator-id", help="Vocus creator ID; reads only the public article catalogue.")
-    parser.add_argument("--site-root", type=Path, default=Path("."))
-    parser.add_argument("--write", action="store_true")
+    parser.add_argument("--site-root", type=Path, default=Path("."), help="Read-only/dry-run output root. Cannot be used for --write.")
+    parser.add_argument("--candidate-site-root", type=Path, help="Required isolated output root for --write; never point this at the production checkout.")
+    parser.add_argument("--write", action="store_true", help="Write only to --candidate-site-root after fetching public Vocus content.")
     args = parser.parse_args()
+    if args.write and not args.candidate_site_root:
+        raise ValueError("--write requires --candidate-site-root; direct writes to --site-root are blocked")
+    if args.write and args.candidate_site_root.resolve() == PROJECT_ROOT.resolve():
+        raise ValueError("--candidate-site-root cannot be this production checkout")
     if args.queue:
         items, reported_public_count, source_label = published_items_from_queue(args.queue)
     else:
         items, reported_public_count, source_label = published_items_from_creator(args.creator_id)
-    root = args.site_root.resolve(); media_root = root / "blog/media"
+    root = (args.candidate_site_root if args.write else args.site_root).resolve(); media_root = root / "blog/media"
     articles: list[dict] = []; binary: dict[Path, bytes] = {}
     for item in items:
         article_id = item["last_url"].rstrip("/").split("/")[-1]

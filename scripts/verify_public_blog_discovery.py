@@ -54,13 +54,57 @@ def main() -> int:
     parser.add_argument("--base-url", required=True, help="Published site root, e.g. https://orikan347.github.io/taixin-website")
     parser.add_argument("--cache-bust", help="Optional harmless query value used only for public CDN readback.")
     parser.add_argument("--report", type=Path, help="Optional JSON report under --site-root.")
+    parser.add_argument("--expected-public-count", type=int, help="Optional expected number of articles in the deployed public catalogue.")
+    parser.add_argument(
+        "--require-local-catalog-match",
+        action="store_true",
+        help="Require the local candidate catalogue to exactly match the deployed public catalogue.",
+    )
     args = parser.parse_args()
 
     root = args.site_root.resolve()
-    registry = load_json(root / "data/blog/articles.json")
-    articles = registry.get("articles", [])
     base = args.base_url.rstrip("/")
     errors: list[str] = []
+
+    # Public readback must be driven by the deployed catalogue, not whichever
+    # worktree happens to invoke it.  A dirty or older worktree must not turn
+    # a healthy public website into a false FAIL.
+    catalogue_status, catalogue_payload = fetch(base + "/data/blog/articles.json", cache_bust=args.cache_bust)
+    articles: list[dict] = []
+    if catalogue_status != 200:
+        errors.append(f"public catalogue HTTP {catalogue_status}")
+    else:
+        try:
+            public_registry = json.loads(catalogue_payload)
+            candidate_articles = public_registry.get("articles", [])
+            if not isinstance(candidate_articles, list):
+                raise ValueError("public catalogue articles must be a list")
+            articles = candidate_articles
+        except (ValueError, json.JSONDecodeError) as exc:
+            errors.append(f"invalid public catalogue: {exc}")
+
+    local_catalogue_count: int | None = None
+    local_catalogue_matches_public: bool | None = None
+    local_catalogue_path = root / "data/blog/articles.json"
+    if local_catalogue_path.is_file():
+        local_registry = load_json(local_catalogue_path)
+        local_articles = local_registry.get("articles", [])
+        if isinstance(local_articles, list):
+            local_catalogue_count = len(local_articles)
+            local_catalogue_matches_public = local_articles == articles
+        else:
+            errors.append("local candidate catalogue articles must be a list")
+    elif args.require_local_catalog_match:
+        errors.append("local candidate catalogue is missing")
+
+    if args.expected_public_count is not None:
+        require(
+            errors,
+            len(articles) == args.expected_public_count,
+            f"public catalogue count mismatch: expected {args.expected_public_count}, got {len(articles)}",
+        )
+    if args.require_local_catalog_match:
+        require(errors, local_catalogue_matches_public is True, "local candidate catalogue differs from deployed public catalogue")
 
     robots_status, robots = fetch(base + "/robots.txt", cache_bust=args.cache_bust)
     require(errors, robots_status == 200, f"robots HTTP {robots_status}")
@@ -126,7 +170,11 @@ def main() -> int:
         "audit": "public-blog-discovery-readback",
         "overall": "PASS" if not errors else "FAIL",
         "base_url": base,
+        "catalogue_source": "public",
+        "public_catalogue_http": catalogue_status,
         "article_count": len(articles),
+        "local_catalogue_count": local_catalogue_count,
+        "local_catalogue_matches_public": local_catalogue_matches_public,
         "robots_http": robots_status,
         "sitemap_http": sitemap_status,
         "rss_http": rss_status,

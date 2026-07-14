@@ -74,6 +74,27 @@ class DiscoveryReadbackTests(unittest.TestCase):
                 server.shutdown()
                 server.server_close()
 
+    def test_readback_uses_public_catalogue_when_local_worktree_is_stale(self) -> None:
+        with tempfile.TemporaryDirectory() as public_temporary, tempfile.TemporaryDirectory() as local_temporary:
+            public_root = Path(public_temporary)
+            local_root = Path(local_temporary)
+            server, _thread, base = self.fixture(public_root)
+            try:
+                (local_root / "data/blog").mkdir(parents=True)
+                (local_root / "data/blog/articles.json").write_text(
+                    json.dumps({"articles": [{"slug": "old-only"}]}), encoding="utf-8"
+                )
+                result = self.run_check(local_root, base, "--expected-public-count", "2")
+                report = json.loads(result.stdout)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(report["catalogue_source"], "public")
+                self.assertEqual(report["article_count"], 2)
+                self.assertEqual(report["local_catalogue_count"], 1)
+                self.assertFalse(report["local_catalogue_matches_public"])
+            finally:
+                server.shutdown()
+                server.server_close()
+
 
 if __name__ == "__main__":
     unittest.main()
