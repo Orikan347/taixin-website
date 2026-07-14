@@ -62,6 +62,17 @@ class ReleaseScopeGateTests(unittest.TestCase):
             result = self.gate(root, audit)
             self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_accepts_vocus_candidate_transition_gate_files(self) -> None:
+        for path in (
+            "scripts/test_sync_vocus_catalog_candidate_mode.py",
+            "scripts/verify_vocus_catalog_transition.py",
+            "scripts/test_verify_vocus_catalog_transition.py",
+        ):
+            with self.subTest(path=path), tempfile.TemporaryDirectory() as temporary:
+                root, audit = self.fixture(Path(temporary), extra_path=path)
+                result = self.gate(root, audit)
+                self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_rejects_unapproved_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root, audit = self.fixture(Path(temporary), audit_pass=False)
