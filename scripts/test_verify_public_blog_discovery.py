@@ -55,6 +55,8 @@ class DiscoveryReadbackTests(unittest.TestCase):
                 report = json.loads(result.stdout)
                 self.assertEqual(result.returncode, 0, result.stderr)
                 self.assertEqual(report["overall"], "PASS")
+                self.assertEqual(report["googlebot_sitemap_http"], 200)
+                self.assertEqual(report["googlebot_sitemap_url_count"], 2)
                 self.assertTrue((root / "report.json").is_file())
             finally:
                 server.shutdown()

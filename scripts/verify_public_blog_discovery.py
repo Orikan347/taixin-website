@@ -18,6 +18,7 @@ from urllib.request import Request, urlopen
 
 
 USER_AGENT = "Orikan-Public-Blog-Discovery-Check/1.0 (read-only)"
+GOOGLEBOT_USER_AGENT = "Googlebot/2.1 (+http://www.google.com/bot.html)"
 
 
 def load_json(path: Path) -> dict:
@@ -32,8 +33,8 @@ def with_cache_bust(url: str, token: str | None) -> str:
     return urlunsplit((parsed.scheme, parsed.netloc, parsed.path, query, parsed.fragment))
 
 
-def fetch(url: str, *, cache_bust: str | None) -> tuple[int, str]:
-    request = Request(with_cache_bust(url, cache_bust), headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xml,text/plain;q=0.9,*/*;q=0.1"})
+def fetch(url: str, *, cache_bust: str | None, user_agent: str = USER_AGENT) -> tuple[int, str]:
+    request = Request(with_cache_bust(url, cache_bust), headers={"User-Agent": user_agent, "Accept": "text/html,application/xml,text/plain;q=0.9,*/*;q=0.1"})
     try:
         with urlopen(request, timeout=20) as response:  # nosec B310: caller supplies public URL for readback
             return response.status, response.read().decode("utf-8", errors="replace")
@@ -126,6 +127,24 @@ def main() -> int:
         except ET.ParseError as exc:
             errors.append(f"invalid sitemap XML: {exc}")
 
+    # This is a crawler-facing transport diagnostic only. It proves the public
+    # CDN serves the same sitemap to a Googlebot user agent, but it never
+    # substitutes for Search Console's own fetch/readback.
+    googlebot_sitemap_status, googlebot_sitemap = fetch(
+        base + "/sitemap.xml", cache_bust=args.cache_bust, user_agent=GOOGLEBOT_USER_AGENT
+    )
+    require(errors, googlebot_sitemap_status == 200, f"Googlebot sitemap HTTP {googlebot_sitemap_status}")
+    googlebot_sitemap_urls: set[str] = set()
+    if googlebot_sitemap_status == 200:
+        require(errors, googlebot_sitemap.startswith('<?xml version="1.0" encoding="UTF-8"?>\n'), "Googlebot sitemap lacks the expected UTF-8 XML declaration")
+        try:
+            googlebot_root_xml = ET.fromstring(googlebot_sitemap)
+            namespace = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+            googlebot_sitemap_urls = {node.text or "" for node in googlebot_root_xml.findall(namespace + "url/" + namespace + "loc")}
+            require(errors, googlebot_sitemap_urls == sitemap_urls, "Googlebot sitemap URLs differ from the standard public readback")
+        except ET.ParseError as exc:
+            errors.append(f"invalid Googlebot sitemap XML: {exc}")
+
     rss_status, rss = fetch(base + "/rss.xml", cache_bust=args.cache_bust)
     rss_urls: set[str] = set()
     if rss_status != 200:
@@ -179,6 +198,8 @@ def main() -> int:
         "local_catalogue_matches_public": local_catalogue_matches_public,
         "robots_http": robots_status,
         "sitemap_http": sitemap_status,
+        "googlebot_sitemap_http": googlebot_sitemap_status,
+        "googlebot_sitemap_url_count": len(googlebot_sitemap_urls),
         "rss_http": rss_status,
         "blog_index_http": index_status,
         "articles": article_results,
