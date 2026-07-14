@@ -1,0 +1,10 @@
+{
+  "audit": "vocus-catalogue-transition",
+  "overall": "PASS",
+  "baseline_articles": 37,
+  "candidate_articles": 37,
+  "errors": [],
+  "external_write_attempted": false,
+  "checked_at": "2026-07-14",
+  "source": "read-only Vocus public creator catalogue regenerated into an isolated candidate"
+}

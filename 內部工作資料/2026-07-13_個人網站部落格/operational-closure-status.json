@@ -1,0 +1,22 @@
+{
+  "audit": "blog-operational-closure",
+  "phase": "PENDING_RELEASE_SECURITY",
+  "overall": "PENDING",
+  "expected_public_articles": 37,
+  "checks": {
+    "public_readback": "PASS",
+    "transition_readback": "PASS",
+    "vocus_canonical": "PENDING_OWNER_VOCUS_SETTING_FOR_ALL_PUBLIC_ARTICLES",
+    "google_sitemap": "FETCH_FAILED",
+    "bing": "PENDING_EXISTING_OWNER_ACCOUNT",
+    "metrics": null
+  },
+  "failures": [],
+  "pending": [
+    "Vocus-to-personal-site cross-domain canonical is not owner-readback matched",
+    "Google Search Console sitemap is not owner-readback successful",
+    "Bing Webmaster property and sitemap are not owner-readback successful",
+    "first de-identified search-performance aggregate is not available"
+  ],
+  "external_write_attempted": false
+}

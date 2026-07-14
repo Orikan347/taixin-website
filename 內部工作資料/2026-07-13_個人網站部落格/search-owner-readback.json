@@ -1,0 +1,21 @@
+{
+  "audit": "search-owner-readback",
+  "checked_at": "2026-07-14",
+  "source": "Google Search Console owner-account visible DOM; no credentials stored",
+  "google_search_console": {
+    "property_url": "https://orikan347.github.io/taixin-website/",
+    "property_ownership": "VERIFIED",
+    "sitemap_url": "https://orikan347.github.io/taixin-website/sitemap.xml",
+    "sitemap_submission": "SUBMITTED",
+    "sitemap_last_read": "2026-07-14",
+    "sitemap_status": "FETCH_FAILED",
+    "discovered_pages": 0,
+    "blog_home_live_url_test": "INDEXABLE",
+    "blog_home_index_request": "SUBMITTED"
+  },
+  "bing_webmaster": {
+    "status": "PENDING_EXISTING_OWNER_ACCOUNT",
+    "reason": "No external account was created or accessed."
+  },
+  "external_write_attempted": false
+}

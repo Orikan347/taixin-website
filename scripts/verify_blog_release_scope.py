@@ -39,6 +39,8 @@ DEFAULT_ALLOWED = (
     "scripts/test_verify_public_blog_discovery.py",
     "scripts/verify_blog_search_metrics_snapshot.py",
     "scripts/test_verify_blog_search_metrics_snapshot.py",
+    "scripts/verify_blog_operational_closure.py",
+    "scripts/test_verify_blog_operational_closure.py",
     "內部工作資料/2026-07-13_個人網站部落格/",
 )
 
