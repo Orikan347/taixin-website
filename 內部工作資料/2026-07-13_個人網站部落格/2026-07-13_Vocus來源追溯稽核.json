@@ -1,0 +1,39 @@
+{
+  "audit": "vocus-published-evidence",
+  "overall": "MANUAL_REVIEW_REQUIRED",
+  "policy": "never overwrite a website article when published evidence, immutable archive, registry hash, or canonical decision is unresolved",
+  "results": [
+    {
+      "record_id": "ORI-SYNC-20260713-VOCUS-6A5439EC",
+      "vocus_article_id": "6a5439ecfd8978000133a2d3",
+      "decision": "BLOCK_SYNC_NO_OVERWRITE",
+      "finding": "PROVENANCE_HASH_MISMATCH_NOT_CONTENT_DRIFT_PROVEN",
+      "published_evidence": {
+        "status": 2,
+        "archive_hash_matches_record": true
+      },
+      "registry": {
+        "article_count_for_vocus_id": 1,
+        "hash_matches_published_evidence": false,
+        "site_url_matches_record": true
+      },
+      "canonical": {
+        "status": "PENDING_MANUAL_CANONICAL_DECISION",
+        "required_before_sync": [
+          "Vocus public HTML canonical readback",
+          "personal-site public HTML canonical readback",
+          "owner-approved canonical ledger entry"
+        ]
+      },
+      "issues": [
+        "PUBLISHED_EVIDENCE_REGISTRY_HASH_MISMATCH"
+      ],
+      "manual_checks": [
+        "確認官網清冊 hash 的來源格式是否與已發布封存稿完全相同；未確認前不可覆寫文章。",
+        "在不改 Vocus 的前提下，人工讀回 Vocus 與個人站公開 HTML canonical；確認兩者皆指向同一篇個人站 URL 後，才把台帳狀態更新為已讀回。"
+      ],
+      "external_write_attempted": false
+    }
+  ],
+  "external_write_attempted": false
+}

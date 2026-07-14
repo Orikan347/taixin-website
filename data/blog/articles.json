@@ -1,9 +1,46 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-13",
-  "source": "Vocus public API read-only",
+  "generated_at": "2026-07-14",
+  "source": "Vocus public creator catalogue",
+  "reported_public_article_count": 37,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A558C04FD8978000186F2EB",
+      "vocus_article_id": "6a558c04fd8978000186f2eb",
+      "slug": "ability-for-family",
+      "title": "載的是一起買的食材",
+      "seo_title": "載的是一起買的食材｜Orikan 李泰欣",
+      "description": "從童年不敢開口的願望，到送母親休旅車的故事；李泰欣談能力、選擇與把努力用來照顧家人的意義。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "載的是一起買的食材",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-14",
+      "updated_at": "2026-07-14",
+      "vocus_url": "https://vocus.cc/article/6a558c04fd8978000186f2eb",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/ability-for-family/",
+      "source_sha256": "41277eef9191bb1a9caa0bd087b5155a3822064eff900b6fdaa4ad81d4091516",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/b5b17d99-6844-4e06-96fb-afbb4a6936ad.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a558c04fd8978000186f2eb-1.png",
+          "filename": "6a558c04fd8978000186f2eb-1.png",
+          "sha256": "a46c0ad421c03c08bb00321b83e76038c960412e8c05033069563c8262c016aa",
+          "alt": "載的是一起買的食材｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/4cfd578e-fe12-4453-a728-3839ef5bf421.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a558c04fd8978000186f2eb-2.png",
+          "filename": "6a558c04fd8978000186f2eb-2.png",
+          "sha256": "cc4024a4d32ac46a6b85c27817fcfb5f93e53585c827bfc347f4c304275619c3",
+          "alt": "載的是一起買的食材｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A5439ECFD8978000133A2D3",
       "vocus_article_id": "6a5439ecfd8978000133a2d3",
@@ -333,7 +370,7 @@
     {
       "record_id": "ORI-VOCUS-6A470C60FD8978000130C875",
       "vocus_article_id": "6a470c60fd8978000130c875",
-      "slug": "review-and-practice",
+      "slug": "learning-knowledge-into-ability",
       "title": "學而時習之：知識大會",
       "seo_title": "學而時習之：知識大會｜Orikan 李泰欣",
       "description": "學而時習之不是反覆背誦；把知識練成能力，才能真正用在工作、銷售與人生選擇。",
@@ -347,7 +384,7 @@
       "published_at": "2026-07-03",
       "updated_at": "2026-07-03",
       "vocus_url": "https://vocus.cc/article/6a470c60fd8978000130c875",
-      "site_url": "https://orikan347.github.io/taixin-website/blog/review-and-practice/",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/learning-knowledge-into-ability/",
       "source_sha256": "6fc51663682de2f8b4c07b0fd48d4e6c604ba907883947499fd40c252bb247cc",
       "images": [
         {
@@ -369,7 +406,7 @@
     {
       "record_id": "ORI-VOCUS-6A45B9ACFD89780001D2E4C0",
       "vocus_article_id": "6a45b9acfd89780001d2e4c0",
-      "slug": "moderation-sales-boundary",
+      "slug": "sales-drive-and-boundaries",
       "title": "中庸銷售力：成交靠進取，長久靠底線",
       "seo_title": "中庸銷售力：成交靠進取，長久靠底線｜Orikan 李泰欣",
       "description": "成交需要進取，但長久合作需要底線。用中庸思維，找到業務推進與信任關係的平衡。",
@@ -385,7 +422,7 @@
       "published_at": "2026-07-02",
       "updated_at": "2026-07-02",
       "vocus_url": "https://vocus.cc/article/6a45b9acfd89780001d2e4c0",
-      "site_url": "https://orikan347.github.io/taixin-website/blog/moderation-sales-boundary/",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/sales-drive-and-boundaries/",
       "source_sha256": "de9c1dcfc4a3ae7f83a9fe9ae3c8bc191cd49380eb705a8fc54e9537071aa49a",
       "images": [
         {
@@ -407,7 +444,7 @@
     {
       "record_id": "ORI-VOCUS-6A44680EFD89780001C806FC",
       "vocus_article_id": "6a44680efd89780001c806fc",
-      "slug": "moderation-boldness-boundary",
+      "slug": "sales-moderation-and-principles",
       "title": "中庸銷售力：狂狷與底線",
       "seo_title": "中庸銷售力：狂狷與底線｜Orikan 李泰欣",
       "description": "中庸不是沒有態度；理解狂、狷與底線，才能在銷售與工作中知道何時前進、何時守住原則。",
@@ -423,7 +460,7 @@
       "published_at": "2026-07-01",
       "updated_at": "2026-07-01",
       "vocus_url": "https://vocus.cc/article/6a44680efd89780001c806fc",
-      "site_url": "https://orikan347.github.io/taixin-website/blog/moderation-boldness-boundary/",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/sales-moderation-and-principles/",
       "source_sha256": "f4adc2bc6436f6d910cb04fc21840dd6cf2f32b0b87ddee1e2183c92b023ac45",
       "images": [
         {
@@ -445,7 +482,7 @@
     {
       "record_id": "ORI-VOCUS-6A4316D5FD897800014C8468",
       "vocus_article_id": "6a4316d5fd897800014c8468",
-      "slug": "meaning-map",
+      "slug": "important-information-map",
       "title": "解惑：重要訊息地圖",
       "seo_title": "解惑：重要訊息地圖｜Orikan 李泰欣",
       "description": "做決定時常缺的不是答案，而是重要訊息。用訊息地圖整理盲點，讓判斷更完整、更不容易後悔。",
@@ -459,7 +496,7 @@
       "published_at": "2026-06-30",
       "updated_at": "2026-06-30",
       "vocus_url": "https://vocus.cc/article/6a4316d5fd897800014c8468",
-      "site_url": "https://orikan347.github.io/taixin-website/blog/meaning-map/",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/important-information-map/",
       "source_sha256": "02cf28ec0e78eb4d882974ce815ec20b1485885d381e8956a4f85ec2d4bc1a4b",
       "images": [
         {
@@ -517,7 +554,7 @@
     {
       "record_id": "ORI-VOCUS-6A3A1F56FD89780001C17443",
       "vocus_article_id": "6a3a1f56fd89780001c17443",
-      "slug": "harmony-independent-judgment",
+      "slug": "harmony-without-uniformity",
       "title": "和而不同：獨立判斷",
       "seo_title": "和而不同：獨立判斷｜Orikan 李泰欣",
       "description": "和而不同不是討好或反對。保有獨立判斷，同時能與人合作，是成熟溝通的重要能力。",
@@ -531,14 +568,14 @@
       "published_at": "2026-06-23",
       "updated_at": "2026-06-23",
       "vocus_url": "https://vocus.cc/article/6a3a1f56fd89780001c17443",
-      "site_url": "https://orikan347.github.io/taixin-website/blog/harmony-independent-judgment/",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/harmony-without-uniformity/",
       "source_sha256": "6e0db9cf7ae60cab3023b911a308fb75f260eec94e6054dd06922fde7a9cd647",
       "images": []
     },
     {
       "record_id": "ORI-VOCUS-6A38AD7EFD8978000197CB3C",
       "vocus_article_id": "6a38ad7efd8978000197cb3c",
-      "slug": "speaking-responsibility",
+      "slug": "integrity-in-words-and-actions",
       "title": "說話要有羞恥心，做事才有責任感",
       "seo_title": "說話要有羞恥心，做事才有責任感｜Orikan 李泰欣",
       "description": "說話要有羞恥心，做事才有責任感。從承諾與行動一致，建立別人願意信任的長期關係。",
@@ -554,14 +591,14 @@
       "published_at": "2026-06-22",
       "updated_at": "2026-06-22",
       "vocus_url": "https://vocus.cc/article/6a38ad7efd8978000197cb3c",
-      "site_url": "https://orikan347.github.io/taixin-website/blog/speaking-responsibility/",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/integrity-in-words-and-actions/",
       "source_sha256": "14a3c16a1a381e37dcc752b5930dd6c335a80d8f3f5f8f8ed4a761465fab4c13",
       "images": []
     },
     {
       "record_id": "ORI-VOCUS-6A365B68FD89780001BBE4DD",
       "vocus_article_id": "6a365b68fd89780001bbe4dd",
-      "slug": "cognitive-dissonance",
+      "slug": "cognitive-dissonance-and-growth",
       "title": "認知失調：進步與怨恨",
       "seo_title": "認知失調：進步與怨恨｜Orikan 李泰欣",
       "description": "認知失調為何讓人抗拒改變？理解進步與怨恨的拉扯，才能面對不想承認的矛盾並真正成長。",
@@ -575,9 +612,897 @@
       "published_at": "2026-06-20",
       "updated_at": "2026-06-20",
       "vocus_url": "https://vocus.cc/article/6a365b68fd89780001bbe4dd",
-      "site_url": "https://orikan347.github.io/taixin-website/blog/cognitive-dissonance/",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/cognitive-dissonance-and-growth/",
       "source_sha256": "68c0feb78118e0b55d1ff5bcffe8e004a5d130c020a20291187a43b9a0e0fa07",
       "images": []
+    },
+    {
+      "record_id": "ORI-VOCUS-6A364F77FD89780001B8B5C2",
+      "vocus_article_id": "6a364f77fd89780001b8b5c2",
+      "slug": "true-leadership-xiang-yu-liu-bang",
+      "title": "楚漢相爭：真正的領導者",
+      "seo_title": "楚漢相爭：真正的領導者｜Orikan 李泰欣",
+      "description": "項羽比劉邦更會打仗，為何仍輸掉天下？從楚漢相爭看真正領導者如何用人、分利與整合團隊。",
+      "topics": [
+        "thinking-practice",
+        "sales-growth"
+      ],
+      "keywords": [
+        "楚漢相爭：真正的領導者",
+        "思考、修身與學習",
+        "業務成長與工作方法"
+      ],
+      "published_at": "2026-06-20",
+      "updated_at": "2026-06-20",
+      "vocus_url": "https://vocus.cc/article/6a364f77fd89780001b8b5c2",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/true-leadership-xiang-yu-liu-bang/",
+      "source_sha256": "51e2f1e6d6a4b4d46d24c91852373e73de7252f0ab9941d14ceb44803aa029ef",
+      "images": []
+    },
+    {
+      "record_id": "ORI-VOCUS-69AD830FFD897800013D6406",
+      "vocus_article_id": "69ad830ffd897800013d6406",
+      "slug": "client-follow-up-no-reply",
+      "title": "為什麼你的客戶跟進總是已讀不回？問題不在客戶，在你的方式",
+      "seo_title": "為什麼你的客戶跟進總是已讀不回？問題不在客戶，在你的方式｜Orikan 李泰欣",
+      "description": "客戶跟進已讀不回怎麼辦？問題往往不在客戶，而在訊息只催答案、沒有提供下一步價值。",
+      "topics": [
+        "client-conversations"
+      ],
+      "keywords": [
+        "為什麼你的客戶跟進總是已讀不回？問題不在客戶，在你的方式",
+        "客戶溝通與成交"
+      ],
+      "published_at": "2026-03-08",
+      "updated_at": "2026-03-08",
+      "vocus_url": "https://vocus.cc/article/69ad830ffd897800013d6406",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/client-follow-up-no-reply/",
+      "source_sha256": "b0dedc007fb8190a04f4004df4f0137f8d5a6f93b0e198b428859151ce637b71",
+      "images": []
+    },
+    {
+      "record_id": "ORI-VOCUS-69AAEA69FD8978000199E3AC",
+      "vocus_article_id": "69aaea69fd8978000199e3ac",
+      "slug": "sales-skills-blank-mind",
+      "title": "為什麼學了這麼多銷售技巧，面對客戶時還是會斷片？",
+      "seo_title": "為什麼學了這麼多銷售技巧，面對客戶時還是會斷片？｜Orikan 李泰欣",
+      "description": "學很多銷售技巧，面對客戶卻斷片？這不是記憶力差，而是還沒把知識練成能在現場使用的能力。",
+      "topics": [
+        "sales-growth",
+        "thinking-practice"
+      ],
+      "keywords": [
+        "為什麼學了這麼多銷售技巧，面對客戶時還是會斷片？",
+        "業務成長與工作方法",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-03-06",
+      "updated_at": "2026-03-06",
+      "vocus_url": "https://vocus.cc/article/69aaea69fd8978000199e3ac",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/sales-skills-blank-mind/",
+      "source_sha256": "557e5ab48961ab4ce84f44c85a6d2d9d17c6aca699e31197bac3f5cf677128c2",
+      "images": []
+    },
+    {
+      "record_id": "ORI-VOCUS-69A931DBFD8978000128E399",
+      "vocus_article_id": "69a931dbfd8978000128e399",
+      "slug": "real-estate-cold-market-sales",
+      "title": "房仲「冷市場」銷售必勝攻略：掌握三大關鍵系統升級，讓你彎道超車，業績翻倍！",
+      "seo_title": "房仲「冷市場」銷售必勝攻略：掌握三大關鍵系統升級，讓你彎道超車，業績翻倍！｜Orikan 李泰欣",
+      "description": "房市冷、市場量縮時，如何提高每位買方的掌握度？用三個銷售系統把冷市場變成追上業績的機會。",
+      "topics": [
+        "sales-growth",
+        "client-conversations"
+      ],
+      "keywords": [
+        "房仲「冷市場」銷售必勝攻略：掌握三大關鍵系統升級，讓你彎道超車，業績翻倍！",
+        "業務成長與工作方法",
+        "客戶溝通與成交"
+      ],
+      "published_at": "2026-03-05",
+      "updated_at": "2026-03-05",
+      "vocus_url": "https://vocus.cc/article/69a931dbfd8978000128e399",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/real-estate-cold-market-sales/",
+      "source_sha256": "b497ee103aed8a710ca24e3590ad3e788fb75ab8ce411bed65b45151319e2a55",
+      "images": []
+    },
+    {
+      "record_id": "ORI-VOCUS-69A58610FD89780001CED6DF",
+      "vocus_article_id": "69a58610fd89780001ced6df",
+      "slug": "insurance-sales-system",
+      "title": "台灣保險業流失逾兩萬名業務員，留下來的超業做對了什麼？",
+      "seo_title": "台灣保險業流失逾兩萬名業務員，留下來的超業做對了什麼？｜Orikan 李泰欣",
+      "description": "保險業務人數下降時，留下來的超業做對了什麼？用名單管理、成交 SOP 與效率工具建立可複製的銷售系統。",
+      "topics": [
+        "sales-growth"
+      ],
+      "keywords": [
+        "台灣保險業流失逾兩萬名業務員，留下來的超業做對了什麼？",
+        "業務成長與工作方法"
+      ],
+      "published_at": "2026-03-02",
+      "updated_at": "2026-03-02",
+      "vocus_url": "https://vocus.cc/article/69a58610fd89780001ced6df",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/insurance-sales-system/",
+      "source_sha256": "ba791120e1adae131e1a64024786113fe834ee2272bcc16d32ec12387a465d57",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/c227ba31-6145-4e00-9c07-ad760cc1efd1.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69a58610fd89780001ced6df-1.png",
+          "filename": "69a58610fd89780001ced6df-1.png",
+          "sha256": "b4e7831cce383e96aafe6a7e2ad0fe2b7055fa35ae2d727c0a35bc8c5bd17df0",
+          "alt": "台灣保險業流失逾兩萬名業務員，留下來的超業做對了什麼？｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/eb96ba3f-9f09-4ecf-90dd-af7f48b19ec3.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69a58610fd89780001ced6df-2.png",
+          "filename": "69a58610fd89780001ced6df-2.png",
+          "sha256": "215fc168bf661c5220d59fd595359c16c582860d69ed0e141f8cac793cf8203a",
+          "alt": "台灣保險業流失逾兩萬名業務員，留下來的超業做對了什麼？｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/c4de2756-7622-49ae-aaf4-c8d7bd19f646.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69a58610fd89780001ced6df-3.png",
+          "filename": "69a58610fd89780001ced6df-3.png",
+          "sha256": "43c35b8f589dc8080c17ccda7f97a8fa9436d8ea7a91f0bf017aabd18cbcc812",
+          "alt": "台灣保險業流失逾兩萬名業務員，留下來的超業做對了什麼？｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/a70d28c0-0a03-43f1-b98a-67dd5e6b2d9c.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69a58610fd89780001ced6df-4.png",
+          "filename": "69a58610fd89780001ced6df-4.png",
+          "sha256": "f6f505bf9b1001bc46a5969b19d8fc02b934e371946323bb485461c3a374339b",
+          "alt": "台灣保險業流失逾兩萬名業務員，留下來的超業做對了什麼？｜Vocus 原圖 4"
+        },
+        {
+          "source_url": "https://images.vocus.cc/7f441496-d4ea-4d06-b168-e5285df2f6b2.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69a58610fd89780001ced6df-5.png",
+          "filename": "69a58610fd89780001ced6df-5.png",
+          "sha256": "c5ed268789de0753fed8fec6c4bd0a99258e5ad01caa0f5b976b3d12b2b9fb34",
+          "alt": "台灣保險業流失逾兩萬名業務員，留下來的超業做對了什麼？｜Vocus 原圖 5"
+        },
+        {
+          "source_url": "https://images.vocus.cc/3cea14e1-23ac-478d-b044-a7a436dfee12.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69a58610fd89780001ced6df-6.png",
+          "filename": "69a58610fd89780001ced6df-6.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "台灣保險業流失逾兩萬名業務員，留下來的超業做對了什麼？｜Vocus 原圖 6"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-69A3E172FD897800016022D1",
+      "vocus_article_id": "69a3e172fd897800016022d1",
+      "slug": "ai-prompting-starts-with-the-question",
+      "title": "AI 的使用迷思：問題的關鍵不在 AI，而在你提出的問題",
+      "seo_title": "AI 的使用迷思：問題的關鍵不在 AI，而在你提出的問題｜Orikan 李泰欣",
+      "description": "AI 不好用，常常不是工具問題，而是問題沒有定義清楚。先建立思考架構，才能讓 AI 放大你的工作成果。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "AI 的使用迷思：問題的關鍵不在 AI，而在你提出的問題",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-03-01",
+      "updated_at": "2026-03-01",
+      "vocus_url": "https://vocus.cc/article/69a3e172fd897800016022d1",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/ai-prompting-starts-with-the-question/",
+      "source_sha256": "61fdf06ff36d9c6059090d8deb45e70068b32e97330c0b0b2c89ae72c40adb7c",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/6de83078-7f16-4c81-8196-fe80f3d49b64.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69a3e172fd897800016022d1-1.png",
+          "filename": "69a3e172fd897800016022d1-1.png",
+          "sha256": "16e7494e08ca01e9a045dc2d8aa0a4d3dafef4eefe8484f90dd87c869f3d3017",
+          "alt": "AI 的使用迷思：問題的關鍵不在 AI，而在你提出的問題｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/d0be218b-1bb6-4fa1-a7d0-bd19ce5dc25c.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69a3e172fd897800016022d1-2.png",
+          "filename": "69a3e172fd897800016022d1-2.png",
+          "sha256": "733937ed0607b6dacac5a498ec085efc724950d486d7bb83b24d591ecb5cf44d",
+          "alt": "AI 的使用迷思：問題的關鍵不在 AI，而在你提出的問題｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/a80c3185-316b-4261-a591-ce974042780c.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69a3e172fd897800016022d1-3.png",
+          "filename": "69a3e172fd897800016022d1-3.png",
+          "sha256": "20beef603f92a36bf48d3d50e3f5292a5d3c7b6bbc41f06a91e420b928650066",
+          "alt": "AI 的使用迷思：問題的關鍵不在 AI，而在你提出的問題｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/aba266cb-ccdf-47da-a66b-5668b52251b3.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69a3e172fd897800016022d1-4.png",
+          "filename": "69a3e172fd897800016022d1-4.png",
+          "sha256": "cbed733e97a7d32a16251aa67efebaecc8a3ac69b452f3fabb1f191b49b46f68",
+          "alt": "AI 的使用迷思：問題的關鍵不在 AI，而在你提出的問題｜Vocus 原圖 4"
+        },
+        {
+          "source_url": "https://images.vocus.cc/7d3c831c-7b39-4003-a86b-6f69a66a27df.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69a3e172fd897800016022d1-5.png",
+          "filename": "69a3e172fd897800016022d1-5.png",
+          "sha256": "44c2343957b2261c3dd9c3c65933731d54ba6690ab6e44320d5be48cd4f7ee96",
+          "alt": "AI 的使用迷思：問題的關鍵不在 AI，而在你提出的問題｜Vocus 原圖 5"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-69A19987FD89780001C0FF1E",
+      "vocus_article_id": "69a19987fd89780001c0ff1e",
+      "slug": "mental-overthinking-illusion-of-control",
+      "title": "「你是不是常常在職場或生活中感到無盡的內耗？大腦科學揭密：原來我們都活在『受控的幻覺』裡",
+      "seo_title": "「你是不是常常在職場或生活中感到無盡的內耗？大腦科學揭密：原來我們都活在『受控的幻覺』裡｜Orikan 李泰欣",
+      "description": "為什麼會在工作與生活中不斷內耗？從大腦與控制感的角度，重新理解那些讓人陷住的受控幻覺。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "「你是不是常常在職場或生活中感到無盡的內耗？大腦科學揭密：原來我們都活在『受控的幻覺』裡",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-02-27",
+      "updated_at": "2026-02-28",
+      "vocus_url": "https://vocus.cc/article/69a19987fd89780001c0ff1e",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/mental-overthinking-illusion-of-control/",
+      "source_sha256": "bc6a36b792a7c5272bd1106a752bd513300a18fc8a2cfa08598cf04b10996156",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/f4b14278-cac0-4300-b666-2dc1c75e822a.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69a19987fd89780001c0ff1e-1.png",
+          "filename": "69a19987fd89780001c0ff1e-1.png",
+          "sha256": "497e96b521f94d3ea2ae34b67e5ea4f642b5380f89247002129725971e7595fe",
+          "alt": "「你是不是常常在職場或生活中感到無盡的內耗？大腦科學揭密：原來我們都活在『受控的幻覺』裡｜Vocus 原圖 1"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6984392DFD89780001EE9DA4",
+      "vocus_article_id": "6984392dfd89780001ee9da4",
+      "slug": "manifestation-needs-action",
+      "title": "別再迷信「顯化」：科學的盡頭是玄學，但人生的起點是科學",
+      "seo_title": "別再迷信「顯化」：科學的盡頭是玄學，但人生的起點是科學｜Orikan 李泰欣",
+      "description": "別把顯化當成許願魔法。從大腦科學、刻意練習與身份認同出發，用行動塑造真正想要的未來。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "別再迷信「顯化」：科學的盡頭是玄學，但人生的起點是科學",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-02-05",
+      "updated_at": "2026-02-05",
+      "vocus_url": "https://vocus.cc/article/6984392dfd89780001ee9da4",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/manifestation-needs-action/",
+      "source_sha256": "db439fee5a9b9b952d87a2d964b3b81383bc4cb6717e2bf656dd1ae80be18f43",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/d244d35b-f753-4e6b-b218-83c51c40bab9.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6984392dfd89780001ee9da4-1.png",
+          "filename": "6984392dfd89780001ee9da4-1.png",
+          "sha256": "7c2da28ee0fa616fda25f41c2fbe5543c764dd5462d9298814aa0a993e5f1842",
+          "alt": "別再迷信「顯化」：科學的盡頭是玄學，但人生的起點是科學｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/3b47857b-920b-45e8-b6c3-c12a126fee71.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6984392dfd89780001ee9da4-2.png",
+          "filename": "6984392dfd89780001ee9da4-2.png",
+          "sha256": "22bb10d1b917fd5211886ebddc7f03a7178c193113a8ac53fec067147b4a4cb8",
+          "alt": "別再迷信「顯化」：科學的盡頭是玄學，但人生的起點是科學｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/24b1ce34-e056-43a7-8a16-65c9716cab38.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6984392dfd89780001ee9da4-3.png",
+          "filename": "6984392dfd89780001ee9da4-3.png",
+          "sha256": "5010394c764b86862d4f6f90a916f8eaa2325179e82d472230f067049f1db160",
+          "alt": "別再迷信「顯化」：科學的盡頭是玄學，但人生的起點是科學｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/579a0fe1-bffd-4fca-b211-a19762fd9020.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6984392dfd89780001ee9da4-4.png",
+          "filename": "6984392dfd89780001ee9da4-4.png",
+          "sha256": "073dddb6b20c464de419ea4f883c1b9201e42146c635d3d88ab6a608c1d9e006",
+          "alt": "別再迷信「顯化」：科學的盡頭是玄學，但人生的起點是科學｜Vocus 原圖 4"
+        },
+        {
+          "source_url": "https://images.vocus.cc/5b9988e3-84ba-41ac-abe1-892bac62e212.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6984392dfd89780001ee9da4-5.png",
+          "filename": "6984392dfd89780001ee9da4-5.png",
+          "sha256": "d89d7e742f6f77efbee5ac8ff0662417850ec573af34ecf679bc01c954dc73dc",
+          "alt": "別再迷信「顯化」：科學的盡頭是玄學，但人生的起點是科學｜Vocus 原圖 5"
+        },
+        {
+          "source_url": "https://images.vocus.cc/ae1a997e-64b7-457d-a6ce-54b68b137d10.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6984392dfd89780001ee9da4-6.png",
+          "filename": "6984392dfd89780001ee9da4-6.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "別再迷信「顯化」：科學的盡頭是玄學，但人生的起點是科學｜Vocus 原圖 6"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-697F5A3DFD89780001ADDC92",
+      "vocus_article_id": "697f5a3dfd89780001addc92",
+      "slug": "confidence-self-esteem-growth-mindset",
+      "title": "你以為沒自信？老師：你只是用錯了「自尊系統」！一篇搞懂自信、自尊、成長思維",
+      "seo_title": "你以為沒自信？老師：你只是用錯了「自尊系統」！一篇搞懂自信、自尊、成長思維｜Orikan 李泰欣",
+      "description": "你以為自己沒自信，可能是自尊系統出了問題。理解自信、自尊與成長思維，找回穩定而非逞強的力量。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "你以為沒自信？老師：你只是用錯了「自尊系統」！一篇搞懂自信、自尊、成長思維",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-02-01",
+      "updated_at": "2026-02-01",
+      "vocus_url": "https://vocus.cc/article/697f5a3dfd89780001addc92",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/confidence-self-esteem-growth-mindset/",
+      "source_sha256": "757333b33e4ca7b11b406f8abaa53e6b302ec19b468169a2bcbe2b039ad43d18",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/3c39c3ca-5232-4d57-8e6e-737ef2b9c584.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/697f5a3dfd89780001addc92-1.png",
+          "filename": "697f5a3dfd89780001addc92-1.png",
+          "sha256": "60aeb9b98c4770a9fef404ec8ce48cdb02913ab3c2eb377d3eac935ed283ef98",
+          "alt": "你以為沒自信？老師：你只是用錯了「自尊系統」！一篇搞懂自信、自尊、成長思維｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/8cf0b91a-d087-4e8d-9171-bddce0ed074f.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/697f5a3dfd89780001addc92-2.png",
+          "filename": "697f5a3dfd89780001addc92-2.png",
+          "sha256": "e28f1a7137ac6150f4d1877edc97ba5ad19496232e78c0540f9d242e907e5df1",
+          "alt": "你以為沒自信？老師：你只是用錯了「自尊系統」！一篇搞懂自信、自尊、成長思維｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/328a9f7e-75a1-435a-ad01-e56e61fab300.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/697f5a3dfd89780001addc92-3.png",
+          "filename": "697f5a3dfd89780001addc92-3.png",
+          "sha256": "c33beed807273f8f890cee8245ecac8da808bad9c0e129dad62a4c831ebd694f",
+          "alt": "你以為沒自信？老師：你只是用錯了「自尊系統」！一篇搞懂自信、自尊、成長思維｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/d91d867a-6fdb-4425-8fa0-e487611b362d.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/697f5a3dfd89780001addc92-4.png",
+          "filename": "697f5a3dfd89780001addc92-4.png",
+          "sha256": "1c139fd8cc24fc4334ee87d86b8d83e33fb2a6ea3615021ca736dd171208d1e7",
+          "alt": "你以為沒自信？老師：你只是用錯了「自尊系統」！一篇搞懂自信、自尊、成長思維｜Vocus 原圖 4"
+        },
+        {
+          "source_url": "https://images.vocus.cc/ec2b8a12-8265-4a90-8ec1-8d33f4dc99fb.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/697f5a3dfd89780001addc92-5.png",
+          "filename": "697f5a3dfd89780001addc92-5.png",
+          "sha256": "7b77fac6022e9895b28a8f06b3afbf99c86bfd6ac9c200978e61a2864c8f3952",
+          "alt": "你以為沒自信？老師：你只是用錯了「自尊系統」！一篇搞懂自信、自尊、成長思維｜Vocus 原圖 5"
+        },
+        {
+          "source_url": "https://images.vocus.cc/925823fb-0485-4d30-ac44-f2c9315e0d3f.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/697f5a3dfd89780001addc92-6.png",
+          "filename": "697f5a3dfd89780001addc92-6.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "你以為沒自信？老師：你只是用錯了「自尊系統」！一篇搞懂自信、自尊、成長思維｜Vocus 原圖 6"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6979B9B6FD89780001E87882",
+      "vocus_article_id": "6979b9b6fd89780001e87882",
+      "slug": "why-hard-working-still-stuck",
+      "title": "為什麼你這麼努力，卻依然卡關？",
+      "seo_title": "為什麼你這麼努力，卻依然卡關？｜Orikan 李泰欣",
+      "description": "很努力卻依然卡關，未必是努力不夠，而是還沒看見真正要解的問題。從學習與認知模型找回方向。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "為什麼你這麼努力，卻依然卡關？",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-01-28",
+      "updated_at": "2026-01-28",
+      "vocus_url": "https://vocus.cc/article/6979b9b6fd89780001e87882",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/why-hard-working-still-stuck/",
+      "source_sha256": "811704afff19b211187362ffc50739e4bbffdf35f33b0634fb4bdbdfe05cd4ca",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/d43fc447-748a-4c1a-903c-4776aba6065c.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6979b9b6fd89780001e87882-1.png",
+          "filename": "6979b9b6fd89780001e87882-1.png",
+          "sha256": "eaf5204b59f9e1b4923de12c87a051b3139f9c910d607e08ebb33cb18eabdcae",
+          "alt": "為什麼你這麼努力，卻依然卡關？｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/bc72f5cd-e5b1-4eca-ae05-6bf8683b5595.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6979b9b6fd89780001e87882-2.png",
+          "filename": "6979b9b6fd89780001e87882-2.png",
+          "sha256": "931e5c1ac77023955b0add91200b8c088e2869f70612aeb958c424574e449270",
+          "alt": "為什麼你這麼努力，卻依然卡關？｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/06c4ee25-dd0a-4325-ab0f-107ce13927c2.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6979b9b6fd89780001e87882-3.png",
+          "filename": "6979b9b6fd89780001e87882-3.png",
+          "sha256": "a130a3473e8f112f1ba974703df08f1afbdc3c329561e53ee6eb31943fe59170",
+          "alt": "為什麼你這麼努力，卻依然卡關？｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/d5163a78-ec66-4be2-87f7-da2cf45018be.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6979b9b6fd89780001e87882-4.png",
+          "filename": "6979b9b6fd89780001e87882-4.png",
+          "sha256": "0ea40e121dedbe5c819a3c858ffefb78ad5c0f35382dc5b6ca6d438e5ffd39d0",
+          "alt": "為什麼你這麼努力，卻依然卡關？｜Vocus 原圖 4"
+        },
+        {
+          "source_url": "https://images.vocus.cc/d642b78c-9e22-4519-9e34-97871be914a2.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6979b9b6fd89780001e87882-5.png",
+          "filename": "6979b9b6fd89780001e87882-5.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "為什麼你這麼努力，卻依然卡關？｜Vocus 原圖 5"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-69772BF4FD897800018FDC2A",
+      "vocus_article_id": "69772bf4fd897800018fdc2a",
+      "slug": "stress-management-challenge-and-ability",
+      "title": "「壓力管理」：為什麼同一件事，有人焦慮到失眠，有人卻能輕鬆應對？",
+      "seo_title": "「壓力管理」：為什麼同一件事，有人焦慮到失眠，有人卻能輕鬆應對？｜Orikan 李泰欣",
+      "description": "壓力不是意志力不足，而是挑戰與能力失衡。從生理、心理與認知三個層次，練習把壓力變成成長動力。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "「壓力管理」：為什麼同一件事，有人焦慮到失眠，有人卻能輕鬆應對？",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-01-26",
+      "updated_at": "2026-01-26",
+      "vocus_url": "https://vocus.cc/article/69772bf4fd897800018fdc2a",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/stress-management-challenge-and-ability/",
+      "source_sha256": "1d604f9b5cb97c79d837fa820687726d32f60512be3602e8d74f4c94cbc1f52e",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/a668819c-d0fa-4f9c-9b1a-73906f93239b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69772bf4fd897800018fdc2a-1.png",
+          "filename": "69772bf4fd897800018fdc2a-1.png",
+          "sha256": "f5d6d34e9f04a8d588e842f07d14ad81a903f983425f4f43e0f1ced770c375dc",
+          "alt": "「壓力管理」：為什麼同一件事，有人焦慮到失眠，有人卻能輕鬆應對？｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/1fc0e151-761d-4a45-8074-7357b80d83a9.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69772bf4fd897800018fdc2a-2.png",
+          "filename": "69772bf4fd897800018fdc2a-2.png",
+          "sha256": "0cfb747e8ac569b8e21bf195f2d098dadb7cc4d2bf8ef6672f117fb02f8cb0f3",
+          "alt": "「壓力管理」：為什麼同一件事，有人焦慮到失眠，有人卻能輕鬆應對？｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/ba52785a-b110-40d7-97c9-0ccee6c7204e.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69772bf4fd897800018fdc2a-3.png",
+          "filename": "69772bf4fd897800018fdc2a-3.png",
+          "sha256": "fd82371dbe6b5dad4269c99dbafcb1553ea338ad3627df9ff4362f16798bb7bb",
+          "alt": "「壓力管理」：為什麼同一件事，有人焦慮到失眠，有人卻能輕鬆應對？｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/acfdd747-1345-4c85-856c-a07d59842486.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/69772bf4fd897800018fdc2a-4.png",
+          "filename": "69772bf4fd897800018fdc2a-4.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "「壓力管理」：為什麼同一件事，有人焦慮到失眠，有人卻能輕鬆應對？｜Vocus 原圖 4"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6971DF33FD897800010C1617",
+      "vocus_article_id": "6971df33fd897800010c1617",
+      "slug": "introverts-can-succeed-in-sales",
+      "title": "MBTI 的 I 人，DISC 的 C 型，內向者真的能當業務嗎？揭秘 ISTJ 成為 Top Sales 的關鍵",
+      "seo_title": "MBTI 的 I 人，DISC 的 C 型，內向者真的能當業務嗎？揭秘 ISTJ 成為 Top Sales 的關鍵｜Orikan 李泰欣",
+      "description": "內向的 I 人、DISC C 型能不能做好業務？理解自己的特質，建立不必硬撐外向也能成交的銷售方法。",
+      "topics": [
+        "sales-growth",
+        "thinking-practice"
+      ],
+      "keywords": [
+        "MBTI 的 I 人，DISC 的 C 型，內向者真的能當業務嗎？揭秘 ISTJ 成為 Top Sales 的關鍵",
+        "業務成長與工作方法",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-01-22",
+      "updated_at": "2026-01-22",
+      "vocus_url": "https://vocus.cc/article/6971df33fd897800010c1617",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/introverts-can-succeed-in-sales/",
+      "source_sha256": "5f705a85a997f0e752cc2afbfd0a166641b22eed2680652723f12cb26d2a922c",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/06daf3c6-7399-4c85-ad80-670cb04a7ec0.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6971df33fd897800010c1617-1.png",
+          "filename": "6971df33fd897800010c1617-1.png",
+          "sha256": "2578dcdf5d913ad2fbb0317f4e49735cde8f71e26afd2388ab982b1e2c5106c2",
+          "alt": "MBTI 的 I 人，DISC 的 C 型，內向者真的能當業務嗎？揭秘 ISTJ 成為 Top Sales 的關鍵\n\n｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/8a1342ad-b71b-4c8f-ad55-e8880ce74c0b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6971df33fd897800010c1617-2.png",
+          "filename": "6971df33fd897800010c1617-2.png",
+          "sha256": "0647e9e19c68f10983b16a0f0ad9d8c7d69e1368a4c3de5b25d738bedf1e20ec",
+          "alt": "MBTI 的 I 人，DISC 的 C 型，內向者真的能當業務嗎？揭秘 ISTJ 成為 Top Sales 的關鍵\n\n｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/a31996cd-23b8-4bbd-a318-70327cfddc59.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6971df33fd897800010c1617-3.png",
+          "filename": "6971df33fd897800010c1617-3.png",
+          "sha256": "8828a9bfe2a004fe635a6b4c43b512c28f7345a3458540644715ce737c22e60e",
+          "alt": "MBTI 的 I 人，DISC 的 C 型，內向者真的能當業務嗎？揭秘 ISTJ 成為 Top Sales 的關鍵\n\n｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/53abfdca-b737-4f84-9c37-c577ad1e7a71.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6971df33fd897800010c1617-4.png",
+          "filename": "6971df33fd897800010c1617-4.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "MBTI 的 I 人，DISC 的 C 型，內向者真的能當業務嗎？揭秘 ISTJ 成為 Top Sales 的關鍵\n\n｜Vocus 原圖 4"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-696999CDFD89780001026054",
+      "vocus_article_id": "696999cdfd89780001026054",
+      "slug": "everyone-is-selling",
+      "title": "無人不銷售：你不想當業務，但你每天都在賣自己",
+      "seo_title": "無人不銷售：你不想當業務，但你每天都在賣自己｜Orikan 李泰欣",
+      "description": "不想當業務，也每天都在推銷自己。理解銷售的本質，讓專業、價值與溝通能力真正為你創造機會。",
+      "topics": [
+        "sales-growth"
+      ],
+      "keywords": [
+        "無人不銷售：你不想當業務，但你每天都在賣自己",
+        "業務成長與工作方法"
+      ],
+      "published_at": "2026-01-16",
+      "updated_at": "2026-01-16",
+      "vocus_url": "https://vocus.cc/article/696999cdfd89780001026054",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/everyone-is-selling/",
+      "source_sha256": "29cf6144fd1748d05f3df49f9f488ee491510ebea4bd8db47e822abea9f4d018",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/eb3c3835-a92e-45db-9fc6-508369b400d2.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/696999cdfd89780001026054-1.png",
+          "filename": "696999cdfd89780001026054-1.png",
+          "sha256": "7880473cee5170795df1e775c2e5d42d973aea0051129541bbaed52102c1e754",
+          "alt": "無人不銷售：你不想當業務，但你每天都在賣自己｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/a4ec1be1-9986-4f35-a32f-a05092f8b485.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/696999cdfd89780001026054-2.png",
+          "filename": "696999cdfd89780001026054-2.png",
+          "sha256": "69eaa7552e84b41660d848ffe9430140c22924668bb6d3f5e19d13dd7de291b3",
+          "alt": "無人不銷售：你不想當業務，但你每天都在賣自己｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/d62dee41-0173-4960-a65c-b2b74d152799.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/696999cdfd89780001026054-3.png",
+          "filename": "696999cdfd89780001026054-3.png",
+          "sha256": "b74ea387669c18d20876a1eea66fd1fbcf1b8fb6d62df1aaed39508c051bf0c6",
+          "alt": "無人不銷售：你不想當業務，但你每天都在賣自己｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/8a47c043-ed0c-4c7d-893e-b8f418c1aba5.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/696999cdfd89780001026054-4.png",
+          "filename": "696999cdfd89780001026054-4.png",
+          "sha256": "f8552180780227b2198ca35cbdbc155c51415993559b9325ddb4f6bdedc6007b",
+          "alt": "無人不銷售：你不想當業務，但你每天都在賣自己｜Vocus 原圖 4"
+        },
+        {
+          "source_url": "https://images.vocus.cc/29e8c7c9-406d-4c88-b6de-b96dc986078e.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/696999cdfd89780001026054-5.png",
+          "filename": "696999cdfd89780001026054-5.png",
+          "sha256": "22f21926f2012147970d0bd8b6720fd1e4d0175127932afa2e7213e449f59add",
+          "alt": "無人不銷售：你不想當業務，但你每天都在賣自己｜Vocus 原圖 5"
+        },
+        {
+          "source_url": "https://images.vocus.cc/93a957aa-0aa9-4aeb-b9fb-07a5681c33f3.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/696999cdfd89780001026054-6.png",
+          "filename": "696999cdfd89780001026054-6.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "無人不銷售：你不想當業務，但你每天都在賣自己｜Vocus 原圖 6"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6964C22DFD89780001334B93",
+      "vocus_article_id": "6964c22dfd89780001334b93",
+      "slug": "calendar-travel-time-for-sales",
+      "title": "業務必學！行事曆的隱藏功能",
+      "seo_title": "業務必學！行事曆的隱藏功能｜Orikan 李泰欣",
+      "description": "業務如何用行事曆自動計算通勤時間、減少趕場與漏約？一個隱藏設定，讓每天行程更可靠。",
+      "topics": [
+        "sales-growth"
+      ],
+      "keywords": [
+        "業務必學！行事曆的隱藏功能",
+        "業務成長與工作方法"
+      ],
+      "published_at": "2026-01-12",
+      "updated_at": "2026-01-12",
+      "vocus_url": "https://vocus.cc/article/6964c22dfd89780001334b93",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/calendar-travel-time-for-sales/",
+      "source_sha256": "cf34cb6e3b397f12c53901409b60ef14f985d5a88b64880094ba88113dc4ba36",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/6a64b940-b29a-43a0-9347-485a3d789bca.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6964c22dfd89780001334b93-1.png",
+          "filename": "6964c22dfd89780001334b93-1.png",
+          "sha256": "f56227693950ac715859193b1d291a7501d8a0437e064ff8e2efa45934765e43",
+          "alt": "業務必學！行事曆的隱藏功能 ｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/9e618fa8-335f-4dc8-bf3e-b844e77c64d1.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6964c22dfd89780001334b93-2.png",
+          "filename": "6964c22dfd89780001334b93-2.png",
+          "sha256": "81eee205cb8ad5ee7aabbf5875a2132e819a4fba6cfa4712ac0a45168c4149f8",
+          "alt": "業務必學！行事曆的隱藏功能 ｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/aa014678-79f8-40d6-aa33-1673e5ee2cf9.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6964c22dfd89780001334b93-3.png",
+          "filename": "6964c22dfd89780001334b93-3.png",
+          "sha256": "b75418f27c63fe8171cffc859ca46934164a0cc0c0c26136e7d9febb0b076036",
+          "alt": "業務必學！行事曆的隱藏功能 ｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/7cc5defb-7e5b-475d-9429-a273e829d16b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6964c22dfd89780001334b93-4.png",
+          "filename": "6964c22dfd89780001334b93-4.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "業務必學！行事曆的隱藏功能 ｜Vocus 原圖 4"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-695D4963FD89780001E06F34",
+      "vocus_article_id": "695d4963fd89780001e06f34",
+      "slug": "stop-wasting-time-on-data-entry",
+      "title": "「你以為你在整理資料，其實你是在 燒錢。 每一分鐘低效的打字，都是在浪費你本該用來成交的黃金時間。」",
+      "seo_title": "「你以為你在整理資料，其實你是在 燒錢。 每一分鐘低效的打字，都是在浪費你本該用來成交的黃金時間。」｜Orikan 李泰欣",
+      "description": "整理資料與慢速打字，正在吃掉本來能拿去成交的時間。從語音輸入與客戶紀錄，改善業務日常效率。",
+      "topics": [
+        "sales-growth"
+      ],
+      "keywords": [
+        "「你以為你在整理資料，其實你是在 燒錢。 每一分鐘低效的打字，都是在浪費你本該用來成交的黃金時間。」",
+        "業務成長與工作方法"
+      ],
+      "published_at": "2026-01-07",
+      "updated_at": "2026-03-10",
+      "vocus_url": "https://vocus.cc/article/695d4963fd89780001e06f34",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/stop-wasting-time-on-data-entry/",
+      "source_sha256": "a15cb669f8c75373d1636cb997b1eb14326cdaf4ae89149973159710eeb0342a",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/ee211d79-2d3a-4f63-8300-bee057a30108.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/695d4963fd89780001e06f34-1.png",
+          "filename": "695d4963fd89780001e06f34-1.png",
+          "sha256": "8e1736d9dac2a5eed91ef60a2d0cf1ad2f8c28d0a60cc1f055a299be83212c32",
+          "alt": "「你以為你在整理資料，其實你是在 燒錢。 每一分鐘低效的打字，都是在浪費你本該用來成交的黃金時間。」｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/b44c84cf-aae7-4e11-892b-54b5d5fa9a7c.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/695d4963fd89780001e06f34-2.png",
+          "filename": "695d4963fd89780001e06f34-2.png",
+          "sha256": "5cf4d54d95a05d5fedcb03685d1eb09ae8de93897d04200d328f2f2220b90ac3",
+          "alt": "「你以為你在整理資料，其實你是在 燒錢。 每一分鐘低效的打字，都是在浪費你本該用來成交的黃金時間。」｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/b6756609-2e0e-4e64-9c04-2d093db7c936.jpg",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/695d4963fd89780001e06f34-3.jpg",
+          "filename": "695d4963fd89780001e06f34-3.jpg",
+          "sha256": "c0cf511f8198a7b3ad05f2a813310dc2d323a732d7e88d93310192b953e6a86a",
+          "alt": "「你以為你在整理資料，其實你是在 燒錢。 每一分鐘低效的打字，都是在浪費你本該用來成交的黃金時間。」｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/5b6d6814-2613-4599-9f06-8783af945632.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/695d4963fd89780001e06f34-4.png",
+          "filename": "695d4963fd89780001e06f34-4.png",
+          "sha256": "ac4761714302d8ac754030b73011e2511d90f0758c2deed58adef1cfc284ce7b",
+          "alt": "「你以為你在整理資料，其實你是在 燒錢。 每一分鐘低效的打字，都是在浪費你本該用來成交的黃金時間。」｜Vocus 原圖 4"
+        },
+        {
+          "source_url": "https://images.vocus.cc/047581ce-0aaa-47a0-96f1-beb28d71cf2a.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/695d4963fd89780001e06f34-5.png",
+          "filename": "695d4963fd89780001e06f34-5.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "「你以為你在整理資料，其實你是在 燒錢。 每一分鐘低效的打字，都是在浪費你本該用來成交的黃金時間。」｜Vocus 原圖 5"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-6959E83DFD897800013977B5",
+      "vocus_article_id": "6959e83dfd897800013977b5",
+      "slug": "sales-mediocrity-trap",
+      "title": "眼中只有錢，反而賺不到錢？揭開讓業務員陷入「平庸陷阱」的 4 大盲點",
+      "seo_title": "眼中只有錢，反而賺不到錢？揭開讓業務員陷入「平庸陷阱」的 4 大盲點｜Orikan 李泰欣",
+      "description": "眼中只有錢，反而賺不到錢？看見業務員容易落入的四個平庸陷阱，重新建立價值、執行與學習節奏。",
+      "topics": [
+        "sales-growth",
+        "thinking-practice"
+      ],
+      "keywords": [
+        "眼中只有錢，反而賺不到錢？揭開讓業務員陷入「平庸陷阱」的 4 大盲點",
+        "業務成長與工作方法",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-01-04",
+      "updated_at": "2026-01-04",
+      "vocus_url": "https://vocus.cc/article/6959e83dfd897800013977b5",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/sales-mediocrity-trap/",
+      "source_sha256": "475302a5d15c94ce9ac0ee92b7b93ebbe9e8090e4a52ce7937dbe5a301a799fc",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/769a7ee8-3f9f-4c96-afa9-510a8d583698.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6959e83dfd897800013977b5-1.png",
+          "filename": "6959e83dfd897800013977b5-1.png",
+          "sha256": "1b877e10b05296573f3f2cb9ab036f97df9142f60a616e98571500faa9284651",
+          "alt": "眼中只有錢，反而賺不到錢？揭開讓業務員陷入「平庸陷阱」的 4 大盲點｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/9b5a00d0-42fc-46b1-b100-1c14d8da40fd.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6959e83dfd897800013977b5-2.png",
+          "filename": "6959e83dfd897800013977b5-2.png",
+          "sha256": "46d9b01ffb1143e564ad3f5bd5d5834faa3f350cf05aadda621c1de84ea13569",
+          "alt": "眼中只有錢，反而賺不到錢？揭開讓業務員陷入「平庸陷阱」的 4 大盲點｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/9212df47-6369-46c8-ac7d-f6ad6ac76334.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6959e83dfd897800013977b5-3.png",
+          "filename": "6959e83dfd897800013977b5-3.png",
+          "sha256": "d0c9bd8a6c8ab83b398f989746f37fc1e1d8fa6aa026ef311792c1a24e56b402",
+          "alt": "眼中只有錢，反而賺不到錢？揭開讓業務員陷入「平庸陷阱」的 4 大盲點｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/2b4b07e1-eedc-443e-ac17-7f94c1f71340.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6959e83dfd897800013977b5-4.png",
+          "filename": "6959e83dfd897800013977b5-4.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "眼中只有錢，反而賺不到錢？揭開讓業務員陷入「平庸陷阱」的 4 大盲點｜Vocus 原圖 4"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-695771ECFD89780001A9CDCF",
+      "vocus_article_id": "695771ecfd89780001a9cdcf",
+      "slug": "2025-year-of-admitting-ignorance",
+      "title": "【2025 是什麼年？是我承認自己「無知」的一年】",
+      "seo_title": "【2025 是什麼年？是我承認自己「無知」的一年】｜Orikan 李泰欣",
+      "description": "2025 年，我用閱讀、聽書與教學實驗重新認識無知。把知識變成能分享、能實踐的判斷力，才是學習的開始。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "【2025 是什麼年？是我承認自己「無知」的一年】",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-01-02",
+      "updated_at": "2026-01-02",
+      "vocus_url": "https://vocus.cc/article/695771ecfd89780001a9cdcf",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/2025-year-of-admitting-ignorance/",
+      "source_sha256": "15519fec3d27c3d7e0c0317cc5a46c0ca76d04d7398d4753ac7d18e92246a595",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/1dda957f-00d7-4b3f-8985-408cb8e13c1d.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/695771ecfd89780001a9cdcf-1.png",
+          "filename": "695771ecfd89780001a9cdcf-1.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "【2025 是什麼年？是我承認自己「無知」的一年】｜Vocus 原圖 1"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-695188CBFD89780001967A80",
+      "vocus_article_id": "695188cbfd89780001967a80",
+      "slug": "sales-should-earn-the-right-money",
+      "title": "業務不能什麼錢都賺？本來就該賺錢!!這是Top Sales才懂的「極致平衡」",
+      "seo_title": "業務不能什麼錢都賺？本來就該賺錢!!這是Top Sales才懂的「極致平衡」｜Orikan 李泰欣",
+      "description": "業務不是什麼錢都賺，也不是不敢賺錢。用中庸與價值交換，找到專業、收入與長期信任的平衡。",
+      "topics": [
+        "sales-growth",
+        "client-conversations"
+      ],
+      "keywords": [
+        "業務不能什麼錢都賺？本來就該賺錢!!這是Top Sales才懂的「極致平衡」",
+        "業務成長與工作方法",
+        "客戶溝通與成交"
+      ],
+      "published_at": "2025-12-28",
+      "updated_at": "2025-12-28",
+      "vocus_url": "https://vocus.cc/article/695188cbfd89780001967a80",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/sales-should-earn-the-right-money/",
+      "source_sha256": "97dcf83fa8b9b06db612f2b66f59f871167e1907ea2135821e50756cdabe1949",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/df8edfec-673b-4d1d-b771-49d0644be0a6.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/695188cbfd89780001967a80-1.png",
+          "filename": "695188cbfd89780001967a80-1.png",
+          "sha256": "ec0ee53aff14accb6149a5aea2803bb3b348f584d22e7669917c80f418ee7c06",
+          "alt": "業務不能什麼錢都賺？本來就該賺錢!!這是Top Sales才懂的「極致平衡」｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/048af54f-52eb-475b-b1d5-a33160720f9e.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/695188cbfd89780001967a80-2.png",
+          "filename": "695188cbfd89780001967a80-2.png",
+          "sha256": "4b42351d03dd73a87608ebe2234bc3a591e9739556abab819dac23273fc8caa5",
+          "alt": "業務不能什麼錢都賺？本來就該賺錢!!這是Top Sales才懂的「極致平衡」｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/591164d8-6867-4252-981f-69cdb3661f8c.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/695188cbfd89780001967a80-3.png",
+          "filename": "695188cbfd89780001967a80-3.png",
+          "sha256": "ac69ba9e8647698d2487bf5d0433037544aee7945dc35f43ca8d977ce5e4618c",
+          "alt": "業務不能什麼錢都賺？本來就該賺錢!!這是Top Sales才懂的「極致平衡」｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/2a4502c7-cccc-4220-8a97-566195c3a35d.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/695188cbfd89780001967a80-4.png",
+          "filename": "695188cbfd89780001967a80-4.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "業務不能什麼錢都賺？本來就該賺錢!!這是Top Sales才懂的「極致平衡」｜Vocus 原圖 4"
+        }
+      ]
+    },
+    {
+      "record_id": "ORI-VOCUS-694CDCD0FD8978000152DA85",
+      "vocus_article_id": "694cdcd0fd8978000152da85",
+      "slug": "stop-begging-clients-to-reply",
+      "title": "你越拜託客戶，客戶越想封鎖",
+      "seo_title": "你越拜託客戶，客戶越想封鎖｜Orikan 李泰欣",
+      "description": "你越拜託客戶，客戶越想封鎖。避開四個常見聯絡錯誤，用三個做法把銷售接觸從打擾變成期待。",
+      "topics": [
+        "client-conversations"
+      ],
+      "keywords": [
+        "你越拜託客戶，客戶越想封鎖",
+        "客戶溝通與成交"
+      ],
+      "published_at": "2025-12-25",
+      "updated_at": "2026-01-29",
+      "vocus_url": "https://vocus.cc/article/694cdcd0fd8978000152da85",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/stop-begging-clients-to-reply/",
+      "source_sha256": "b318e2ea413f9c34463fe3fdcfb9818afc2ecb614d5001c9a051b5b0b7c484e9",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/e8a2f793-2a38-4bb6-b625-5875e042e7ec.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/694cdcd0fd8978000152da85-1.png",
+          "filename": "694cdcd0fd8978000152da85-1.png",
+          "sha256": "08eb97e8ee0cd1448aa030796427945bdecc50201392e855be0e7f11d049a8a6",
+          "alt": "你越拜託客戶，客戶越想封鎖｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/911e8ca7-6751-43f4-929b-34404b1a50ba.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/694cdcd0fd8978000152da85-2.png",
+          "filename": "694cdcd0fd8978000152da85-2.png",
+          "sha256": "a597654d6acde47d3fb425097a49703c46ae8a8753b8f8410d88db9c65ada188",
+          "alt": "你越拜託客戶，客戶越想封鎖｜Vocus 原圖 2"
+        },
+        {
+          "source_url": "https://images.vocus.cc/253c98b2-e737-42b8-b907-fde1137ededa.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/694cdcd0fd8978000152da85-3.png",
+          "filename": "694cdcd0fd8978000152da85-3.png",
+          "sha256": "5464799400c5ab7b9bc5b62fd9a247f36c70c95266a4544d6d9f394326f18ff2",
+          "alt": "你越拜託客戶，客戶越想封鎖｜Vocus 原圖 3"
+        },
+        {
+          "source_url": "https://images.vocus.cc/ff4411db-4f18-4519-9607-1d59edcd1ef6.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/694cdcd0fd8978000152da85-4.png",
+          "filename": "694cdcd0fd8978000152da85-4.png",
+          "sha256": "ba821298fd4fb5beeca390de4d4af2005188ffc37609cfc46c764d3f0161c562",
+          "alt": "你越拜託客戶，客戶越想封鎖｜Vocus 原圖 4"
+        },
+        {
+          "source_url": "https://images.vocus.cc/f9fc66eb-8540-4325-9864-2b17335cc9bd.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/694cdcd0fd8978000152da85-5.png",
+          "filename": "694cdcd0fd8978000152da85-5.png",
+          "sha256": "9991173f332f3a869ea1ae38b00716af5abc56f35576491736688362774dee65",
+          "alt": "你越拜託客戶，客戶越想封鎖｜Vocus 原圖 5"
+        }
+      ]
     }
   ]
 }

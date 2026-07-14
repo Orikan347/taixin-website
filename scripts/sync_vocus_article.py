@@ -351,6 +351,30 @@ def load_registry(path: Path) -> list[dict]:
     return articles
 
 
+def assert_no_conflicting_published_evidence(site_root: Path, article: dict) -> None:
+    """Refuse to replace an existing article whose published evidence differs.
+
+    The two hashes may be based on different serializations, so a mismatch is
+    not proof that Vocus content changed. It is, however, enough to make an
+    automatic overwrite unsafe. The operator must run the evidence audit and
+    resolve the canonical/source decision before a new version is recorded.
+    """
+    registry_path = site_root / REGISTRY_PATH
+    matches = [
+        existing for existing in load_registry(registry_path)
+        if existing.get("vocus_url") == article["vocus_url"] or existing.get("slug") == article["slug"]
+    ]
+    if len(matches) > 1:
+        fail("existing blog registry has multiple entries for this Vocus article; refusing overwrite")
+    if not matches:
+        return
+    existing_hash = str(matches[0].get("source_sha256", ""))
+    if not SHA256.fullmatch(existing_hash):
+        fail("existing blog article has no valid provenance hash; refusing overwrite until manually reviewed")
+    if existing_hash != article["source_sha256"]:
+        fail("published evidence conflicts with the existing blog registry; refusing overwrite. Run audit_vocus_published_evidence.py and resolve the source/canonical decision first")
+
+
 def build_outputs(site_root: Path, article: dict, source_body: str, synced_at: str) -> dict[Path, str]:
     registry_path = site_root / REGISTRY_PATH
     existing = [item for item in load_registry(registry_path) if item.get("record_id") != article["record_id"] and item.get("slug") != article["slug"]]
@@ -452,6 +476,7 @@ def main() -> int:
         if not source_body:
             fail("source archive has no article body after metadata removal")
         article = article_from_record(record, source_hash)
+        assert_no_conflicting_published_evidence(site_root, article)
         public_outputs = build_outputs(site_root, article, source_body, args.synced_at)
         internal_outputs = build_internal_outputs(site_root, article, public_outputs, args.synced_at)
         all_outputs = {**public_outputs, **internal_outputs}

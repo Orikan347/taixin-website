@@ -16,6 +16,7 @@
 - Instagram: https://www.instagram.com/eintaixin/
 
 ## 文章
+- [載的是一起買的食材](https://orikan347.github.io/taixin-website/blog/ability-for-family/): 從童年不敢開口的願望，到送母親休旅車的故事；李泰欣談能力、選擇與把努力用來照顧家人的意義。
 - [德性能力結果金字塔](https://orikan347.github.io/taixin-website/blog/virtue-capability-results-pyramid/): 想提升業績與影響力，不只靠技巧；用德性、能力與結果金字塔，重新建立可被看見的價值。
 - [心大了才懂人](https://orikan347.github.io/taixin-website/blog/expand-mind-understand-others/): 如何不被自己的見聞與情緒困住？從張載的觀點，練習把心放大，理解人與世界。
 - [「我要回去跟老婆商量」不是真的要問老婆](https://orikan347.github.io/taixin-website/blog/client-says-ask-spouse/): 客戶說「我要回去跟老婆商量」怎麼回？辨識延遲成交背後的三種訊號，讓對話有下一步。
@@ -25,11 +26,30 @@
 - [慢則穩、穩則順、順則快：為什麼「慢下來」才是頂尖業務的加速器](https://orikan347.github.io/taixin-website/blog/slow-steady-sales-performance/): 業績想做快，為什麼要先慢下來？頂尖業務用穩定節奏，累積更快也更長久的成果。
 - [自媒體不是人設：人設怕被看破，修身不怕被看見](https://orikan347.github.io/taixin-website/blog/personal-branding-and-self-cultivation/): 自媒體經營不是打造人設；比起害怕被看破，更重要的是讓修身與真實價值被看見。
 - [學如不及：學習焦慮](https://orikan347.github.io/taixin-website/blog/learning-anxiety/): 學習焦慮怎麼辦？問題不只在學得不夠，而在沒有把知識消化、練習並變成自己的能力。
-- [學而時習之：知識大會](https://orikan347.github.io/taixin-website/blog/review-and-practice/): 學而時習之不是反覆背誦；把知識練成能力，才能真正用在工作、銷售與人生選擇。
-- [中庸銷售力：成交靠進取，長久靠底線](https://orikan347.github.io/taixin-website/blog/moderation-sales-boundary/): 成交需要進取，但長久合作需要底線。用中庸思維，找到業務推進與信任關係的平衡。
-- [中庸銷售力：狂狷與底線](https://orikan347.github.io/taixin-website/blog/moderation-boldness-boundary/): 中庸不是沒有態度；理解狂、狷與底線，才能在銷售與工作中知道何時前進、何時守住原則。
-- [解惑：重要訊息地圖](https://orikan347.github.io/taixin-website/blog/meaning-map/): 做決定時常缺的不是答案，而是重要訊息。用訊息地圖整理盲點，讓判斷更完整、更不容易後悔。
+- [學而時習之：知識大會](https://orikan347.github.io/taixin-website/blog/learning-knowledge-into-ability/): 學而時習之不是反覆背誦；把知識練成能力，才能真正用在工作、銷售與人生選擇。
+- [中庸銷售力：成交靠進取，長久靠底線](https://orikan347.github.io/taixin-website/blog/sales-drive-and-boundaries/): 成交需要進取，但長久合作需要底線。用中庸思維，找到業務推進與信任關係的平衡。
+- [中庸銷售力：狂狷與底線](https://orikan347.github.io/taixin-website/blog/sales-moderation-and-principles/): 中庸不是沒有態度；理解狂、狷與底線，才能在銷售與工作中知道何時前進、何時守住原則。
+- [解惑：重要訊息地圖](https://orikan347.github.io/taixin-website/blog/important-information-map/): 做決定時常缺的不是答案，而是重要訊息。用訊息地圖整理盲點，讓判斷更完整、更不容易後悔。
 - [科學與智慧](https://orikan347.github.io/taixin-website/blog/science-and-wisdom/): 科學知識與人生智慧如何互補？從看見世界的不同方法，練習更完整的思考與判斷。
-- [和而不同：獨立判斷](https://orikan347.github.io/taixin-website/blog/harmony-independent-judgment/): 和而不同不是討好或反對。保有獨立判斷，同時能與人合作，是成熟溝通的重要能力。
-- [說話要有羞恥心，做事才有責任感](https://orikan347.github.io/taixin-website/blog/speaking-responsibility/): 說話要有羞恥心，做事才有責任感。從承諾與行動一致，建立別人願意信任的長期關係。
-- [認知失調：進步與怨恨](https://orikan347.github.io/taixin-website/blog/cognitive-dissonance/): 認知失調為何讓人抗拒改變？理解進步與怨恨的拉扯，才能面對不想承認的矛盾並真正成長。
+- [和而不同：獨立判斷](https://orikan347.github.io/taixin-website/blog/harmony-without-uniformity/): 和而不同不是討好或反對。保有獨立判斷，同時能與人合作，是成熟溝通的重要能力。
+- [說話要有羞恥心，做事才有責任感](https://orikan347.github.io/taixin-website/blog/integrity-in-words-and-actions/): 說話要有羞恥心，做事才有責任感。從承諾與行動一致，建立別人願意信任的長期關係。
+- [認知失調：進步與怨恨](https://orikan347.github.io/taixin-website/blog/cognitive-dissonance-and-growth/): 認知失調為何讓人抗拒改變？理解進步與怨恨的拉扯，才能面對不想承認的矛盾並真正成長。
+- [楚漢相爭：真正的領導者](https://orikan347.github.io/taixin-website/blog/true-leadership-xiang-yu-liu-bang/): 項羽比劉邦更會打仗，為何仍輸掉天下？從楚漢相爭看真正領導者如何用人、分利與整合團隊。
+- [為什麼你的客戶跟進總是已讀不回？問題不在客戶，在你的方式](https://orikan347.github.io/taixin-website/blog/client-follow-up-no-reply/): 客戶跟進已讀不回怎麼辦？問題往往不在客戶，而在訊息只催答案、沒有提供下一步價值。
+- [為什麼學了這麼多銷售技巧，面對客戶時還是會斷片？](https://orikan347.github.io/taixin-website/blog/sales-skills-blank-mind/): 學很多銷售技巧，面對客戶卻斷片？這不是記憶力差，而是還沒把知識練成能在現場使用的能力。
+- [房仲「冷市場」銷售必勝攻略：掌握三大關鍵系統升級，讓你彎道超車，業績翻倍！](https://orikan347.github.io/taixin-website/blog/real-estate-cold-market-sales/): 房市冷、市場量縮時，如何提高每位買方的掌握度？用三個銷售系統把冷市場變成追上業績的機會。
+- [台灣保險業流失逾兩萬名業務員，留下來的超業做對了什麼？](https://orikan347.github.io/taixin-website/blog/insurance-sales-system/): 保險業務人數下降時，留下來的超業做對了什麼？用名單管理、成交 SOP 與效率工具建立可複製的銷售系統。
+- [AI 的使用迷思：問題的關鍵不在 AI，而在你提出的問題](https://orikan347.github.io/taixin-website/blog/ai-prompting-starts-with-the-question/): AI 不好用，常常不是工具問題，而是問題沒有定義清楚。先建立思考架構，才能讓 AI 放大你的工作成果。
+- [「你是不是常常在職場或生活中感到無盡的內耗？大腦科學揭密：原來我們都活在『受控的幻覺』裡](https://orikan347.github.io/taixin-website/blog/mental-overthinking-illusion-of-control/): 為什麼會在工作與生活中不斷內耗？從大腦與控制感的角度，重新理解那些讓人陷住的受控幻覺。
+- [別再迷信「顯化」：科學的盡頭是玄學，但人生的起點是科學](https://orikan347.github.io/taixin-website/blog/manifestation-needs-action/): 別把顯化當成許願魔法。從大腦科學、刻意練習與身份認同出發，用行動塑造真正想要的未來。
+- [你以為沒自信？老師：你只是用錯了「自尊系統」！一篇搞懂自信、自尊、成長思維](https://orikan347.github.io/taixin-website/blog/confidence-self-esteem-growth-mindset/): 你以為自己沒自信，可能是自尊系統出了問題。理解自信、自尊與成長思維，找回穩定而非逞強的力量。
+- [為什麼你這麼努力，卻依然卡關？](https://orikan347.github.io/taixin-website/blog/why-hard-working-still-stuck/): 很努力卻依然卡關，未必是努力不夠，而是還沒看見真正要解的問題。從學習與認知模型找回方向。
+- [「壓力管理」：為什麼同一件事，有人焦慮到失眠，有人卻能輕鬆應對？](https://orikan347.github.io/taixin-website/blog/stress-management-challenge-and-ability/): 壓力不是意志力不足，而是挑戰與能力失衡。從生理、心理與認知三個層次，練習把壓力變成成長動力。
+- [MBTI 的 I 人，DISC 的 C 型，內向者真的能當業務嗎？揭秘 ISTJ 成為 Top Sales 的關鍵](https://orikan347.github.io/taixin-website/blog/introverts-can-succeed-in-sales/): 內向的 I 人、DISC C 型能不能做好業務？理解自己的特質，建立不必硬撐外向也能成交的銷售方法。
+- [無人不銷售：你不想當業務，但你每天都在賣自己](https://orikan347.github.io/taixin-website/blog/everyone-is-selling/): 不想當業務，也每天都在推銷自己。理解銷售的本質，讓專業、價值與溝通能力真正為你創造機會。
+- [業務必學！行事曆的隱藏功能](https://orikan347.github.io/taixin-website/blog/calendar-travel-time-for-sales/): 業務如何用行事曆自動計算通勤時間、減少趕場與漏約？一個隱藏設定，讓每天行程更可靠。
+- [「你以為你在整理資料，其實你是在 燒錢。 每一分鐘低效的打字，都是在浪費你本該用來成交的黃金時間。」](https://orikan347.github.io/taixin-website/blog/stop-wasting-time-on-data-entry/): 整理資料與慢速打字，正在吃掉本來能拿去成交的時間。從語音輸入與客戶紀錄，改善業務日常效率。
+- [眼中只有錢，反而賺不到錢？揭開讓業務員陷入「平庸陷阱」的 4 大盲點](https://orikan347.github.io/taixin-website/blog/sales-mediocrity-trap/): 眼中只有錢，反而賺不到錢？看見業務員容易落入的四個平庸陷阱，重新建立價值、執行與學習節奏。
+- [【2025 是什麼年？是我承認自己「無知」的一年】](https://orikan347.github.io/taixin-website/blog/2025-year-of-admitting-ignorance/): 2025 年，我用閱讀、聽書與教學實驗重新認識無知。把知識變成能分享、能實踐的判斷力，才是學習的開始。
+- [業務不能什麼錢都賺？本來就該賺錢!!這是Top Sales才懂的「極致平衡」](https://orikan347.github.io/taixin-website/blog/sales-should-earn-the-right-money/): 業務不是什麼錢都賺，也不是不敢賺錢。用中庸與價值交換，找到專業、收入與長期信任的平衡。
+- [你越拜託客戶，客戶越想封鎖](https://orikan347.github.io/taixin-website/blog/stop-begging-clients-to-reply/): 你越拜託客戶，客戶越想封鎖。避開四個常見聯絡錯誤，用三個做法把銷售接觸從打擾變成期待。

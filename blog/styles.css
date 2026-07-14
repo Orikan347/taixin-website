@@ -36,6 +36,12 @@ h2 { font-size: 1.55rem; margin-top: 0; }
 .topic-nav { margin-top: 24px; }
 .card-topics { margin: 14px 0 17px; }
 .article-topics { margin: -16px 0 28px; color: var(--text-dim); font-size: .9rem; align-items: center; }
+.author-intro { padding-top: 40px; }
+.author-card { display: grid; grid-template-columns: 126px minmax(0, 1fr); gap: 24px; align-items: center; border: 1px solid var(--line); border-radius: 18px; padding: 24px; background: linear-gradient(135deg, rgba(201,168,76,.13), rgba(255,255,255,.03)); }
+.author-card img { width: 126px; aspect-ratio: 1; display: block; object-fit: cover; object-position: center top; border-radius: 50%; border: 2px solid rgba(201,168,76,.5); }
+.author-card h2 { margin: 5px 0 8px; font-size: 1.4rem; }
+.author-card p { margin: 0; color: var(--text-dim); }
+.author-link { display: inline-block; margin-top: 12px; font-weight: 700; text-decoration: none; }
 .topic-chip, .article-topics a { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; color: var(--gold-light); text-decoration: none; font-size: .82rem; }
 .topic-chip:hover, .article-topics a:hover { border-color: var(--gold); background: rgba(201,168,76,.1); }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; padding: 56px 0 90px; }
@@ -62,8 +68,8 @@ figcaption { margin-top: 8px; color: var(--text-dim); font-size: .82rem; text-al
 .cover { margin: 28px 0 42px; }
 .source-note, .citation { border-left: 3px solid var(--gold); background: rgba(201,168,76,.08); padding: 18px 21px; color: var(--text-dim); }
 .source-note p, .citation p { margin: 8px 0 0; }
-.citation { margin-top: 48px; border-left-color: rgba(201,168,76,.6); background: rgba(255,255,255,.035); }
+.citation { margin-top: 36px; border-left-color: rgba(201,168,76,.6); background: rgba(255,255,255,.035); }
 .cta { margin-top: 52px; border: 1px solid var(--line); border-radius: 18px; padding: 26px; background: linear-gradient(135deg, rgba(201,168,76,.13), rgba(255,255,255,.03)); }
 .cta .button { display: inline-block; margin-top: 8px; padding: 12px 22px; border-radius: 999px; background: var(--gold); color: var(--navy-deep); font-weight: 700; text-decoration: none; }
 footer { border-top: 1px solid var(--line); padding: 28px 24px; text-align: center; color: var(--text-dim); font-size: .85rem; }
-@media (max-width: 640px) { .site-nav { align-items: flex-start; flex-direction: column; } .nav-links { justify-content: flex-start; gap: 14px; } .hero { padding-top: 58px; } }
+@media (max-width: 640px) { .site-nav { align-items: flex-start; flex-direction: column; } .nav-links { justify-content: flex-start; gap: 14px; } .hero { padding-top: 58px; } .author-card { grid-template-columns: 1fr; } .author-card img { width: 94px; } }

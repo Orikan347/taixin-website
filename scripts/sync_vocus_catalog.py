@@ -20,13 +20,25 @@ import sys
 from datetime import datetime, timezone
 from email.utils import format_datetime
 from pathlib import Path
+from urllib.parse import urlencode
 from urllib.error import URLError
 from urllib.request import Request, urlopen
 
 
 BASE = "https://orikan347.github.io/taixin-website"
 API = "https://api.vocus.cc/api/article/"
+CONTENTS_API = "https://api.vocus.cc/api/contents"
 UA = "Orikan-Vocus-Catalog-Mirror/1.0 (public-read-only)"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+AUTHOR_IMAGE_SOURCE = PROJECT_ROOT / "img/portrait.jpg"
+AUTHOR = {
+    "name": "Orikan 李泰欣",
+    "url": BASE + "/#person",
+    "image": BASE + "/img/portrait.jpg",
+    "job_title": "亞洲銷冠系統架構導師",
+    "description": "前保時捷全台銷售第一名、全球百大銷售顧問；以 14 年一線銷售實戰，將心理學、哲學與商業思維轉成可複製的成交系統。",
+    "same_as": ["https://www.instagram.com/eintaixin/"],
+}
 STATIC_PATHS = (
     ("/", "2026-07-13"),
     ("/ai-student-qa.html", "2026-07-10"),
@@ -58,7 +70,29 @@ TOPICS = {
 }
 
 SEO_OVERRIDES = {
+    # Historical public articles are given readable, stable URLs and editorial
+    # summaries. The Vocus text and images remain the canonical sync source.
+    "6a364f77fd89780001b8b5c2": {"slug": "true-leadership-xiang-yu-liu-bang", "description": "項羽比劉邦更會打仗，為何仍輸掉天下？從楚漢相爭看真正領導者如何用人、分利與整合團隊。", "topics": ["thinking-practice", "sales-growth"]},
+    "69ad830ffd897800013d6406": {"slug": "client-follow-up-no-reply", "description": "客戶跟進已讀不回怎麼辦？問題往往不在客戶，而在訊息只催答案、沒有提供下一步價值。", "topics": ["client-conversations"]},
+    "69aaea69fd8978000199e3ac": {"slug": "sales-skills-blank-mind", "description": "學很多銷售技巧，面對客戶卻斷片？這不是記憶力差，而是還沒把知識練成能在現場使用的能力。", "topics": ["sales-growth", "thinking-practice"]},
+    "69a931dbfd8978000128e399": {"slug": "real-estate-cold-market-sales", "description": "房市冷、市場量縮時，如何提高每位買方的掌握度？用三個銷售系統把冷市場變成追上業績的機會。", "topics": ["sales-growth", "client-conversations"]},
+    "69a58610fd89780001ced6df": {"slug": "insurance-sales-system", "description": "保險業務人數下降時，留下來的超業做對了什麼？用名單管理、成交 SOP 與效率工具建立可複製的銷售系統。", "topics": ["sales-growth"]},
+    "69a3e172fd897800016022d1": {"slug": "ai-prompting-starts-with-the-question", "description": "AI 不好用，常常不是工具問題，而是問題沒有定義清楚。先建立思考架構，才能讓 AI 放大你的工作成果。", "topics": ["thinking-practice"]},
+    "69a19987fd89780001c0ff1e": {"slug": "mental-overthinking-illusion-of-control", "description": "為什麼會在工作與生活中不斷內耗？從大腦與控制感的角度，重新理解那些讓人陷住的受控幻覺。", "topics": ["thinking-practice"]},
+    "6984392dfd89780001ee9da4": {"slug": "manifestation-needs-action", "description": "別把顯化當成許願魔法。從大腦科學、刻意練習與身份認同出發，用行動塑造真正想要的未來。", "topics": ["thinking-practice"]},
+    "697f5a3dfd89780001addc92": {"slug": "confidence-self-esteem-growth-mindset", "description": "你以為自己沒自信，可能是自尊系統出了問題。理解自信、自尊與成長思維，找回穩定而非逞強的力量。", "topics": ["thinking-practice"]},
+    "6979b9b6fd89780001e87882": {"slug": "why-hard-working-still-stuck", "description": "很努力卻依然卡關，未必是努力不夠，而是還沒看見真正要解的問題。從學習與認知模型找回方向。", "topics": ["thinking-practice"]},
+    "69772bf4fd897800018fdc2a": {"slug": "stress-management-challenge-and-ability", "description": "壓力不是意志力不足，而是挑戰與能力失衡。從生理、心理與認知三個層次，練習把壓力變成成長動力。", "topics": ["thinking-practice"]},
+    "6971df33fd897800010c1617": {"slug": "introverts-can-succeed-in-sales", "description": "內向的 I 人、DISC C 型能不能做好業務？理解自己的特質，建立不必硬撐外向也能成交的銷售方法。", "topics": ["sales-growth", "thinking-practice"]},
+    "696999cdfd89780001026054": {"slug": "everyone-is-selling", "description": "不想當業務，也每天都在推銷自己。理解銷售的本質，讓專業、價值與溝通能力真正為你創造機會。", "topics": ["sales-growth"]},
+    "6964c22dfd89780001334b93": {"slug": "calendar-travel-time-for-sales", "description": "業務如何用行事曆自動計算通勤時間、減少趕場與漏約？一個隱藏設定，讓每天行程更可靠。", "topics": ["sales-growth"]},
+    "695d4963fd89780001e06f34": {"slug": "stop-wasting-time-on-data-entry", "description": "整理資料與慢速打字，正在吃掉本來能拿去成交的時間。從語音輸入與客戶紀錄，改善業務日常效率。", "topics": ["sales-growth"]},
+    "6959e83dfd897800013977b5": {"slug": "sales-mediocrity-trap", "description": "眼中只有錢，反而賺不到錢？看見業務員容易落入的四個平庸陷阱，重新建立價值、執行與學習節奏。", "topics": ["sales-growth", "thinking-practice"]},
+    "695771ecfd89780001a9cdcf": {"slug": "2025-year-of-admitting-ignorance", "description": "2025 年，我用閱讀、聽書與教學實驗重新認識無知。把知識變成能分享、能實踐的判斷力，才是學習的開始。", "topics": ["thinking-practice"]},
+    "695188cbfd89780001967a80": {"slug": "sales-should-earn-the-right-money", "description": "業務不是什麼錢都賺，也不是不敢賺錢。用中庸與價值交換，找到專業、收入與長期信任的平衡。", "topics": ["sales-growth", "client-conversations"]},
+    "694cdcd0fd8978000152da85": {"slug": "stop-begging-clients-to-reply", "description": "你越拜託客戶，客戶越想封鎖。避開四個常見聯絡錯誤，用三個做法把銷售接觸從打擾變成期待。", "topics": ["client-conversations"]},
     "6a5439ecfd8978000133a2d3": {"description": "想提升業績與影響力，不只靠技巧；用德性、能力與結果金字塔，重新建立可被看見的價值。", "topics": ["sales-growth"]},
+    "6a558c04fd8978000186f2eb": {"slug": "ability-for-family", "description": "從童年不敢開口的願望，到送母親休旅車的故事；李泰欣談能力、選擇與把努力用來照顧家人的意義。", "topics": ["thinking-practice"]},
     "6a5196d6fd8978000180e87e": {"slug": "expand-mind-understand-others", "description": "如何不被自己的見聞與情緒困住？從張載的觀點，練習把心放大，理解人與世界。", "topics": ["thinking-practice"]},
     "6a5045e6fd89780001283436": {"slug": "client-says-ask-spouse", "description": "客戶說「我要回去跟老婆商量」怎麼回？辨識延遲成交背後的三種訊號，讓對話有下一步。", "topics": ["client-conversations"]},
     "6a4ef4d1fd89780001467bb3": {"slug": "client-just-looking-response", "description": "客戶說「我只是看看」怎麼回？這不一定是不買，而是信任尚未建立；用六種軟拒絕判斷下一步。", "topics": ["client-conversations"]},
@@ -66,15 +100,15 @@ SEO_OVERRIDES = {
     "6a4c57dffd897800014ebc2c": {"slug": "consultative-selling", "description": "業務如何不靠強迫說服而成交？讓客戶自己說出需求與理由，建立更有信任感的成交對話。", "topics": ["client-conversations"]},
     "6a4aff70fd89780001de8c8c": {"slug": "slow-steady-sales-performance", "description": "業績想做快，為什麼要先慢下來？頂尖業務用穩定節奏，累積更快也更長久的成果。", "topics": ["sales-growth"]},
     "6a49adf9fd89780001f19689": {"slug": "personal-branding-and-self-cultivation", "description": "自媒體經營不是打造人設；比起害怕被看破，更重要的是讓修身與真實價值被看見。", "topics": ["thinking-practice"]},
-    "6a485cbffd8978000198f744": {"description": "學習焦慮怎麼辦？問題不只在學得不夠，而在沒有把知識消化、練習並變成自己的能力。", "topics": ["thinking-practice"]},
-    "6a470c60fd8978000130c875": {"description": "學而時習之不是反覆背誦；把知識練成能力，才能真正用在工作、銷售與人生選擇。", "topics": ["thinking-practice"]},
-    "6a45b9acfd89780001d2e4c0": {"description": "成交需要進取，但長久合作需要底線。用中庸思維，找到業務推進與信任關係的平衡。", "topics": ["sales-growth", "client-conversations"]},
-    "6a44680efd89780001c806fc": {"description": "中庸不是沒有態度；理解狂、狷與底線，才能在銷售與工作中知道何時前進、何時守住原則。", "topics": ["sales-growth", "thinking-practice"]},
-    "6a4316d5fd897800014c8468": {"description": "做決定時常缺的不是答案，而是重要訊息。用訊息地圖整理盲點，讓判斷更完整、更不容易後悔。", "topics": ["thinking-practice"]},
-    "6a41de51fd89780001e6a934": {"description": "科學知識與人生智慧如何互補？從看見世界的不同方法，練習更完整的思考與判斷。", "topics": ["thinking-practice"]},
-    "6a3a1f56fd89780001c17443": {"description": "和而不同不是討好或反對。保有獨立判斷，同時能與人合作，是成熟溝通的重要能力。", "topics": ["thinking-practice"]},
-    "6a38ad7efd8978000197cb3c": {"description": "說話要有羞恥心，做事才有責任感。從承諾與行動一致，建立別人願意信任的長期關係。", "topics": ["thinking-practice", "client-conversations"]},
-    "6a365b68fd89780001bbe4dd": {"description": "認知失調為何讓人抗拒改變？理解進步與怨恨的拉扯，才能面對不想承認的矛盾並真正成長。", "topics": ["thinking-practice"]},
+    "6a485cbffd8978000198f744": {"slug": "learning-anxiety", "description": "學習焦慮怎麼辦？問題不只在學得不夠，而在沒有把知識消化、練習並變成自己的能力。", "topics": ["thinking-practice"]},
+    "6a470c60fd8978000130c875": {"slug": "learning-knowledge-into-ability", "description": "學而時習之不是反覆背誦；把知識練成能力，才能真正用在工作、銷售與人生選擇。", "topics": ["thinking-practice"]},
+    "6a45b9acfd89780001d2e4c0": {"slug": "sales-drive-and-boundaries", "description": "成交需要進取，但長久合作需要底線。用中庸思維，找到業務推進與信任關係的平衡。", "topics": ["sales-growth", "client-conversations"]},
+    "6a44680efd89780001c806fc": {"slug": "sales-moderation-and-principles", "description": "中庸不是沒有態度；理解狂、狷與底線，才能在銷售與工作中知道何時前進、何時守住原則。", "topics": ["sales-growth", "thinking-practice"]},
+    "6a4316d5fd897800014c8468": {"slug": "important-information-map", "description": "做決定時常缺的不是答案，而是重要訊息。用訊息地圖整理盲點，讓判斷更完整、更不容易後悔。", "topics": ["thinking-practice"]},
+    "6a41de51fd89780001e6a934": {"slug": "science-and-wisdom", "description": "科學知識與人生智慧如何互補？從看見世界的不同方法，練習更完整的思考與判斷。", "topics": ["thinking-practice"]},
+    "6a3a1f56fd89780001c17443": {"slug": "harmony-without-uniformity", "description": "和而不同不是討好或反對。保有獨立判斷，同時能與人合作，是成熟溝通的重要能力。", "topics": ["thinking-practice"]},
+    "6a38ad7efd8978000197cb3c": {"slug": "integrity-in-words-and-actions", "description": "說話要有羞恥心，做事才有責任感。從承諾與行動一致，建立別人願意信任的長期關係。", "topics": ["thinking-practice", "client-conversations"]},
+    "6a365b68fd89780001bbe4dd": {"slug": "cognitive-dissonance-and-growth", "description": "認知失調為何讓人抗拒改變？理解進步與怨恨的拉扯，才能面對不想承認的矛盾並真正成長。", "topics": ["thinking-practice"]},
 }
 
 
@@ -86,6 +120,48 @@ def fetch(url: str) -> tuple[bytes, str]:
     request = Request(url, headers={"User-Agent": UA, "Accept": "application/json,image/*;q=0.9,*/*;q=0.1"})
     with urlopen(request, timeout=30) as response:  # nosec B310: explicit public Vocus URLs only
         return response.read(), response.headers.get_content_type()
+
+
+def published_items_from_queue(queue_path: Path) -> tuple[list[dict], int | None, str]:
+    queue = json.loads(queue_path.read_text(encoding="utf-8"))
+    items = [item for item in queue["items"] if item.get("status") == "PUBLISHED" and str(item.get("last_url", "")).startswith("https://vocus.cc/article/")]
+    if not items:
+        raise ValueError("no PUBLISHED Vocus queue items")
+    return items, None, "local published queue"
+
+
+def published_items_from_creator(creator_id: str) -> tuple[list[dict], int, str]:
+    """Read the author's public article catalogue, with no login or write path."""
+    reported_count: int | None = None
+    items: list[dict] = []
+    seen: set[str] = set()
+    for page in range(1, 51):
+        query = urlencode({"creatorId": creator_id, "sort": "publishAt", "type": "article", "order": "desc", "status": "public", "num": 10, "page": page})
+        raw, _ = fetch(f"{CONTENTS_API}?{query}")
+        payload = json.loads(raw)
+        if reported_count is None:
+            reported_count = int(payload.get("count", -1))
+            if reported_count < 0:
+                raise ValueError("Vocus public catalogue did not report a count")
+        batch = payload.get("contents", [])
+        if not isinstance(batch, list):
+            raise ValueError("Vocus public catalogue has invalid contents")
+        for content in batch:
+            article = content.get("article", {}) if isinstance(content, dict) else {}
+            article_id = str(article.get("_id", ""))
+            if content.get("type") != "article" or article.get("status") != 2 or not re.fullmatch(r"[a-f0-9]{24}", article_id):
+                raise ValueError("Vocus public catalogue contained a non-public or invalid article")
+            if article_id in seen:
+                raise ValueError(f"Vocus public catalogue repeated article: {article_id}")
+            seen.add(article_id)
+            items.append({"id": f"vocus-{article_id}", "last_url": f"https://vocus.cc/article/{article_id}"})
+        if len(batch) < 10:
+            break
+    else:
+        raise ValueError("Vocus public catalogue exceeded pagination safety limit")
+    if reported_count != len(items):
+        raise ValueError(f"Vocus public catalogue count mismatch: reported {reported_count}, retrieved {len(items)}")
+    return items, reported_count, "Vocus public creator catalogue"
 
 
 def date_of(value: str | None) -> str:
@@ -170,11 +246,16 @@ def render_body(nodes: list[dict], media: dict[str, dict], title: str) -> str:
     return "\n      ".join(blocks)
 
 
+def author_card(image_path: str, about_path: str) -> str:
+    """Reader-facing authorship, reused on the blog index and every article."""
+    return f'''<aside class="author-card" aria-label="作者介紹"><img src="{image_path}" alt="Orikan 李泰欣"><div><div class="eyebrow">About the author</div><h2>我是李泰欣</h2><p>{html.escape(AUTHOR["description"])}</p><a class="author-link" href="{about_path}">認識 Orikan 李泰欣 →</a></div></aside>'''
+
+
 def article_html(article: dict) -> str:
     url = article["site_url"]
     image_urls = [image["site_url"] for image in article["images"]]
     graph = {"@context": "https://schema.org", "@graph": [
-        {"@type": "BlogPosting", "@id": url + "#article", "headline": article["title"], "description": article["description"], "keywords": article["keywords"], "datePublished": article["published_at"], "dateModified": article["updated_at"], "inLanguage": "zh-Hant-TW", "mainEntityOfPage": {"@type": "WebPage", "@id": url}, "url": url, "image": image_urls, "author": {"@type": "Person", "name": "Orikan 李泰欣", "url": BASE + "/#person", "sameAs": ["https://www.instagram.com/eintaixin/"]}, "publisher": {"@type": "Person", "name": "Orikan 李泰欣", "url": BASE + "/#person"}, "isBasedOn": {"@type": "CreativeWork", "name": "Vocus 原始發布頁", "url": article["vocus_url"]}},
+        {"@type": "BlogPosting", "@id": url + "#article", "headline": article["title"], "description": article["description"], "keywords": article["keywords"], "datePublished": article["published_at"], "dateModified": article["updated_at"], "inLanguage": "zh-Hant-TW", "mainEntityOfPage": {"@type": "WebPage", "@id": url}, "url": url, "image": image_urls, "author": {"@type": "Person", "name": AUTHOR["name"], "url": AUTHOR["url"], "image": AUTHOR["image"], "jobTitle": AUTHOR["job_title"], "description": AUTHOR["description"], "sameAs": AUTHOR["same_as"]}, "publisher": {"@type": "Person", "name": AUTHOR["name"], "url": AUTHOR["url"]}, "isBasedOn": {"@type": "CreativeWork", "name": "Vocus 原始發布頁", "url": article["vocus_url"]}},
         {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": BASE + "/"}, {"@type": "ListItem", "position": 2, "name": "文章", "item": BASE + "/blog/"}, {"@type": "ListItem", "position": 3, "name": article["title"], "item": url}]}
     ]}
     first_image = article["images"][0]["site_url"] if article["images"] else ""
@@ -183,7 +264,7 @@ def article_html(article: dict) -> str:
     topic_links = " ".join(f'<a href="../topics/{topic}/">{html.escape(TOPICS[topic]["name"])}</a>' for topic in article["topics"])
     return f'''<!doctype html>
 <html lang="zh-Hant-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{html.escape(article["seo_title"])}</title><meta name="description" content="{html.escape(article["description"])}"><meta name="robots" content="index,follow"><link rel="canonical" href="{url}"><meta property="og:title" content="{html.escape(article["title"])}"><meta property="og:description" content="{html.escape(article["description"])}"><meta property="og:type" content="article"><meta property="og:url" content="{url}">{og}<meta property="article:published_time" content="{article["published_at"]}"><link rel="alternate" type="application/rss+xml" title="Orikan 李泰欣文章 RSS" href="../../rss.xml"><link rel="stylesheet" href="../styles.css"><script type="application/ld+json">{json.dumps(graph, ensure_ascii=False, separators=(",", ":"))}</script></head>
-<body><header class="site-header"><nav class="site-nav" aria-label="主要導覽"><a class="brand" href="../../">ORIKAN</a><div class="nav-links"><a href="../../">首頁</a><a href="../../#courses">課程</a><a href="../">文章</a><a href="../../#contact">聯繫我</a></div></nav></header><main class="wrap article-shell"><nav class="breadcrumbs" aria-label="麵包屑"><a href="../../">首頁</a><span aria-hidden="true">/</span><a href="../">文章</a><span aria-hidden="true">/</span><span>{html.escape(article["title"])}</span></nav><div class="eyebrow">Vocus 同步文章</div><h1>{html.escape(article["title"])}</h1><div class="article-meta">作者：Orikan 李泰欣　·　發布：{article["published_at"].replace("-", "/")}　·　<a href="{article["vocus_url"]}" rel="noopener noreferrer">查看 Vocus 原始發布頁 ↗</a></div><nav class="article-topics" aria-label="文章主題">主題：{topic_links}</nav>{cover}<article class="article-body">{article["body"]}</article><aside class="citation"><strong>同步來源</strong><p>本文與圖片均來自已公開的 Vocus 文章；官網保留原始發布頁連結。</p></aside><aside class="cta"><h2>想把這套思考用在銷售與團隊？</h2><p>從客戶開發、需求診斷到成交，先找到你現在真正卡住的那一段。</p><a class="button" href="../../#contact">和我聊聊</a></aside></main><footer>© 2026 Orikan 李泰欣 · <a href="../">回到文章列表</a> · <a href="../../rss.xml">RSS</a></footer></body></html>\n'''
+<body><header class="site-header"><nav class="site-nav" aria-label="主要導覽"><a class="brand" href="../../">ORIKAN</a><div class="nav-links"><a href="../../">首頁</a><a href="../../#courses">課程</a><a href="../">文章</a><a href="../../#contact">聯繫我</a></div></nav></header><main class="wrap article-shell"><nav class="breadcrumbs" aria-label="麵包屑"><a href="../../">首頁</a><span aria-hidden="true">/</span><a href="../">文章</a><span aria-hidden="true">/</span><span>{html.escape(article["title"])}</span></nav><div class="eyebrow">Orikan 李泰欣／Vocus 同步文章</div><h1>{html.escape(article["title"])}</h1><div class="article-meta"><strong>本文作者：</strong><a href="../../#about">Orikan 李泰欣</a>　·　發布：{article["published_at"].replace("-", "/")}　·　<a href="{article["vocus_url"]}" rel="noopener noreferrer">查看 Vocus 原始發布頁 ↗</a></div><nav class="article-topics" aria-label="文章主題">主題：{topic_links}</nav>{cover}<article class="article-body">{article["body"]}</article>{author_card("../../img/portrait.jpg", "../../#about")}<aside class="citation"><strong>同步來源</strong><p>本文與圖片均來自已公開的 Vocus 文章；官網保留原始發布頁連結。</p></aside><aside class="cta"><h2>想把這套思考用在銷售與團隊？</h2><p>從客戶開發、需求診斷到成交，先找到你現在真正卡住的那一段。</p><a class="button" href="../../#contact">和我聊聊</a></aside></main><footer>© 2026 Orikan 李泰欣 · <a href="../">回到文章列表</a> · <a href="../../rss.xml">RSS</a></footer></body></html>\n'''
 
 
 def blog_index(articles: list[dict]) -> str:
@@ -192,9 +273,9 @@ def blog_index(articles: list[dict]) -> str:
         visual = f'<a class="card-image" href="{article["slug"]}/"><img src="media/{article["images"][0]["filename"]}" alt="{html.escape(article["images"][0]["alt"])}" loading="lazy"></a>' if article["images"] else '<div class="card-image card-image-empty" aria-label="此篇 Vocus 原文沒有圖片">Vocus 文章</div>'
         topics = " ".join(f'<a class="topic-chip" href="topics/{topic}/">{html.escape(TOPICS[topic]["name"])}</a>' for topic in article["topics"])
         cards.append(f'<article class="card">{visual}<div class="meta">{article["published_at"].replace("-", "/")}・Vocus 同步</div><h2><a href="{article["slug"]}/">{html.escape(article["title"])}</a></h2><p>{html.escape(article["description"])}</p><div class="card-topics">{topics}</div><a href="{article["slug"]}/">閱讀文章 →</a></article>')
-    graph = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "文章｜Orikan 李泰欣", "url": BASE + "/blog/", "inLanguage": "zh-Hant-TW", "author": {"@type": "Person", "name": "Orikan 李泰欣", "url": BASE + "/#person"}}
+    graph = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "文章｜Orikan 李泰欣", "url": BASE + "/blog/", "inLanguage": "zh-Hant-TW", "author": {"@type": "Person", "name": AUTHOR["name"], "url": AUTHOR["url"], "image": AUTHOR["image"], "jobTitle": AUTHOR["job_title"], "description": AUTHOR["description"], "sameAs": AUTHOR["same_as"]}}
     topic_nav = "".join(f'<a class="topic-chip" href="topics/{slug}/">{html.escape(topic["name"])}</a>' for slug, topic in TOPICS.items())
-    return f'''<!doctype html><html lang="zh-Hant-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>銷售、客戶溝通與工作方法文章｜Orikan 李泰欣</title><meta name="description" content="Orikan 李泰欣的銷售、客戶溝通、業務成長與思考學習文章；所有已公開 Vocus 原文與原圖均同步於此。"><meta name="robots" content="index,follow"><link rel="canonical" href="{BASE}/blog/"><meta property="og:title" content="銷售、客戶溝通與工作方法文章｜Orikan 李泰欣"><meta property="og:description" content="銷售、客戶經營、成交與工作方法文章。"><meta property="og:type" content="website"><meta property="og:url" content="{BASE}/blog/"><link rel="alternate" type="application/rss+xml" title="Orikan 李泰欣文章 RSS" href="../rss.xml"><link rel="stylesheet" href="styles.css"><script type="application/ld+json">{json.dumps(graph, ensure_ascii=False, separators=(",", ":"))}</script></head><body><header class="site-header"><nav class="site-nav" aria-label="主要導覽"><a class="brand" href="../">ORIKAN</a><div class="nav-links"><a href="../">首頁</a><a href="../#courses">課程</a><a href="./" aria-current="page">文章</a><a href="../#contact">聯繫我</a></div></nav></header><main><section class="hero"><div class="wrap"><div class="eyebrow">Vocus / Journal</div><h1>把銷售與工作，想得更清楚。</h1><p class="lead">銷售、客戶溝通、業務成長與思考學習；所有已公開 Vocus 文章與原圖同步在這裡。</p><nav class="topic-nav" aria-label="文章主題">{topic_nav}</nav></div></section><section class="wrap grid" aria-label="文章列表">{''.join(cards)}</section></main><footer>© 2026 Orikan 李泰欣 · <a href="../rss.xml">訂閱 RSS</a></footer></body></html>\n'''
+    return f'''<!doctype html><html lang="zh-Hant-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>銷售、客戶溝通與工作方法文章｜Orikan 李泰欣</title><meta name="description" content="Orikan 李泰欣的銷售、客戶溝通、業務成長與思考學習文章；所有已公開 Vocus 原文與原圖均同步於此。"><meta name="robots" content="index,follow"><link rel="canonical" href="{BASE}/blog/"><meta property="og:title" content="銷售、客戶溝通與工作方法文章｜Orikan 李泰欣"><meta property="og:description" content="前保時捷全台銷售第一名李泰欣，分享客戶經營、成交與工作方法。"><meta property="og:type" content="website"><meta property="og:url" content="{BASE}/blog/"><link rel="alternate" type="application/rss+xml" title="Orikan 李泰欣文章 RSS" href="../rss.xml"><link rel="stylesheet" href="styles.css"><script type="application/ld+json">{json.dumps(graph, ensure_ascii=False, separators=(",", ":"))}</script></head><body><header class="site-header"><nav class="site-nav" aria-label="主要導覽"><a class="brand" href="../">ORIKAN</a><div class="nav-links"><a href="../">首頁</a><a href="../#about">關於我</a><a href="../#courses">課程</a><a href="./" aria-current="page">文章</a><a href="../#contact">聯繫我</a></div></nav></header><main><section class="hero"><div class="wrap"><div class="eyebrow">Orikan 李泰欣／Vocus 同步文章</div><h1>把銷售與工作，想得更清楚。</h1><p class="lead">由 Orikan 李泰欣撰寫：銷售、客戶溝通、業務成長與思考學習；所有已公開 Vocus 原文與原圖同步在這裡。</p><nav class="topic-nav" aria-label="文章主題">{topic_nav}</nav></div></section><section class="wrap author-intro">{author_card("../img/portrait.jpg", "../#about")}</section><section class="wrap grid" aria-label="文章列表">{''.join(cards)}</section></main><footer>© 2026 Orikan 李泰欣 · <a href="../#about">關於我</a> · <a href="../rss.xml">訂閱 RSS</a></footer></body></html>\n'''
 
 
 def topic_html(topic_slug: str, topic: dict, articles: list[dict]) -> str:
@@ -217,14 +298,16 @@ def llms_text(articles: list[dict]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--queue", type=Path, required=True)
+    source = parser.add_mutually_exclusive_group(required=True)
+    source.add_argument("--queue", type=Path, help="Local Vocus publisher queue; only PUBLISHED rows are read.")
+    source.add_argument("--creator-id", help="Vocus creator ID; reads only the public article catalogue.")
     parser.add_argument("--site-root", type=Path, default=Path("."))
     parser.add_argument("--write", action="store_true")
     args = parser.parse_args()
-    queue = json.loads(args.queue.read_text(encoding="utf-8"))
-    items = [item for item in queue["items"] if item.get("status") == "PUBLISHED" and str(item.get("last_url", "")).startswith("https://vocus.cc/article/")]
-    if not items:
-        raise ValueError("no PUBLISHED Vocus queue items")
+    if args.queue:
+        items, reported_public_count, source_label = published_items_from_queue(args.queue)
+    else:
+        items, reported_public_count, source_label = published_items_from_creator(args.creator_id)
     root = args.site_root.resolve(); media_root = root / "blog/media"
     articles: list[dict] = []; binary: dict[Path, bytes] = {}
     for item in items:
@@ -249,7 +332,7 @@ def main() -> int:
         article["site_url"] = f"{BASE}/blog/{article['slug']}/"; article["body"] = render_body(nodes, media, title); articles.append(article)
     articles.sort(key=lambda article: (article["published_at"], article["vocus_article_id"]), reverse=True)
     latest = articles[0]
-    registry = {"schema_version": "2.0", "site_base_url": BASE, "generated_at": datetime.now(timezone.utc).date().isoformat(), "source": "Vocus public API read-only", "articles": [{key: value for key, value in article.items() if key != "body"} for article in articles]}
+    registry = {"schema_version": "2.0", "site_base_url": BASE, "generated_at": datetime.now(timezone.utc).date().isoformat(), "source": source_label, "reported_public_article_count": reported_public_count, "articles": [{key: value for key, value in article.items() if key != "body"} for article in articles]}
     sitemap_rows = [("/blog/", latest["updated_at"]), *[(f"/blog/topics/{topic_slug}/", latest["updated_at"]) for topic_slug in TOPICS], *[(f"/blog/{article['slug']}/", article["updated_at"]) for article in articles], *STATIC_PATHS]
     rss = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\"><channel><title>Orikan 李泰欣文章</title><link>" + BASE + "/blog/</link><description>Orikan 李泰欣的公開 Vocus 同步文章。</description><language>zh-TW</language>" + "".join(f"<item><title>{html.escape(article['title'])}</title><link>{article['site_url']}</link><guid>{article['site_url']}</guid><pubDate>{rss_date(article['published_at'])}</pubDate><description>{html.escape(article['description'])}</description><source url=\"{article['vocus_url']}\">Vocus 原始發布頁</source></item>" for article in articles) + "</channel></rss>\n"
     sitemap = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">" + "".join(f"<url><loc>{BASE}{path}</loc><lastmod>{stamp}</lastmod></url>" for path, stamp in sitemap_rows) + "</urlset>\n"
@@ -265,9 +348,16 @@ def main() -> int:
         topic_articles = [article for article in articles if topic_slug in article["topics"]]
         outputs[root / "blog" / "topics" / topic_slug / "index.html"] = topic_html(topic_slug, topic, topic_articles).encode()
     outputs.update(binary)
+    # A generated preview root must be self-contained. The production repo
+    # already has this file, but without adding it here a temporary test site
+    # renders the author card as a broken image even though the page markup is
+    # correct. This is the existing official portrait, never a replacement.
+    if not AUTHOR_IMAGE_SOURCE.is_file():
+        raise ValueError(f"missing official author portrait: {AUTHOR_IMAGE_SOURCE}")
+    outputs[root / "img/portrait.jpg"] = AUTHOR_IMAGE_SOURCE.read_bytes()
     if args.write:
         for path, content in outputs.items(): path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(content)
-    print(json.dumps({"overall": "PASS_LOCAL_WRITE" if args.write else "PASS_DRY_RUN", "published_count": len(articles), "image_count": sum(len(a['images']) for a in articles), "latest": {"title": latest['title'], "slug": latest['slug'], "cover": latest['images'][0]['site_url'] if latest['images'] else None}, "external_write_attempted": False}, ensure_ascii=False))
+    print(json.dumps({"overall": "PASS_LOCAL_WRITE" if args.write else "PASS_DRY_RUN", "source": source_label, "reported_public_article_count": reported_public_count, "published_count": len(articles), "image_count": sum(len(a['images']) for a in articles), "latest": {"title": latest['title'], "slug": latest['slug'], "cover": latest['images'][0]['site_url'] if latest['images'] else None}, "external_write_attempted": False}, ensure_ascii=False))
     return 0
 
 

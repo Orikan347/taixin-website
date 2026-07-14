@@ -11,6 +11,8 @@
 3. 發布紀錄指定 `PERSONAL_SITE_INTENDED_PRIMARY`。
 4. 官網產生器的 dry-run 通過，再加上 `--write` 寫入本機網站檔案。
 
+若同一篇文章已有官網清冊項目，還必須先跑 `scripts/audit_vocus_published_evidence.py`。已發布證據、immutable archive、官網清冊三者任一 hash 不同，狀態就是 `BLOCK_SYNC_NO_OVERWRITE`：不覆寫、不改 Vocus，先人工確認來源格式與 canonical，再決定是否建立新版本。
+
 執行範例（只寫本機官網，不會部署或呼叫 Vocus）：
 
 ```bash

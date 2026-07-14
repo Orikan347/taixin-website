@@ -1,0 +1,51 @@
+{
+  "audit": "vocus-published-evidence",
+  "overall": "PASS_FOR_PERSONAL_SITE_DEPLOY_PENDING_VOCUS_CANONICAL",
+  "policy": "never overwrite a website article when published evidence, immutable archive, registry hash, or canonical decision is unresolved",
+  "allow_pending_vocus_canonical": true,
+  "results": [
+    {
+      "record_id": "ORI-SYNC-20260713-VOCUS-6A5439EC",
+      "vocus_article_id": "6a5439ecfd8978000133a2d3",
+      "decision": "PERSONAL_SITE_DEPLOY_ALLOWED_PENDING_VOCUS_CANONICAL",
+      "finding": "PROVENANCE_HASH_MISMATCH_NOT_CONTENT_DRIFT_PROVEN",
+      "published_evidence": {
+        "status": 2,
+        "archive_hash_matches_record": true
+      },
+      "registry": {
+        "article_count_for_vocus_id": 1,
+        "hash_matches_published_evidence": false,
+        "site_url_matches_record": true
+      },
+      "public_snapshot_comparison": {
+        "status": 2,
+        "live_lexical_hash_matches_registry": true,
+        "archive_to_public_relationship": "ARCHIVE_TEXT_IS_PREFIX_OF_LIVE_PUBLIC_TEXT",
+        "archive_normalized_characters": 852,
+        "public_normalized_characters": 1040,
+        "public_additional_characters_after_archive": 188
+      },
+      "public_snapshot_resolves_registry_lineage": true,
+      "canonical": {
+        "status": "PENDING_MANUAL_CANONICAL_DECISION",
+        "required_before_sync": [
+          "Vocus public HTML canonical readback",
+          "personal-site public HTML canonical readback",
+          "owner-approved canonical ledger entry"
+        ]
+      },
+      "issues": [
+        "PUBLISHED_EVIDENCE_REGISTRY_HASH_MISMATCH"
+      ],
+      "manual_checks": [
+        "確認官網清冊 hash 的來源格式是否與已發布封存稿完全相同；未確認前不可覆寫文章。",
+        "提供並核對 canonical 決策台帳；不能以預設值決定哪一站是主版本。",
+        "已確認公開 Vocus 版本含封存稿全文再加發布後文字；請建立新的公開版本 evidence record，不可改寫舊 archive hash。",
+        "此決策只允許個人網站發布；Vocus canonical 未讀回前，不得修改 Vocus 或宣稱跨站 canonical 已完成。"
+      ],
+      "external_write_attempted": false
+    }
+  ],
+  "external_write_attempted": false
+}
