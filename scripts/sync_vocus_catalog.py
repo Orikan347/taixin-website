@@ -16,6 +16,7 @@ import html
 import json
 import mimetypes
 import re
+import shutil
 import sys
 from datetime import datetime, timezone
 from email.utils import format_datetime
@@ -31,6 +32,17 @@ CONTENTS_API = "https://api.vocus.cc/api/contents"
 UA = "Orikan-Vocus-Catalog-Mirror/1.0 (public-read-only)"
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 AUTHOR_IMAGE_SOURCE = PROJECT_ROOT / "img/portrait.jpg"
+# A candidate needs enough of the public shell to exercise the Blog like the
+# live site. Keep this deliberately small and explicit: it must never copy
+# secrets, internal working files, deployment configuration, or arbitrary
+# files from the accepted checkout into a generated candidate.
+CANDIDATE_SHELL_FILES = (
+    Path("index.html"),
+    Path("404.html"),
+    Path("robots.txt"),
+    Path("blog/styles.css"),
+    Path("img/portrait.jpg"),
+)
 AUTHOR = {
     "name": "Orikan 李泰欣",
     "url": BASE + "/#person",
@@ -318,6 +330,30 @@ def sitemap_xml(rows: list[tuple[str, str]]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def seed_candidate_shell(baseline_root: Path, candidate_root: Path) -> None:
+    """Copy the minimum public shell into an *empty* isolated candidate.
+
+    The catalogue generator owns generated articles, feeds and image files,
+    while these shared files make the candidate renderable and allow the
+    crawler-facing verifier to test it end to end. A non-empty target is
+    rejected so a stale or manually-added file cannot silently join a release.
+    """
+    baseline = baseline_root.resolve()
+    candidate = candidate_root.resolve()
+    if baseline == candidate:
+        raise ValueError("--candidate-site-root cannot equal --baseline-site-root")
+    if candidate.exists() and any(candidate.iterdir()):
+        raise ValueError("--candidate-site-root must be an empty isolated directory")
+    candidate.mkdir(parents=True, exist_ok=True)
+    for relative_path in CANDIDATE_SHELL_FILES:
+        source = baseline / relative_path
+        if not source.is_file():
+            raise ValueError(f"missing required candidate shell file: {relative_path}")
+        destination = candidate / relative_path
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, destination)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     source = parser.add_mutually_exclusive_group(required=True)
@@ -325,12 +361,15 @@ def main() -> int:
     source.add_argument("--creator-id", help="Vocus creator ID; reads only the public article catalogue.")
     parser.add_argument("--site-root", type=Path, default=Path("."), help="Read-only/dry-run output root. Cannot be used for --write.")
     parser.add_argument("--candidate-site-root", type=Path, help="Required isolated output root for --write; never point this at the production checkout.")
+    parser.add_argument("--baseline-site-root", type=Path, default=PROJECT_ROOT, help="Accepted public site used only to seed the candidate's explicit public shell.")
     parser.add_argument("--write", action="store_true", help="Write only to --candidate-site-root after fetching public Vocus content.")
     args = parser.parse_args()
     if args.write and not args.candidate_site_root:
         raise ValueError("--write requires --candidate-site-root; direct writes to --site-root are blocked")
     if args.write and args.candidate_site_root.resolve() == PROJECT_ROOT.resolve():
         raise ValueError("--candidate-site-root cannot be this production checkout")
+    if args.write:
+        seed_candidate_shell(args.baseline_site_root, args.candidate_site_root)
     if args.queue:
         items, reported_public_count, source_label = published_items_from_queue(args.queue)
     else:

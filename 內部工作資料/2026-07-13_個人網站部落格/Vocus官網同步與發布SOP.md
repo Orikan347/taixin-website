@@ -39,12 +39,9 @@ python3 scripts/audit_vocus_published_evidence.py \
 ```sh
 python3 scripts/sync_vocus_catalog.py \
   --creator-id 694518cffd89780001ebc82b \
-  --site-root /private/tmp/taixin-vocus-blog-stage \
+  --baseline-site-root . \
+  --candidate-site-root /private/tmp/taixin-vocus-blog-stage \
   --write
-
-cp blog/styles.css /private/tmp/taixin-vocus-blog-stage/blog/styles.css
-cp robots.txt /private/tmp/taixin-vocus-blog-stage/robots.txt
-cp 404.html /private/tmp/taixin-vocus-blog-stage/404.html
 
 python3 scripts/verify_vocus_catalog.py \
   --site-root /private/tmp/taixin-vocus-blog-stage \
