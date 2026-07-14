@@ -56,6 +56,12 @@ class ReleaseScopeGateTests(unittest.TestCase):
             self.assertEqual(result.returncode, 2, result.stderr)
             self.assertIn("worker/index.js", report["disallowed_paths"])
 
+    def test_accepts_utf8_blog_tracking_path(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root, audit = self.fixture(Path(temporary), extra_path="內部工作資料/2026-07-13_個人網站部落格/release-note.md")
+            result = self.gate(root, audit)
+            self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_rejects_unapproved_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root, audit = self.fixture(Path(temporary), audit_pass=False)

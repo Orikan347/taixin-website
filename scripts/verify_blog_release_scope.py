@@ -36,7 +36,7 @@ DEFAULT_ALLOWED = (
 
 
 def git(root: Path, *args: str) -> str:
-    result = subprocess.run(["git", *args], cwd=root, text=True, capture_output=True, check=False)
+    result = subprocess.run(["git", "-c", "core.quotepath=false", *args], cwd=root, text=True, capture_output=True, check=False)
     if result.returncode:
         raise ValueError(result.stderr.strip() or f"git {' '.join(args)} failed")
     return result.stdout
