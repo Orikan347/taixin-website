@@ -65,6 +65,7 @@ class ReleaseScopeGateTests(unittest.TestCase):
     def test_accepts_vocus_candidate_transition_gate_files(self) -> None:
         for path in (
             "scripts/test_sync_vocus_catalog_candidate_mode.py",
+            "scripts/test_sitemap_xml_generation.py",
             "scripts/verify_vocus_catalog_transition.py",
             "scripts/test_verify_vocus_catalog_transition.py",
         ):
