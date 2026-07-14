@@ -296,6 +296,28 @@ def llms_text(articles: list[dict]) -> str:
     return f'''# Orikan 李泰欣\n\n> Orikan 李泰欣的個人官方網站，提供銷售、客戶溝通、業務成長與思考學習文章。文章保留原始 Vocus 發布頁連結，官網同步已公開原文與原圖。\n\n## 主要主題\n{topic_lines}\n\n## 作者與網站\n- 官方網站: {BASE}/\n- 文章首頁: {BASE}/blog/\n- RSS: {BASE}/rss.xml\n- Sitemap: {BASE}/sitemap.xml\n- 作者: Orikan 李泰欣\n- Instagram: https://www.instagram.com/eintaixin/\n\n## 文章\n{article_lines}\n'''
 
 
+def sitemap_xml(rows: list[tuple[str, str]]) -> str:
+    """Render a crawler-readable sitemap with stable, standards-compliant layout.
+
+    Whitespace is technically optional in XML, but keeping one element per
+    line makes the generated file auditable and avoids relying on a crawler's
+    tolerance for a single long XML token stream.
+    """
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for path, stamp in rows:
+        lines.extend((
+            "  <url>",
+            f"    <loc>{html.escape(BASE + path)}</loc>",
+            f"    <lastmod>{html.escape(stamp)}</lastmod>",
+            "  </url>",
+        ))
+    lines.append("</urlset>")
+    return "\n".join(lines) + "\n"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     source = parser.add_mutually_exclusive_group(required=True)
@@ -340,7 +362,7 @@ def main() -> int:
     registry = {"schema_version": "2.0", "site_base_url": BASE, "generated_at": datetime.now(timezone.utc).date().isoformat(), "source": source_label, "reported_public_article_count": reported_public_count, "articles": [{key: value for key, value in article.items() if key != "body"} for article in articles]}
     sitemap_rows = [("/blog/", latest["updated_at"]), *[(f"/blog/topics/{topic_slug}/", latest["updated_at"]) for topic_slug in TOPICS], *[(f"/blog/{article['slug']}/", article["updated_at"]) for article in articles], *STATIC_PATHS]
     rss = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\"><channel><title>Orikan 李泰欣文章</title><link>" + BASE + "/blog/</link><description>Orikan 李泰欣的公開 Vocus 同步文章。</description><language>zh-TW</language>" + "".join(f"<item><title>{html.escape(article['title'])}</title><link>{article['site_url']}</link><guid>{article['site_url']}</guid><pubDate>{rss_date(article['published_at'])}</pubDate><description>{html.escape(article['description'])}</description><source url=\"{article['vocus_url']}\">Vocus 原始發布頁</source></item>" for article in articles) + "</channel></rss>\n"
-    sitemap = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">" + "".join(f"<url><loc>{BASE}{path}</loc><lastmod>{stamp}</lastmod></url>" for path, stamp in sitemap_rows) + "</urlset>\n"
+    sitemap = sitemap_xml(sitemap_rows)
     outputs: dict[Path, bytes] = {root / "data/blog/articles.json": (json.dumps(registry, ensure_ascii=False, indent=2) + "\n").encode(), root / "blog/index.html": blog_index(articles).encode(), root / "rss.xml": rss.encode(), root / "sitemap.xml": sitemap.encode(), root / "llms.txt": llms_text(articles).encode()}
     for article in articles:
         outputs[root / "blog" / article["slug"] / "index.html"] = article_html(article).encode()
