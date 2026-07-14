@@ -31,6 +31,10 @@ DEFAULT_ALLOWED = (
     "scripts/verify_blog_release_scope.py",
     "scripts/test_audit_vocus_published_evidence.py",
     "scripts/test_verify_blog_release_scope.py",
+    "scripts/verify_public_blog_discovery.py",
+    "scripts/test_verify_public_blog_discovery.py",
+    "scripts/verify_blog_search_metrics_snapshot.py",
+    "scripts/test_verify_blog_search_metrics_snapshot.py",
     "內部工作資料/2026-07-13_個人網站部落格/",
 )
 

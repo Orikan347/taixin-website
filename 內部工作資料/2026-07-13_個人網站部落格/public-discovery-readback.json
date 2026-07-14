@@ -1,0 +1,200 @@
+{
+  "audit": "public-blog-discovery-readback",
+  "overall": "PASS",
+  "base_url": "https://orikan347.github.io/taixin-website",
+  "article_count": 37,
+  "robots_http": 200,
+  "sitemap_http": 200,
+  "rss_http": 200,
+  "blog_index_http": 200,
+  "articles": [
+    {
+      "slug": "ability-for-family",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "virtue-capability-results-pyramid",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "expand-mind-understand-others",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "client-says-ask-spouse",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "client-just-looking-response",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "reactivate-old-customers",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "consultative-selling",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "slow-steady-sales-performance",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "personal-branding-and-self-cultivation",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "learning-anxiety",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "learning-knowledge-into-ability",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "sales-drive-and-boundaries",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "sales-moderation-and-principles",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "important-information-map",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "science-and-wisdom",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "harmony-without-uniformity",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "integrity-in-words-and-actions",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "cognitive-dissonance-and-growth",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "true-leadership-xiang-yu-liu-bang",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "client-follow-up-no-reply",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "sales-skills-blank-mind",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "real-estate-cold-market-sales",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "insurance-sales-system",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "ai-prompting-starts-with-the-question",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "mental-overthinking-illusion-of-control",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "manifestation-needs-action",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "confidence-self-esteem-growth-mindset",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "why-hard-working-still-stuck",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "stress-management-challenge-and-ability",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "introverts-can-succeed-in-sales",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "everyone-is-selling",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "calendar-travel-time-for-sales",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "stop-wasting-time-on-data-entry",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "sales-mediocrity-trap",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "2025-year-of-admitting-ignorance",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "sales-should-earn-the-right-money",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "slug": "stop-begging-clients-to-reply",
+      "status": 200,
+      "errors": []
+    }
+  ],
+  "errors": [],
+  "search_console_and_bing": "PENDING_OWNER_ACCOUNT_READBACK",
+  "external_write_attempted": false
+}
