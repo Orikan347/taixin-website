@@ -103,6 +103,7 @@ SEO_OVERRIDES = {
     "695771ecfd89780001a9cdcf": {"slug": "2025-year-of-admitting-ignorance", "description": "2025 年，我用閱讀、聽書與教學實驗重新認識無知。把知識變成能分享、能實踐的判斷力，才是學習的開始。", "topics": ["thinking-practice"]},
     "695188cbfd89780001967a80": {"slug": "sales-should-earn-the-right-money", "description": "業務不是什麼錢都賺，也不是不敢賺錢。用中庸與價值交換，找到專業、收入與長期信任的平衡。", "topics": ["sales-growth", "client-conversations"]},
     "694cdcd0fd8978000152da85": {"slug": "stop-begging-clients-to-reply", "description": "你越拜託客戶，客戶越想封鎖。避開四個常見聯絡錯誤，用三個做法把銷售接觸從打擾變成期待。", "topics": ["client-conversations"]},
+    "6a56dd79fd8978000134b701": {"slug": "inner-strength-bigger-world", "description": "內心有多強大，能看見的世界就有多大；先穩住心，才有能力承接更大的選擇與責任。", "topics": ["thinking-practice"]},
     "6a5439ecfd8978000133a2d3": {"description": "想提升業績與影響力，不只靠技巧；用德性、能力與結果金字塔，重新建立可被看見的價值。", "topics": ["sales-growth"]},
     "6a558c04fd8978000186f2eb": {"slug": "ability-for-family", "description": "從童年不敢開口的願望，到送母親休旅車的故事；李泰欣談能力、選擇與把努力用來照顧家人的意義。", "topics": ["thinking-practice"]},
     "6a5196d6fd8978000180e87e": {"slug": "expand-mind-understand-others", "description": "如何不被自己的見聞與情緒困住？從張載的觀點，練習把心放大，理解人與世界。", "topics": ["thinking-practice"]},
@@ -139,7 +140,7 @@ def published_items_from_queue(queue_path: Path) -> tuple[list[dict], int | None
     items = [item for item in queue["items"] if item.get("status") == "PUBLISHED" and str(item.get("last_url", "")).startswith("https://vocus.cc/article/")]
     if not items:
         raise ValueError("no PUBLISHED Vocus queue items")
-    return items, None, "local published queue"
+    return items, len(items), "local published queue"
 
 
 def published_items_from_creator(creator_id: str) -> tuple[list[dict], int, str]:
@@ -408,8 +409,10 @@ def main() -> int:
         old_slug = re.sub(r"^\d{4}(?:-unknown)?-\d{2}(?:-\d{2})?_", "", next(item["id"] for item in items if item["last_url"].endswith(article["vocus_article_id"]))).replace("_", "-")
         old_slug = re.sub(r"[^a-zA-Z0-9-]+", "-", old_slug).strip("-").lower()
         old_slug = old_slug if len(old_slug) >= 4 else f"vocus-{article['vocus_article_id']}"
-        if old_slug != article["slug"]:
-            outputs[root / "blog" / old_slug / "index.html"] = redirect_html(old_slug, article).encode()
+        legacy_slugs = {old_slug, f"vocus-{article['vocus_article_id']}"}
+        for legacy_slug in sorted(legacy_slugs):
+            if legacy_slug != article["slug"]:
+                outputs[root / "blog" / legacy_slug / "index.html"] = redirect_html(legacy_slug, article).encode()
     for topic_slug, topic in TOPICS.items():
         topic_articles = [article for article in articles if topic_slug in article["topics"]]
         outputs[root / "blog" / "topics" / topic_slug / "index.html"] = topic_html(topic_slug, topic, topic_articles).encode()

@@ -1,10 +1,46 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-14",
+  "generated_at": "2026-07-15",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 37,
+  "reported_public_article_count": 38,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A56DD79FD8978000134B701",
+      "vocus_article_id": "6a56dd79fd8978000134b701",
+      "slug": "inner-strength-bigger-world",
+      "title": "【內心有多強大,決定世界有多大】",
+      "seo_title": "【內心有多強大,決定世界有多大】｜Orikan 李泰欣",
+      "description": "內心有多強大，能看見的世界就有多大；先穩住心，才有能力承接更大的選擇與責任。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "【內心有多強大,決定世界有多大】",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-15",
+      "updated_at": "2026-07-15",
+      "vocus_url": "https://vocus.cc/article/6a56dd79fd8978000134b701",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/inner-strength-bigger-world/",
+      "source_sha256": "df76e42b59d0b08d31c26bbce1a3137db351d2de8be971c539dbdc446fc3aaf7",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/d65153a7-9908-488c-bdc7-f560473bbb79.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a56dd79fd8978000134b701-1.png",
+          "filename": "6a56dd79fd8978000134b701-1.png",
+          "sha256": "0f889046a193bbfb31622a0b7c2f092172c7fe791f37355a2bcc31d21b68331c",
+          "alt": "【內心有多強大,決定世界有多大】｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/3c45f528-d3af-4814-b491-0388266a6e24.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a56dd79fd8978000134b701-2.png",
+          "filename": "6a56dd79fd8978000134b701-2.png",
+          "sha256": "61c85f315659ceeff8c254fea71d0daf9483f1f743bacc02429022c06c9c4579",
+          "alt": "【內心有多強大,決定世界有多大】｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A558C04FD8978000186F2EB",
       "vocus_article_id": "6a558c04fd8978000186f2eb",
@@ -56,7 +92,7 @@
         "業務成長與工作方法"
       ],
       "published_at": "2026-07-13",
-      "updated_at": "2026-07-13",
+      "updated_at": "2026-07-14",
       "vocus_url": "https://vocus.cc/article/6a5439ecfd8978000133a2d3",
       "site_url": "https://orikan347.github.io/taixin-website/blog/virtue-capability-results-pyramid/",
       "source_sha256": "b8f9042e7c72c00434b1ac076a7dd7636db07a5a42f52b76751c0ddd3ced701b",
