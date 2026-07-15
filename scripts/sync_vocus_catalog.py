@@ -195,7 +195,9 @@ def slug_for(item: dict, article_id: str) -> str:
     raw = re.sub(r"^\d{4}(?:-unknown)?-\d{2}(?:-\d{2})?_", "", item.get("id", ""))
     raw = raw.replace("_", "-")
     raw = re.sub(r"[^a-zA-Z0-9-]+", "-", raw).strip("-").lower()
-    return raw if len(raw) >= 4 else f"vocus-{article_id}"
+    if len(raw) >= 4 and not raw.startswith("vocus-"):
+        return raw
+    return f"article-{article_id[:8]}"
 
 
 def text_of(node: dict) -> str:
