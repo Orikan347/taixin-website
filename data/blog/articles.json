@@ -1,10 +1,46 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-15",
+  "generated_at": "2026-07-16",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 38,
+  "reported_public_article_count": 39,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A582ED4FD8978000158473C",
+      "vocus_article_id": "6a582ed4fd8978000158473c",
+      "slug": "article-6a582ed4",
+      "title": "工欲善其事 選對人與工具",
+      "seo_title": "工欲善其事 選對人與工具｜Orikan 李泰欣",
+      "description": "子貢問為仁。子曰：工欲善其事，必先利其器。居是邦也，事其大夫之賢者，友其士之仁者。 子曰：志士仁人，無求生以害仁，有殺身以成仁。  這兩段都是我們很常聽到的成語出處，尤其是「工欲善其事，必先利其器」。  原來這句話講的是問怎麼培養「仁」，孔子的回覆是：事奉賢者，跟仁德的人交朋友。  你想要培養仁德，",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "工欲善其事 選對人與工具",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-16",
+      "updated_at": "2026-07-16",
+      "vocus_url": "https://vocus.cc/article/6a582ed4fd8978000158473c",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a582ed4/",
+      "source_sha256": "d3d6758df19fad3ba0eeff7310adbb045f440a0c8faa04a83a1cffbf4cf32c34",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/df1f13e5-405d-485e-8be2-cd2c3f89769a.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a582ed4fd8978000158473c-1.png",
+          "filename": "6a582ed4fd8978000158473c-1.png",
+          "sha256": "0b82d24b8dbbe3d640ca8ff499c6dbea692886bb4d7222444fa3a832dccc80b6",
+          "alt": "工欲善其事 選對人與工具｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/87a5d68b-e075-424e-baed-1dafdb29b4e0.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a582ed4fd8978000158473c-2.png",
+          "filename": "6a582ed4fd8978000158473c-2.png",
+          "sha256": "a532e730f1e575a7d205f9137a3e6f54ae6007ce7d40e05f3053b5e4106325c9",
+          "alt": "工欲善其事 選對人與工具｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A56DD79FD8978000134B701",
       "vocus_article_id": "6a56dd79fd8978000134b701",
