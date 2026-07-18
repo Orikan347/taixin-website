@@ -1,10 +1,46 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-17",
+  "generated_at": "2026-07-18",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 40,
+  "reported_public_article_count": 41,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A5AD160FD89780001B2923C",
+      "vocus_article_id": "6a5ad160fd89780001b2923c",
+      "slug": "article-6a5ad160",
+      "title": "群居終日 留名單做傻事",
+      "seo_title": "群居終日 留名單做傻事｜Orikan 李泰欣",
+      "description": "子曰：群居終日，言不及義， 好行小慧，難矣哉！  有些人喜歡一群人在一起， 談論一些瑣碎的小事， 沒有談論有價值的事，耍小聰明。  有些人沒有辦法忍受孤獨， 找了很多人相處在一起， 只是在一群人當中感受到更孤獨而已。 所以，人要學會獨處。 想要自由，你就要承載孤獨， 享受自己的時間， 好好地思考、學",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "群居終日 留名單做傻事",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-18",
+      "updated_at": "2026-07-18",
+      "vocus_url": "https://vocus.cc/article/6a5ad160fd89780001b2923c",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a5ad160/",
+      "source_sha256": "1aaa87cbb7bb7bb61b971ea32aceef9afcb17a6b87b28b65f830848eed031012",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/b161cd13-ea84-434f-b047-3600ce6e725d.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a5ad160fd89780001b2923c-1.png",
+          "filename": "6a5ad160fd89780001b2923c-1.png",
+          "sha256": "cb76cc836e55c3880da81528776ad32b2973dc29c34eb424e7c3e89c6a28959b",
+          "alt": "群居終日 留名單做傻事｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/c3189229-15bb-4acb-a16e-8d2326920729.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a5ad160fd89780001b2923c-2.png",
+          "filename": "6a5ad160fd89780001b2923c-2.png",
+          "sha256": "baadd5b0d49529589c7f652641e3560bbb83e866e0275778de16ff1fbdad8528",
+          "alt": "群居終日 留名單做傻事｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A598029FD89780001DBE866",
       "vocus_article_id": "6a598029fd89780001dbe866",
