@@ -1,10 +1,46 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-19",
+  "generated_at": "2026-07-20",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 42,
+  "reported_public_article_count": 43,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A5D74D2FD897800013AA44B",
+      "vocus_article_id": "6a5d74d2fd897800013aa44b",
+      "slug": "article-6a5d74d2",
+      "title": "成長的四個難點",
+      "seo_title": "成長的四個難點｜Orikan 李泰欣",
+      "description": "你會不會覺得成長是一件很累的事？  「成長是困難的」，認清成長的四個難點：  1. 學習的悖論 這是樊登提出來的概念。你認同一個人一定要改變才會成長、才會更快嗎？沒錯。然而，你最需要的東西，往往是你「不知道自己不知道」的東西。正因為你不知道，你根本不曉得要從何學起，甚至覺得沒有學習的必要，這就是第一",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "成長的四個難點",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-20",
+      "updated_at": "2026-07-20",
+      "vocus_url": "https://vocus.cc/article/6a5d74d2fd897800013aa44b",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a5d74d2/",
+      "source_sha256": "73c20cb367000bf1698f0bb35ba586e61ef87d5ec7b7c9c127c45c6454c26571",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/ca547e38-13fc-4117-a01f-58e2cfc52957.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a5d74d2fd897800013aa44b-1.png",
+          "filename": "6a5d74d2fd897800013aa44b-1.png",
+          "sha256": "7e420c3fe415550b7a66a9738adaf652e0b747aff0f5a9223d0dcf98e06d43dd",
+          "alt": "成長的四個難點｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/3db41353-3362-4d91-95be-72ef9f684d96.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a5d74d2fd897800013aa44b-2.png",
+          "filename": "6a5d74d2fd897800013aa44b-2.png",
+          "sha256": "56aee58dfda9b5b86d71be5071befd36e0e97d1c26bb261b788f02271200612f",
+          "alt": "成長的四個難點｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A5C22CAFD8978000109BF91",
       "vocus_article_id": "6a5c22cafd8978000109bf91",
