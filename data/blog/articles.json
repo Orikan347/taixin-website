@@ -1,10 +1,46 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-20",
+  "generated_at": "2026-07-21",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 43,
+  "reported_public_article_count": 44,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A5EC662FD897800013368A4",
+      "vocus_article_id": "6a5ec662fd897800013368a4",
+      "slug": "article-6a5ec662",
+      "title": "順境看方向逆境看底線",
+      "seo_title": "順境看方向逆境看底線｜Orikan 李泰欣",
+      "description": "衛靈公問陳於孔子。孔子對曰：「俎豆之事，則嘗聞之矣；軍旅之事，未之學也。」明日遂行。 在陳絕糧，從者病，莫能興。子路慍見曰：「君子亦有窮乎？」子曰：「君子固窮，小人窮斯濫矣。」  第一段是關於衛靈公問孔子怎麼打仗的時候。孔子直接回說：「祭祀的事情我倒是聽過，但如果是打仗的事情，我從來沒有學過。」隔天",
+      "topics": [
+        "thinking-practice"
+      ],
+      "keywords": [
+        "順境看方向逆境看底線",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-21",
+      "updated_at": "2026-07-21",
+      "vocus_url": "https://vocus.cc/article/6a5ec662fd897800013368a4",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a5ec662/",
+      "source_sha256": "744739fab756ec5621ff223918d78a172f11b3c74bf97fd9439f0b44cbc7ce3b",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/eea37eee-1e9b-413a-8d05-3313009cd8f7.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a5ec662fd897800013368a4-1.png",
+          "filename": "6a5ec662fd897800013368a4-1.png",
+          "sha256": "6054ce750d080f09ff540627648215f2f4b7798227814898c98887691567bd79",
+          "alt": "順境看方向逆境看底線｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/b9efc551-6eb3-4136-a82d-3b82630241bb.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a5ec662fd897800013368a4-2.png",
+          "filename": "6a5ec662fd897800013368a4-2.png",
+          "sha256": "e2f9e2d527b3dc9e61a87a4ebf730b810156c0eddfa80fdc1a4485c4edfc71de",
+          "alt": "順境看方向逆境看底線｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A5D74D2FD897800013AA44B",
       "vocus_article_id": "6a5d74d2fd897800013aa44b",
