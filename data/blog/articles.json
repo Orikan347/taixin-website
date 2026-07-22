@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-21",
+  "generated_at": "2026-07-22",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 44,
+  "reported_public_article_count": 45,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A6017C7FD8978000187B337",
+      "vocus_article_id": "6a6017c7fd8978000187b337",
+      "slug": "article-6a6017c7",
+      "title": "明知很難，為什麼還要繼續做？",
+      "seo_title": "明知很難，為什麼還要繼續做？｜Orikan 李泰欣",
+      "description": "公伯寮愬子路於季孫。子服景伯以告，曰：「夫子固有惑志於公伯寮，吾力猶能肆諸市朝。」子曰：「道之將行也與，命也；道之將廢也與，命也。公伯寮其如命何！」 子曰：「賢者闢世，其次闢地，其次闢色，其次闢言。」子曰：「作者七人矣。」 子路宿於石門。晨門曰：「奚自？」子路曰：「自孔氏。」曰：「是知其不可而為之者",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "知其不可而為之",
+        "逆境堅持",
+        "環境選擇",
+        "自我成長"
+      ],
+      "keywords": [
+        "明知很難，為什麼還要繼續做？",
+        "知其不可而為之",
+        "逆境堅持",
+        "環境選擇",
+        "自我成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-22",
+      "updated_at": "2026-07-22",
+      "vocus_url": "https://vocus.cc/article/6a6017c7fd8978000187b337",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a6017c7/",
+      "source_sha256": "d41cd3a885556b8e06c21d3b51276526b06fd6bbb4e9dc1649330e5a2a241ea0",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/49aa44ca-9d24-4b7e-a70a-1ae5054df159.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a6017c7fd8978000187b337-1.png",
+          "filename": "6a6017c7fd8978000187b337-1.png",
+          "sha256": "cf926740ddd4f9c9e347e6a64a852781dd7840532efac12e085e2bcb8542ee77",
+          "alt": "明知很難，為什麼還要繼續做？｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/660f1948-6b0b-44a9-a8a4-0b151fc64781.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a6017c7fd8978000187b337-2.png",
+          "filename": "6a6017c7fd8978000187b337-2.png",
+          "sha256": "da5211f1dbbc01c82d56567c16fee8fbbcd71b49e6fc390ce77beeeb24411293",
+          "alt": "明知很難，為什麼還要繼續做？｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A5EC662FD897800013368A4",
       "vocus_article_id": "6a5ec662fd897800013368a4",
