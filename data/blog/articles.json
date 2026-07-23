@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-22",
+  "generated_at": "2026-07-23",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 45,
+  "reported_public_article_count": 46,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A616946FD89780001DD6EC7",
+      "vocus_article_id": "6a616946fd89780001dd6ec7",
+      "slug": "article-6a616946",
+      "title": "遇到挫折，先怪環境還是先求諸己？",
+      "seo_title": "遇到挫折，先怪環境還是先求諸己？｜Orikan 李泰欣",
+      "description": "今天收到 Jerry 的回饋。  Jerry 是一位有近 20 年資歷的銷售顧問。   但真正讓我佩服的，不是他的資歷。  而是他明明很資深，   卻還願意問、願意學。  他讓我想到孔子說的：   「敏而好學，不恥下問。」   聰慧、好學，   也不因為對方比自己年輕，   就覺得不想開口詢問  還",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "求諸己",
+        "自我覺察",
+        "認知失調",
+        "銷售成長"
+      ],
+      "keywords": [
+        "遇到挫折，先怪環境還是先求諸己？",
+        "求諸己",
+        "自我覺察",
+        "認知失調",
+        "銷售成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-23",
+      "updated_at": "2026-07-23",
+      "vocus_url": "https://vocus.cc/article/6a616946fd89780001dd6ec7",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a616946/",
+      "source_sha256": "fc79d0ffb43af6d0b530a3080c02381f76b8e87b78de647bbad759f48b04f1e9",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/e0fce680-3832-45ec-8f79-13e51ef8f87b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a616946fd89780001dd6ec7-1.png",
+          "filename": "6a616946fd89780001dd6ec7-1.png",
+          "sha256": "c1d8d6ef72074858975ce1920932ee98879750e35aa6e0b42a0136ec22c3352e",
+          "alt": "遇到挫折，先怪環境還是先求諸己？｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/8bf82fd9-1fa8-421f-aac1-d86a6ee1a479.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a616946fd89780001dd6ec7-2.png",
+          "filename": "6a616946fd89780001dd6ec7-2.png",
+          "sha256": "5bc918dbaa5098bd421a7ffe26e3198e4c70aac12497114dd2b09980c8e36df3",
+          "alt": "遇到挫折，先怪環境還是先求諸己？｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A6017C7FD8978000187B337",
       "vocus_article_id": "6a6017c7fd8978000187b337",
