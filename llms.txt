@@ -7,6 +7,13 @@
 - 業務成長與工作方法: 從客戶經營、成交節奏到長期業績，建立能重複使用的工作方法。
 - 思考、修身與學習: 把思考、學習與自我修煉，轉成能用在工作與人際關係的判斷力。
 
+## 課程
+- [流量磁鐵](https://orikan347.github.io/taixin-website/liuliang.html): 先把名單來源建立起來，不再只靠介紹或運氣等客戶。
+- [成交地圖](https://orikan347.github.io/taixin-website/chengjiaoditu.html): 把從第一印象到成交的每一步整理清楚，知道下一句怎麼接。
+- [直指人心](https://orikan347.github.io/taixin-website/zhizhirenxin.html): 看懂不同客戶在意什麼，知道怎麼說他才聽得進去。
+- [極致效率](https://orikan347.github.io/taixin-website/jizhixiaolv.html): 把客戶資料、時間和追蹤整理好，解決每天很忙卻沒有結果。
+- [言之有物](https://orikan347.github.io/taixin-website/yanzhiyouwu.html): 把產品價值說得清楚、有感，也能用來帶人和影響團隊。
+
 ## 作者與網站
 - 官方網站: https://orikan347.github.io/taixin-website/
 - 文章首頁: https://orikan347.github.io/taixin-website/blog/

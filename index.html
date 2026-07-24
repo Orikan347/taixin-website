@@ -78,6 +78,8 @@ body {
 .text-dim { color: var(--text-dim); }
 .text-center { text-align: center; }
 
+.course-live-status { margin:10px 0; color:var(--gold-light); font-size:.86rem; font-weight:700; }
+
 /* === SUBTLE BG PATTERN === */
 .bg-grid::before {
   content: '';
@@ -984,7 +986,7 @@ footer {
     <ul class="nav-links">
       <li><a href="#about">關於我</a></li>
       <li><a href="#speaking">演講邀約</a></li>
-      <li><a href="#courses">課程</a></li>
+      <li><a href="#start-here">課程</a></li>
       <li><a href="blog/">文章</a></li>
       <li><a href="ai-student-qa.html">銷售天賦探索</a></li>
       <li><a href="#results">學員成果</a></li>
@@ -1000,7 +1002,7 @@ footer {
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="closeMobileMenu()">關於我</a>
   <a href="#speaking" onclick="closeMobileMenu()">演講邀約</a>
-  <a href="#courses" onclick="closeMobileMenu()">課程</a>
+  <a href="#start-here" onclick="closeMobileMenu()">課程</a>
   <a href="blog/" onclick="closeMobileMenu()">文章</a>
   <a href="ai-student-qa.html" onclick="closeMobileMenu()">銷售天賦探索</a>
   <a href="#results" onclick="closeMobileMenu()">學員成果</a>
@@ -1014,7 +1016,7 @@ footer {
     <h1>你每天拼命跑客戶，<br>為什麼業績還是輸給那個<br>「<span>看起來沒你努力</span>」的同事？</h1>
     <p class="hero-subtitle">因為他有系統，而你只有體力。<br>前保時捷全台第一名，14 年實戰淬鍊出一套可複製的人性成交系統。</p>
     <div style="margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="#courses" class="btn btn-gold">了解課程 ↓</a>
+      <a href="#start-here" class="btn btn-gold">我現在卡在哪一關 ↓</a>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header" target="_blank" rel="noopener" class="btn btn-outline">報名課程 ↗</a>
       <a href="ai-student-qa.html" class="btn btn-outline">找出銷售天賦 →</a>
       <a href="#speaking" class="btn btn-outline">演講邀約 ↓</a>
@@ -1026,6 +1028,25 @@ footer {
     </div>
   </div>
   <div class="scroll-indicator"><span></span></div>
+</section>
+
+<!-- START HERE: COURSE CHOICE -->
+<section class="section section-accent" id="start-here">
+  <div class="container fade-in">
+    <div class="text-center">
+      <div class="label">Start Here</div>
+      <h2>你現在最想<span class="gold">突破哪一關？</span></h2>
+      <div class="divider divider-center"></div>
+      <p class="lead">先選你最痛的那一關。不是多上一堂課，是把你現在卡住的地方，變成你下一個能做到的結果。</p>
+    </div>
+    <div class="formula-grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:40px;">
+      <a href="liuliang.html" class="formula-card" style="text-decoration:none;color:inherit;text-align:left;"><div class="formula" style="font-size:1.1rem;">客戶不夠</div><div class="desc">我要成為自己能找到下一批客戶的人。</div><div style="margin-top:14px;color:var(--gold);font-weight:600;">先看《流量磁鐵》→</div></a>
+      <a href="chengjiaoditu.html" class="formula-card" style="text-decoration:none;color:inherit;text-align:left;"><div class="formula" style="font-size:1.1rem;">客戶一直猶豫</div><div class="desc">我要在談判桌上知道下一句該怎麼接。</div><div style="margin-top:14px;color:var(--gold);font-weight:600;">先看《成交地圖》→</div></a>
+      <a href="zhizhirenxin.html" class="formula-card" style="text-decoration:none;color:inherit;text-align:left;"><div class="formula" style="font-size:1.1rem;">看不懂客戶</div><div class="desc">我要先看懂他在意什麼，再用對方式說。</div><div style="margin-top:14px;color:var(--gold);font-weight:600;">先看《直指人心》→</div></a>
+      <a href="yanzhiyouwu.html" class="formula-card" style="text-decoration:none;color:inherit;text-align:left;"><div class="formula" style="font-size:1.1rem;">明明專業卻講不清楚</div><div class="desc">我要讓客戶聽懂，也願意跟著我行動。</div><div style="margin-top:14px;color:var(--gold);font-weight:600;">先看《言之有物》→</div></a>
+      <a href="jizhixiaolv.html" class="formula-card" style="text-decoration:none;color:inherit;text-align:left;"><div class="formula" style="font-size:1.1rem;">忙到沒有時間成交</div><div class="desc">我要把資料與追蹤系統化，把時間拿回來。</div><div style="margin-top:14px;color:var(--gold);font-weight:600;">先看《極致效率》→</div></a>
+    </div>
+  </div>
 </section>
 
 <!-- ABOUT -->
@@ -1258,7 +1279,7 @@ footer {
       <a href="liuliang.html" style="text-decoration:none;color:inherit;display:block;" class="course-card">
         <div class="course-num">01</div>
         <div class="course-tag">流量獲取</div>
-        <h3>流量磁鐵</h3>
+        <h3>流量磁鐵</h3><!-- COURSE_CARD_STATUS:liuliang --><div class="course-live-status">線上錄播｜立即開通｜NT$ 9,200</div><!-- COURSE_CARD_STATUS_END:liuliang -->
         <div class="pain">「客戶不夠？不是市場小，是你的網沒有張開。」</div>
         <p>天地人網開發系統，從線上到線下，從轉介紹到自媒體，讓名單源源不絕。不再靠緣分等客人上門。</p>
         <div class="course-quote">「銷售的真理是吸引，而不是推銷。」</div>
@@ -1268,7 +1289,7 @@ footer {
       <a href="chengjiaoditu.html" style="text-decoration:none;color:inherit;display:block;" class="course-card">
         <div class="course-num">02</div>
         <div class="course-tag">成交技巧</div>
-        <h3>成交地圖</h3>
+        <h3>成交地圖</h3><!-- COURSE_CARD_STATUS:chengjiao --><div class="course-live-status">10/16 台灣實體課｜NT$ 11,000</div><!-- COURSE_CARD_STATUS_END:chengjiao -->
         <div class="pain">「客戶猶豫不決？不是他不想買，是你沒有帶他走完那條路。」</div>
         <p>四步驟路徑：第一印象→核心問題→產品介紹 BAF→成交 365。帶著地圖出門，導航告訴你下一步怎麼走。</p>
         <div class="course-quote">「成交就是信任的變現。」</div>
@@ -1278,7 +1299,7 @@ footer {
       <a href="zhizhirenxin.html" style="text-decoration:none;color:inherit;display:block;" class="course-card">
         <div class="course-num">03</div>
         <div class="course-tag">深度溝通</div>
-        <h3>直指人心</h3>
+        <h3>直指人心</h3><!-- COURSE_CARD_STATUS:zhizhi --><div class="course-live-status">線上錄播｜立即開通｜NT$ 9,200</div><!-- COURSE_CARD_STATUS_END:zhizhi -->
         <div class="pain">「同一句話，對 A 客戶有效，對 B 客戶卻踩雷？」</div>
         <p>DISC 四型行為模式，10 分鐘看透一個人。D 要重點、I 要感覺、S 要信任、C 要安心。</p>
         <div class="course-quote">「不願意了解別人的，將會為了解自己的人賣命一輩子。」</div>
@@ -1288,7 +1309,7 @@ footer {
       <a href="yanzhiyouwu.html" style="text-decoration:none;color:inherit;display:block;" class="course-card">
         <div class="course-num">04</div>
         <div class="course-tag">表達力</div>
-        <h3>言之有物</h3>
+        <h3>言之有物</h3><!-- COURSE_CARD_STATUS:yanzhi --><div class="course-live-status">10/18 台灣實體課｜NT$ 12,500</div><!-- COURSE_CARD_STATUS_END:yanzhi -->
         <div class="pain">「你明明很專業，客戶卻聽不懂你在說什麼？」</div>
         <p>30 秒讓對方記住你、信任你、想找你。從克服恐懼到結構化表達，讓你把話講到對方願意行動。</p>
         <div class="course-quote">「把話講到對方願意行動，是結構，不是運氣。」</div>
@@ -1298,7 +1319,7 @@ footer {
       <a href="jizhixiaolv.html" style="text-decoration:none;color:inherit;display:block;" class="course-card">
         <div class="course-num">05</div>
         <div class="course-tag">輕鬆工作</div>
-        <h3>極致效率</h3>
+        <h3>極致效率</h3><!-- COURSE_CARD_STATUS:xiaolu --><div class="course-live-status">10/17 台灣實體課｜NT$ 11,000</div><!-- COURSE_CARD_STATUS_END:xiaolu -->
         <div class="pain">「你不是不夠努力，是時間都被雜事吃掉了。」</div>
         <p>七大工具模組：10 秒查 5 年接觸史、1 分鐘匯入 5,000 筆客戶、10 分鐘發 1,400 則簡訊。</p>
         <div class="course-quote">「效率，讓你不需要取捨夢想、工作、家庭、健康。」</div>
