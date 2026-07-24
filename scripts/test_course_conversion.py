@@ -45,6 +45,20 @@ class PublicCourseConversionTest(unittest.TestCase):
                     self.assertNotIn('"startDate"', text)
                 else:
                     self.assertIn(offer["date_time"], text)
+                    self.assertIn(offer["venue"], text)
+
+    def test_home_hero_uses_responsive_line_breaks_without_changing_copy(self) -> None:
+        home = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIn("max-width: 1040px;", home)
+        self.assertIn(".hero-mobile-break { display: block; }", home)
+        self.assertIn(".hero-desktop-break { display: none; }", home)
+        self.assertIn(".hero h1 { font-size: 1.7rem; }", home)
+        self.assertIn(
+            '你每天拼命跑客戶，<br>為什麼業績還是輸給<br class="hero-mobile-break">那個'
+            '<br class="hero-desktop-break">「<span>看起來沒你努力</span>」'
+            '<br class="hero-mobile-break">的同事？',
+            home,
+        )
 
     def test_chengjiao_first_screen_makes_outcome_date_price_and_next_action_visible(self) -> None:
         text = (ROOT / "chengjiaoditu.html").read_text(encoding="utf-8")

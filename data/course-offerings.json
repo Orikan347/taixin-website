@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-07-11",
-  "verified_by": "使用者提供截圖與文字確認 2026-07-07；超級銷冠系統地區價格由使用者文字確認 2026-07-10 至 2026-07-11",
-  "status_note": "台灣課程日期與金額依使用者提供截圖與文字確認；超級銷冠系統吉隆坡場 RM 4,680，台灣場 10/16–10/18、NT$ 31,000。名額未提供，不顯示。",
+  "updated_at": "2026-07-24",
+  "verified_by": "使用者提供截圖與文字確認 2026-07-07；超級銷冠系統地區價格由使用者文字確認 2026-07-10 至 2026-07-11；三堂台灣實體課地點說明由使用者確認 2026-07-24",
+  "status_note": "台灣課程日期與金額依使用者提供截圖與文字確認；成交地圖、極致效率、言之有物的地點待教育顧問通知；超級銷冠系統吉隆坡場 RM 4,680，台灣場 10/16–10/18、NT$ 31,000。名額未提供，不顯示。",
   "retake_policy": {
     "price": 3200,
     "currency": "TWD",
@@ -17,7 +17,7 @@
       "price": 11000,
       "early_bird_price": null,
       "currency": "TWD",
-      "venue": "線下課，地點待確認",
+      "venue": "地點待教育顧問通知",
       "status": "confirmed",
       "signup_url": "https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header"
     },
@@ -30,7 +30,7 @@
       "price": 11000,
       "early_bird_price": null,
       "currency": "TWD",
-      "venue": "線下課，地點待確認",
+      "venue": "地點待教育顧問通知",
       "status": "confirmed",
       "signup_url": "https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header"
     },
@@ -43,7 +43,7 @@
       "price": 12500,
       "early_bird_price": null,
       "currency": "TWD",
-      "venue": "線下課，地點待確認",
+      "venue": "地點待教育顧問通知",
       "status": "confirmed",
       "signup_url": "https://docs.google.com/forms/d/e/1FAIpQLScFcX7QtpCpUozxWGKv9nSj6Ur9h-gR6dwA5Dqm9BG7CVJ9Nw/viewform?usp=header"
     },

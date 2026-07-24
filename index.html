@@ -306,7 +306,7 @@ p { margin-bottom: 18px; font-weight: 300; font-size: 1.1rem; }
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 820px;
+  max-width: 1040px;
   padding: 40px 24px;
 }
 .hero h1 {
@@ -316,6 +316,7 @@ p { margin-bottom: 18px; font-weight: 300; font-size: 1.1rem; }
   text-shadow: 0 2px 40px rgba(0,0,0,0.5);
 }
 .hero h1 span { color: var(--gold); }
+.hero-mobile-break { display: none; }
 .hero-subtitle {
   font-size: 1.3rem;
   color: var(--white-dim);
@@ -954,13 +955,15 @@ footer {
   .stat-label { font-size: 0.88rem; }
   .label { font-size: 0.82rem; letter-spacing: 3px; }
   .hero-subtitle { font-size: 1.15rem; }
+  .hero-mobile-break { display: block; }
+  .hero-desktop-break { display: none; }
   .hero-badge { font-size: 0.9rem; }
   .counter-label { font-size: 0.92rem; }
   .quote { font-size: 1.15rem; }
 }
 @media (max-width: 480px) {
   .section { padding: 70px 0; }
-  .hero h1 { font-size: 2rem; }
+  .hero h1 { font-size: 1.7rem; }
   .hero-subtitle { font-size: 1.1rem; }
   .btn { padding: 14px 32px; font-size: 1.05rem; }
   .stat-row { gap: 20px; }
@@ -974,6 +977,10 @@ footer {
   .text-testimonial { font-size: 1rem; }
   .cta-section { padding: 80px 0; }
   .quote { font-size: 1.1rem; }
+}
+@media (max-width: 360px) {
+  .hero-content { padding-inline: 16px; }
+  .hero h1 { font-size: 1.45rem; }
 }
 </style>
 </head>
@@ -1013,7 +1020,7 @@ footer {
 <section class="hero" id="hero">
   <div class="hero-content fade-in">
     <div class="hero-title-line">ORIKAN 李泰欣 ｜ ASIA'S TOP SALES SYSTEM ARCHITECT</div>
-    <h1>你每天拼命跑客戶，<br>為什麼業績還是輸給那個<br>「<span>看起來沒你努力</span>」的同事？</h1>
+    <h1>你每天拼命跑客戶，<br>為什麼業績還是輸給<br class="hero-mobile-break">那個<br class="hero-desktop-break">「<span>看起來沒你努力</span>」<br class="hero-mobile-break">的同事？</h1>
     <p class="hero-subtitle">因為他有系統，而你只有體力。<br>前保時捷全台第一名，14 年實戰淬鍊出一套可複製的人性成交系統。</p>
     <div style="margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
       <a href="#start-here" class="btn btn-gold">我現在卡在哪一關 ↓</a>
