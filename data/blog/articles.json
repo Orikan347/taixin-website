@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-23",
+  "generated_at": "2026-07-24",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 46,
+  "reported_public_article_count": 47,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A62BABFFD8978000113B284",
+      "vocus_article_id": "6a62babffd8978000113b284",
+      "slug": "article-6a62babf",
+      "title": "遇到問題先看自己，人生才會有選擇權",
+      "seo_title": "遇到問題先看自己，人生才會有選擇權｜Orikan 李泰欣",
+      "description": "Jerry 是一位有近 20 年資歷的銷售顧問。   但真正讓我佩服的，不是他的資歷。  而是他明明很資深，   卻還願意問、願意學。  他讓我想到孔子說的：   「敏而好學，不恥下問。」   聰慧、好學，   也不因為對方比自己年輕，   就覺得不想開口詢問  還有一句話，我覺得更像 Jerry：",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "求諸己",
+        "自我成長",
+        "認知失調",
+        "銷售成長"
+      ],
+      "keywords": [
+        "遇到問題先看自己，人生才會有選擇權",
+        "求諸己",
+        "自我成長",
+        "認知失調",
+        "銷售成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-24",
+      "updated_at": "2026-07-24",
+      "vocus_url": "https://vocus.cc/article/6a62babffd8978000113b284",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a62babf/",
+      "source_sha256": "030fe42fd70c9caefb254d93e1bcecee56908b74efe5576e4cb1910420898b0f",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/e56187e7-7ac7-474a-ab88-be255736af10.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a62babffd8978000113b284-1.png",
+          "filename": "6a62babffd8978000113b284-1.png",
+          "sha256": "a2864496782ee999eee4a2daac5830fdbe99201dc1c5200c2d5fb977d2fbcdd0",
+          "alt": "遇到問題先看自己，人生才會有選擇權｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/9d6187ff-4bf0-4fc2-acd2-4405374538af.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a62babffd8978000113b284-2.png",
+          "filename": "6a62babffd8978000113b284-2.png",
+          "sha256": "fb458ba50f765e7d529f55ee7f75971bd37697a7c1f7477fca950bd156f503af",
+          "alt": "遇到問題先看自己，人生才會有選擇權｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A616946FD89780001DD6EC7",
       "vocus_article_id": "6a616946fd89780001dd6ec7",
