@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-24",
+  "generated_at": "2026-07-25",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 47,
+  "reported_public_article_count": 48,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A640C3CFD89780001F7783C",
+      "vocus_article_id": "6a640c3cfd89780001f7783c",
+      "slug": "article-6a640c3c",
+      "title": "別靠退佣成交：業務要賺該賺的錢",
+      "seo_title": "別靠退佣成交：業務要賺該賺的錢｜Orikan 李泰欣",
+      "description": "或曰：「以德報怨，何如？」 子曰：「何以報德？以直報怨，以德報德。」  子曰：「莫我知也夫！」 子貢曰：「何為其莫知子也？」 子曰：「不怨天，不尤人。下學而上達，知我者其天乎！」  老子講「報怨以德」。 我們一直以來學到的，也常常是以德報怨。  但孔子的看法不同。  孔子說： 「以德報怨，何以報德？",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "業務成交",
+        "銷售利潤",
+        "銷售心態",
+        "以直報怨"
+      ],
+      "keywords": [
+        "別靠退佣成交：業務要賺該賺的錢",
+        "業務成交",
+        "銷售利潤",
+        "銷售心態",
+        "以直報怨",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-25",
+      "updated_at": "2026-07-25",
+      "vocus_url": "https://vocus.cc/article/6a640c3cfd89780001f7783c",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a640c3c/",
+      "source_sha256": "2c50def5301457f12ed23a79280bf4e6e6ecaeeba7ba94a08b656940f6d743a4",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/fba2e308-bd9c-4e05-a4fe-d6629f408dd0.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a640c3cfd89780001f7783c-1.png",
+          "filename": "6a640c3cfd89780001f7783c-1.png",
+          "sha256": "ea36500d37118848462e63fd6719901489edc15cca76bbd52abd3dd69f5bcf3b",
+          "alt": "別靠退佣成交：業務要賺該賺的錢｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/592f1508-ae4a-4db2-ba63-8eb86459e7d2.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a640c3cfd89780001f7783c-2.png",
+          "filename": "6a640c3cfd89780001f7783c-2.png",
+          "sha256": "ccc8b73fcbea686e45633e2bbdcffe0de31c123f5e7d881bc2165ab912dd8d07",
+          "alt": "別靠退佣成交：業務要賺該賺的錢｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A62BABFFD8978000113B284",
       "vocus_article_id": "6a62babffd8978000113b284",
@@ -210,7 +256,7 @@
         "思考、修身與學習"
       ],
       "published_at": "2026-07-20",
-      "updated_at": "2026-07-21",
+      "updated_at": "2026-07-24",
       "vocus_url": "https://vocus.cc/article/6a5d74d2fd897800013aa44b",
       "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a5d74d2/",
       "source_sha256": "9436c396a2e4a39a29d9620d8515fabcde064a6e4be566c70239f948a4cb396a",

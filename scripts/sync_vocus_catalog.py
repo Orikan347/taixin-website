@@ -54,13 +54,13 @@ AUTHOR = {
 STATIC_PATHS = (
     ("/", "2026-07-13"),
     ("/ai-student-qa.html", "2026-07-10"),
-    ("/chengjiaoditu.html", "2026-07-24"),
+    ("/chengjiaoditu.html", "2026-04-16"),
     ("/consultant-guide.html", "2026-07-13"),
-    ("/jizhixiaolv.html", "2026-07-24"),
-    ("/liuliang.html", "2026-07-24"),
+    ("/jizhixiaolv.html", "2026-04-16"),
+    ("/liuliang.html", "2026-04-16"),
     ("/shangtan.html", "2026-07-13"),
-    ("/yanzhiyouwu.html", "2026-07-24"),
-    ("/zhizhirenxin.html", "2026-07-24"),
+    ("/yanzhiyouwu.html", "2026-04-16"),
+    ("/zhizhirenxin.html", "2026-04-16"),
 )
 
 # These are editorial search summaries, not generated keyword stuffing.  They
@@ -266,26 +266,6 @@ def author_card(image_path: str, about_path: str) -> str:
     return f'''<aside class="author-card" aria-label="作者介紹"><img src="{image_path}" alt="Orikan 李泰欣"><div><div class="eyebrow">About the author</div><h2>我是李泰欣</h2><p>{html.escape(AUTHOR["description"])}</p><a class="author-link" href="{about_path}">認識 Orikan 李泰欣 →</a></div></aside>'''
 
 
-def article_cta(article: dict) -> str:
-    """Give readers one relevant next step without changing the Vocus article."""
-    signal = " ".join([article["title"], *article.get("tags", []), *article.get("topics", [])]).lower()
-    efficiency = ("跟進", "追蹤", "資料", "行事曆", "時間", "舊客", "效率", "工具", "行政", "已讀不回")
-    people = ("信任", "人性", "溝通", "性格", "disc", "看懂")
-    leads = ("名單", "客戶不夠", "流量", "自媒體", "開發")
-    expression = ("表達", "影響", "說話", "說得")
-    if any(word in signal for word in efficiency):
-        return '<aside class="cta"><h2>跟進不是靠記憶，是靠系統。</h2><p>如果你常常漏追、資料找不到，或時間都花在雜事上，先把工作系統搭起來。</p><a class="button" href="../../jizhixiaolv.html">看《極致效率》→</a><a class="secondary" href="../../#start-here">我想先選卡關點</a></aside>'
-    if any(word in signal for word in people):
-        return '<aside class="cta"><h2>客戶不買，先看懂他到底在怕什麼。</h2><p>先分清楚他在意結果、感覺、安全還是資料，再用他聽得進去的方式說。</p><a class="button" href="../../zhizhirenxin.html">看《直指人心》→</a><a class="secondary" href="../../#start-here">我想先選卡關點</a></aside>'
-    if any(word in signal for word in leads):
-        return '<aside class="cta"><h2>客戶不夠，先把你的網張開。</h2><p>別只等介紹；先建立你下一批客戶從哪裡來的開發系統。</p><a class="button" href="../../liuliang.html">看《流量磁鐵》→</a><a class="secondary" href="../../#start-here">我想先選卡關點</a></aside>'
-    if any(word in signal for word in expression):
-        return '<aside class="cta"><h2>專業做得到，也要說到別人願意跟。</h2><p>把你的想法講得清楚、有感，才能讓客戶和團隊願意行動。</p><a class="button" href="../../yanzhiyouwu.html">看《言之有物》→</a><a class="secondary" href="../../#start-here">我想先選卡關點</a></aside>'
-    if "client-conversations" in article.get("topics", []):
-        return '<aside class="cta"><h2>客戶卡住，別再硬猜下一句。</h2><p>把需求、異議與下一步變成一張地圖，才能穩穩把對話帶往成交。</p><a class="button" href="../../chengjiaoditu.html">看《成交地圖》→</a><a class="secondary" href="../../#start-here">我想先選卡關點</a></aside>'
-    return '<aside class="cta"><h2>你現在最想突破哪一關？</h2><p>客戶不夠、成交卡住、看不懂客戶、講不清楚，還是忙到沒有時間？先找出你現在最該補的那一段。</p><a class="button" href="../../#start-here">先選我的卡關點</a></aside>'
-
-
 def article_html(article: dict) -> str:
     url = article["site_url"]
     image_urls = [image["site_url"] for image in article["images"]]
@@ -300,7 +280,7 @@ def article_html(article: dict) -> str:
     tag_chips = " ".join(f'<span class="topic-chip">#{html.escape(tag)}</span>' for tag in article["tags"])
     return f'''<!doctype html>
 <html lang="zh-Hant-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{html.escape(article["seo_title"])}</title><meta name="description" content="{html.escape(article["description"])}"><meta name="robots" content="index,follow"><link rel="canonical" href="{url}"><meta property="og:title" content="{html.escape(article["title"])}"><meta property="og:description" content="{html.escape(article["description"])}"><meta property="og:type" content="article"><meta property="og:url" content="{url}">{og}<meta property="article:published_time" content="{article["published_at"]}"><link rel="alternate" type="application/rss+xml" title="Orikan 李泰欣文章 RSS" href="../../rss.xml"><link rel="stylesheet" href="../styles.css"><script type="application/ld+json">{json.dumps(graph, ensure_ascii=False, separators=(",", ":"))}</script></head>
-<body><header class="site-header"><nav class="site-nav" aria-label="主要導覽"><a class="brand" href="../../">ORIKAN</a><div class="nav-links"><a href="../../">首頁</a><a href="../../#courses">課程</a><a href="../">文章</a><a href="../../#contact">聯繫我</a></div></nav></header><main class="wrap article-shell"><nav class="breadcrumbs" aria-label="麵包屑"><a href="../../">首頁</a><span aria-hidden="true">/</span><a href="../">文章</a><span aria-hidden="true">/</span><span>{html.escape(article["title"])}</span></nav><div class="eyebrow">Orikan 李泰欣／Vocus 同步文章</div><h1>{html.escape(article["title"])}</h1><div class="article-meta"><strong>本文作者：</strong><a href="../../#about">Orikan 李泰欣</a>　·　發布：{article["published_at"].replace("-", "/")}　·　<a href="{article["vocus_url"]}" rel="noopener noreferrer">查看 Vocus 原始發布頁 ↗</a></div><nav class="article-topics" aria-label="文章主題">主題：{topic_links}</nav><div class="card-topics" aria-label="文章標籤">{tag_chips}</div>{cover}<article class="article-body">{article["body"]}</article>{author_card("../../img/portrait.jpg", "../../#about")}<aside class="citation"><strong>同步來源</strong><p>本文與圖片均來自已公開的 Vocus 文章；官網保留原始發布頁連結。</p></aside>{article_cta(article)}</main><footer>© 2026 Orikan 李泰欣 · <a href="../">回到文章列表</a> · <a href="../../rss.xml">RSS</a></footer></body></html>\n'''
+<body><header class="site-header"><nav class="site-nav" aria-label="主要導覽"><a class="brand" href="../../">ORIKAN</a><div class="nav-links"><a href="../../">首頁</a><a href="../../#courses">課程</a><a href="../">文章</a><a href="../../#contact">聯繫我</a></div></nav></header><main class="wrap article-shell"><nav class="breadcrumbs" aria-label="麵包屑"><a href="../../">首頁</a><span aria-hidden="true">/</span><a href="../">文章</a><span aria-hidden="true">/</span><span>{html.escape(article["title"])}</span></nav><div class="eyebrow">Orikan 李泰欣／Vocus 同步文章</div><h1>{html.escape(article["title"])}</h1><div class="article-meta"><strong>本文作者：</strong><a href="../../#about">Orikan 李泰欣</a>　·　發布：{article["published_at"].replace("-", "/")}　·　<a href="{article["vocus_url"]}" rel="noopener noreferrer">查看 Vocus 原始發布頁 ↗</a></div><nav class="article-topics" aria-label="文章主題">主題：{topic_links}</nav><div class="card-topics" aria-label="文章標籤">{tag_chips}</div>{cover}<article class="article-body">{article["body"]}</article>{author_card("../../img/portrait.jpg", "../../#about")}<aside class="citation"><strong>同步來源</strong><p>本文與圖片均來自已公開的 Vocus 文章；官網保留原始發布頁連結。</p></aside><aside class="cta"><h2>想把這套思考用在銷售與團隊？</h2><p>從客戶開發、需求診斷到成交，先找到你現在真正卡住的那一段。</p><a class="button" href="../../#contact">和我聊聊</a></aside></main><footer>© 2026 Orikan 李泰欣 · <a href="../">回到文章列表</a> · <a href="../../rss.xml">RSS</a></footer></body></html>\n'''
 
 
 def blog_index(articles: list[dict]) -> str:
@@ -329,10 +309,8 @@ def redirect_html(old_slug: str, article: dict) -> str:
 
 def llms_text(articles: list[dict]) -> str:
     topic_lines = "\n".join(f"- {topic['name']}: {topic['description']}" for topic in TOPICS.values())
-    courses = json.loads((PROJECT_ROOT / "data/course-catalog.json").read_text(encoding="utf-8"))["courses"]
-    course_lines = "\n".join(f"- [{course['name']}]({BASE}/{course['page']}): {course['overview']}" for course in courses)
-    article_lines = "\n".join(f"- [{article['title'].strip()}]({article['site_url']}): {article['description'].strip()}" for article in articles)
-    return f'''# Orikan 李泰欣\n\n> Orikan 李泰欣的個人官方網站，提供銷售、客戶溝通、業務成長與思考學習文章。文章保留原始 Vocus 發布頁連結，官網同步已公開原文與原圖。\n\n## 主要主題\n{topic_lines}\n\n## 課程\n{course_lines}\n\n## 作者與網站\n- 官方網站: {BASE}/\n- 文章首頁: {BASE}/blog/\n- RSS: {BASE}/rss.xml\n- Sitemap: {BASE}/sitemap.xml\n- 作者: Orikan 李泰欣\n- Instagram: https://www.instagram.com/eintaixin/\n\n## 文章\n{article_lines}\n'''
+    article_lines = "\n".join(f"- [{article['title']}]({article['site_url']}): {article['description']}" for article in articles)
+    return f'''# Orikan 李泰欣\n\n> Orikan 李泰欣的個人官方網站，提供銷售、客戶溝通、業務成長與思考學習文章。文章保留原始 Vocus 發布頁連結，官網同步已公開原文與原圖。\n\n## 主要主題\n{topic_lines}\n\n## 作者與網站\n- 官方網站: {BASE}/\n- 文章首頁: {BASE}/blog/\n- RSS: {BASE}/rss.xml\n- Sitemap: {BASE}/sitemap.xml\n- 作者: Orikan 李泰欣\n- Instagram: https://www.instagram.com/eintaixin/\n\n## 文章\n{article_lines}\n'''
 
 
 def sitemap_xml(rows: list[tuple[str, str]]) -> str:

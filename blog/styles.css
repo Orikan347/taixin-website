@@ -71,6 +71,5 @@ figcaption { margin-top: 8px; color: var(--text-dim); font-size: .82rem; text-al
 .citation { margin-top: 36px; border-left-color: rgba(201,168,76,.6); background: rgba(255,255,255,.035); }
 .cta { margin-top: 52px; border: 1px solid var(--line); border-radius: 18px; padding: 26px; background: linear-gradient(135deg, rgba(201,168,76,.13), rgba(255,255,255,.03)); }
 .cta .button { display: inline-block; margin-top: 8px; padding: 12px 22px; border-radius: 999px; background: var(--gold); color: var(--navy-deep); font-weight: 700; text-decoration: none; }
-.cta .secondary { display: inline-block; margin: 12px 0 0 16px; color: var(--gold-light); font-weight: 700; }
 footer { border-top: 1px solid var(--line); padding: 28px 24px; text-align: center; color: var(--text-dim); font-size: .85rem; }
 @media (max-width: 640px) { .site-nav { align-items: flex-start; flex-direction: column; } .nav-links { justify-content: flex-start; gap: 14px; } .hero { padding-top: 58px; } .author-card { grid-template-columns: 1fr; } .author-card img { width: 94px; } }

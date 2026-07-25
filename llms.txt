@@ -7,13 +7,6 @@
 - 業務成長與工作方法: 從客戶經營、成交節奏到長期業績，建立能重複使用的工作方法。
 - 思考、修身與學習: 把思考、學習與自我修煉，轉成能用在工作與人際關係的判斷力。
 
-## 課程
-- [流量磁鐵](https://orikan347.github.io/taixin-website/liuliang.html): 先把名單來源建立起來，不再只靠介紹或運氣等客戶。
-- [成交地圖](https://orikan347.github.io/taixin-website/chengjiaoditu.html): 把從第一印象到成交的每一步整理清楚，知道下一句怎麼接。
-- [直指人心](https://orikan347.github.io/taixin-website/zhizhirenxin.html): 看懂不同客戶在意什麼，知道怎麼說他才聽得進去。
-- [極致效率](https://orikan347.github.io/taixin-website/jizhixiaolv.html): 把客戶資料、時間和追蹤整理好，解決每天很忙卻沒有結果。
-- [言之有物](https://orikan347.github.io/taixin-website/yanzhiyouwu.html): 把產品價值說得清楚、有感，也能用來帶人和影響團隊。
-
 ## 作者與網站
 - 官方網站: https://orikan347.github.io/taixin-website/
 - 文章首頁: https://orikan347.github.io/taixin-website/blog/
@@ -23,6 +16,7 @@
 - Instagram: https://www.instagram.com/eintaixin/
 
 ## 文章
+- [別靠退佣成交：業務要賺該賺的錢](https://orikan347.github.io/taixin-website/blog/article-6a640c3c/): 或曰：「以德報怨，何如？」 子曰：「何以報德？以直報怨，以德報德。」  子曰：「莫我知也夫！」 子貢曰：「何為其莫知子也？」 子曰：「不怨天，不尤人。下學而上達，知我者其天乎！」  老子講「報怨以德」。 我們一直以來學到的，也常常是以德報怨。  但孔子的看法不同。  孔子說： 「以德報怨，何以報德？
 - [遇到問題先看自己，人生才會有選擇權](https://orikan347.github.io/taixin-website/blog/article-6a62babf/): Jerry 是一位有近 20 年資歷的銷售顧問。   但真正讓我佩服的，不是他的資歷。  而是他明明很資深，   卻還願意問、願意學。  他讓我想到孔子說的：   「敏而好學，不恥下問。」   聰慧、好學，   也不因為對方比自己年輕，   就覺得不想開口詢問  還有一句話，我覺得更像 Jerry：
 - [遇到挫折，先怪環境還是先求諸己？](https://orikan347.github.io/taixin-website/blog/article-6a616946/): 今天收到 Jerry 的回饋。  Jerry 是一位有近 20 年資歷的銷售顧問。   但真正讓我佩服的，不是他的資歷。  而是他明明很資深，   卻還願意問、願意學。  他讓我想到孔子說的：   「敏而好學，不恥下問。」   聰慧、好學，   也不因為對方比自己年輕，   就覺得不想開口詢問  還
 - [明知很難，為什麼還要繼續做？](https://orikan347.github.io/taixin-website/blog/article-6a6017c7/): 公伯寮愬子路於季孫。子服景伯以告，曰：「夫子固有惑志於公伯寮，吾力猶能肆諸市朝。」子曰：「道之將行也與，命也；道之將廢也與，命也。公伯寮其如命何！」 子曰：「賢者闢世，其次闢地，其次闢色，其次闢言。」子曰：「作者七人矣。」 子路宿於石門。晨門曰：「奚自？」子路曰：「自孔氏。」曰：「是知其不可而為之者
