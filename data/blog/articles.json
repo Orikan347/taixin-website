@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-25",
+  "generated_at": "2026-07-26",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 48,
+  "reported_public_article_count": 49,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A656AD8FD897800018619BF",
+      "vocus_article_id": "6a656ad8fd897800018619bf",
+      "slug": "article-6a656ad8",
+      "title": "還沒開始就先放棄：你真的想過怎麼活嗎？",
+      "seo_title": "還沒開始就先放棄：你真的想過怎麼活嗎？｜Orikan 李泰欣",
+      "description": "還沒學著怎麼活，就先想著怎麼死 還沒學會經營愛情，就先擔心分手 還沒看見這個瘋狂世界，就先當了沙發馬鈴薯 還沒學會怎麼成交，就先怕著被拒絕 還沒學會怎麼體驗，就先訓練憂鬱焦慮  我們什麼都還沒開始，就先學會了放棄  死法只有一種，活法卻有一萬種 從未認真想過，怎麼活好  這一生，我們真的來過嗎？ 是",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "人生選擇",
+        "自我成長",
+        "生命意義",
+        "焦慮覺察"
+      ],
+      "keywords": [
+        "還沒開始就先放棄：你真的想過怎麼活嗎？",
+        "人生選擇",
+        "自我成長",
+        "生命意義",
+        "焦慮覺察",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-26",
+      "updated_at": "2026-07-26",
+      "vocus_url": "https://vocus.cc/article/6a656ad8fd897800018619bf",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a656ad8/",
+      "source_sha256": "2aa5ce9cb87a24c115ef8b1092d4bbf4d1ab82e25de7fea843f1c8d85aa47bda",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/7bd25b88-2eab-4269-9e7a-a5b7ecbb54cb.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a656ad8fd897800018619bf-1.png",
+          "filename": "6a656ad8fd897800018619bf-1.png",
+          "sha256": "c7db0d41c0c7ea3930be7379d2300fc40a6ae12c14b88dfa83a433f5ee739289",
+          "alt": "還沒開始就先放棄：你真的想過怎麼活嗎？｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/baed643b-34ea-4f84-b0cd-3074e9fbb10d.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a656ad8fd897800018619bf-2.png",
+          "filename": "6a656ad8fd897800018619bf-2.png",
+          "sha256": "baf12f568dd41346c2297d82e5512e84bb543b8287f5aec0ea3a8b663b5f4216",
+          "alt": "還沒開始就先放棄：你真的想過怎麼活嗎？｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A640C3CFD89780001F7783C",
       "vocus_article_id": "6a640c3cfd89780001f7783c",
