@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-26",
+  "generated_at": "2026-07-27",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 49,
+  "reported_public_article_count": 50,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A66AF0BFD897800014C73F0",
+      "vocus_article_id": "6a66af0bfd897800014c73f0",
+      "slug": "article-6a66af0b",
+      "title": "收入不是目標：真正能提高收入的是解決問題",
+      "seo_title": "收入不是目標：真正能提高收入的是解決問題｜Orikan 李泰欣",
+      "description": "子曰：君子謀道不謀食。耕也，餒在其中矣；學也，祿在其中矣。君子憂道不憂貧。  君子每天思考和謀求的事情是與「道」有關的，而不是只停留在衣食物質層面。 努力耕田，也可能會面臨挨餓；在學習之中，俸祿可能也在其中了。 因此，君子應該擔心的是「道」能不能守住，而不是擔心物質上的貧窮。  納瓦爾說：「金錢是社",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "收入成長",
+        "價值創造",
+        "問題解決",
+        "銷售思維"
+      ],
+      "keywords": [
+        "收入不是目標：真正能提高收入的是解決問題",
+        "收入成長",
+        "價值創造",
+        "問題解決",
+        "銷售思維",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-27",
+      "updated_at": "2026-07-27",
+      "vocus_url": "https://vocus.cc/article/6a66af0bfd897800014c73f0",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a66af0b/",
+      "source_sha256": "0048df486ca6b917710b78846feb8704365db9ecbd7c08027264680a84dddd08",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/b503b3e9-8a70-4ea6-9ea4-ef9a35827e09.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a66af0bfd897800014c73f0-1.png",
+          "filename": "6a66af0bfd897800014c73f0-1.png",
+          "sha256": "58b027fc4e93cbcc5b2e1ad16f2e1c998aaaf8e41c37ce2b475b46c432d6e42f",
+          "alt": "收入不是目標：真正能提高收入的是解決問題｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/7c68795f-03b0-4c23-9fc8-42b6fc78e3ec.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a66af0bfd897800014c73f0-2.png",
+          "filename": "6a66af0bfd897800014c73f0-2.png",
+          "sha256": "c393cfc7b2e7e5f84ca5fead26da9fe53a386303610b3a09ec00942951d568b6",
+          "alt": "收入不是目標：真正能提高收入的是解決問題｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A656AD8FD897800018619BF",
       "vocus_article_id": "6a656ad8fd897800018619bf",
