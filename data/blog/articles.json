@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-27",
+  "generated_at": "2026-07-28",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 50,
+  "reported_public_article_count": 51,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A68008BFD89780001AFA85B",
+      "vocus_article_id": "6a68008bfd89780001afa85b",
+      "slug": "article-6a68008b",
+      "title": "房仲 Top Sales 的三個成交底層能力",
+      "seo_title": "房仲 Top Sales 的三個成交底層能力｜Orikan 李泰欣",
+      "description": "今天去演講，很有幸能跟房地產界的神人聊天。  楊崗學長是一位非常厲害的 Top Sales：  1. 連續 7 年突破千萬經紀人 2. 連續 4 年突破兩千萬經紀人  從他今天分享的許多觀點裡， 我整理出三點， 給房仲業的朋友， 及每個行業銷售都可以參考。  第一，能夠快速辨別對方的個性， 知道對方",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "房仲銷售",
+        "Top Sales",
+        "客戶判斷",
+        "業務成交"
+      ],
+      "keywords": [
+        "房仲 Top Sales 的三個成交底層能力",
+        "房仲銷售",
+        "Top Sales",
+        "客戶判斷",
+        "業務成交",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-28",
+      "updated_at": "2026-07-28",
+      "vocus_url": "https://vocus.cc/article/6a68008bfd89780001afa85b",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a68008b/",
+      "source_sha256": "ec4bc69d0ec9a3edd188d5d270250ad89478fbbc9c754202277ea27f754b6641",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/7594a235-c551-4ff5-be57-c1b7fe8e5c28.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a68008bfd89780001afa85b-1.png",
+          "filename": "6a68008bfd89780001afa85b-1.png",
+          "sha256": "c453ce75aacab7d849624bf0870caaff97dbc823047cecf0268e20cfc6114e15",
+          "alt": "房仲 Top Sales 的三個成交底層能力｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/2e77282e-5775-4b67-b560-0b75fd2eae1f.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a68008bfd89780001afa85b-2.png",
+          "filename": "6a68008bfd89780001afa85b-2.png",
+          "sha256": "0f86bd88029edf914b9b9ae1a3d720aeb80369763c8f2cd8b99c1ef51efdfdd8",
+          "alt": "房仲 Top Sales 的三個成交底層能力｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A66AF0BFD897800014C73F0",
       "vocus_article_id": "6a66af0bfd897800014c73f0",
