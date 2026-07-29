@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-28",
+  "generated_at": "2026-07-29",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 51,
+  "reported_public_article_count": 52,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A69596FFD89780001B28F71",
+      "vocus_article_id": "6a69596ffd89780001b28f71",
+      "slug": "article-6a69596f",
+      "title": "成長不是知道更多，而是讓自己與世界慢慢契合",
+      "seo_title": "成長不是知道更多，而是讓自己與世界慢慢契合｜Orikan 李泰欣",
+      "description": "「除了期待幸福，人沒有理由推究哲理。」 — 奧古斯丁  《解惑》這本書，似乎什麼都說了；卻也似乎什麼都沒說。似乎我們都聽過，卻又好像什麼都聽不懂。  人為什麼會快樂？大腦追求和諧。所謂和諧，不是表面的和平，而是內在世界與外在世界的契合。   內在世界：什麼是真正的你？不是只有你眼中的自己，而是你，加",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "自我成長",
+        "思維成長",
+        "人生方向",
+        "內在消耗"
+      ],
+      "keywords": [
+        "成長不是知道更多，而是讓自己與世界慢慢契合",
+        "自我成長",
+        "思維成長",
+        "人生方向",
+        "內在消耗",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-29",
+      "updated_at": "2026-07-29",
+      "vocus_url": "https://vocus.cc/article/6a69596ffd89780001b28f71",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a69596f/",
+      "source_sha256": "9b10b0c73b256ade0cee731e856b2ececf64116f2895163cf0d5258daabd46d2",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/5b92f621-fce6-4536-94a7-f296a3176ef5.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a69596ffd89780001b28f71-1.png",
+          "filename": "6a69596ffd89780001b28f71-1.png",
+          "sha256": "c7a0190a335ea4f0deb7b5e17d0f4017c254ddc8b81259874e044e6a8ff7a6c7",
+          "alt": "成長不是知道更多，而是讓自己與世界慢慢契合｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/c95201e4-43c8-45b8-be07-b271354434b1.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a69596ffd89780001b28f71-2.png",
+          "filename": "6a69596ffd89780001b28f71-2.png",
+          "sha256": "259abe63bd271c96e927a9a4ce54ce3afedaa821072bcaf5e72d648c5d3c9b4f",
+          "alt": "成長不是知道更多，而是讓自己與世界慢慢契合｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A68008BFD89780001AFA85B",
       "vocus_article_id": "6a68008bfd89780001afa85b",
