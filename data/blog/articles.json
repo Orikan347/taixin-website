@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-29",
+  "generated_at": "2026-07-30",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 52,
+  "reported_public_article_count": 53,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A6AAB1EFD897800018B7B83",
+      "vocus_article_id": "6a6aab1efd897800018b7b83",
+      "slug": "article-6a6aab1e",
+      "title": "想擴大團隊、快速成交？真正長久的方法不是求快",
+      "seo_title": "想擴大團隊、快速成交？真正長久的方法不是求快｜Orikan 李泰欣",
+      "description": "葉公問政。子曰：「近者說，遠者來。」  子夏為莒父宰，問政。子曰：「無欲速，無見小利。欲速則不達，見小利則大事不成。」  如果你問我，怎麼擴大團隊？ 我會告訴你：先讓身邊的人幸福。  如果你問我，怎麼立刻有業績？ 我會告訴你：欲速則不達。  當別人看見你身邊的人過得很好，自然會想靠近你、了解你，甚至",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "業務成交",
+        "團隊經營",
+        "客戶信任",
+        "長期價值"
+      ],
+      "keywords": [
+        "想擴大團隊、快速成交？真正長久的方法不是求快",
+        "業務成交",
+        "團隊經營",
+        "客戶信任",
+        "長期價值",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-30",
+      "updated_at": "2026-07-30",
+      "vocus_url": "https://vocus.cc/article/6a6aab1efd897800018b7b83",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a6aab1e/",
+      "source_sha256": "705aa126a287e5d3c47c2255b175b8515d9b9f984e8cefcf2d08a16d3240d50f",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/ceb377a1-e84a-48f1-8160-052370a1dc34.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a6aab1efd897800018b7b83-1.png",
+          "filename": "6a6aab1efd897800018b7b83-1.png",
+          "sha256": "fc949fb61524a757a69e4e6364baf862f302013cd6e2d18c32acb2b887eceb2a",
+          "alt": "想擴大團隊、快速成交？真正長久的方法不是求快｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/5c365add-45e5-4aa6-adab-ca965a028ffb.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a6aab1efd897800018b7b83-2.png",
+          "filename": "6a6aab1efd897800018b7b83-2.png",
+          "sha256": "eb88b7ab00ce2d432f1b3f1d3afd1478df304c24b10775f97b6692fbc624c062",
+          "alt": "想擴大團隊、快速成交？真正長久的方法不是求快｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A69596FFD89780001B28F71",
       "vocus_article_id": "6a69596ffd89780001b28f71",
