@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-30",
+  "generated_at": "2026-07-31",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 53,
+  "reported_public_article_count": 54,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A6C1099FD89780001F41B9C",
+      "vocus_article_id": "6a6c1099fd89780001f41b9c",
+      "slug": "article-6a6c1099",
+      "title": "逆思維 三個震撼",
+      "seo_title": "逆思維 三個震撼｜Orikan 李泰欣",
+      "description": "讀《逆思維》給我的三個震撼  原本我以為《逆思維》是一本教人如何逆向思考的書，結果發現不是。  讀完後我深深覺得，它更像是在告訴我們：為什麼人人都應該學會重新再思考一次。  這本書從三個層面，徹底拆解了我們的思維慣性，也讓我對銷售、教學與人生有了全新的體悟。  第一、關於自己：為什麼要重新思考自己的",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "思維盲點",
+        "重新思考",
+        "團隊溝通",
+        "心理安全感"
+      ],
+      "keywords": [
+        "逆思維 三個震撼",
+        "思維盲點",
+        "重新思考",
+        "團隊溝通",
+        "心理安全感",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-07-31",
+      "updated_at": "2026-07-31",
+      "vocus_url": "https://vocus.cc/article/6a6c1099fd89780001f41b9c",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a6c1099/",
+      "source_sha256": "e6a75ca455f2bdaeb9fbe399f3c39754ac584114b8331f06e307c8ac571e5b0c",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/042117d3-c186-4665-9a43-78939da0b579.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a6c1099fd89780001f41b9c-1.png",
+          "filename": "6a6c1099fd89780001f41b9c-1.png",
+          "sha256": "50f42fe9f6d0a0571d881126324efb77567e8d0a057b7e913a0f8b58e393aca4",
+          "alt": "逆思維 三個震撼｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/a36767e2-1e8c-4fa3-9ded-4d86226ecb28.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a6c1099fd89780001f41b9c-2.png",
+          "filename": "6a6c1099fd89780001f41b9c-2.png",
+          "sha256": "3add35fe35d9b850d29c142717b23addf3d5ade912844b341c012757e0e36218",
+          "alt": "逆思維 三個震撼｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A6AAB1EFD897800018B7B83",
       "vocus_article_id": "6a6aab1efd897800018b7b83",
@@ -76,7 +122,7 @@
         "思考、修身與學習"
       ],
       "published_at": "2026-07-29",
-      "updated_at": "2026-07-29",
+      "updated_at": "2026-07-31",
       "vocus_url": "https://vocus.cc/article/6a69596ffd89780001b28f71",
       "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a69596f/",
       "source_sha256": "9b10b0c73b256ade0cee731e856b2ececf64116f2895163cf0d5258daabd46d2",
@@ -214,7 +260,7 @@
         "思考、修身與學習"
       ],
       "published_at": "2026-07-26",
-      "updated_at": "2026-07-26",
+      "updated_at": "2026-07-31",
       "vocus_url": "https://vocus.cc/article/6a656ad8fd897800018619bf",
       "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a656ad8/",
       "source_sha256": "2aa5ce9cb87a24c115ef8b1092d4bbf4d1ab82e25de7fea843f1c8d85aa47bda",
