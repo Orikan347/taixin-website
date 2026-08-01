@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-07-31",
+  "generated_at": "2026-08-01",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 54,
+  "reported_public_article_count": 55,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A6D4F29FD8978000162905F",
+      "vocus_article_id": "6a6d4f29fd8978000162905f",
+      "slug": "article-6a6d4f29",
+      "title": "你做業務 5 年，卻從沒看過自己怎麼講話？",
+      "seo_title": "你做業務 5 年，卻從沒看過自己怎麼講話？｜Orikan 李泰欣",
+      "description": "你從來沒看過自己對客戶的樣子。10 次照鏡子練習：拿手機錄下整段對話，自己看回放找 1 個壞習慣，每次只改那 1 個。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "銷售自我復盤",
+        "業務成交",
+        "自我覺察",
+        "表達力"
+      ],
+      "keywords": [
+        "你做業務 5 年，卻從沒看過自己怎麼講話？",
+        "銷售自我復盤",
+        "業務成交",
+        "自我覺察",
+        "表達力",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-01",
+      "updated_at": "2026-08-01",
+      "vocus_url": "https://vocus.cc/article/6a6d4f29fd8978000162905f",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a6d4f29/",
+      "source_sha256": "0fadf87b7abb14b14042f772c1e77d240d013793185d8ac05191de91381a4518",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/ceb655b2-51c4-459f-96c2-22f4b5fb96f2.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a6d4f29fd8978000162905f-1.png",
+          "filename": "6a6d4f29fd8978000162905f-1.png",
+          "sha256": "02615619faf7f85551ef35283614712c896e4ed36bd7646261d3b60c5d99b823",
+          "alt": "你做業務 5 年，卻從沒看過自己怎麼講話？｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/e012157e-3c05-418c-bafb-a5608046f1c7.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a6d4f29fd8978000162905f-2.png",
+          "filename": "6a6d4f29fd8978000162905f-2.png",
+          "sha256": "340f814bf3dd0137313124d8ebba73eba41410db373aded0f2dc279cce9ece6b",
+          "alt": "你做業務 5 年，卻從沒看過自己怎麼講話？｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A6C1099FD89780001F41B9C",
       "vocus_article_id": "6a6c1099fd89780001f41b9c",
