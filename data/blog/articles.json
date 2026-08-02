@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-01",
+  "generated_at": "2026-08-02",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 55,
+  "reported_public_article_count": 56,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A6EC950FD8978000185D7D1",
+      "vocus_article_id": "6a6ec950fd8978000185d7d1",
+      "slug": "article-6a6ec950",
+      "title": "新世代業務的下一步是什麼？",
+      "seo_title": "新世代業務的下一步是什麼？｜Orikan 李泰欣",
+      "description": "新世代業務的下一步是什麼？  不是更會介紹產品。 不是更會追客戶。 而是成為「領導型的銷售」。  所謂領導型的銷售，必須在三個層面具備領導力：  第一，領導自己。 第二，領導 AI。 第三，領導團隊。  這件事的本質，要從「十倍好」來看。  很多人以為，兩倍好比較簡單，十倍好比較困難。 但事實剛好相",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "銷售成長",
+        "領導力",
+        "AI應用",
+        "個人成長"
+      ],
+      "keywords": [
+        "新世代業務的下一步是什麼？",
+        "銷售成長",
+        "領導力",
+        "AI應用",
+        "個人成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-02",
+      "updated_at": "2026-08-02",
+      "vocus_url": "https://vocus.cc/article/6a6ec950fd8978000185d7d1",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a6ec950/",
+      "source_sha256": "6e28f89c272e4dcd7fda44e6e4506d99877121e512a7bcdc164cd90868525d87",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/fa38c947-af01-4fbb-9c43-48f0ab05c57b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a6ec950fd8978000185d7d1-1.png",
+          "filename": "6a6ec950fd8978000185d7d1-1.png",
+          "sha256": "4cfc9cce27ee89819d81a0437c4e74f1548f802e4021a976f7a6430b77acee64",
+          "alt": "新世代業務的下一步是什麼？｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/43f5523b-abc8-41e3-8067-9f41742ccfec.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a6ec950fd8978000185d7d1-2.png",
+          "filename": "6a6ec950fd8978000185d7d1-2.png",
+          "sha256": "d96fada4fc407899341692c8f02f4c084d78e9e53a76d946b8816a96ae2d31ca",
+          "alt": "新世代業務的下一步是什麼？｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A6D4F29FD8978000162905F",
       "vocus_article_id": "6a6d4f29fd8978000162905f",
