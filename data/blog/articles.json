@@ -1,10 +1,54 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-02",
+  "generated_at": "2026-08-03",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 56,
+  "reported_public_article_count": 57,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A6FF27AFD89780001D10576",
+      "vocus_article_id": "6a6ff27afd89780001d10576",
+      "slug": "article-6a6ff27a",
+      "title": "悲觀者永遠正確，樂觀者永遠前行",
+      "seo_title": "悲觀者永遠正確，樂觀者永遠前行｜Orikan 李泰欣",
+      "description": "悲觀者永遠正確，樂觀者永遠前行  悲觀，是最廉價的生存方式。 不翻書就能考零分，躺平就能迎接失敗。 遇到不如意的事，隨時都能拿來證明自己沒有工作運。 遇到客戶拒絕，雙手一攤：「真衰，遇到不買的人。」 所以，悲觀者永遠能夠完美地自我證明。 他們總是理直氣壯地說著：「你看，我就說吧，我就是做不到，這個客",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "銷售成長",
+        "心理成長",
+        "個人成長"
+      ],
+      "keywords": [
+        "悲觀者永遠正確，樂觀者永遠前行",
+        "銷售成長",
+        "心理成長",
+        "個人成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-03",
+      "updated_at": "2026-08-03",
+      "vocus_url": "https://vocus.cc/article/6a6ff27afd89780001d10576",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a6ff27a/",
+      "source_sha256": "e5badaacc943011283d7c57bee37f4e24aaa446cc8be06dadc33face4600473c",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/47569242-80b2-4935-9bff-61c07551980b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a6ff27afd89780001d10576-1.png",
+          "filename": "6a6ff27afd89780001d10576-1.png",
+          "sha256": "1fc02f3973d31f9f9ce00d93d4b7be97306283eb45d68b9d653fc1da75b0f1c5",
+          "alt": "悲觀者永遠正確，樂觀者永遠前行｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/ebe317b9-f6cc-4f2c-99ce-4ba82166afe1.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a6ff27afd89780001d10576-2.png",
+          "filename": "6a6ff27afd89780001d10576-2.png",
+          "sha256": "300430b98380a7069987c003de729e42494f50fbe39c0663e53efe0cc992c013",
+          "alt": "悲觀者永遠正確，樂觀者永遠前行｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A6EC950FD8978000185D7D1",
       "vocus_article_id": "6a6ec950fd8978000185d7d1",
