@@ -1,10 +1,54 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-03",
+  "generated_at": "2026-08-04",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 57,
+  "reported_public_article_count": 58,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A7142EAFD897800012E959A",
+      "vocus_article_id": "6a7142eafd897800012e959a",
+      "slug": "article-6a7142ea",
+      "title": "一個人要改變，一定要先覺察。",
+      "seo_title": "一個人要改變，一定要先覺察。｜Orikan 李泰欣",
+      "description": "一個人要改變，一定要先覺察。 沒有覺察，就不會知道自己正在重複什麼模式。 沒有覺知，就不會知道這個模式從哪裡來。 不知道從哪裡來，就不可能真正改變。 覺察是發現。 覺知是知道自己發現了什麼。 改變則是把這份知道，落實到下一次的行為裡。 而「覺」有三個層次。 1. 不知不覺 對自己的行為找不出原因。 ",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "銷售成長",
+        "心理成長",
+        "個人成長"
+      ],
+      "keywords": [
+        "一個人要改變，一定要先覺察。",
+        "銷售成長",
+        "心理成長",
+        "個人成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-04",
+      "updated_at": "2026-08-04",
+      "vocus_url": "https://vocus.cc/article/6a7142eafd897800012e959a",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a7142ea/",
+      "source_sha256": "f497fc2f2feb3ca7b253c50752e09d6abf5e26dfe69d0507547d075d92eb689d",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/a56d351b-3dfe-485f-846b-c21fe31e6401.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a7142eafd897800012e959a-1.png",
+          "filename": "6a7142eafd897800012e959a-1.png",
+          "sha256": "e71e51105e92e10f41608f098b33b36e0b2578d6ed0adbd88a34e68020334114",
+          "alt": "一個人要改變，一定要先覺察。｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/f443297b-40de-42bb-b6a5-7e440b8c387a.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a7142eafd897800012e959a-2.png",
+          "filename": "6a7142eafd897800012e959a-2.png",
+          "sha256": "9427456ffd3b58f06239d7912ca0884d5b977be06d899d503d95de68d6cd8f16",
+          "alt": "一個人要改變，一定要先覺察。｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A6FF27AFD89780001D10576",
       "vocus_article_id": "6a6ff27afd89780001d10576",
