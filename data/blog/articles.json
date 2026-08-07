@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-04",
+  "generated_at": "2026-08-07",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 58,
+  "reported_public_article_count": 59,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A7570C4FD89780001FEF8CB",
+      "vocus_article_id": "6a7570c4fd89780001fef8cb",
+      "slug": "article-6a7570c4",
+      "title": "知識無國界，但教育有界限；知識無界限，但教法有界限。",
+      "seo_title": "知識無國界，但教育有界限；知識無界限，但教法有界限。｜Orikan 李泰欣",
+      "description": "知識無國界，但教育有界限；知識無界限，但教法有界限。 只要是世界上的知識都是共同的，不論是透過圖書館或 AI 都能查到，人與人之間也可以互相傳遞，但「教法」卻因人而異。 老師教的知識或許正確，但如果教法不當，就會讓學生的吸收產生偏差。所以，如果你曾經在學習路上覺得被「割韭菜」，那往往不是知識本身不對",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "銷售成長",
+        "AI應用",
+        "學習成長",
+        "心理成長"
+      ],
+      "keywords": [
+        "知識無國界，但教育有界限；知識無界限，但教法有界限。",
+        "銷售成長",
+        "AI應用",
+        "學習成長",
+        "心理成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-07",
+      "updated_at": "2026-08-07",
+      "vocus_url": "https://vocus.cc/article/6a7570c4fd89780001fef8cb",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a7570c4/",
+      "source_sha256": "4d28f4b43bb44b4f8710ed65be3894ff73ee767a953061a6ec6a9cf97a7df2f3",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/2cba9018-f6d4-4a8c-8312-f31cebab7a29.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a7570c4fd89780001fef8cb-1.png",
+          "filename": "6a7570c4fd89780001fef8cb-1.png",
+          "sha256": "a32fcce80a9fbcba4b06de0f68025de337aaa3b88abba1a31495fe086af3a3a4",
+          "alt": "知識無國界，但教育有界限；知識無界限，但教法有界限。｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/f9e126ae-5d06-473e-98f9-e962bc890861.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a7570c4fd89780001fef8cb-2.png",
+          "filename": "6a7570c4fd89780001fef8cb-2.png",
+          "sha256": "470efc44a5deeb76775cc871ed4bad0a179c808aaa44b681c4c4c2febbf91ff4",
+          "alt": "知識無國界，但教育有界限；知識無界限，但教法有界限。｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A7142EAFD897800012E959A",
       "vocus_article_id": "6a7142eafd897800012e959a",
