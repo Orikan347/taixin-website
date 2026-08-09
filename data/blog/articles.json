@@ -1,10 +1,54 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-07",
+  "generated_at": "2026-08-09",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 59,
+  "reported_public_article_count": 60,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A7803DAFD8978000195CA8C",
+      "vocus_article_id": "6a7803dafd8978000195ca8c",
+      "slug": "article-6a7803da",
+      "title": "4/23,到群義房屋第一季的頒獎大會, 為 500 人的場次進行分享。",
+      "seo_title": "4/23,到群義房屋第一季的頒獎大會, 為 500 人的場次進行分享。｜Orikan 李泰欣",
+      "description": "4/23,到群義房屋第一季的頒獎大會, 為 500 人的場次進行分享。 但這次深深打動我的, 是群義的企業宣言: 「群力行義,溫馨滿意; 與人為善,互為貴人。」 這段宣言, 剛好跟我準備的這場演講, 每一個具體方法都互相呼應。 很多時候, 我們會以為每天闡述的道理只是「心法」, 但心法其實就是方向。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "銷售成長",
+        "學習成長",
+        "個人成長"
+      ],
+      "keywords": [
+        "4/23,到群義房屋第一季的頒獎大會, 為 500 人的場次進行分享。",
+        "銷售成長",
+        "學習成長",
+        "個人成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-09",
+      "updated_at": "2026-08-09",
+      "vocus_url": "https://vocus.cc/article/6a7803dafd8978000195ca8c",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a7803da/",
+      "source_sha256": "e15efde2cdfeedcc34316fa1a4f09b37b773b8ad1698c6c7be0e0e432aa06a8d",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/b84892d4-7216-40e3-84cc-8ea875f48da9.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a7803dafd8978000195ca8c-1.png",
+          "filename": "6a7803dafd8978000195ca8c-1.png",
+          "sha256": "dc9bc2ce22343bb527735e9b2547c5f25a6a323af77eccbdeca5304d7d3627a1",
+          "alt": "4/23,到群義房屋第一季的頒獎大會, 為 500 人的場次進行分享。｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/4fc5cbbf-10b6-48f0-b4fd-d8418b37506d.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a7803dafd8978000195ca8c-2.png",
+          "filename": "6a7803dafd8978000195ca8c-2.png",
+          "sha256": "49b1a72d9be627127ae815f16760bd95574114a1613dd7a848015b6da25e285e",
+          "alt": "4/23,到群義房屋第一季的頒獎大會, 為 500 人的場次進行分享。｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A7570C4FD89780001FEF8CB",
       "vocus_article_id": "6a7570c4fd89780001fef8cb",
