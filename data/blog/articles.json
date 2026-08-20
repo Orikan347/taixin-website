@@ -1,10 +1,54 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-09",
+  "generated_at": "2026-08-20",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 60,
+  "reported_public_article_count": 61,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A865C49FD897800019900B4",
+      "vocus_article_id": "6a865c49fd897800019900b4",
+      "slug": "article-6a865c49",
+      "title": "人生有四個必經的階段：",
+      "seo_title": "人生有四個必經的階段：｜Orikan 李泰欣",
+      "description": "人生有四個必經的階段：  第一階段：純粹的幸福  小時候的你，什麼都沒有。但擁有一分，就是一分的幸福；擁有五分，就是五分的快樂。你可以躲在鋼琴底下玩扮家家酒，在屋頂跟姐妹捉迷藏，自己學著漫畫耍著劍術，可以跟朋友跑進森林裡冒險，弄得一身髒兮兮，卻笑得比誰都開心。那時候的快樂，不需要任何條件。  第二階",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "人生方向",
+        "自我成長",
+        "幸福感"
+      ],
+      "keywords": [
+        "人生有四個必經的階段：",
+        "人生方向",
+        "自我成長",
+        "幸福感",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-20",
+      "updated_at": "2026-08-20",
+      "vocus_url": "https://vocus.cc/article/6a865c49fd897800019900b4",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a865c49/",
+      "source_sha256": "c9c26d7cfe530b183ec1d2a7fc5dfa549a2b339debce3c8716399e63421ad7a1",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/0cea9e37-36d6-4fc4-ae70-1bdfdc8258be.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a865c49fd897800019900b4-1.png",
+          "filename": "6a865c49fd897800019900b4-1.png",
+          "sha256": "af8f25212f34a43b84adc7bbe18d29a3c3a1aa088c3df3100da1ba2cf90644cc",
+          "alt": "人生有四個必經的階段：｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/ccb065fb-f5a6-4af6-acff-7fbaafaa639b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a865c49fd897800019900b4-2.png",
+          "filename": "6a865c49fd897800019900b4-2.png",
+          "sha256": "061deed8bfef24315529febaa8d0e91d1c28d06b55d6927d170dbc7d9b847944",
+          "alt": "人生有四個必經的階段：｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A7803DAFD8978000195CA8C",
       "vocus_article_id": "6a7803dafd8978000195ca8c",
@@ -74,7 +118,7 @@
         "思考、修身與學習"
       ],
       "published_at": "2026-08-07",
-      "updated_at": "2026-08-07",
+      "updated_at": "2026-08-09",
       "vocus_url": "https://vocus.cc/article/6a7570c4fd89780001fef8cb",
       "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a7570c4/",
       "source_sha256": "4d28f4b43bb44b4f8710ed65be3894ff73ee767a953061a6ec6a9cf97a7df2f3",
