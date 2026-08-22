@@ -1,10 +1,54 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-21",
+  "generated_at": "2026-08-22",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 62,
+  "reported_public_article_count": 63,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A890CA8FD89780001350AF6",
+      "vocus_article_id": "6a890ca8fd89780001350af6",
+      "slug": "article-6a890ca8",
+      "title": "花了一百萬學費，我才懂：好課只看三件事",
+      "seo_title": "花了一百萬學費，我才懂：好課只看三件事｜Orikan 李泰欣",
+      "description": "短影音口播講稿：花了超過一百萬學費，我才搞懂一堂課值不值得，只看三件事 類型：知識觀點式｜時長：約 90 秒（約 400 字） 主題：如何判斷課程是否值得投資  【鉤子】 我花了超過一百萬的學費，才搞懂一堂課值不值得，只看三件事。 現在課程多到讓人焦慮，每個都說能改變你的人生，搞到最後你連掏錢都有創",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "課程選擇",
+        "學習投資",
+        "學習方法"
+      ],
+      "keywords": [
+        "花了一百萬學費，我才懂：好課只看三件事",
+        "課程選擇",
+        "學習投資",
+        "學習方法",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-22",
+      "updated_at": "2026-08-22",
+      "vocus_url": "https://vocus.cc/article/6a890ca8fd89780001350af6",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a890ca8/",
+      "source_sha256": "585632a2c6f94543c6e0d7d7d84907c965a517dde8468361b965cdab238254be",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/88c49e41-5331-4608-a213-b9e671829b31.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a890ca8fd89780001350af6-1.png",
+          "filename": "6a890ca8fd89780001350af6-1.png",
+          "sha256": "9081f15e3391a45878480a3b89b37f536a6349c3d48df249b70570ce0e05afea",
+          "alt": "花了一百萬學費，我才懂：好課只看三件事｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/c19650e3-d35a-4b46-b7ef-42f229013dd9.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a890ca8fd89780001350af6-2.png",
+          "filename": "6a890ca8fd89780001350af6-2.png",
+          "sha256": "3eadab00e5bc6a13096ac50ebf5b4760e52e761b0f0e4777febb1aa37f1beae9",
+          "alt": "花了一百萬學費，我才懂：好課只看三件事｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A87AE5CFD89780001E59F19",
       "vocus_article_id": "6a87ae5cfd89780001e59f19",
