@@ -1,10 +1,54 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-26",
+  "generated_at": "2026-08-27",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 64,
+  "reported_public_article_count": 65,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A8FD205FD8978000161AC60",
+      "vocus_article_id": "6a8fd205fd8978000161ac60",
+      "slug": "article-6a8fd205",
+      "title": "你有沒有想過，就算工作，你其實也是一位「創業家」。",
+      "seo_title": "你有沒有想過，就算工作，你其實也是一位「創業家」。｜Orikan 李泰欣",
+      "description": "你有沒有想過， 就算工作，你其實也是一位「創業家」。 創業家，是創造一份屬於自己事業的人。 不管你現在做什麼，你都在創造自己的人生，而不只是在完成這份工作而已。你在這份工作累積的每一個客戶、每一份信任、每一個名聲，都會延續你接下來的日子。 你是怎麼對待這份工作的，就是你怎麼對待自己的人生。 人生有兩",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "工作倦怠",
+        "業務成長",
+        "職涯價值"
+      ],
+      "keywords": [
+        "你有沒有想過，就算工作，你其實也是一位「創業家」。",
+        "工作倦怠",
+        "業務成長",
+        "職涯價值",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-27",
+      "updated_at": "2026-08-27",
+      "vocus_url": "https://vocus.cc/article/6a8fd205fd8978000161ac60",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a8fd205/",
+      "source_sha256": "23a9eb290580e78ce6aed11ad351b341054493f81f1e53dae15182927a132b7f",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/0d276a87-7280-4235-b15a-6c9c9d90a20b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a8fd205fd8978000161ac60-1.png",
+          "filename": "6a8fd205fd8978000161ac60-1.png",
+          "sha256": "55cd74c0aa12478d619fad6605e340d3a8421b99d8135383068104c1e81b56c9",
+          "alt": "你有沒有想過，就算工作，你其實也是一位「創業家」。｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/d7a068f8-3ca3-492f-9f69-dff41b8e9a42.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a8fd205fd8978000161ac60-2.png",
+          "filename": "6a8fd205fd8978000161ac60-2.png",
+          "sha256": "97fbf7be84b85ee54a0613ae8548ba6e2bf998ae3264e632fc8f1ba2bfc27731",
+          "alt": "你有沒有想過，就算工作，你其實也是一位「創業家」。｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A8EA3E6FD8978000128D1BC",
       "vocus_article_id": "6a8ea3e6fd8978000128d1bc",
