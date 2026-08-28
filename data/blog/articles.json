@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-27",
+  "generated_at": "2026-08-28",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 65,
+  "reported_public_article_count": 66,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A90E967FD8978000195374F",
+      "vocus_article_id": "6a90e967fd8978000195374f",
+      "slug": "article-6a90e967",
+      "title": "當「上帝已死」，人要靠什麼活下去？尼采的三步重建人生",
+      "seo_title": "當「上帝已死」，人要靠什麼活下去？尼采的三步重建人生｜Orikan 李泰欣",
+      "description": "尼采哲學的精華骨幹，它們是一個連貫的推論過程：從破壞（打破舊信仰）、發現（找出生命真正的動力），到重建（創造新的人生意義）。  以下為您拆解這三個核心概念：  1. 「上帝已死」與現代價值危機（破壞）  這句話常被誤解為對宗教的單純挑釁，但尼采其實是在陳述一個客觀的文化現象。  真正的涵義：隨著科學",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "尼采哲學",
+        "虛無主義",
+        "自我超越",
+        "人生意義"
+      ],
+      "keywords": [
+        "當「上帝已死」，人要靠什麼活下去？尼采的三步重建人生",
+        "尼采哲學",
+        "虛無主義",
+        "自我超越",
+        "人生意義",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-28",
+      "updated_at": "2026-08-28",
+      "vocus_url": "https://vocus.cc/article/6a90e967fd8978000195374f",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a90e967/",
+      "source_sha256": "a82cfeaa65ec7b4899f42ecc3e467c7f2dd5b1e814b0183465dff71aa4b7ffc5",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/35825a1c-de78-4120-8863-15e1d21c4a97.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a90e967fd8978000195374f-1.png",
+          "filename": "6a90e967fd8978000195374f-1.png",
+          "sha256": "0ccc2e7889ea2e827c8b79e92634eee345919bf77911a7b6845afa93f314dabe",
+          "alt": "當「上帝已死」，人要靠什麼活下去？尼采的三步重建人生｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/0927c3fc-9b67-44c5-8558-b48fc96f85fe.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a90e967fd8978000195374f-2.png",
+          "filename": "6a90e967fd8978000195374f-2.png",
+          "sha256": "230befe9358aae0aa2822e69f52525b887384ac04bda1b6fa1148f17a2806846",
+          "alt": "當「上帝已死」，人要靠什麼活下去？尼采的三步重建人生｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A8FD205FD8978000161AC60",
       "vocus_article_id": "6a8fd205fd8978000161ac60",
