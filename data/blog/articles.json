@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-28",
+  "generated_at": "2026-08-29",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 66,
+  "reported_public_article_count": 67,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A9239A5FD89780001DA7229",
+      "vocus_article_id": "6a9239a5fd89780001da7229",
+      "slug": "article-6a9239a5",
+      "title": "客戶總說「再看看」？用 Gemini 五合一提示詞，生成你的信任說話技巧",
+      "seo_title": "客戶總說「再看看」？用 Gemini 五合一提示詞，生成你的信任說話技巧｜Orikan 李泰欣",
+      "description": "主旨：客戶總說「再看看」？複製這組 Gemini 咒語，一鍵破解防備心 哈囉，我是泰欣。 最近收到很多剛上完課的學員私訊：「泰欣哥，我知道建立信任感很重要，我也知道要講得簡單。但是拜訪客戶的當下，我實在太怕被拒絕了，腦袋一片空白，最後又忍不住開始背產品規格...」 如果你也有這個狀況，請先深呼吸，停",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "客戶防備心",
+        "銷售溝通",
+        "Gemini 提示詞",
+        "異議處理"
+      ],
+      "keywords": [
+        "客戶總說「再看看」？用 Gemini 五合一提示詞，生成你的信任說話技巧",
+        "客戶防備心",
+        "銷售溝通",
+        "Gemini 提示詞",
+        "異議處理",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-29",
+      "updated_at": "2026-08-29",
+      "vocus_url": "https://vocus.cc/article/6a9239a5fd89780001da7229",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a9239a5/",
+      "source_sha256": "ab25b23187385cc270a8f4c5ad3225a9db8ca467d9739e9e33dd8ad98560a292",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/25287001-f056-4d4c-b1f0-8a6d861e29ee.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a9239a5fd89780001da7229-1.png",
+          "filename": "6a9239a5fd89780001da7229-1.png",
+          "sha256": "24d4a8ba210801eaea3e5b82af98edc7ed28c333c96818aeed62861a51b08ff0",
+          "alt": "客戶總說「再看看」？用 Gemini 五合一提示詞，生成你的信任說話技巧｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/dbbb2eee-6de0-4a34-9302-e31ded8e7fff.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a9239a5fd89780001da7229-2.png",
+          "filename": "6a9239a5fd89780001da7229-2.png",
+          "sha256": "c78d8609094084eb3e8f4c3f4661c9705854a0b566b53064bac48aaf52abe169",
+          "alt": "客戶總說「再看看」？用 Gemini 五合一提示詞，生成你的信任說話技巧｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A90E967FD8978000195374F",
       "vocus_article_id": "6a90e967fd8978000195374f",
