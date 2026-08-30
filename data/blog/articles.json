@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-29",
+  "generated_at": "2026-08-30",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 67,
+  "reported_public_article_count": 68,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A938B57FD8978000118F8E6",
+      "vocus_article_id": "6a938b57fd8978000118f8e6",
+      "slug": "article-6a938b57",
+      "title": "為什麼你越有經驗，反而越難成長？《主角模式》給我的提醒",
+      "seo_title": "為什麼你越有經驗，反而越難成長？《主角模式》給我的提醒｜Orikan 李泰欣",
+      "description": "趁著搭飛機去馬來西亞的過程中，看完了《主角模式》這本書。 它主要解決的是我們成長的問題。  我覺得這本書給我最大的衝擊， 人生當中的很多問題，「唯有你自己成長才能真正被解決」。你不能仰賴外物，也不會因為你買了什麼東西、獲得了什麼職位，或是跟什麼伴侶在一起，你的人生就完全沒有問題了。 所以人生唯一最重",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "個人成長",
+        "認知偏誤",
+        "學習方法",
+        "主角模式"
+      ],
+      "keywords": [
+        "為什麼你越有經驗，反而越難成長？《主角模式》給我的提醒",
+        "個人成長",
+        "認知偏誤",
+        "學習方法",
+        "主角模式",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-30",
+      "updated_at": "2026-08-30",
+      "vocus_url": "https://vocus.cc/article/6a938b57fd8978000118f8e6",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a938b57/",
+      "source_sha256": "321807df998fb3b80b0b66d942f15bedaba7cef7fda9b07678811f09abc1525f",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/b38e460f-62c1-4552-8642-1a1e36f44a61.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a938b57fd8978000118f8e6-1.png",
+          "filename": "6a938b57fd8978000118f8e6-1.png",
+          "sha256": "6ba6a9bde30e6e03c10b2c9286279131fd5615a18dc7d2b0311705a9fad25267",
+          "alt": "為什麼你越有經驗，反而越難成長？《主角模式》給我的提醒｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/3891bbb6-36de-4954-b2a9-155a24ea5acb.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a938b57fd8978000118f8e6-2.png",
+          "filename": "6a938b57fd8978000118f8e6-2.png",
+          "sha256": "ca07e5896541134338331f1913d7a5533e0ef3fb886f4c7f844cd955c3a8fbbb",
+          "alt": "為什麼你越有經驗，反而越難成長？《主角模式》給我的提醒｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A9239A5FD89780001DA7229",
       "vocus_article_id": "6a9239a5fd89780001da7229",
