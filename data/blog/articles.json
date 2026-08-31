@@ -1,10 +1,54 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-30",
+  "generated_at": "2026-08-31",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 68,
+  "reported_public_article_count": 69,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A94DBDDFD8978000164DA11",
+      "vocus_article_id": "6a94dbddfd8978000164da11",
+      "slug": "article-6a94dbdd",
+      "title": "【從單元課到系列班：當導師，是為了引導學生成長的方向】",
+      "seo_title": "【從單元課到系列班：當導師，是為了引導學生成長的方向】｜Orikan 李泰欣",
+      "description": "【從單元課到系列班：當導師，是為了引導學生成長的方向】  第六屆企業導師班圓滿結束了。 這一次的學習，讓我有了更深一層的體悟。  過去，我們教的是「單點」的技術； 而這一次，我真的把課程從「單元課」串聯成一整個「系列班」。  這種感覺很不一樣。當教學有了系統，學生就能清楚看見未來可以走的方向，以及自",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "講師成長",
+        "課程設計",
+        "企業導師"
+      ],
+      "keywords": [
+        "【從單元課到系列班：當導師，是為了引導學生成長的方向】",
+        "講師成長",
+        "課程設計",
+        "企業導師",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-08-31",
+      "updated_at": "2026-08-31",
+      "vocus_url": "https://vocus.cc/article/6a94dbddfd8978000164da11",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a94dbdd/",
+      "source_sha256": "c134950df1a8e5aed981cc928d340f38d401832efb053710bbe3c4a1a59a8d8b",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/d305fd63-6909-45ea-9391-fd621d350d16.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a94dbddfd8978000164da11-1.png",
+          "filename": "6a94dbddfd8978000164da11-1.png",
+          "sha256": "b49ed42811c77c8f740fc840650a115380a5b8f4947ef81059fcfe9c3e275c45",
+          "alt": "【從單元課到系列班：當導師，是為了引導學生成長的方向】｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/29c50374-833a-4715-89ee-991167e898e1.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a94dbddfd8978000164da11-2.png",
+          "filename": "6a94dbddfd8978000164da11-2.png",
+          "sha256": "6fc905cd94031f357d014092ce3ad49e7b7923486df75f237704cfca9d61171d",
+          "alt": "【從單元課到系列班：當導師，是為了引導學生成長的方向】｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A938B57FD8978000118F8E6",
       "vocus_article_id": "6a938b57fd8978000118f8e6",
