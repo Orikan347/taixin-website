@@ -1,10 +1,54 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-08-31",
+  "generated_at": "2026-09-01",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 69,
+  "reported_public_article_count": 70,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A962E01FD89780001C05D12",
+      "vocus_article_id": "6a962e01fd89780001c05d12",
+      "slug": "article-6a962e01",
+      "title": "創業者為什麼要比別人好 10 倍？從 0 到 1 的銷售與 AI 思考",
+      "seo_title": "創業者為什麼要比別人好 10 倍？從 0 到 1 的銷售與 AI 思考｜Orikan 李泰欣",
+      "description": "從 0 到 1：創業者你要比別人10倍好。  創業無法被教導，因為每一個創業都是原創且獨特的。 成功者是因為他們是從基本的原則來思考商業，而不是從成功方程式來思考。  彼得．提爾（Peter Thiel）一開始就問了最重要的一句話：「這世界上有什麼事，你跟別人想的不一樣？」  自從網路泡沫化之後，一",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "創業思維",
+        "銷售系統",
+        "AI銷售"
+      ],
+      "keywords": [
+        "創業者為什麼要比別人好 10 倍？從 0 到 1 的銷售與 AI 思考",
+        "創業思維",
+        "銷售系統",
+        "AI銷售",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-01",
+      "updated_at": "2026-09-01",
+      "vocus_url": "https://vocus.cc/article/6a962e01fd89780001c05d12",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a962e01/",
+      "source_sha256": "fd177f561cacd820e9a9ff7cd5a2fd17f258823673b8d34316b8ce537c399709",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/a716f6ad-445f-48cb-86c5-a208019b129f.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a962e01fd89780001c05d12-1.png",
+          "filename": "6a962e01fd89780001c05d12-1.png",
+          "sha256": "cfbbb8e4179a2edb5d65595aab9f753a51e253b73be19ef87d501ef8cd4eb03d",
+          "alt": "創業者為什麼要比別人好 10 倍？從 0 到 1 的銷售與 AI 思考｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/638c4f97-6212-4a9d-8389-e6f0ce8fd784.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a962e01fd89780001c05d12-2.png",
+          "filename": "6a962e01fd89780001c05d12-2.png",
+          "sha256": "289784ab964e80c0a060c3eb0f7e68a9a541d7fb2b3d49700a0c67b93e5a7041",
+          "alt": "創業者為什麼要比別人好 10 倍？從 0 到 1 的銷售與 AI 思考｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A94DBDDFD8978000164DA11",
       "vocus_article_id": "6a94dbddfd8978000164da11",
