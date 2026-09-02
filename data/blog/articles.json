@@ -1,10 +1,54 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-01",
+  "generated_at": "2026-09-02",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 70,
+  "reported_public_article_count": 71,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6A977E60FD897800017585A5",
+      "vocus_article_id": "6a977e60fd897800017585a5",
+      "slug": "article-6a977e60",
+      "title": "2026 大局策略：轉出新局，深耕人脈、穩中求快",
+      "seo_title": "2026 大局策略：轉出新局，深耕人脈、穩中求快｜Orikan 李泰欣",
+      "description": "2026 大局策略：轉出新局，深耕人脈、穩中求快 今天聽完「4U 2026 年創富運數大會」，內心充滿了能量與方向 由 Michael 老師跟 Tina 老師主講的這場大會，不只是談運勢，更是談策略。  很多人問我，面對未知的明年該怎麼拚？  老師們針對三個方面，提供給了大家具體的執行策略 這套策略",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "人生方向",
+        "人際關係",
+        "事業策略"
+      ],
+      "keywords": [
+        "2026 大局策略：轉出新局，深耕人脈、穩中求快",
+        "人生方向",
+        "人際關係",
+        "事業策略",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-02",
+      "updated_at": "2026-09-02",
+      "vocus_url": "https://vocus.cc/article/6a977e60fd897800017585a5",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6a977e60/",
+      "source_sha256": "fbb2a7201d6c975663396583ad233f0c9ab8f37f4c71d40b20572ce6ecae8f86",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/4fad5e90-9c35-4736-9d02-159a1fa475a3.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a977e60fd897800017585a5-1.png",
+          "filename": "6a977e60fd897800017585a5-1.png",
+          "sha256": "acf11f84f22e5e7b599d9f457d9374cb7925689a54c317912f22963f0d9236a6",
+          "alt": "2026 大局策略：轉出新局，深耕人脈、穩中求快｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/0e7aa23e-6354-4b94-b020-669825318776.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6a977e60fd897800017585a5-2.png",
+          "filename": "6a977e60fd897800017585a5-2.png",
+          "sha256": "9c7686e69bfcf5cfea824b9e0100ef2b5c98c0dd70bdcc978703162fc3e27187",
+          "alt": "2026 大局策略：轉出新局，深耕人脈、穩中求快｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A962E01FD89780001C05D12",
       "vocus_article_id": "6a962e01fd89780001c05d12",
@@ -2526,7 +2570,7 @@
         "思考、修身與學習"
       ],
       "published_at": "2026-02-27",
-      "updated_at": "2026-07-21",
+      "updated_at": "2026-09-01",
       "vocus_url": "https://vocus.cc/article/69a19987fd89780001c0ff1e",
       "site_url": "https://orikan347.github.io/taixin-website/blog/mental-overthinking-illusion-of-control/",
       "source_sha256": "bdc8fcbc78c7f3f5716c91b494661f456b8f331a08e759510c140a86d9efa04a",
