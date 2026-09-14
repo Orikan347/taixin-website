@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-11",
+  "generated_at": "2026-09-14",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 72,
+  "reported_public_article_count": 73,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AA7546AFD897800013E9A17",
+      "vocus_article_id": "6aa7546afd897800013e9a17",
+      "slug": "article-6aa7546a",
+      "title": "見證案例為什麼不能完全相信？故事很動人，不等於能證明有效",
+      "seo_title": "見證案例為什麼不能完全相信？故事很動人，不等於能證明有效｜Orikan 李泰欣",
+      "description": "【見證案例為什麼不能完全相信？】 因為安慰劑效應與大腦容易受鮮活性的問題影響。  我小時候住苗栗鄉下，每兩個禮拜大概就會有一台小貨車開到我們村裡表演。表演完跳舞之後，他們就會開始賣起所謂的「萬能藥」，可能是治肝、治療癌症，或是治療糖尿病，或是治療氣喘的。  這個時候我婆婆就會帶我去看表演，講了很多實",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "見證案例",
+        "安慰劑效應",
+        "認知偏誤",
+        "科學思考"
+      ],
+      "keywords": [
+        "見證案例為什麼不能完全相信？故事很動人，不等於能證明有效",
+        "見證案例",
+        "安慰劑效應",
+        "認知偏誤",
+        "科學思考",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-14",
+      "updated_at": "2026-09-14",
+      "vocus_url": "https://vocus.cc/article/6aa7546afd897800013e9a17",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6aa7546a/",
+      "source_sha256": "91e1eea8ca0269e3cf41191a5f399503c9be82d3bfa863f1535ee0fd29a8846f",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/c724c606-6f62-431b-9ecd-e3c16d0e1306.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6aa7546afd897800013e9a17-1.png",
+          "filename": "6aa7546afd897800013e9a17-1.png",
+          "sha256": "5fe03e377d200eb1fa2c3f30b20ba7745dca72460eab44c74908f803c476f8d3",
+          "alt": "見證案例為什麼不能完全相信？故事很動人，不等於能證明有效｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/5ea3e0b9-2af0-43f7-a0c2-11d1e5239248.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6aa7546afd897800013e9a17-2.png",
+          "filename": "6aa7546afd897800013e9a17-2.png",
+          "sha256": "3f5ecc71eba834a026938feadc6ce531e4c2d52c6e3c40a96259185a44adae25",
+          "alt": "見證案例為什麼不能完全相信？故事很動人，不等於能證明有效｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AA35C55FD897800014AA915",
       "vocus_article_id": "6aa35c55fd897800014aa915",
