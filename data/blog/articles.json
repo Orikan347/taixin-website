@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-02",
+  "generated_at": "2026-09-11",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 71,
+  "reported_public_article_count": 72,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AA35C55FD897800014AA915",
+      "vocus_article_id": "6aa35c55fd897800014aa915",
+      "slug": "article-6aa35c55",
+      "title": "為什麼換了環境，還是回到原點？世界合，是不再與真實對抗",
+      "seo_title": "為什麼換了環境，還是回到原點？世界合，是不再與真實對抗｜Orikan 李泰欣",
+      "description": "前三天講了心合、體合、人合。 今天是最後一個，世界合。 創業第一年EinFit，我們就拿了國家品牌玉山獎六大項，SNQ，100%無添加獎項。 我以為只要用最好的原料、最安全的製程、最多的獎項，營業額就會上去，員工就能照顧好。 事實並不是如此。 業績並沒有跟著我們的獎項等比增加，還要不斷處理各部門之間",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "人生低谷",
+        "享樂適應",
+        "自我成長",
+        "創業歷程"
+      ],
+      "keywords": [
+        "為什麼換了環境，還是回到原點？世界合，是不再與真實對抗",
+        "人生低谷",
+        "享樂適應",
+        "自我成長",
+        "創業歷程",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-11",
+      "updated_at": "2026-09-11",
+      "vocus_url": "https://vocus.cc/article/6aa35c55fd897800014aa915",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6aa35c55/",
+      "source_sha256": "2b24446784ded8ac140db650553d886a947c7144d27ebdc4b90ed03e4cb2aab0",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/4fcc499f-43e3-4595-b6dc-a56292c9df3b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6aa35c55fd897800014aa915-1.png",
+          "filename": "6aa35c55fd897800014aa915-1.png",
+          "sha256": "feb8664cc57843d5fc1deba3ef59507d6dfee98dc00ad6821c43dac2814579d0",
+          "alt": "為什麼換了環境，還是回到原點？世界合，是不再與真實對抗｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/7ab18af4-c33a-4e2f-bc21-deff453ad848.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6aa35c55fd897800014aa915-2.png",
+          "filename": "6aa35c55fd897800014aa915-2.png",
+          "sha256": "1588ce07202f844af5e9409ad3fff2cf143f9eb5adeac6016b44071cda60db49",
+          "alt": "為什麼換了環境，還是回到原點？世界合，是不再與真實對抗｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6A977E60FD897800017585A5",
       "vocus_article_id": "6a977e60fd897800017585a5",
