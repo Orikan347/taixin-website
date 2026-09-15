@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-14",
+  "generated_at": "2026-09-15",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 73,
+  "reported_public_article_count": 74,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AA8A1ECFD8978000187EA1F",
+      "vocus_article_id": "6aa8a1ecfd8978000187ea1f",
+      "slug": "article-6aa8a1ec",
+      "title": "為什麼越愛越容易互相傷害？人合，不是忍耐，是理解與界線",
+      "seo_title": "為什麼越愛越容易互相傷害？人合，不是忍耐，是理解與界線｜Orikan 李泰欣",
+      "description": "前兩天講的心合跟體合，都是我們跟自己。 今天這一個，是我們跟別人。 二十歲那年，我談了一場感情，談了十年。 那十年吵過很多次。有幾次吵得很兇，我到現在都還記得。 以前的我很不會表達。 因為小時候一直氣喘，親戚聚會我總是坐在角落那一個， 兄弟打球也沒人想跟我同隊。 從那之後我就不太願意說出自己想要什麼",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "親密關係",
+        "溝通表達",
+        "人際關係",
+        "自我成長"
+      ],
+      "keywords": [
+        "為什麼越愛越容易互相傷害？人合，不是忍耐，是理解與界線",
+        "親密關係",
+        "溝通表達",
+        "人際關係",
+        "自我成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-15",
+      "updated_at": "2026-09-15",
+      "vocus_url": "https://vocus.cc/article/6aa8a1ecfd8978000187ea1f",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6aa8a1ec/",
+      "source_sha256": "f4d9ea1b464d8667892442acc96d9e531a5f7f82ff46cde7480452e6f83f4078",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/b2878447-c993-4920-95b7-edff698c77bd.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6aa8a1ecfd8978000187ea1f-1.png",
+          "filename": "6aa8a1ecfd8978000187ea1f-1.png",
+          "sha256": "425813eaed857ec301b362f040f6aa9ddc6299d99086f5aa38ecbb9652afffd5",
+          "alt": "為什麼越愛越容易互相傷害？人合，不是忍耐，是理解與界線｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/39397e6b-52c1-4aa7-9253-d27a1528d7ce.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6aa8a1ecfd8978000187ea1f-2.png",
+          "filename": "6aa8a1ecfd8978000187ea1f-2.png",
+          "sha256": "d8996bcbc25557249cd2ed84537cc9262c2d212ec2caa882547e2f7946bb50ed",
+          "alt": "為什麼越愛越容易互相傷害？人合，不是忍耐，是理解與界線｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AA7546AFD897800013E9A17",
       "vocus_article_id": "6aa7546afd897800013e9a17",
