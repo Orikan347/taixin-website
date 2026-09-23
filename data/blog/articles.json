@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-20",
+  "generated_at": "2026-09-23",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 75,
+  "reported_public_article_count": 76,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AB1F271FD897800014CDEA7",
+      "vocus_article_id": "6ab1f271fd897800014cdea7",
+      "slug": "article-6ab1f271",
+      "title": "為什麼總在後悔？不是選錯，而是沒有把選擇做對",
+      "seo_title": "為什麼總在後悔？不是選錯，而是沒有把選擇做對｜Orikan 李泰欣",
+      "description": "我有一個大學同學， 在我凌晨還在玩遊戲的時候，他已經起床唸書了。 在我花時間談戀愛，他已經人間清醒，選擇了考研究所。 當我每天睡到自然醒蹺課的時候，他已經騎著車早八上課。  而現在，我還在為了生活努力，他已經安排 45 歲要退休了。  我有時候也會想，如果那個時候的我做了跟他一樣的選擇，會不會我也可",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "人生選擇",
+        "後悔",
+        "覺知",
+        "自我成長"
+      ],
+      "keywords": [
+        "為什麼總在後悔？不是選錯，而是沒有把選擇做對",
+        "人生選擇",
+        "後悔",
+        "覺知",
+        "自我成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-22",
+      "updated_at": "2026-09-22",
+      "vocus_url": "https://vocus.cc/article/6ab1f271fd897800014cdea7",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6ab1f271/",
+      "source_sha256": "e630a5b1bcad1cca7310d8ceb1c28f0bb619eae73eff10eb00d16ee504497db4",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/7ecdb18a-fc68-400a-b7d5-92e54d97b413.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab1f271fd897800014cdea7-1.png",
+          "filename": "6ab1f271fd897800014cdea7-1.png",
+          "sha256": "0450e052caa679e92448506d016ca7afe44b50aa690893e037156d0b5a7233c2",
+          "alt": "為什麼總在後悔？不是選錯，而是沒有把選擇做對｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/2661c566-6bed-46a7-9200-24cfb36a088e.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab1f271fd897800014cdea7-2.png",
+          "filename": "6ab1f271fd897800014cdea7-2.png",
+          "sha256": "bf1d35c5113e3dcc13389f59bdd09620fbaef0d932af6074f8b520938848f6de",
+          "alt": "為什麼總在後悔？不是選錯，而是沒有把選擇做對｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AAFA275FD89780001B945C5",
       "vocus_article_id": "6aafa275fd89780001b945c5",
