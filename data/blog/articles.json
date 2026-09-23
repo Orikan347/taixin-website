@@ -3,8 +3,54 @@
   "site_base_url": "https://orikan347.github.io/taixin-website",
   "generated_at": "2026-09-23",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 76,
+  "reported_public_article_count": 77,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AB342F3FD89780001EF9318",
+      "vocus_article_id": "6ab342f3fd89780001ef9318",
+      "slug": "article-6ab342f3",
+      "title": "明知道傷身，為什麼還是停不下來？體合，讓身體和未來站在同一邊",
+      "seo_title": "明知道傷身，為什麼還是停不下來？體合，讓身體和未來站在同一邊｜Orikan 李泰欣",
+      "description": "昨天講的是心合，知道跟做到之間，斷掉的那條線。 今天講第二個，體合。 我從高二開始抽菸，抽了十五年。 停止之前，我每天還是一包半。 2017 年健檢，因為我有地中海貧血，肝臟一直發炎。 醫生跟我說，你只能靠自己，吃藥也沒用，不然就會短命。 那陣子我一直在回想一件事。 高中的時候抽菸，是因為它會帶走我",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "生活習慣",
+        "時間折扣",
+        "健康管理",
+        "自我成長"
+      ],
+      "keywords": [
+        "明知道傷身，為什麼還是停不下來？體合，讓身體和未來站在同一邊",
+        "生活習慣",
+        "時間折扣",
+        "健康管理",
+        "自我成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-23",
+      "updated_at": "2026-09-23",
+      "vocus_url": "https://vocus.cc/article/6ab342f3fd89780001ef9318",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6ab342f3/",
+      "source_sha256": "45705cc555cde01771175a011eec3f97000f39f275f782a3c8d8903162f9678c",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/d36a2c6e-f70e-488d-99cb-948ac0ee7535.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab342f3fd89780001ef9318-1.png",
+          "filename": "6ab342f3fd89780001ef9318-1.png",
+          "sha256": "d5651a29e022465cc2c8b97c9408b3127cde961c7b928690f51753b0942dda7c",
+          "alt": "明知道傷身，為什麼還是停不下來？體合，讓身體和未來站在同一邊｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/8d25441d-f315-49c4-9416-e8fe1022bc18.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab342f3fd89780001ef9318-2.png",
+          "filename": "6ab342f3fd89780001ef9318-2.png",
+          "sha256": "d2374fb7bfe0c252a218b8507c8758df9a965fe0334f7e2b2b6b464587ed8ec1",
+          "alt": "明知道傷身，為什麼還是停不下來？體合，讓身體和未來站在同一邊｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AB1F271FD897800014CDEA7",
       "vocus_article_id": "6ab1f271fd897800014cdea7",
