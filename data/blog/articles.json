@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-23",
+  "generated_at": "2026-09-24",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 77,
+  "reported_public_article_count": 78,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AB47FDAFD89780001B316CC",
+      "vocus_article_id": "6ab47fdafd89780001b316cc",
+      "slug": "article-6ab47fda",
+      "title": "為什麼知識越多，反而越害怕？學習要走完這三步",
+      "seo_title": "為什麼知識越多，反而越害怕？學習要走完這三步｜Orikan 李泰欣",
+      "description": "獲取知識、批判知識、執行知識  我最近也一直在想，獲取越多知識反而越害怕：害怕自己說錯，害怕自己誤人子弟，害怕自己在錯的地方努力。  《智人之上》這本書告訴我們，人類並不會因為獲取更多的知識而有所進步。就像是印刷術（機）的發明讓知識更容易普及，卻讓獵殺女巫的行為、資訊與恐慌更容易傳播，造成更多人死亡",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "知識焦慮",
+        "學習方法",
+        "批判性思維",
+        "AI時代"
+      ],
+      "keywords": [
+        "為什麼知識越多，反而越害怕？學習要走完這三步",
+        "知識焦慮",
+        "學習方法",
+        "批判性思維",
+        "AI時代",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-24",
+      "updated_at": "2026-09-24",
+      "vocus_url": "https://vocus.cc/article/6ab47fdafd89780001b316cc",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6ab47fda/",
+      "source_sha256": "c6229b4ca1d1f8594abe6ed40524dec89f93096c9bf38464be5509840cf1007d",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/a0b1fea2-9392-4dd1-b0a8-fb0c4289ead2.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab47fdafd89780001b316cc-1.png",
+          "filename": "6ab47fdafd89780001b316cc-1.png",
+          "sha256": "190289859a09b50da3e32387b500f1fde1508e72b3e0f152f7dabc531f64ad80",
+          "alt": "為什麼知識越多，反而越害怕？學習要走完這三步｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/9025de5e-ad35-4fd8-b5b7-d59d6b03429b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab47fdafd89780001b316cc-2.png",
+          "filename": "6ab47fdafd89780001b316cc-2.png",
+          "sha256": "5f79a7f2b6996abfb3996d8d2ac5c1fe0398d07cc6ae26ae7b61bac54c0167be",
+          "alt": "為什麼知識越多，反而越害怕？學習要走完這三步｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AB342F3FD89780001EF9318",
       "vocus_article_id": "6ab342f3fd89780001ef9318",
