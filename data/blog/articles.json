@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-24",
+  "generated_at": "2026-09-25",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 78,
+  "reported_public_article_count": 79,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AB5D033FD89780001937AC1",
+      "vocus_article_id": "6ab5d033fd89780001937ac1",
+      "slug": "article-6ab5d033",
+      "title": "為什麼知道很多，卻總是做不到？心合，讓知與行合一",
+      "seo_title": "為什麼知道很多，卻總是做不到？心合，讓知與行合一｜Orikan 李泰欣",
+      "description": "我以前做業務做到第一名那幾年，很喜歡跟人分享。 誰問我什麼，我就講什麼，恨不得把會的全部倒出來。 但我心裡一直有個疑惑。 為什麼我把我會的全部掏出來講，聽的人聽完還是沒做？  一開始我以為是我講得不夠好。後來我發現不是。 我們總是每天滑手機，看很多心靈雞湯， 一堆美到不行的金句，自己的人生還是很迷惘",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "知行不一",
+        "認知失調",
+        "自我成長",
+        "心合"
+      ],
+      "keywords": [
+        "為什麼知道很多，卻總是做不到？心合，讓知與行合一",
+        "知行不一",
+        "認知失調",
+        "自我成長",
+        "心合",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-25",
+      "updated_at": "2026-09-25",
+      "vocus_url": "https://vocus.cc/article/6ab5d033fd89780001937ac1",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6ab5d033/",
+      "source_sha256": "2b188587b0e2a32b99be34b23e30f5bdc3ad31e6f0af534c5cf916c2484a2449",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/27af450e-dc5a-4fa8-8494-c398a2349b61.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab5d033fd89780001937ac1-1.png",
+          "filename": "6ab5d033fd89780001937ac1-1.png",
+          "sha256": "529bd1e7249623dcbe2db89e5ebeb219454f3accfbbda0f6a18cd6a619751ddc",
+          "alt": "為什麼知道很多，卻總是做不到？心合，讓知與行合一｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/76ff933c-7fbb-43ac-8390-2ef0387e3a89.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab5d033fd89780001937ac1-2.png",
+          "filename": "6ab5d033fd89780001937ac1-2.png",
+          "sha256": "f5e6e8a8d25f491cebdf96276446dda7deb53da8f3e1ce79c62b3c81a89fc804",
+          "alt": "為什麼知道很多，卻總是做不到？心合，讓知與行合一｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AB47FDAFD89780001B316CC",
       "vocus_article_id": "6ab47fdafd89780001b316cc",
