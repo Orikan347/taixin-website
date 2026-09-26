@@ -1,10 +1,54 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-25",
+  "generated_at": "2026-09-26",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 79,
+  "reported_public_article_count": 80,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AB72232FD89780001E7BC03",
+      "vocus_article_id": "6ab72232fd89780001e7bc03",
+      "slug": "article-6ab72232",
+      "title": "Top Sales 不用樣樣都會：找到你最該練到極致的能力",
+      "seo_title": "Top Sales 不用樣樣都會：找到你最該練到極致的能力｜Orikan 李泰欣",
+      "description": "在我的人生中，我看見四種 Top Sales：  1. 第一個師傅，他把服務做到了極致： 客人的婚禮他會去佈置，客人每一個小事他都知道。每個月都會寄信給所有的客戶，所有的保費都是自己收、自己通知，所有客戶的取送車也都自己做。  2. 第二個師傅，他把人性練到了極致： 有他在的地方歡笑陣陣，剛走進來的",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "頂尖業務",
+        "銷售能力",
+        "刻意練習"
+      ],
+      "keywords": [
+        "Top Sales 不用樣樣都會：找到你最該練到極致的能力",
+        "頂尖業務",
+        "銷售能力",
+        "刻意練習",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-26",
+      "updated_at": "2026-09-26",
+      "vocus_url": "https://vocus.cc/article/6ab72232fd89780001e7bc03",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6ab72232/",
+      "source_sha256": "23b1f3c828c6da4d14409eec516d3ac7dac725c2aa55df99bab7c347c4ee1494",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/d9ed34ec-245e-49fc-bbc4-69e0ea35fe09.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab72232fd89780001e7bc03-1.png",
+          "filename": "6ab72232fd89780001e7bc03-1.png",
+          "sha256": "bc117c3ea56b3e02092796e51ea73640ce8bff8691d0ad2af4b2ec36a271b0fa",
+          "alt": "Top Sales 不用樣樣都會：找到你最該練到極致的能力｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/67d76221-b87f-4f74-8e5b-ef3d9275dfc3.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab72232fd89780001e7bc03-2.png",
+          "filename": "6ab72232fd89780001e7bc03-2.png",
+          "sha256": "fa608c8f88b15f8669656e55c237a390f4645733513b636f4b78366a5e1422c9",
+          "alt": "Top Sales 不用樣樣都會：找到你最該練到極致的能力｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AB5D033FD89780001937AC1",
       "vocus_article_id": "6ab5d033fd89780001937ac1",
