@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-26",
+  "generated_at": "2026-09-27",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 80,
+  "reported_public_article_count": 81,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AB87512FD8978000138E9BD",
+      "vocus_article_id": "6ab87512fd8978000138e9bd",
+      "slug": "article-6ab87512",
+      "title": "為什麼好人總是受傷？善良，也需要學會判斷",
+      "seo_title": "為什麼好人總是受傷？善良，也需要學會判斷｜Orikan 李泰欣",
+      "description": "子曰：「由也，女聞六言六蔽矣乎？」對曰：「未也。」 「居，吾語女。好仁不好學，其蔽也愚；好知不好學，其蔽也盪；好信不好學，其蔽也賊；好直不好學，其蔽也絞；好勇不好學，其蔽也亂；好剛不好學，其蔽也狂。」  我記得我人生賣的第一台車。 在福特的時候，那台車是跟經理去大埔鐵板燒時，遇到一個包手師傅，他剛好",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "好人總是受傷",
+        "判斷力",
+        "業務成長",
+        "論語"
+      ],
+      "keywords": [
+        "為什麼好人總是受傷？善良，也需要學會判斷",
+        "好人總是受傷",
+        "判斷力",
+        "業務成長",
+        "論語",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-27",
+      "updated_at": "2026-09-27",
+      "vocus_url": "https://vocus.cc/article/6ab87512fd8978000138e9bd",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6ab87512/",
+      "source_sha256": "cece8771337bf426e7a46241f6708d58b5409b6a4908fdea9b1758e730f265ff",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/82d85a1c-94db-423a-9280-244900ef51d4.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab87512fd8978000138e9bd-1.png",
+          "filename": "6ab87512fd8978000138e9bd-1.png",
+          "sha256": "33673cad638decab2818f801b2e79b1e5a4c1b985bfea91c93fac1d3fc2967ba",
+          "alt": "為什麼好人總是受傷？善良，也需要學會判斷｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/b7d0a188-bdf3-410f-a189-bd1c96869475.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab87512fd8978000138e9bd-2.png",
+          "filename": "6ab87512fd8978000138e9bd-2.png",
+          "sha256": "334e525179da839213adb68c2e7d8c30cf4adb7fc6baf42c0881be6b52657aa1",
+          "alt": "為什麼好人總是受傷？善良，也需要學會判斷｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AB72232FD89780001E7BC03",
       "vocus_article_id": "6ab72232fd89780001e7bc03",
