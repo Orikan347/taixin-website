@@ -1,10 +1,54 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-27",
+  "generated_at": "2026-09-28",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 81,
+  "reported_public_article_count": 82,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AB9C532FD89780001818CFC",
+      "vocus_article_id": "6ab9c532fd89780001818cfc",
+      "slug": "article-6ab9c532",
+      "title": "賣到第一名後，我為什麼選擇當講師？",
+      "seo_title": "賣到第一名後，我為什麼選擇當講師？｜Orikan 李泰欣",
+      "description": "這兩天，有個學生一直問我：  為什麼賣到第一名，還要跑去當講師？  很想知道我的原因。  整個故事，我會在課堂上跟你說。  我覺得是，  因為我冷過，所以想幫別人多穿一件。 我沒有業績過，所以想幫別人多一些客人。 我被困過，所以想幫別人鬆綁。 我痛苦過，所以想讓別人減少一些痛苦。 我哭過，所以也想讓",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "銷售成長",
+        "教學使命",
+        "持續行動"
+      ],
+      "keywords": [
+        "賣到第一名後，我為什麼選擇當講師？",
+        "銷售成長",
+        "教學使命",
+        "持續行動",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-28",
+      "updated_at": "2026-09-28",
+      "vocus_url": "https://vocus.cc/article/6ab9c532fd89780001818cfc",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6ab9c532/",
+      "source_sha256": "5c474ee6704b53ae9db207cfde5747f13df7270ecb69230ffc80183c29ae3f59",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/b08fa39a-e4fa-4112-809e-093b13130e57.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab9c532fd89780001818cfc-1.png",
+          "filename": "6ab9c532fd89780001818cfc-1.png",
+          "sha256": "132fe061253cb2ea0dc5431c0dbd8e87b41f524fca23987b065d51068dd9534c",
+          "alt": "賣到第一名後，我為什麼選擇當講師？｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/00097f0c-0896-472c-b95a-4d8fc510e3ea.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ab9c532fd89780001818cfc-2.png",
+          "filename": "6ab9c532fd89780001818cfc-2.png",
+          "sha256": "a1ddcdb6db213c5f3d9cfd138c2e6ea9e125d431a12d49d6017e5fabff0169e5",
+          "alt": "賣到第一名後，我為什麼選擇當講師？｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AB87512FD8978000138E9BD",
       "vocus_article_id": "6ab87512fd8978000138e9bd",
