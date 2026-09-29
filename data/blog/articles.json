@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-28",
+  "generated_at": "2026-09-29",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 82,
+  "reported_public_article_count": 83,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6ABB171FFD89780001D45383",
+      "vocus_article_id": "6abb171ffd89780001d45383",
+      "slug": "article-6abb171f",
+      "title": "真正的老師，不只站在講台上：我想感謝生命中的三種人",
+      "seo_title": "真正的老師，不只站在講台上：我想感謝生命中的三種人｜Orikan 李泰欣",
+      "description": "【一、感恩人生導師：Michael 老師】  感謝師父， 在我走上導師這條路時， 給我的教導與提攜。 在迷惘的時候，給我方向 在驕傲的時候，給我棒喝 在無力的時候，給我力量  讓我從一開始， 就知道當老師不是為了被看見， 而是為了真的幫學生解決問題。  也讓我有機會學習大腦科學， 把複雜的知識， 變",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "教師節",
+        "人生導師",
+        "感恩",
+        "自我成長"
+      ],
+      "keywords": [
+        "真正的老師，不只站在講台上：我想感謝生命中的三種人",
+        "教師節",
+        "人生導師",
+        "感恩",
+        "自我成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-29",
+      "updated_at": "2026-09-29",
+      "vocus_url": "https://vocus.cc/article/6abb171ffd89780001d45383",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6abb171f/",
+      "source_sha256": "61da823ce6a06081b9b71cbdc4cf7521f0007a4628a833c24a39ab952fa644f3",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/818e3c36-3e4e-4467-9a5e-7213da273a16.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6abb171ffd89780001d45383-1.png",
+          "filename": "6abb171ffd89780001d45383-1.png",
+          "sha256": "6cf21214697ff12ff3407dfb2fe474df70a6ecd88423c9d534eb50099ef02925",
+          "alt": "真正的老師，不只站在講台上：我想感謝生命中的三種人｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/434acc00-66ee-4f1a-ba25-b55fd14b2eae.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6abb171ffd89780001d45383-2.png",
+          "filename": "6abb171ffd89780001d45383-2.png",
+          "sha256": "05ed733ef00634fb474b2d060e9653e0212439843b532f8be353c807e77ee966",
+          "alt": "真正的老師，不只站在講台上：我想感謝生命中的三種人｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AB9C532FD89780001818CFC",
       "vocus_article_id": "6ab9c532fd89780001818cfc",
