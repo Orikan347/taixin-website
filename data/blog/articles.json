@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-29",
+  "generated_at": "2026-09-30",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 83,
+  "reported_public_article_count": 84,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6ABC694DFD897800018D3796",
+      "vocus_article_id": "6abc694dfd897800018d3796",
+      "slug": "article-6abc694d",
+      "title": "無常不可怕，真正可怕的是無能為力",
+      "seo_title": "無常不可怕，真正可怕的是無能為力｜Orikan 李泰欣",
+      "description": "面對變動，真正需要練習的不是控制世界，而是讓自己在不確定裡仍有選擇與成長的能力。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "面對無常",
+        "反脆弱",
+        "人生低谷",
+        "自我成長"
+      ],
+      "keywords": [
+        "無常不可怕，真正可怕的是無能為力",
+        "面對無常",
+        "反脆弱",
+        "人生低谷",
+        "自我成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-09-30",
+      "updated_at": "2026-09-30",
+      "vocus_url": "https://vocus.cc/article/6abc694dfd897800018d3796",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6abc694d/",
+      "source_sha256": "a0fb11c353af869d0c0d5dc6fba2b3ee204dd3a33b5a897fd0dda1595e5b7296",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/eb3904da-f5d1-47c7-a1a5-02f107ddf21c.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6abc694dfd897800018d3796-1.png",
+          "filename": "6abc694dfd897800018d3796-1.png",
+          "sha256": "1765bf6af9cf56f5edd9169a9c3c6f439a83d7dfff653953870690658a3bdd3e",
+          "alt": "無常不可怕，真正可怕的是無能為力｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/9d1067a4-d05b-4c6e-9bb0-6424675a10dd.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6abc694dfd897800018d3796-2.png",
+          "filename": "6abc694dfd897800018d3796-2.png",
+          "sha256": "1c7a200f89fe51e69c96876a7b991d4ced01ee95be9380a46b1e6be707260a49",
+          "alt": "無常不可怕，真正可怕的是無能為力｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6ABB171FFD89780001D45383",
       "vocus_article_id": "6abb171ffd89780001d45383",
