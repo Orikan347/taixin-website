@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-09-30",
+  "generated_at": "2026-10-01",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 84,
+  "reported_public_article_count": 85,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6ABDBA12FD897800015DA465",
+      "vocus_article_id": "6abdba12fd897800015da465",
+      "slug": "article-6abdba12",
+      "title": "為什麼明明知道，卻還是做不到？痛苦來自三個鴻溝",
+      "seo_title": "為什麼明明知道，卻還是做不到？痛苦來自三個鴻溝｜Orikan 李泰欣",
+      "description": "人的痛苦，常來自本能與現實、現實與理想、理想與行動之間的落差。看懂三個鴻溝，才能練習不被欲望、恐懼與痛苦直接控制。",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "痛苦來源",
+        "自我覺察",
+        "知行合一",
+        "人生哲學"
+      ],
+      "keywords": [
+        "為什麼明明知道，卻還是做不到？痛苦來自三個鴻溝",
+        "痛苦來源",
+        "自我覺察",
+        "知行合一",
+        "人生哲學",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-10-01",
+      "updated_at": "2026-10-01",
+      "vocus_url": "https://vocus.cc/article/6abdba12fd897800015da465",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6abdba12/",
+      "source_sha256": "0d8d1254c8d7f2279854f5a605396facd73425525325c5d645e19d76e24c82fb",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/915cce06-f641-4f7e-a55e-79c31bfe023a.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6abdba12fd897800015da465-1.png",
+          "filename": "6abdba12fd897800015da465-1.png",
+          "sha256": "83ab71dc02c815047242f4b3851d861883aa3337b6165253304123839d167ed8",
+          "alt": "為什麼明明知道，卻還是做不到？痛苦來自三個鴻溝｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/25822660-a5ac-4834-afc6-6006c64b5737.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6abdba12fd897800015da465-2.png",
+          "filename": "6abdba12fd897800015da465-2.png",
+          "sha256": "a226519971a9762878b487b16f65eeaa756965f0e4f0ba2e88290ba6fcb9bf4c",
+          "alt": "為什麼明明知道，卻還是做不到？痛苦來自三個鴻溝｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6ABC694DFD897800018D3796",
       "vocus_article_id": "6abc694dfd897800018d3796",
