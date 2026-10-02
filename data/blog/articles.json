@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-10-01",
+  "generated_at": "2026-10-02",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 85,
+  "reported_public_article_count": 86,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6ABF0B38FD89780001473861",
+      "vocus_article_id": "6abf0b38fd89780001473861",
+      "slug": "article-6abf0b38",
+      "title": "你不是做不到：真正拉開人生差距的是後天習慣",
+      "seo_title": "你不是做不到：真正拉開人生差距的是後天習慣｜Orikan 李泰欣",
+      "description": "子曰：「性相近也，習相遠也。」 子曰：「唯上知與下愚不移。」  當你說出這些話： 「我真的做得到嗎？」 「我好像比不上別人。」 「我好像沒辦法靜下心來看書。」 「我好像看了書，還是學不會。」  就要提醒自己： 「性相近也，習相遠也。」  許多人都會說，一個人能成為 Top Sales，一定是因為他厲",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "自我懷疑",
+        "習慣養成",
+        "刻意練習",
+        "銷售成長"
+      ],
+      "keywords": [
+        "你不是做不到：真正拉開人生差距的是後天習慣",
+        "自我懷疑",
+        "習慣養成",
+        "刻意練習",
+        "銷售成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-10-02",
+      "updated_at": "2026-10-02",
+      "vocus_url": "https://vocus.cc/article/6abf0b38fd89780001473861",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6abf0b38/",
+      "source_sha256": "212e2672a5f04cc82d9f2d34d3be7cd60d7762f96f98f367f1565e5ecf536f63",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/826a3c6c-464d-4164-a48d-020a0c300898.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6abf0b38fd89780001473861-1.png",
+          "filename": "6abf0b38fd89780001473861-1.png",
+          "sha256": "968f0e0d583106c32e998392f9daadf6b4ce76d51e205618c047a6d500e7b29f",
+          "alt": "你不是做不到：真正拉開人生差距的是後天習慣｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/74ef703c-ee88-4ff2-8239-fa3480d387cd.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6abf0b38fd89780001473861-2.png",
+          "filename": "6abf0b38fd89780001473861-2.png",
+          "sha256": "415f79a6fdd1ede88611e05d75a7a28bd89a3bc5ea7b300d937d038120c76c21",
+          "alt": "你不是做不到：真正拉開人生差距的是後天習慣｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6ABDBA12FD897800015DA465",
       "vocus_article_id": "6abdba12fd897800015da465",
