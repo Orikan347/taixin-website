@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-10-02",
+  "generated_at": "2026-10-03",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 86,
+  "reported_public_article_count": 87,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AC05D8FFD89780001EE4141",
+      "vocus_article_id": "6ac05d8ffd89780001ee4141",
+      "slug": "article-6ac05d8f",
+      "title": "真正的中庸，不是折衷：看懂有與無、感恩與控制的邊界",
+      "seo_title": "真正的中庸，不是折衷：看懂有與無、感恩與控制的邊界｜Orikan 李泰欣",
+      "description": "當我每次在煩惱什麼是對或錯的時候  就會想起《道德經》裡「有」跟「無」的概念。  到底要追尋有，還是無呢？  我想，應該取孔子的中庸之道。  但中庸之道，來自於你知道有跟無的邊界在哪裡。  來自於你知道苦跟樂的邊界在哪裡。  來自於你知道科學跟身心靈的邊界各自在哪裡。  來自於你知道慾望跟需求的邊界",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "中庸之道",
+        "關係界線",
+        "人際關係",
+        "自我成長"
+      ],
+      "keywords": [
+        "真正的中庸，不是折衷：看懂有與無、感恩與控制的邊界",
+        "中庸之道",
+        "關係界線",
+        "人際關係",
+        "自我成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-10-03",
+      "updated_at": "2026-10-03",
+      "vocus_url": "https://vocus.cc/article/6ac05d8ffd89780001ee4141",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6ac05d8f/",
+      "source_sha256": "940e2daa73aead47793bfe86203d48523c7f924d058d07dd1ec5c514423576e2",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/644570e5-0edf-4280-b709-8caa137022c7.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ac05d8ffd89780001ee4141-1.png",
+          "filename": "6ac05d8ffd89780001ee4141-1.png",
+          "sha256": "d22b0d902ec8e42d3a50fa5733d0a8f218eb7fe79918862669b916308038fb33",
+          "alt": "真正的中庸，不是折衷：看懂有與無、感恩與控制的邊界｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/38d30e28-3f04-403b-86b3-a2fbba72955b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ac05d8ffd89780001ee4141-2.png",
+          "filename": "6ac05d8ffd89780001ee4141-2.png",
+          "sha256": "a685b624238192ef7ffff0641852b72f4f1fe330f82cc0b7abe3d6a5f72481d8",
+          "alt": "真正的中庸，不是折衷：看懂有與無、感恩與控制的邊界｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6ABF0B38FD89780001473861",
       "vocus_article_id": "6abf0b38fd89780001473861",
