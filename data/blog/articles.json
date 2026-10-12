@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-10-03",
+  "generated_at": "2026-10-12",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 87,
+  "reported_public_article_count": 88,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6ACC3961FD89780001D36967",
+      "vocus_article_id": "6acc3961fd89780001d36967",
+      "slug": "article-6acc3961",
+      "title": "承認錯誤為什麼那麼難？越遮掩，代價越大",
+      "seo_title": "承認錯誤為什麼那麼難？越遮掩，代價越大｜Orikan 李泰欣",
+      "description": "子貢曰：「君子之過也，如日月之食焉。過也，人皆見之；更也，人皆仰之。」  君子的過失，就像日蝕跟月蝕一樣，大家都看得很清楚。如果願意改錯，人人皆仰望、皆敬佩。  這是我今天讀到覺得很有感的一句話。  我們犯錯的時候，其實不管自己再怎麼遮掩，或是有什麼國防布，其他人還是知道，遮也遮不住。如果要一直遮住",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "承認錯誤",
+        "感情經營",
+        "關係修復",
+        "自我成長"
+      ],
+      "keywords": [
+        "承認錯誤為什麼那麼難？越遮掩，代價越大",
+        "承認錯誤",
+        "感情經營",
+        "關係修復",
+        "自我成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-10-12",
+      "updated_at": "2026-10-12",
+      "vocus_url": "https://vocus.cc/article/6acc3961fd89780001d36967",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6acc3961/",
+      "source_sha256": "8571410b634bd5768a136a21cae2dc90febb038db8f0834d10b7c1157fc5d1c4",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/5c90a2ee-5c10-4b4c-a6e8-b0f8df572505.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6acc3961fd89780001d36967-1.png",
+          "filename": "6acc3961fd89780001d36967-1.png",
+          "sha256": "0e716d434c7e689162e2b53927ed46c213afae9b53128352326b33e696e56bf2",
+          "alt": "承認錯誤為什麼那麼難？越遮掩，代價越大｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/e435c0b5-357b-453e-9323-bb0b35df43a2.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6acc3961fd89780001d36967-2.png",
+          "filename": "6acc3961fd89780001d36967-2.png",
+          "sha256": "7c099daaec9345acae2e9596901a56293e493bb149a6bb0ec9aae41ad440a1b8",
+          "alt": "承認錯誤為什麼那麼難？越遮掩，代價越大｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AC05D8FFD89780001EE4141",
       "vocus_article_id": "6ac05d8ffd89780001ee4141",
