@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-10-12",
+  "generated_at": "2026-10-16",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 88,
+  "reported_public_article_count": 89,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AD1803FFD897800010AEF5F",
+      "vocus_article_id": "6ad1803ffd897800010aef5f",
+      "slug": "article-6ad1803f",
+      "title": "讀完《論語》最後一章，我才懂：放下好壞，才能活在當下",
+      "seo_title": "讀完《論語》最後一章，我才懂：放下好壞，才能活在當下｜Orikan 李泰欣",
+      "description": "子曰：「不知命，無以為君子也。不知禮，無以立也。不知言，無以知人也。」 孔子說：「不懂得天命，就不能做君子；不知道禮儀，就不能立身處世；不善於分辨別人的話語，就不能真正了解他。」  花了近兩年，終於把《論語》的最後一章看完了。 但這次看完並不是結束， 而是明天開始，再從第一句重新看起。 記得的叫知識",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "論語",
+        "放下執著",
+        "活在當下",
+        "自我成長"
+      ],
+      "keywords": [
+        "讀完《論語》最後一章，我才懂：放下好壞，才能活在當下",
+        "論語",
+        "放下執著",
+        "活在當下",
+        "自我成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-10-16",
+      "updated_at": "2026-10-16",
+      "vocus_url": "https://vocus.cc/article/6ad1803ffd897800010aef5f",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6ad1803f/",
+      "source_sha256": "15e372a1e254ff47f52f148151bc512056bcb0bd180a56db865c58607910d2bd",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/afbf215f-788e-4133-a86d-b7bcf87865bf.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ad1803ffd897800010aef5f-1.png",
+          "filename": "6ad1803ffd897800010aef5f-1.png",
+          "sha256": "19c59e9be4aa1dc2e2b7b10e3071fe4646d0f6e88e43babf1a69f9ff37888114",
+          "alt": "讀完《論語》最後一章，我才懂：放下好壞，才能活在當下｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/1a627f20-ffc2-4b98-bbd8-4ba64d2c2453.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ad1803ffd897800010aef5f-2.png",
+          "filename": "6ad1803ffd897800010aef5f-2.png",
+          "sha256": "644cfe7daf46a1a85886e150aec82296400bd2b76b4aa7cdfbc8a5581a4fe33e",
+          "alt": "讀完《論語》最後一章，我才懂：放下好壞，才能活在當下｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6ACC3961FD89780001D36967",
       "vocus_article_id": "6acc3961fd89780001d36967",
