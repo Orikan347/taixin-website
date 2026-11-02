@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-10-16",
+  "generated_at": "2026-11-02",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 89,
+  "reported_public_article_count": 90,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AE7E923FD89780001F44282",
+      "vocus_article_id": "6ae7e923fd89780001f44282",
+      "slug": "article-6ae7e923",
+      "title": "每個人都是老師：你的一句話，可能正在改變別人的命運",
+      "seo_title": "每個人都是老師：你的一句話，可能正在改變別人的命運｜Orikan 李泰欣",
+      "description": "最近我有一些感悟。  「身為一個老師，真的不能亂講話。 而每個人都是老師。」  如果一個老師只是為了混口飯吃、為了賺錢， 那就等於棄學生的命運於不顧。  因為我們必須知道， 一個人的改變有三個階段：  1. 覺知：用心去感受。 真正發現自己應該改變了， 用心去感受對方需要什麼。  2. 選擇：選擇你",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "溝通表達",
+        "言語影響力",
+        "自我成長",
+        "思維模型"
+      ],
+      "keywords": [
+        "每個人都是老師：你的一句話，可能正在改變別人的命運",
+        "溝通表達",
+        "言語影響力",
+        "自我成長",
+        "思維模型",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-11-02",
+      "updated_at": "2026-11-02",
+      "vocus_url": "https://vocus.cc/article/6ae7e923fd89780001f44282",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6ae7e923/",
+      "source_sha256": "c1c138e70dcf0d32947ec9b077c8c75e4762f221eb0300ea1b917cc0d7b74f06",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/a8a5d747-314a-4b98-ac79-e70385ebbd88.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ae7e923fd89780001f44282-1.png",
+          "filename": "6ae7e923fd89780001f44282-1.png",
+          "sha256": "88a98bddf9872b6ef8691c9c362ab5fd74e36cddb1608f3ccd01acb111b218ff",
+          "alt": "每個人都是老師：你的一句話，可能正在改變別人的命運｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/8ffbd0ce-ccc6-42c4-942e-9f25c9dc2eec.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ae7e923fd89780001f44282-2.png",
+          "filename": "6ae7e923fd89780001f44282-2.png",
+          "sha256": "d06cf6e44e8a477232bace5dc59b6e369a381b8fa32fe506c05f75cd677baec6",
+          "alt": "每個人都是老師：你的一句話，可能正在改變別人的命運｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AD1803FFD897800010AEF5F",
       "vocus_article_id": "6ad1803ffd897800010aef5f",
@@ -76,7 +122,7 @@
         "思考、修身與學習"
       ],
       "published_at": "2026-10-12",
-      "updated_at": "2026-10-12",
+      "updated_at": "2026-10-16",
       "vocus_url": "https://vocus.cc/article/6acc3961fd89780001d36967",
       "site_url": "https://orikan347.github.io/taixin-website/blog/article-6acc3961/",
       "source_sha256": "8571410b634bd5768a136a21cae2dc90febb038db8f0834d10b7c1157fc5d1c4",
@@ -3166,7 +3212,7 @@
         "客戶溝通與成交"
       ],
       "published_at": "2026-03-08",
-      "updated_at": "2026-07-21",
+      "updated_at": "2026-10-27",
       "vocus_url": "https://vocus.cc/article/69ad830ffd897800013d6406",
       "site_url": "https://orikan347.github.io/taixin-website/blog/client-follow-up-no-reply/",
       "source_sha256": "363814a0ecf7cd1576c8ea935cfdb43b7d92b90de2fc48f1b2141d9b1786e6cd",
@@ -3957,7 +4003,7 @@
         "思考、修身與學習"
       ],
       "published_at": "2026-01-04",
-      "updated_at": "2026-07-21",
+      "updated_at": "2026-10-16",
       "vocus_url": "https://vocus.cc/article/6959e83dfd897800013977b5",
       "site_url": "https://orikan347.github.io/taixin-website/blog/sales-mediocrity-trap/",
       "source_sha256": "17a7153b0e29692fc9c4879c9e3dcdbb71478eb2e2c680d5c2eaf8b8d944fb38",
