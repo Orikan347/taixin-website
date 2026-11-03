@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-11-02",
+  "generated_at": "2026-11-03",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 90,
+  "reported_public_article_count": 91,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AE93B36FD89780001147878",
+      "vocus_article_id": "6ae93b36fd89780001147878",
+      "slug": "article-6ae93b36",
+      "title": "每天的累積，會變成別人需要你的理由",
+      "seo_title": "每天的累積，會變成別人需要你的理由｜Orikan 李泰欣",
+      "description": "有一次，子禽問子貢： 「為什麼孔夫子到任何地方，都有人要找他問政、請教他？是因為他有行銷團隊在幫他推廣嗎？還是他自己去求來的？或者是別人需要他，所以才來問他？」  子貢回答說，這一切都是因為孔夫子的「溫、良、恭、儉、讓」，才會讓別人主動想找他。  • 溫是溫和：凡事溫和，不靠跟人吵架來證明自己。就像",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "客戶信任",
+        "銷售成長",
+        "自我成長",
+        "溫良恭儉讓"
+      ],
+      "keywords": [
+        "每天的累積，會變成別人需要你的理由",
+        "客戶信任",
+        "銷售成長",
+        "自我成長",
+        "溫良恭儉讓",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-11-03",
+      "updated_at": "2026-11-03",
+      "vocus_url": "https://vocus.cc/article/6ae93b36fd89780001147878",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6ae93b36/",
+      "source_sha256": "661653d31321de7ae969fcac02ca2c915c7ee7e2d507c73aa90d3b58f5eff944",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/4208c80e-d106-4fe4-8fe8-6c3db40bf346.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ae93b36fd89780001147878-1.png",
+          "filename": "6ae93b36fd89780001147878-1.png",
+          "sha256": "cd1341e59535b64a5a25f2decd1316a57ceb661c87a28f1df055ba7d95a79aa2",
+          "alt": "每天的累積，會變成別人需要你的理由｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/88e28f84-80bd-4595-b670-f7bc6f89d889.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6ae93b36fd89780001147878-2.png",
+          "filename": "6ae93b36fd89780001147878-2.png",
+          "sha256": "75f67417053c88277624b070e284da7050214aea667dbc3f3e1317f33777c757",
+          "alt": "每天的累積，會變成別人需要你的理由｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AE7E923FD89780001F44282",
       "vocus_article_id": "6ae7e923fd89780001f44282",
