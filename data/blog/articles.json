@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-11-03",
+  "generated_at": "2026-11-05",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 91,
+  "reported_public_article_count": 92,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AEBDDFDFD897800016A8A8B",
+      "vocus_article_id": "6aebddfdfd897800016a8a8b",
+      "slug": "article-6aebddfd",
+      "title": "情緒容易被別人影響？我用一套晨間 SOP 練習穩定自己",
+      "seo_title": "情緒容易被別人影響？我用一套晨間 SOP 練習穩定自己｜Orikan 李泰欣",
+      "description": "最近有一種感覺 因為很常在外面搭 Grab 或是去餐廳 每當我遇見一些看起來不大開心的司機或服務生， 我並沒有被挑起不開心的情緒，也不覺得生氣 依然很穩定不會因人波動 反而是覺得有一種很可惜跟憐憫的心情湧上來 想要讓他們開心  因為我覺得人生這麼有趣，可以跳傘、可以出國、可以做任何你想做的事情， 那",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "情緒穩定",
+        "晨間習慣",
+        "冥想練習",
+        "自我成長"
+      ],
+      "keywords": [
+        "情緒容易被別人影響？我用一套晨間 SOP 練習穩定自己",
+        "情緒穩定",
+        "晨間習慣",
+        "冥想練習",
+        "自我成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-11-05",
+      "updated_at": "2026-11-05",
+      "vocus_url": "https://vocus.cc/article/6aebddfdfd897800016a8a8b",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6aebddfd/",
+      "source_sha256": "a64d3d2ea3face421870e792e9392a3662f28f7a681dfdb49a2ac84792233463",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/2c5f3cd7-0372-41d4-b41e-bfbf7fc08c86.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6aebddfdfd897800016a8a8b-1.png",
+          "filename": "6aebddfdfd897800016a8a8b-1.png",
+          "sha256": "2fc480187e52389a0d948b8887c6ac5eeda893b4afc50c559130dbab26beb020",
+          "alt": "情緒容易被別人影響？我用一套晨間 SOP 練習穩定自己｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/cebaef04-a2b1-4fc7-8896-45ac84aa38ed.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6aebddfdfd897800016a8a8b-2.png",
+          "filename": "6aebddfdfd897800016a8a8b-2.png",
+          "sha256": "c99fbcc814340a48763a08cbf74920afe73bc5c2b93264932a3fa60374e42795",
+          "alt": "情緒容易被別人影響？我用一套晨間 SOP 練習穩定自己｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AE93B36FD89780001147878",
       "vocus_article_id": "6ae93b36fd89780001147878",
