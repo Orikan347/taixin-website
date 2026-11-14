@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-11-05",
+  "generated_at": "2026-11-14",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 92,
+  "reported_public_article_count": 93,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6AF7BC88FD89780001D0EDA0",
+      "vocus_article_id": "6af7bc88fd89780001d0eda0",
+      "slug": "article-6af7bc88",
+      "title": "我37歲才開始讀書",
+      "seo_title": "我37歲才開始讀書｜Orikan 李泰欣",
+      "description": "我高中都是倒數前三名，  大學被二一，暑修寒修我都必定參加，沒放假過  熬夜打三國到凌晨，我室友剛起床要念書考研究所  「我是最認真去學校，但讀最少書的人」  想起我人生完整看完的第一本書，  就是在 37 歲的時候買的張琦的《認知破局》。  真的很扯，大概沒幾個人比我晚吧？  我以前根本不念書，覺",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "終身學習",
+        "閱讀成長",
+        "經典閱讀",
+        "思維模型"
+      ],
+      "keywords": [
+        "我37歲才開始讀書",
+        "終身學習",
+        "閱讀成長",
+        "經典閱讀",
+        "思維模型",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-11-14",
+      "updated_at": "2026-11-14",
+      "vocus_url": "https://vocus.cc/article/6af7bc88fd89780001d0eda0",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6af7bc88/",
+      "source_sha256": "276f7716d5a7c7c3ef2e8a287aa068610aff393bda340e58017ab4d13d51a028",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/555322ee-12b0-42c6-ae85-d6e669a16482.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6af7bc88fd89780001d0eda0-1.png",
+          "filename": "6af7bc88fd89780001d0eda0-1.png",
+          "sha256": "e0a5adfba11810b5dc280e63c071740c966f6a06ab0bea863e62dbd4a73fddf5",
+          "alt": "我37歲才開始讀書｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/10f6f8c2-3b10-45af-9179-12254c574cf1.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6af7bc88fd89780001d0eda0-2.png",
+          "filename": "6af7bc88fd89780001d0eda0-2.png",
+          "sha256": "8129bd3e9edbb4abcf8b334d084c4c055a539580ec9376f61dd02d5e07601f41",
+          "alt": "我37歲才開始讀書｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AEBDDFDFD897800016A8A8B",
       "vocus_article_id": "6aebddfdfd897800016a8a8b",
