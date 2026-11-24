@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-11-14",
+  "generated_at": "2026-11-24",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 93,
+  "reported_public_article_count": 94,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6B04EB5EFD8978000168154A",
+      "vocus_article_id": "6b04eb5efd8978000168154a",
+      "slug": "article-6b04eb5e",
+      "title": "一張證書背後，是兩年反覆練習：我為什麼還要重新學當老師？",
+      "seo_title": "一張證書背後，是兩年反覆練習：我為什麼還要重新學當老師？｜Orikan 李泰欣",
+      "description": "今天，對我來說是一個很特別的日子。  我完成了馬來亞威爾斯大學「4U 人際互動與組織影響力」的精修課程，拿到這張證書。  但這張證書，對我來說不只是多一張證明。  它提醒我：站在台上的人，不能只會講自己懂的；  更要願意一次又一次，讓自己不斷地學習及刻意練習。  兩年前的 9 月 27 日，我決定參",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "講師成長",
+        "刻意練習",
+        "企業內訓",
+        "教學使命"
+      ],
+      "keywords": [
+        "一張證書背後，是兩年反覆練習：我為什麼還要重新學當老師？",
+        "講師成長",
+        "刻意練習",
+        "企業內訓",
+        "教學使命",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-11-24",
+      "updated_at": "2026-11-24",
+      "vocus_url": "https://vocus.cc/article/6b04eb5efd8978000168154a",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6b04eb5e/",
+      "source_sha256": "cedb8c12e27ee8d769f9f3baa442c9ccf64c9f84bab487f28fd60a6b4dd2c6c4",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/5cf91776-a823-4ada-b4c1-5b0d42fb5b7e.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6b04eb5efd8978000168154a-1.png",
+          "filename": "6b04eb5efd8978000168154a-1.png",
+          "sha256": "d6821e3fb7505044e75b9c176b5051c524beb3fcc07683817f8c46aaff8a89b1",
+          "alt": "一張證書背後，是兩年反覆練習：我為什麼還要重新學當老師？｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/743f8884-afc4-4e51-b6cf-8f2f508e0591.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6b04eb5efd8978000168154a-2.png",
+          "filename": "6b04eb5efd8978000168154a-2.png",
+          "sha256": "0a959b0da5864034462db0a45c68e875ef90d043b5a7d9a1d3d10878dd87d454",
+          "alt": "一張證書背後，是兩年反覆練習：我為什麼還要重新學當老師？｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6AF7BC88FD89780001D0EDA0",
       "vocus_article_id": "6af7bc88fd89780001d0eda0",
@@ -3759,7 +3805,7 @@
         "思考、修身與學習"
       ],
       "published_at": "2026-01-28",
-      "updated_at": "2026-07-21",
+      "updated_at": "2026-11-22",
       "vocus_url": "https://vocus.cc/article/6979b9b6fd89780001e87882",
       "site_url": "https://orikan347.github.io/taixin-website/blog/why-hard-working-still-stuck/",
       "source_sha256": "bf67d39d71b36bbfaf1908660570fe9de3111eba29efcd6f6541ea35ad20eaed",
