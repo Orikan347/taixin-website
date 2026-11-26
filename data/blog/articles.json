@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-11-24",
+  "generated_at": "2026-11-26",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 94,
+  "reported_public_article_count": 95,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6B078CF6FD89780001C23326",
+      "vocus_article_id": "6b078cf6fd89780001c23326",
+      "slug": "article-6b078cf6",
+      "title": "放不下失敗、等不到成交？業務員該懂的三世心不可得",
+      "seo_title": "放不下失敗、等不到成交？業務員該懂的三世心不可得｜Orikan 李泰欣",
+      "description": "如果一個業務員，一直放不下過去失去的客戶、失敗的成交，甚至因為過去被拒絕的經驗，影響了現在面對客戶的心情，那我們的取捨應該要是什麼？  這就是「過去心不可得」。  如果一直放不下過去，類似的問題也可能反覆出現。但過去已經過去了，我們沒辦法再回去改變它。  如果一個業務員，一直期待著未來的業績，努力工",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "業務成交",
+        "客戶溝通",
+        "情緒管理",
+        "自我成長"
+      ],
+      "keywords": [
+        "放不下失敗、等不到成交？業務員該懂的三世心不可得",
+        "業務成交",
+        "客戶溝通",
+        "情緒管理",
+        "自我成長",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-11-26",
+      "updated_at": "2026-11-26",
+      "vocus_url": "https://vocus.cc/article/6b078cf6fd89780001c23326",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6b078cf6/",
+      "source_sha256": "4c0d60d2bbb3828fc70bbbd51d1a4c38b152f94e24c7b7ff7959d6b44eed1022",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/4fded398-7812-4d21-bff9-37fee897337c.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6b078cf6fd89780001c23326-1.png",
+          "filename": "6b078cf6fd89780001c23326-1.png",
+          "sha256": "8c890e3b85e9d9ba08d80cd95b6785813578e5df36312e91f2b84ce4dc275fff",
+          "alt": "放不下失敗、等不到成交？業務員該懂的三世心不可得｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/69df5e7c-a598-4368-a580-27dc95822b32.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6b078cf6fd89780001c23326-2.png",
+          "filename": "6b078cf6fd89780001c23326-2.png",
+          "sha256": "ed1970240b0309bf89523a36e577db1ec438d923a565f9582000db84cd695e2a",
+          "alt": "放不下失敗、等不到成交？業務員該懂的三世心不可得｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6B04EB5EFD8978000168154A",
       "vocus_article_id": "6b04eb5efd8978000168154a",
