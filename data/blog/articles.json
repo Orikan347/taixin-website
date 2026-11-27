@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-11-26",
+  "generated_at": "2026-11-27",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 95,
+  "reported_public_article_count": 96,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6B08DDD5FD89780001103F62",
+      "vocus_article_id": "6b08ddd5fd89780001103f62",
+      "slug": "article-6b08ddd5",
+      "title": "別把人生規劃死：真正該練的是反脆弱",
+      "seo_title": "別把人生規劃死：真正該練的是反脆弱｜Orikan 李泰欣",
+      "description": "不要做職涯規劃，不要做人生規劃  時常收到有人私訊我  「老師，我應該選哪個？ 老師，我應該做什麼？ 老師，我現在的方向要往哪？」  我回答任何一個你的選擇，都不對。  因為當你照著規劃走，你會限制你的想像；  因為當你照著規劃走，你不敢做創新的事情；  因為當你照著規劃走，你不允許自己失敗。  人",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "反脆弱",
+        "人生規劃",
+        "職涯選擇",
+        "不確定性"
+      ],
+      "keywords": [
+        "別把人生規劃死：真正該練的是反脆弱",
+        "反脆弱",
+        "人生規劃",
+        "職涯選擇",
+        "不確定性",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-11-27",
+      "updated_at": "2026-11-27",
+      "vocus_url": "https://vocus.cc/article/6b08ddd5fd89780001103f62",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6b08ddd5/",
+      "source_sha256": "e0fab9febf0a1b3fc514e91091425d6641b66c5e560f417c193fa68bbdeff448",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/3353a050-b994-4646-812e-a7d353514f8b.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6b08ddd5fd89780001103f62-1.png",
+          "filename": "6b08ddd5fd89780001103f62-1.png",
+          "sha256": "3c78be745ac24348cfc064656cd4a56c4d0321614d47880cd09a3acd537e4682",
+          "alt": "別把人生規劃死：真正該練的是反脆弱｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/896eeb3a-7e25-44f3-ab13-de8593a5a83d.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6b08ddd5fd89780001103f62-2.png",
+          "filename": "6b08ddd5fd89780001103f62-2.png",
+          "sha256": "758ddc31955232deaf3cf70b952e7868b5e4cc7dc4f4d407a6fe271a20ff5d50",
+          "alt": "別把人生規劃死：真正該練的是反脆弱｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6B078CF6FD89780001C23326",
       "vocus_article_id": "6b078cf6fd89780001c23326",
