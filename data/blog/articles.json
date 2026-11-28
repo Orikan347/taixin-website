@@ -1,10 +1,56 @@
 {
   "schema_version": "2.0",
   "site_base_url": "https://orikan347.github.io/taixin-website",
-  "generated_at": "2026-11-27",
+  "generated_at": "2026-11-28",
   "source": "Vocus public creator catalogue",
-  "reported_public_article_count": 96,
+  "reported_public_article_count": 97,
   "articles": [
+    {
+      "record_id": "ORI-VOCUS-6B0A2FE6FD897800014E6E13",
+      "vocus_article_id": "6b0a2fe6fd897800014e6e13",
+      "slug": "article-6b0a2fe6",
+      "title": "客戶關係怎麼長久？真正重要的是善意的陪伴",
+      "seo_title": "客戶關係怎麼長久？真正重要的是善意的陪伴｜Orikan 李泰欣",
+      "description": "什麼樣的業務，才能和客戶維持長久的關係？  不只是熱情的服務，不只是共同的話題，也不只是優惠的價格，更重要的是善意的陪伴。  共同的話題會聊完，優惠的價格可能遇到更便宜的選擇，  一開始積極的服務，也可能隨著成交而消退。  但你有沒有把客戶的需求放在心上，會體現在每一次的互動裡。  什麼叫做善意的陪",
+      "topics": [
+        "thinking-practice"
+      ],
+      "tags": [
+        "客戶關係",
+        "客戶溝通",
+        "銷售服務",
+        "客訴處理"
+      ],
+      "keywords": [
+        "客戶關係怎麼長久？真正重要的是善意的陪伴",
+        "客戶關係",
+        "客戶溝通",
+        "銷售服務",
+        "客訴處理",
+        "思考、修身與學習"
+      ],
+      "published_at": "2026-11-28",
+      "updated_at": "2026-11-28",
+      "vocus_url": "https://vocus.cc/article/6b0a2fe6fd897800014e6e13",
+      "site_url": "https://orikan347.github.io/taixin-website/blog/article-6b0a2fe6/",
+      "source_sha256": "3b02be2c14088e70d2b55d9216ca814105777a9cd76650fcc1801da58b22a559",
+      "images": [
+        {
+          "source_url": "https://images.vocus.cc/783b7e22-84a2-4bdb-adfe-0910db50f8bb.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6b0a2fe6fd897800014e6e13-1.png",
+          "filename": "6b0a2fe6fd897800014e6e13-1.png",
+          "sha256": "cac0ad70aa50950eb49380e3beaf3026235b23d80dd5d98a375a0f104b9997ee",
+          "alt": "客戶關係怎麼長久？真正重要的是善意的陪伴｜Vocus 原圖 1"
+        },
+        {
+          "source_url": "https://images.vocus.cc/b5469330-dc0d-4809-b841-8e891def3a91.png",
+          "site_url": "https://orikan347.github.io/taixin-website/blog/media/6b0a2fe6fd897800014e6e13-2.png",
+          "filename": "6b0a2fe6fd897800014e6e13-2.png",
+          "sha256": "a8c44d08b81b48c185f34c21131c679443daf9987db150934811c4d14de5d442",
+          "alt": "客戶關係怎麼長久？真正重要的是善意的陪伴｜Vocus 原圖 2"
+        }
+      ]
+    },
     {
       "record_id": "ORI-VOCUS-6B08DDD5FD89780001103F62",
       "vocus_article_id": "6b08ddd5fd89780001103f62",
